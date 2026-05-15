@@ -1,5 +1,3 @@
-/* global gsap, subscribe, PUB_SUB_EVENTS */
-
 (function () {
   'use strict';
 

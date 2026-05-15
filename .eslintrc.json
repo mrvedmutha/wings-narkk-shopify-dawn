@@ -7,6 +7,12 @@
     "ecmaVersion": 2020,
     "sourceType": "script"
   },
+  "globals": {
+    "gsap": "readonly",
+    "subscribe": "readonly",
+    "PUB_SUB_EVENTS": "readonly",
+    "publish": "readonly"
+  },
   "rules": {
     "no-unused-vars": "warn",
     "no-undef": "error",
