@@ -1,0 +1,419 @@
+/* ═══════════════════════════════════════════════════════════════
+   NARKK HEADER
+   Tokens from narkk-brand.css — never hardcode hex values here.
+   Base written at 1440px. Dawn rem scale: 1rem = 10px.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Reset ───────────────────────────────────────────────────── */
+.narkk-header *,
+.narkk-header *::before,
+.narkk-header *::after {
+  box-sizing: border-box;
+}
+
+/* ── Outer shell ─────────────────────────────────────────────── */
+.narkk-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ANNOUNCEMENT BAR
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-announcement {
+  background: var(--narkk-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.2rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.narkk-announcement__text,
+.narkk-announcement__text:visited {
+  color: var(--narkk-white);
+  font-family: Outfit, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 2.4rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MAIN NAV BAR
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-nav-wrapper {
+  background: var(--narkk-beige);
+  border: 1px solid var(--narkk-dark);
+  width: 100%;
+}
+
+/* Inner container — max 1380px, centred */
+.narkk-nav-container {
+  display: flex;
+  align-items: center;
+  height: 5.2rem;
+  margin: 0 auto;
+  max-width: 1380px;
+}
+
+/* ── Left zone (desktop nav) ─────────────────────────────────── */
+.narkk-nav-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+/* ── Mobile-only hamburger zone ──────────────────────────────── */
+.narkk-mobile-left {
+  display: none;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+/* ── Centre logo ─────────────────────────────────────────────── */
+.narkk-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-shrink: 0;
+  padding: 0 2.4rem;
+  text-decoration: none;
+}
+
+.narkk-logo img {
+  height: 2.4rem;
+  width: auto;
+  display: block;
+}
+
+/* ── Right zone ──────────────────────────────────────────────── */
+.narkk-nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  flex: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NAV ITEMS
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 10rem;
+  padding: 0 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.narkk-nav-item--wide {
+  min-width: 12rem;
+}
+
+.narkk-nav-item--icon {
+  min-width: 10rem;
+}
+
+/* ── Default (visible) text layer ────────────────────────────── */
+.narkk-nav-label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--narkk-text);
+  font-family: Outfit, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── GSAP fill layer — slides up from below on hover ─────────── */
+.narkk-nav-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--narkk-dark);
+  color: var(--narkk-white);
+  font-family: Outfit, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  /* starts off-screen below — GSAP drives it to 0 on hover */
+  transform: translateY(100%);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Icons inside the fill layer become white */
+.narkk-nav-fill img {
+  filter: brightness(0) invert(1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DIVIDERS
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-divider {
+  width: 1px;
+  height: 5.2rem;
+  background: var(--narkk-dark);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CART BADGE
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--narkk-dark);
+  color: var(--narkk-white);
+  font-family: Outfit, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  width: 2.8rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Badge inverts inside the fill layer */
+.narkk-nav-fill .narkk-cart-count {
+  background: var(--narkk-beige);
+  color: var(--narkk-dark);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HAMBURGER BUTTON
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  padding: 0 2rem;
+}
+
+.narkk-hamburger span {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--narkk-dark);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE SIDE DRAWER
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30rem;
+  height: 100dvh;
+  background: var(--narkk-beige);
+  border-right: 1px solid var(--narkk-dark);
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2.4rem;
+}
+
+.narkk-drawer.is-open {
+  transform: translateX(0);
+}
+
+.narkk-drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3.2rem;
+}
+
+.narkk-drawer-logo img {
+  height: 2rem;
+  width: auto;
+}
+
+.narkk-drawer-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--narkk-dark);
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.narkk-drawer-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-drawer-nav a {
+  display: block;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--narkk-divider);
+  font-family: Outfit, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--narkk-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.narkk-drawer-nav a:first-child {
+  border-top: 1px solid var(--narkk-divider);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   OVERLAY
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(2 31 29 / 40%);
+  z-index: 199;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.narkk-overlay.is-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════════════════ */
+
+/* Above 1440px — wrapper is 100%, inner container stays 1380px */
+@media screen and (width >= 1441px) {
+  .narkk-nav-container {
+    max-width: 1380px;
+  }
+}
+
+/* 1024px — full header, tighter padding */
+@media screen and (width <= 1024px) {
+  .narkk-nav-container {
+    padding: 0 2.4rem;
+  }
+
+  .narkk-nav-item {
+    min-width: 8.4rem;
+    padding: 0 0.6rem;
+  }
+
+  .narkk-nav-item--wide {
+    min-width: 10.8rem;
+  }
+
+  .narkk-nav-item--icon {
+    min-width: 8.4rem;
+  }
+}
+
+/* 768px — hamburger layout */
+@media screen and (width <= 768px) {
+  /* Hide desktop left nav */
+  .narkk-nav-left {
+    display: none;
+  }
+
+  /* Show mobile hamburger zone */
+  .narkk-mobile-left {
+    display: flex;
+  }
+
+  /* Hide CONTACT on right */
+  .narkk-nav-item--contact,
+  .narkk-divider--contact {
+    display: none;
+  }
+
+  .narkk-nav-container {
+    padding: 0;
+  }
+
+  .narkk-logo {
+    padding: 0 1.6rem;
+  }
+
+  .narkk-logo img {
+    height: 2rem;
+  }
+}
+
+/* 425px — only cart on right */
+@media screen and (width <= 425px) {
+  .narkk-nav-item--account,
+  .narkk-divider--account {
+    display: none;
+  }
+}
+
+/* 375px */
+@media screen and (width <= 375px) {
+  .narkk-logo img {
+    height: 1.8rem;
+  }
+
+  .narkk-nav-item--icon {
+    min-width: 7.2rem;
+  }
+}
+
+/* 320px */
+@media screen and (width <= 320px) {
+  .narkk-logo img {
+    height: 1.6rem;
+  }
+
+  .narkk-nav-item--icon {
+    min-width: 6rem;
+  }
+}
