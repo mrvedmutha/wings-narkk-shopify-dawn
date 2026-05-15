@@ -1,0 +1,22 @@
+{%- liquid
+  assign btn_style = style | default: 'outlined'
+
+  case btn_style
+    when 'dark'
+      assign btn_variant = 'narkk-btn-filled-dark'
+    when 'primary'
+      assign btn_variant = 'narkk-btn-primary'
+    else
+      assign btn_variant = 'narkk-btn-outlined'
+  endcase
+
+  assign btn_url = url | default: '#'
+-%}
+
+<a
+  href="{{ btn_url }}"
+  class="button {{ btn_variant }}{% if full_width %} narkk-btn--full-width{% endif %}"
+  {% if btn_url == '#' %}aria-disabled="true"{% endif %}
+>
+  {{- label -}}
+</a>

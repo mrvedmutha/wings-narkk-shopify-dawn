@@ -206,3 +206,7 @@ hr {
   border-color: var(--narkk-dark);
   color: var(--narkk-beige);
 }
+
+.narkk-btn--full-width {
+  width: 100%;
+}
