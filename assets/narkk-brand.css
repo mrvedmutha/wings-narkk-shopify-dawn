@@ -1,0 +1,208 @@
+/* ============================================================
+   NARKK BRAND FOUNDATION
+   Load order: after font-stylesheet.css, after base.css
+   Never hardcode hex values in custom sections — always use
+   the --narkk-* tokens defined here.
+   ============================================================ */
+
+/* ── ALL BRAND TOKENS ───────────────────────────────────────── */
+:root {
+  /* Dawn font overrides — Outfit replaces whatever theme settings select */
+  --font-body-family: Outfit, sans-serif;
+  --font-body-style: normal;
+  --font-body-weight: 400;
+  --font-body-weight-bold: 700;
+  --font-heading-family: Outfit, sans-serif;
+  --font-heading-style: normal;
+  --font-heading-weight: 300;
+
+  /* Colors */
+  --narkk-primary: #be5832;
+  --narkk-dark: #17242f;
+  --narkk-beige: #f9f4f0;
+  --narkk-secondary: #e9e0d4;
+  --narkk-white: #fff;
+  --narkk-divider: #dcd7cd;
+  --narkk-text: #021f1d;
+  --narkk-meta: #868686;
+
+  /* Type scale — 1rem = 10px (Dawn sets html at 62.5%) */
+  --narkk-font-h1: 6rem;
+  --narkk-lh-h1: 6.5rem;
+  --narkk-ls-h1: -0.04em;
+  --narkk-font-h2: 4rem;
+  --narkk-lh-h2: 4.8rem;
+  --narkk-font-h3: 3.2rem;
+  --narkk-lh-h3: 4rem;
+  --narkk-font-h4: 2.4rem;
+  --narkk-lh-h4: 3.2rem;
+  --narkk-ls-h4: -0.03em;
+  --narkk-font-body-1: 1.8rem;
+  --narkk-lh-body-1: 2.4rem;
+  --narkk-font-body-2: 1.6rem;
+  --narkk-lh-body-2: 2.4rem;
+  --narkk-font-body-3: 1.4rem;
+  --narkk-lh-body-3: 2.4rem;
+  --narkk-font-button: 1.6rem;
+  --narkk-font-product-name: 2rem;
+  --narkk-lh-product-name: 2.4rem;
+  --narkk-font-pricing: 1.8rem;
+  --narkk-lh-pricing: 2.4rem;
+  --narkk-font-eyebrow: 1.6rem;
+  --narkk-lh-eyebrow: 2.6rem;
+  --narkk-ls-eyebrow: 0.28em;
+  --narkk-font-highlight: 1.5rem;
+  --narkk-lh-highlight: 2rem;
+  --narkk-font-sku: 1rem;
+  --narkk-lh-sku: 1.8rem;
+
+  /* Buttons — Dawn reads --buttons-radius directly into its components */
+  --buttons-radius: 0;
+  --buttons-radius-outset: 0;
+  --buttons-border-width: 1px;
+  --buttons-border-opacity: 1;
+  --narkk-button-height: 4.8rem;
+  --narkk-button-padding-x: 2rem;
+  --narkk-button-padding-y: 1rem;
+}
+
+/* ── HEADING GLOBALS ─────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Outfit, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+}
+
+/* ── BUTTON GLOBALS ──────────────────────────────────────────── */
+.button,
+.button--primary,
+.button--secondary,
+button[type='submit'],
+.shopify-payment-button__button--unbranded {
+  border-radius: 0;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-button);
+  font-weight: 400;
+  height: var(--narkk-button-height);
+  letter-spacing: 0;
+  padding-bottom: var(--narkk-button-padding-y);
+  padding-left: var(--narkk-button-padding-x);
+  padding-right: var(--narkk-button-padding-x);
+  padding-top: var(--narkk-button-padding-y);
+  text-transform: uppercase;
+}
+
+/* ── HR GLOBAL ───────────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--narkk-divider);
+}
+
+/* ── UTILITY CLASSES ─────────────────────────────────────────── */
+
+/* Eyebrow / label — wide tracking, all caps */
+.narkk-eyebrow {
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-eyebrow);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  text-transform: uppercase;
+}
+
+/* Product card title */
+.narkk-product-name {
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-product-name);
+  font-weight: 400;
+  line-height: var(--narkk-lh-product-name);
+  text-transform: uppercase;
+}
+
+/* Price display */
+.narkk-pricing {
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-pricing);
+  font-weight: 400;
+  line-height: var(--narkk-lh-pricing);
+  text-transform: uppercase;
+}
+
+/* SKU / small meta */
+.narkk-sku {
+  color: var(--narkk-meta);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-sku);
+  font-weight: 400;
+  line-height: var(--narkk-lh-sku);
+}
+
+/* Highlight / callout text */
+.narkk-highlight {
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-highlight);
+  font-weight: 400;
+  line-height: var(--narkk-lh-highlight);
+}
+
+/* Meta / label text */
+.narkk-meta {
+  color: var(--narkk-meta);
+  font-family: Outfit, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Warm rule line */
+.narkk-rule {
+  border: none;
+  border-top: 1px solid var(--narkk-divider);
+  width: 100%;
+}
+
+/* Button variants */
+.narkk-btn-outlined {
+  background: transparent;
+  border: 1px solid var(--narkk-dark);
+  color: var(--narkk-dark);
+}
+
+.narkk-btn-outlined:hover {
+  background: var(--narkk-dark);
+  color: var(--narkk-beige);
+}
+
+.narkk-btn-filled-dark {
+  background: var(--narkk-dark);
+  border: 1px solid var(--narkk-dark);
+  color: var(--narkk-beige);
+}
+
+.narkk-btn-filled-dark:hover {
+  background: transparent;
+  color: var(--narkk-dark);
+}
+
+.narkk-btn-primary {
+  background: var(--narkk-primary);
+  border: 1px solid var(--narkk-primary);
+  color: var(--narkk-beige);
+}
+
+.narkk-btn-primary:hover {
+  background: var(--narkk-dark);
+  border-color: var(--narkk-dark);
+  color: var(--narkk-beige);
+}

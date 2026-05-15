@@ -1,0 +1,23 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "no-descending-specificity": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "value-keyword-case": null
+  },
+  "ignoreFiles": [
+    "assets/base.css",
+    "assets/component-*.css",
+    "assets/section-*.css",
+    "assets/template-*.css",
+    "assets/quick-add.css",
+    "assets/quantity-popover.css",
+    "assets/collage.css",
+    "assets/collapsible-content.css",
+    "assets/video-section.css",
+    "assets/animations.css",
+    "node_modules/**"
+  ]
+}

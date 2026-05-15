@@ -1,0 +1,8 @@
+ImgWidthAndHeight:
+  enabled: false
+
+TemplateLength:
+  enabled: false
+
+MissingTemplate:
+  enabled: false

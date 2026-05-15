@@ -1,0 +1,21 @@
+{
+  "name": "wings-narkk-dawn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint:css": "stylelint 'assets/narkk-*.css'",
+    "lint:js": "eslint --no-error-on-unmatched-pattern 'assets/narkk-*.js'",
+    "lint:theme": "shopify theme check --fail-level error",
+    "lint": "npm run lint:theme && npm run lint:css && npm run lint:js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "stylelint": "^17.11.1",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
