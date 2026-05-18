@@ -1,0 +1,139 @@
+/* ============================================================
+   NARKK HERO SECTION
+   ============================================================ */
+
+.narkk-hero {
+  background: var(--narkk-beige);
+}
+
+/* ── Stage: layered TULAI + image ────────────────────────── */
+.narkk-hero__stage {
+  height: 43.2vw;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* INTRODUCING — sits above everything */
+.narkk-hero__eyebrow {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-eyebrow);
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 6.3%;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+/* TULAI — massive, primary color, behind the image */
+.narkk-hero__title {
+  color: var(--narkk-primary);
+  font-size: 18.4vw;
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 26.9%;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Image container — on top of TULAI */
+.narkk-hero__image-wrap {
+  height: 87.25%;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 12.75%;
+  transform: translateX(-50%);
+  width: 90.5%;
+  z-index: 2;
+}
+
+.narkk-hero__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  will-change: transform;
+}
+
+.narkk-hero__image-wrap--placeholder svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── CTA ─────────────────────────────────────────────────── */
+.narkk-hero__cta {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  padding: 4.8rem 2rem 8rem;
+  text-align: center;
+}
+
+.narkk-hero__cta-text {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-body-1);
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+  max-width: 49.6rem;
+}
+
+/* ── Mobile: drop z-index stack, flow vertically ────────── */
+@media (width <= 749px) {
+  .narkk-hero__stage {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    height: auto;
+    overflow: visible;
+    padding: 3.2rem 2rem 0;
+  }
+
+  .narkk-hero__eyebrow {
+    position: static;
+    transform: none;
+  }
+
+  .narkk-hero__title {
+    font-size: clamp(6rem, 18vw, 12rem);
+    position: static;
+    transform: none;
+  }
+
+  .narkk-hero__image-wrap {
+    aspect-ratio: 3 / 2;
+    height: auto;
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+
+  .narkk-hero__cta {
+    padding: 3.2rem 2rem 6rem;
+  }
+}
+
+/* ── Button ──────────────────────────────────────────────── */
+.narkk-btn__plus {
+  will-change: transform;
+}
+
+/* Hero button: match Figma width, smooth fill */
+.narkk-hero .narkk-btn--plus {
+  width: 27.5rem;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

@@ -1,0 +1,125 @@
+{{ 'narkk-hero.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-hero">
+
+  {%- comment -%}── STAGE: INTRODUCING (top) + TULAI (behind) + IMAGE (front) ──{%- endcomment -%}
+  <div class="narkk-hero__stage">
+
+    {%- if section.settings.heading_line1 != blank -%}
+      <p class="narkk-hero__eyebrow" data-narkk-split data-narkk-split-stagger="0.04">{{ section.settings.heading_line1 }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.heading_line2 != blank -%}
+      <h1 class="narkk-hero__title" data-narkk-split data-narkk-split-delay="0.3" data-narkk-split-stagger="0.07">{{ section.settings.heading_line2 }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.image != blank -%}
+      <div class="narkk-hero__image-wrap">
+        <img
+          src="{{ section.settings.image | image_url: width: 2400 }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          class="narkk-hero__image"
+          loading="eager"
+          fetchpriority="high"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          style="object-position: center {{ section.settings.image_position }}%;"
+        >
+      </div>
+    {%- else -%}
+      <div class="narkk-hero__image-wrap narkk-hero__image-wrap--placeholder">
+        {{ 'image' | placeholder_svg_tag: 'narkk-hero__image' }}
+      </div>
+    {%- endif -%}
+
+  </div>
+
+  {%- comment -%}── CTA ──────────────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-hero__cta">
+    {%- if section.settings.cta_text != blank -%}
+      <p class="narkk-hero__cta-text">{{ section.settings.cta_text }}</p>
+    {%- endif -%}
+    {%- render 'narkk-button',
+      label: section.settings.cta_label,
+      url: section.settings.cta_url,
+      style: 'outlined',
+      show_plus: true
+    -%}
+  </div>
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-hero.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Hero",
+  "tag": "section",
+  "class": "narkk-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Line 1 (eyebrow)",
+      "default": "Introducing"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Line 2 (display title)",
+      "default": "TULAI"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image (3:2 ratio recommended)"
+    },
+    {
+      "type": "range",
+      "id": "image_position",
+      "label": "Vertical position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "Descriptor text",
+      "default": "A versatile pegboard collection designed to simplify your space and bring clarity to your daily routines"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Hero"
+    }
+  ]
+}
+{% endschema %}
