@@ -89,17 +89,27 @@ h4 {
 .button--secondary,
 button[type='submit'],
 .shopify-payment-button__button--unbranded {
+  align-items: center;
   border-radius: 0;
+  display: inline-flex;
   font-family: Outfit, sans-serif;
   font-size: var(--narkk-font-button);
   font-weight: 400;
   height: var(--narkk-button-height);
+  justify-content: center;
   letter-spacing: 0;
   padding-bottom: var(--narkk-button-padding-y);
   padding-left: var(--narkk-button-padding-x);
   padding-right: var(--narkk-button-padding-x);
   padding-top: var(--narkk-button-padding-y);
   text-transform: uppercase;
+}
+
+/* + [label] variant — content left-aligned with gap */
+.narkk-btn--plus {
+  gap: 1rem;
+  justify-content: flex-start;
+  will-change: transform;
 }
 
 /* ── HR GLOBAL ───────────────────────────────────────────────── */
@@ -209,4 +219,20 @@ hr {
 
 .narkk-btn--full-width {
   width: 100%;
+}
+
+/* ── TEXT REVEAL SPLIT UTILITY ───────────────────────────────── */
+.narkk-split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.narkk-split__char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.narkk-split__space {
+  display: inline;
 }

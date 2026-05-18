@@ -1,3 +1,5 @@
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-button.js' | asset_url }}" defer="defer"></script>
 {%- liquid
   assign btn_style = style | default: 'outlined'
 
@@ -15,8 +17,12 @@
 
 <a
   href="{{ btn_url }}"
-  class="button {{ btn_variant }}{% if full_width %} narkk-btn--full-width{% endif %}"
+  class="button {{ btn_variant }}{% if show_plus %} narkk-btn--plus{% endif %}{% if full_width %} narkk-btn--full-width{% endif %}"
   {% if btn_url == '#' %}aria-disabled="true"{% endif %}
 >
-  {{- label -}}
+  {%- if show_plus -%}
+    <span class="narkk-btn__plus">+</span><span class="narkk-btn__label">{{- label -}}</span>
+  {%- else -%}
+    {{- label -}}
+  {%- endif -%}
 </a>
