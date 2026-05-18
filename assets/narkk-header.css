@@ -11,11 +11,17 @@
   box-sizing: border-box;
 }
 
-/* ── Section wrapper — sticky so it has room to scroll within the page ── */
+/* ── Section wrapper — sticky; negative top hides announcement bar above fold ── */
 .narkk-header-section {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+/* When announcement bar is present, offset so it scrolls above the fold
+   before the nav sticks. Announcement height = 3.2rem. */
+.narkk-header-section:has(.narkk-announcement) {
+  top: -3.2rem;
 }
 
 /* ── Outer shell ─────────────────────────────────────────────── */
