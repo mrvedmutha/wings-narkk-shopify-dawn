@@ -1,0 +1,445 @@
+/* ══════════════════════════════════════════════════════════════
+   NARKK FOOTER
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── TOKENS ─────────────────────────────────────────────────── */
+.narkk-footer {
+  --nf-bg:     #f9f4f0;
+  --nf-text:   #17242f;
+  --nf-accent: #be5832;
+  --nf-muted:  rgb(23 36 47 / 30%);
+  --nf-border: #17242f;
+
+  background: var(--nf-bg);
+  color: var(--nf-text);
+  padding-bottom: 1.8rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NAV GRID
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 4.8rem 6rem 6rem;
+  gap: 0 4rem;
+}
+
+.narkk-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.narkk-footer__heading {
+  font-family: Outfit, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--nf-accent);
+  letter-spacing: 0.02em;
+  line-height: 2rem;
+  padding: 0.6rem 0;
+  margin: 0;
+}
+
+.narkk-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-footer__item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── NAV LINKS — simple opacity fade on hover ────────────────── */
+
+.narkk-footer__link {
+  display: block;
+  padding: 0.4rem 0;
+  font-family: Outfit, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--nf-text);
+  text-decoration: none;
+  line-height: 2rem;
+  white-space: nowrap;
+  transition: opacity 0.22s ease;
+}
+
+.narkk-footer__link:hover {
+  opacity: 0.45;
+}
+
+/* ── SUPPORT CONTACT LINKS ───────────────────────────────────── */
+
+.narkk-footer__contact-link {
+  display: block;
+  padding: 0.4rem 0;
+  font-family: Outfit, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--nf-text);
+  text-decoration: none;
+  line-height: 2rem;
+  white-space: nowrap;
+  transition: opacity 0.22s ease;
+}
+
+.narkk-footer__contact-link:hover,
+.narkk-footer__contact-link:focus {
+  opacity: 0.45;
+  text-decoration: none;
+}
+
+/* ── LAUNCHING SOON ──────────────────────────────────────────── */
+
+.narkk-footer__item--soon {
+  padding: 0.4rem 0;
+  gap: 0.2rem;
+}
+
+.narkk-footer__label--soon {
+  font-family: Outfit, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--nf-muted);
+  line-height: 2rem;
+}
+
+.narkk-footer__soon-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--nf-accent);
+  letter-spacing: -0.04em;
+  line-height: 1.4;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NARKK LOGO AREA
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-footer__logo-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 6rem 5.6rem;
+}
+
+.narkk-footer__logo {
+  width: 46rem;
+  max-width: 100%;
+}
+
+.narkk-footer__logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BOTTOM BAR
+   ══════════════════════════════════════════════════════════════ */
+
+.narkk-footer__bar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 5.2rem;
+  border: 1px solid var(--nf-border);
+  background: var(--nf-bg);
+  overflow: hidden;
+  margin: 1.8rem 1.8rem 0;
+}
+
+.narkk-footer__bar-left,
+.narkk-footer__bar-right {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Wrappers that become grids on mobile — flex rows at desktop */
+.narkk-footer__bar-links,
+.narkk-footer__bar-payments {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+}
+
+/* ── Dividers — &nbsp; prevents Dawn from hiding them ──────────
+   font-size:0 + overflow:hidden keep the &nbsp; invisible       */
+.narkk-footer__bar-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--nf-border);
+  flex-shrink: 0;
+  font-size: 0;
+  overflow: hidden;
+}
+
+/* ── Static copyright cell ───────────────────────────────────── */
+.narkk-footer__bar-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 1rem 1.6rem;
+  font-family: Outfit, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--nf-text);
+  white-space: nowrap;
+}
+
+/* ── Animated bar cells (menu links + payment icons) ─────────── */
+.narkk-footer__bar-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.narkk-footer__bar-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.6rem;
+  position: relative;
+  z-index: 1;
+  font-family: Outfit, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--nf-text);
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.narkk-footer__bar-label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* GSAP takes ownership of transform on init */
+.narkk-footer__bar-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.6rem;
+  background: var(--nf-text);
+  color: var(--nf-bg);
+  font-family: Outfit, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateY(100%);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Payment icon cell sizing */
+.narkk-footer__payment .narkk-footer__bar-label,
+.narkk-footer__payment .narkk-footer__bar-fill {
+  padding: 0.8rem 1.4rem;
+}
+
+.narkk-footer__payment .narkk-footer__bar-label img {
+  height: 2.3rem;
+  width: auto;
+  display: block;
+}
+
+/* Invert icon to white inside the dark fill layer */
+.narkk-footer__payment .narkk-footer__bar-fill img {
+  height: 2.3rem;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+/* ── WINGS underline (GSAP scaleX) ──────────────────────────── */
+
+.narkk-footer__wings {
+  position: relative;
+  color: var(--nf-text);
+  text-decoration: none;
+}
+
+.narkk-footer__wings-line {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--nf-text);
+  transform-origin: left center;
+  transform: scaleX(0);
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1024px — 4 columns */
+@media screen and (width <= 1024px) {
+  .narkk-footer__nav {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 4rem 4rem 5.6rem;
+    gap: 4rem 3.2rem;
+  }
+
+  .narkk-footer__logo-wrap {
+    padding: 0 4rem 4.8rem;
+  }
+
+  .narkk-footer__bar {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .narkk-footer__bar-left,
+  .narkk-footer__bar-right {
+    flex-wrap: wrap;
+  }
+
+  .narkk-footer__bar-cell,
+  .narkk-footer__bar-item {
+    min-height: 5.2rem;
+  }
+}
+
+/* 768px — 2-col nav grid + bar becomes stacked boxes ─────────── */
+@media screen and (width <= 768px) {
+  .narkk-footer__nav {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3.2rem 2.4rem 4.8rem;
+    gap: 4rem 2.4rem;
+  }
+
+  .narkk-footer__logo-wrap {
+    justify-content: center;
+    padding: 0 2.4rem 4rem;
+  }
+
+  .narkk-footer__logo {
+    width: 100%;
+  }
+
+  /* ── Bottom bar: stack left then right ─────────── */
+  .narkk-footer__bar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .narkk-footer__bar-left {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Copyright: full-width row with bottom separator */
+  .narkk-footer__bar-cell {
+    width: 100%;
+    border-bottom: 1px solid var(--nf-border);
+  }
+
+  /* Links wrapper: switch to 2-column grid */
+  .narkk-footer__bar-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+  /* Hide flex dividers inside the grid — borders handle separation */
+  .narkk-footer__bar-links .narkk-footer__bar-divider {
+    display: none;
+  }
+
+  /*
+   * Items at DOM child positions 1, 3, 5… (odd) → col 1 → need right border.
+   * Dividers are hidden (display:none) so grid skips them, but nth-child
+   * still counts them. With structure: [divider][item][divider][item]…
+   * items land on even child positions (2, 4, 6…).
+   * Col-1 items: 2, 6, 10… → nth-child(4n+2).
+   */
+  .narkk-footer__bar-links .narkk-footer__bar-item {
+    border-bottom: 1px solid var(--nf-border);
+  }
+
+  .narkk-footer__bar-links .narkk-footer__bar-item:nth-child(4n+2) {
+    border-right: 1px solid var(--nf-border);
+  }
+
+  /* Payment icons: separate section below links */
+  .narkk-footer__bar-right {
+    width: 100%;
+  }
+
+  .narkk-footer__bar-payments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+  .narkk-footer__bar-payments .narkk-footer__bar-divider {
+    display: none;
+  }
+
+  /* Same nth-child logic as links */
+  .narkk-footer__bar-payments .narkk-footer__bar-item {
+    border-bottom: 1px solid var(--nf-border);
+    justify-content: center;
+    min-height: 5.2rem;
+  }
+
+  .narkk-footer__bar-payments .narkk-footer__bar-item:nth-child(4n+2) {
+    border-right: 1px solid var(--nf-border);
+  }
+}
+
+/* 425px — 2-col nav + links go single column ──────────────────── */
+@media screen and (width <= 425px) {
+  .narkk-footer__nav {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2.4rem 1.6rem 4rem;
+    gap: 3.2rem 2rem;
+  }
+
+  .narkk-footer__logo-wrap {
+    padding: 0 1.6rem 3.2rem;
+  }
+
+  /* Links: 1 per row — remove right border from all items */
+  .narkk-footer__bar-links {
+    grid-template-columns: 1fr;
+  }
+
+  .narkk-footer__bar-links .narkk-footer__bar-item:nth-child(4n+2) {
+    border-right: none;
+  }
+
+  /* Payment icons stay 2 per row — no changes needed */
+}
+
+/* 320px — 1-col nav ────────────────────────────────────────────── */
+@media screen and (width <= 320px) {
+  .narkk-footer__nav {
+    grid-template-columns: 1fr;
+    gap: 3.2rem 0;
+  }
+}

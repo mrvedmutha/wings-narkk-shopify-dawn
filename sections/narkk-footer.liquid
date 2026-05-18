@@ -1,0 +1,275 @@
+{{ 'narkk-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="narkk-footer" role="contentinfo">
+
+  {%- comment -%}── NAV COLUMNS ──────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-footer__nav">
+
+    {%- comment -%} Column 1: SHOP — menu links + launching soon blocks {%- endcomment -%}
+    {%- assign shop_menu = linklists[section.settings.menu_shop] -%}
+    <div class="narkk-footer__col">
+      {%- if section.settings.heading_shop != blank -%}
+        <p class="narkk-footer__heading">{{ section.settings.heading_shop }}</p>
+      {%- endif -%}
+      <ul class="narkk-footer__list" role="list">
+        {%- for link in shop_menu.links -%}
+          <li class="narkk-footer__item">
+            <a href="{{ link.url }}" class="narkk-footer__link">{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+
+        {%- comment -%} Launching soon blocks — greyed out, appended to shop column {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'launching_soon' and block.settings.collection_name != blank -%}
+            <li class="narkk-footer__item narkk-footer__item--soon" {{ block.shopify_attributes }}>
+              <span class="narkk-footer__label--soon">{{ block.settings.collection_name }}</span>
+              <span class="narkk-footer__soon-tag">(launching soon)</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    {%- comment -%} Columns 2–4: COMPANY, ORDERS, SOCIAL {%- endcomment -%}
+    {%- assign col_ids = 'company,orders,social' | split: ',' -%}
+    {%- for col_id in col_ids -%}
+      {%- assign menu_key    = 'menu_'    | append: col_id -%}
+      {%- assign heading_key = 'heading_' | append: col_id -%}
+      {%- assign col_menu    = linklists[section.settings[menu_key]] -%}
+      <div class="narkk-footer__col">
+        {%- if section.settings[heading_key] != blank -%}
+          <p class="narkk-footer__heading">{{ section.settings[heading_key] }}</p>
+        {%- endif -%}
+        <ul class="narkk-footer__list" role="list">
+          {%- for link in col_menu.links -%}
+            <li class="narkk-footer__item">
+              <a href="{{ link.url }}" class="narkk-footer__link">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endfor -%}
+
+    {%- comment -%} Column 5: SUPPORT — contact blocks (tel / email) {%- endcomment -%}
+    <div class="narkk-footer__col">
+      {%- if section.settings.heading_support != blank -%}
+        <p class="narkk-footer__heading">{{ section.settings.heading_support }}</p>
+      {%- endif -%}
+      <ul class="narkk-footer__list" role="list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'support_contact' and block.settings.contact_value != blank -%}
+            {%- if block.settings.contact_type == 'phone' -%}
+              {%- assign contact_href = 'tel:' | append: block.settings.contact_value -%}
+            {%- else -%}
+              {%- assign contact_href = 'mailto:' | append: block.settings.contact_value -%}
+            {%- endif -%}
+            <li class="narkk-footer__item" {{ block.shopify_attributes }}>
+              <a href="{{ contact_href }}" class="narkk-footer__contact-link">
+                {{ block.settings.contact_value }}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+
+  </div>
+
+  {%- comment -%}── NARKK LOGO ──────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-footer__logo-wrap">
+    <div class="narkk-footer__logo">
+      <img
+        src="{{ 'narkk-logo-black-new.svg' | asset_url }}"
+        alt="NARKK"
+        width="460"
+        height="100"
+        loading="lazy"
+      >
+    </div>
+  </div>
+
+  {%- comment -%}── BOTTOM BAR ──────────────────────────────────────────{%- endcomment -%}
+  {%- assign bar_menu = linklists[section.settings.menu_bar] -%}
+  <div class="narkk-footer__bar">
+
+    <div class="narkk-footer__bar-left">
+
+      {%- comment -%} Copyright cell — static, no fill animation {%- endcomment -%}
+      <div class="narkk-footer__bar-cell">
+        ©{{ 'now' | date: '%Y' }} NARKK | Site by
+        <a
+          href="https://wings.design"
+          class="narkk-footer__wings"
+          target="_blank"
+          rel="noopener noreferrer"
+        >WINGS<span class="narkk-footer__wings-line" aria-hidden="true"></span></a>
+      </div>
+
+      {%- comment -%} Bar menu links — wrapped for independent grid on mobile {%- endcomment -%}
+      <div class="narkk-footer__bar-links">
+        {%- comment -%} First divider separates copyright from first link at desktop {%- endcomment -%}
+        {%- if bar_menu.links.size > 0 -%}
+          <div class="narkk-footer__bar-divider" aria-hidden="true">&nbsp;</div>
+        {%- endif -%}
+        {%- for link in bar_menu.links -%}
+          <div class="narkk-footer__bar-item">
+            <a href="{{ link.url }}" class="narkk-footer__bar-link">
+              <span class="narkk-footer__bar-label">{{ link.title }}</span>
+              <span class="narkk-footer__bar-fill" aria-hidden="true">{{ link.title }}</span>
+            </a>
+          </div>
+          <div class="narkk-footer__bar-divider" aria-hidden="true">&nbsp;</div>
+        {%- endfor -%}
+      </div>
+
+    </div>
+
+    <div class="narkk-footer__bar-right">
+      {%- comment -%} Payment icons — wrapped for independent grid on mobile {%- endcomment -%}
+      <div class="narkk-footer__bar-payments">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'payment_icon' and block.settings.icon_image != blank -%}
+            {%- capture icon_img -%}
+              {{- block.settings.icon_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' -}}
+            {%- endcapture -%}
+            <div class="narkk-footer__bar-divider" aria-hidden="true">&nbsp;</div>
+            <div class="narkk-footer__bar-item narkk-footer__payment" {{ block.shopify_attributes }}>
+              <span class="narkk-footer__bar-label">{{ icon_img }}</span>
+              <span class="narkk-footer__bar-fill" aria-hidden="true">{{ icon_img }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script src="{{ 'narkk-footer.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Narkk Footer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Navigation columns"
+    },
+    {
+      "type": "text",
+      "id": "heading_shop",
+      "label": "Shop heading",
+      "default": "SHOP"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_shop",
+      "label": "Shop menu"
+    },
+    {
+      "type": "text",
+      "id": "heading_company",
+      "label": "Company heading",
+      "default": "COMPANY"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_company",
+      "label": "Company menu"
+    },
+    {
+      "type": "text",
+      "id": "heading_orders",
+      "label": "Orders heading",
+      "default": "ORDERS"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_orders",
+      "label": "Orders menu"
+    },
+    {
+      "type": "text",
+      "id": "heading_social",
+      "label": "Social heading",
+      "default": "SOCIAL"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_social",
+      "label": "Social menu"
+    },
+    {
+      "type": "text",
+      "id": "heading_support",
+      "label": "Support heading",
+      "default": "SUPPORT"
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_bar",
+      "label": "Bottom bar links",
+      "info": "Links shown after the copyright cell (e.g. Terms, Privacy Policy, Cookies)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "support_contact",
+      "name": "Support Contact",
+      "settings": [
+        {
+          "type": "select",
+          "id": "contact_type",
+          "label": "Contact type",
+          "options": [
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" }
+          ],
+          "default": "phone"
+        },
+        {
+          "type": "text",
+          "id": "contact_value",
+          "label": "Phone number or email address",
+          "placeholder": "e.g. +1 234 567 890"
+        }
+      ]
+    },
+    {
+      "type": "launching_soon",
+      "name": "Launching Soon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collection_name",
+          "label": "Collection name",
+          "placeholder": "e.g. THUNN"
+        }
+      ]
+    },
+    {
+      "type": "payment_icon",
+      "name": "Payment Icon",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Payment icon image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Footer"
+    }
+  ]
+}
+{% endschema %}
