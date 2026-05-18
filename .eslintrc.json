@@ -9,6 +9,8 @@
   },
   "globals": {
     "gsap": "readonly",
+    "Lenis": "readonly",
+    "Shopify": "readonly",
     "subscribe": "readonly",
     "PUB_SUB_EVENTS": "readonly",
     "publish": "readonly"
