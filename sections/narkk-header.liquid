@@ -21,10 +21,10 @@
       <nav class="narkk-nav-left" aria-label="Main navigation">
         {%- for link in linklists[section.settings.menu].links -%}
           {%- if forloop.index > 1 -%}
-            <div class="narkk-divider" aria-hidden="true"></div>
+            <div class="narkk-divider{% if forloop.index > 2 %} narkk-divider--tablet-hide{% endif %}" aria-hidden="true">&nbsp;</div>
           {%- endif -%}
           <a
-            class="narkk-nav-item{% if forloop.index == 3 %} narkk-nav-item--wide{% endif %}"
+            class="narkk-nav-item{% if forloop.index == 3 %} narkk-nav-item--wide{% endif %}{% if forloop.index > 2 %} narkk-nav-item--tablet-hide{% endif %}"
             href="{{ link.url }}"
             {% if link.current %}aria-current="page"{% endif %}
           >
@@ -33,7 +33,7 @@
           </a>
         {%- endfor -%}
         {%- if linklists[section.settings.menu].links.size > 0 -%}
-          <div class="narkk-divider" aria-hidden="true"></div>
+          <div class="narkk-divider" aria-hidden="true">&nbsp;</div>
         {%- endif -%}
       </nav>
 
@@ -51,6 +51,7 @@
           <span></span>
         </button>
       </div>
+      <div class="narkk-divider narkk-divider--mobile" aria-hidden="true">&nbsp;</div>
 
       {%- comment -%} Centre logo — always visible {%- endcomment -%}
       <a class="narkk-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
@@ -66,7 +67,7 @@
       <div class="narkk-nav-right">
 
         {%- comment -%} Contact — hidden ≤768px via CSS {%- endcomment -%}
-        <div class="narkk-divider narkk-divider--contact" aria-hidden="true"></div>
+        <div class="narkk-divider narkk-divider--contact" aria-hidden="true">&nbsp;</div>
         <a
           class="narkk-nav-item narkk-nav-item--contact"
           href="{{ section.settings.contact_url }}"
@@ -76,7 +77,7 @@
         </a>
 
         {%- comment -%} Account — hidden ≤425px via CSS {%- endcomment -%}
-        <div class="narkk-divider narkk-divider--account" aria-hidden="true"></div>
+        <div class="narkk-divider narkk-divider--account" aria-hidden="true">&nbsp;</div>
         <a
           class="narkk-nav-item narkk-nav-item--icon narkk-nav-item--account"
           href="{{ routes.account_url }}"
@@ -91,7 +92,7 @@
         </a>
 
         {%- comment -%} Cart — always visible {%- endcomment -%}
-        <div class="narkk-divider" aria-hidden="true"></div>
+        <div class="narkk-divider" aria-hidden="true">&nbsp;</div>
         <a
           class="narkk-nav-item narkk-nav-item--icon"
           href="{{ routes.cart_url }}"
@@ -135,8 +136,16 @@
         </a>
       {%- endif -%}
     </nav>
+    <div class="narkk-drawer-account">
+      {%- if customer -%}
+        <span class="narkk-drawer-account__greeting">Hello, {{ customer.first_name }}</span>
+        <a href="{{ routes.account_logout_url }}" class="narkk-drawer-account__link">SIGN OUT</a>
+      {%- else -%}
+        <a href="{{ routes.account_login_url }}" class="narkk-drawer-account__link">LOGIN / SIGN UP</a>
+      {%- endif -%}
+    </div>
   </div>
-  <div class="narkk-overlay" id="narkk-overlay" aria-hidden="true"></div>
+  <div class="narkk-overlay" id="narkk-overlay" aria-hidden="true">&nbsp;</div>
 
 </header>
 
