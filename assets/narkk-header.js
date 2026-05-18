@@ -5,7 +5,8 @@
   // Only runs on true pointer devices — zero interaction on touch.
   function initHoverAnimations() {
     var isPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (!isPointer || typeof gsap === 'undefined') return;
+    var isWide    = window.matchMedia('(width > 1024px)').matches;
+    if (!isPointer || !isWide || typeof gsap === 'undefined') return;
 
     var items = document.querySelectorAll('.narkk-nav-item');
 
@@ -13,14 +14,15 @@
       var fill = item.querySelector('.narkk-nav-fill');
       if (!fill) return;
 
-      gsap.set(fill, { yPercent: 100 });
+      // y: 0 clears any pixel offset the CSS transform left behind
+      gsap.set(fill, { y: 0, yPercent: 100 });
 
       item.addEventListener('mouseenter', function () {
-        gsap.to(fill, { yPercent: 0, duration: 0.38, ease: 'power2.out' });
+        gsap.to(fill, { yPercent: 0, duration: 0.38, ease: 'power2.out', overwrite: true });
       });
 
       item.addEventListener('mouseleave', function () {
-        gsap.to(fill, { yPercent: 100, duration: 0.28, ease: 'power2.in' });
+        gsap.to(fill, { yPercent: 100, duration: 0.28, ease: 'power2.in', overwrite: true });
       });
     });
   }
@@ -77,11 +79,9 @@
   }
 
   // ── Boot ──────────────────────────────────────────────────────
-  // Both gsap.min.js and this file are deferred in document order,
-  // so GSAP is guaranteed to be available when this runs.
-  document.addEventListener('DOMContentLoaded', function () {
-    initHoverAnimations();
-    initDrawer();
-    initCartCount();
-  });
+  // Both scripts are defer — DOM is already parsed when this runs,
+  // so call directly rather than waiting on DOMContentLoaded.
+  initHoverAnimations();
+  initDrawer();
+  initCartCount();
 }());

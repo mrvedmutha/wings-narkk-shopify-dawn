@@ -172,7 +172,7 @@
   text-transform: uppercase;
   white-space: nowrap;
 
-  /* starts off-screen below — GSAP drives it to 0 on hover */
+  /* hidden by default — GSAP takes ownership on init */
   transform: translateY(100%);
   pointer-events: none;
   user-select: none;
