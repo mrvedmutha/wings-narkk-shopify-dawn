@@ -1,0 +1,200 @@
+/* ============================================================
+   NARKK HOMEPAGE — PRODUCT COLLAGE
+   ============================================================ */
+
+.narkk-collage {
+  background: var(--narkk-primary);
+  color: var(--narkk-beige);
+  display: grid;
+  grid-template-columns: 47.85fr 52.15fr;
+  height: 60.4vw;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Divider lines ────────────────────────────────────────── */
+.narkk-collage__h-line,
+.narkk-collage__v-line {
+  background: rgb(249 244 240 / 20%);
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+/* Horizontal line at ~47.1% from top (410/870) */
+.narkk-collage__h-line {
+  height: 1px;
+  left: 0;
+  top: 47.1%;
+  transform: scaleX(0);
+  transform-origin: center center;
+  width: 100%;
+}
+
+/* Vertical line at ~47.85% from left (689/1440) */
+.narkk-collage__v-line {
+  height: 100%;
+  left: 47.85%;
+  top: 0;
+  transform: scaleY(0);
+  transform-origin: center center;
+  width: 1px;
+}
+
+/* ── Left: Image cluster ──────────────────────────────────── */
+.narkk-collage__images {
+  height: 100%;
+  position: relative;
+}
+
+.narkk-collage__img-wrap {
+  overflow: hidden;
+  position: absolute;
+}
+
+/* Image 1 — top right (44.1% left, 18.4% top, 29% w, 28.7% h) */
+.narkk-collage__img-wrap--1 {
+  clip-path: inset(100% 0% 0% 0%);
+  height: 28.7%;
+  left: 44.1%;
+  top: 18.4%;
+  width: 29%;
+}
+
+/* Image 2 — bottom left (4.2% left, 47.1% top, 39.9% w, 40.9% h) */
+.narkk-collage__img-wrap--2 {
+  clip-path: inset(0% 0% 100% 0%);
+  height: 40.9%;
+  left: 4.2%;
+  top: 47.1%;
+  width: 39.9%;
+}
+
+.narkk-collage__img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.narkk-collage__img--placeholder {
+  background: color-mix(in srgb, var(--narkk-primary) 75%, #000 25%);
+}
+
+/* ── Right: Text content ──────────────────────────────────── */
+.narkk-collage__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5.7vw 4vw 5.7vw 2.1vw;
+}
+
+.narkk-collage__eyebrow {
+  font-size: clamp(1.6rem, 1.11vw, 2.8rem);
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-collage__body-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.narkk-collage__heading {
+  font-size: clamp(2.4rem, 2.78vw, 6rem);
+  font-weight: 300;
+  line-height: 1.125;
+  margin: 0;
+  max-width: max(52rem, 36.2vw);
+  text-transform: uppercase;
+}
+
+/* ── Button — inverted for dark bg ───────────────────────── */
+.narkk-collage .narkk-btn-outlined {
+  border-color: var(--narkk-beige);
+  color: var(--narkk-beige);
+  width: 27.5rem;
+}
+
+.narkk-collage .narkk-btn-outlined:hover {
+  background: var(--narkk-dark);
+  border-color: var(--narkk-dark);
+  color: var(--narkk-beige);
+}
+
+/* ── Word split ───────────────────────────────────────────── */
+.narkk-split__word {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ── Mobile (≤749px) ──────────────────────────────────────── */
+@media (width <= 749px) {
+  .narkk-collage {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .narkk-collage__h-line,
+  .narkk-collage__v-line {
+    display: none;
+  }
+
+  /* Images side-by-side row */
+  .narkk-collage__images {
+    display: flex;
+    gap: 1.2rem;
+    height: auto;
+    padding: 3.2rem 2rem 0;
+  }
+
+  .narkk-collage__img-wrap {
+    flex: 1;
+    height: auto;
+    overflow: hidden;
+    position: static;
+  }
+
+  .narkk-collage__img-wrap--1 {
+    aspect-ratio: 4 / 5;
+    width: auto;
+  }
+
+  .narkk-collage__img-wrap--2 {
+    aspect-ratio: 3 / 4;
+    width: auto;
+  }
+
+  /* Text stacked below images */
+  .narkk-collage__text {
+    gap: 2.4rem;
+    justify-content: flex-start;
+    padding: 3.2rem 2rem 6rem;
+  }
+
+  .narkk-collage__heading {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+  }
+
+  .narkk-collage .narkk-btn-outlined {
+    width: 100%;
+  }
+}
+
+/* ── Mid-range: prevent overflow 750px–989px ──────────────── */
+@media (750px <= width <= 989px) {
+  .narkk-collage {
+    height: auto;
+    min-height: 60.4vw;
+  }
+
+  .narkk-collage__heading {
+    font-size: clamp(2rem, 2.4vw, 3.2rem);
+  }
+}

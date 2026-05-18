@@ -10,7 +10,7 @@
   if (typeof Lenis === 'undefined') return;
 
   var lenis = new Lenis({
-    duration: 1.2,
+    duration: 1.8,
     smoothWheel: true,
     autoRaf: true,
   });

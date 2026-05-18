@@ -182,6 +182,13 @@ hr {
   width: 100%;
 }
 
+/* Suppress Dawn's ::after box-shadow border on all narkk button variants */
+.narkk-btn-outlined::after,
+.narkk-btn-filled-dark::after,
+.narkk-btn-primary::after {
+  box-shadow: none;
+}
+
 /* Button variants */
 .narkk-btn-outlined {
   background: transparent;
