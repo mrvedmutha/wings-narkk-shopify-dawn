@@ -54,6 +54,18 @@
     return wordEls;
   }
 
+  function attachHover(wrap) {
+    var img = wrap.querySelector('.narkk-collage__img');
+    gsap.set(wrap, { pointerEvents: 'auto' });
+    if (!img) return;
+    wrap.addEventListener('mouseenter', function () {
+      gsap.to(img, { scale: 1.06, duration: 0.5, ease: 'power2.out', overwrite: true });
+    });
+    wrap.addEventListener('mouseleave', function () {
+      gsap.to(img, { scale: 1, duration: 0.5, ease: 'power2.out', overwrite: true });
+    });
+  }
+
   function initCollage() {
     if (typeof gsap === 'undefined') return;
 
@@ -75,8 +87,8 @@
     // ── Initial states ───────────────────────────────────────
     if (isWide && hLine) gsap.set(hLine, { scaleX: 0 });
     if (isWide && vLine) gsap.set(vLine, { scaleY: 0 });
-    if (img1Wrap) gsap.set(img1Wrap, { clipPath: 'inset(100% 0% 0% 0%)' });
-    if (img2Wrap) gsap.set(img2Wrap, { clipPath: 'inset(0% 0% 100% 0%)' });
+    if (img1Wrap) gsap.set(img1Wrap, { clipPath: 'inset(100% 0% 0% 0%)', pointerEvents: 'none' });
+    if (img2Wrap) gsap.set(img2Wrap, { clipPath: 'inset(0% 0% 100% 0%)', pointerEvents: 'none' });
     if (eyebrowChars.length) gsap.set(eyebrowChars, { yPercent: 110 });
     if (headingWords.length) gsap.set(headingWords, { yPercent: 110, skewX: -15 });
     if (ctaBtn) gsap.set(ctaBtn, { opacity: 0, y: 10 });
@@ -99,7 +111,8 @@
         tl.to(img1Wrap, {
           clipPath: 'inset(0% 0% 0% 0%)',
           duration: 1.0,
-          ease: 'power3.inOut'
+          ease: 'power3.inOut',
+          onComplete: function () { attachHover(img1Wrap); }
         }, isWide ? 0.5 : 0);
       }
 
@@ -108,7 +121,8 @@
         tl.to(img2Wrap, {
           clipPath: 'inset(0% 0% 0% 0%)',
           duration: 1.0,
-          ease: 'power3.inOut'
+          ease: 'power3.inOut',
+          onComplete: function () { attachHover(img2Wrap); }
         }, isWide ? 0.85 : 0.25);
       }
 
