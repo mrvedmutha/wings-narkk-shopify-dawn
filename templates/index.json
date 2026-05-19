@@ -33,10 +33,63 @@
         "cta_label": "About Narkk",
         "cta_url": "#"
       }
+    },
+    "narkk_homepage_collections_96Y6pQ": {
+      "type": "narkk-homepage-collections",
+      "blocks": {
+        "collection_card_jXqQ3e": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-homepage-collections-thugai.webp",
+            "collection_name": "THOGAI",
+            "caption": "pegboard and accessories.",
+            "cta_label": "Shop Thogai",
+            "cta_url": "#",
+            "card_bg": "#ffffff",
+            "label_color": "#ffffff"
+          }
+        },
+        "collection_card_Whm6Uk": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-homepage-collections-thulai-01.webp",
+            "collection_name": "TULAI",
+            "caption": "Modular sofa and it's accessories.",
+            "cta_label": "Shop Tulai",
+            "cta_url": "#",
+            "card_bg": "#c56833",
+            "label_color": "#e9e0d4"
+          }
+        },
+        "collection_card_3EQFGR": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-homepage-collections-thunn.webp",
+            "collection_name": "THUNN",
+            "caption": "Shelving system and it's accessories.",
+            "cta_label": "Shop Thunn",
+            "cta_url": "",
+            "card_bg": "#ffffff",
+            "label_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_jXqQ3e",
+        "collection_card_Whm6Uk",
+        "collection_card_3EQFGR"
+      ],
+      "name": "Narkk Collections",
+      "settings": {
+        "eyebrow": "Intentionally crafted for life",
+        "heading": "NARKK COLLECTIONS",
+        "body_text": "Each of our three collections bears its own distinct identity. Because each one requires a different set of materials and techniques, they're not only visually unique they're tonally diverse, as well."
+      }
     }
   },
   "order": [
     "narkk_hero_hAUkd6",
-    "narkk_homepage_product_collage_LLRjUr"
+    "narkk_homepage_product_collage_LLRjUr",
+    "narkk_homepage_collections_96Y6pQ"
   ]
 }
