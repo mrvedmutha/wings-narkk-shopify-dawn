@@ -1,0 +1,234 @@
+{{ 'narkk-homepage-collections.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-collections" data-narkk-collections>
+  <div class="narkk-collections__inner">
+
+    {%- comment -%}── HEADER ─────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-collections__header">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="narkk-collections__eyebrow"
+           data-narkk-split
+           data-narkk-split-stagger="0.04">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      <div class="narkk-collections__heading-group">
+        {%- if section.settings.heading != blank -%}
+          <p class="narkk-collections__heading"
+             data-narkk-split
+             data-narkk-split-delay="0.4"
+             data-narkk-split-stagger="0.03">{{ section.settings.heading }}</p>
+        {%- endif -%}
+        {%- if section.settings.body_text != blank -%}
+          <p class="narkk-collections__body">{{ section.settings.body_text }}</p>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+    {%- comment -%}── CARDS ──────────────────────────────────────────{%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="narkk-collections__cards">
+
+        {%- for block in section.blocks -%}
+          <div
+            class="narkk-collections__card-col"
+            style="--card-bg: {{ block.settings.card_bg }}; --label-color: {{ block.settings.label_color }};"
+            {{ block.shopify_attributes }}
+          >
+
+            <div class="narkk-collections__card">
+
+              {%- comment -%} Image {%- endcomment -%}
+              <div class="narkk-collections__card-img-wrap">
+                {%- if block.settings.image != blank -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 900 }}"
+                    srcset="
+                      {{ block.settings.image | image_url: width: 450 }} 450w,
+                      {{ block.settings.image | image_url: width: 900 }} 900w
+                    "
+                    sizes="(max-width: 767px) 44vw, 33vw"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    class="narkk-collections__card-img"
+                    loading="lazy"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag: 'narkk-collections__card-img narkk-collections__card-img--placeholder' }}
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Collection name {%- endcomment -%}
+              {%- if block.settings.collection_name != blank -%}
+                <p class="narkk-collections__card-label">{{ block.settings.collection_name }}</p>
+              {%- endif -%}
+
+              {%- comment -%} CTA {%- endcomment -%}
+              <div class="narkk-collections__card-cta">
+                {%- if block.settings.cta_url != blank -%}
+                  <a
+                    href="{{ block.settings.cta_url }}"
+                    class="button narkk-btn-filled-light narkk-btn--plus"
+                  >
+                    <span class="narkk-btn__plus">+</span><span class="narkk-btn__label">{{ block.settings.cta_label | default: 'Shop Collection' }}</span>
+                  </a>
+                {%- else -%}
+                  <span class="button narkk-btn-primary narkk-collections__card-cta--soon" aria-disabled="true">Launching Soon</span>
+                {%- endif -%}
+              </div>
+
+            </div>
+
+            {%- comment -%} Caption {%- endcomment -%}
+            {%- if block.settings.caption != blank -%}
+              <p class="narkk-collections__caption">{{ block.settings.caption }}</p>
+            {%- endif -%}
+
+          </div>
+        {%- endfor -%}
+
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-button.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-homepage-collections.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Collections",
+  "tag": "section",
+  "class": "narkk-collections-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Intentionally crafted for life"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "NARKK COLLECTIONS"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Each of our three collections bears its own distinct identity. Because each one requires a different set of materials and techniques, they're not only visually unique they're tonally diverse, as well."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image (3:4 ratio recommended)"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "collection_name",
+          "label": "Collection name",
+          "default": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption (below card)"
+        },
+        {
+          "type": "header",
+          "content": "Call to action"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button label",
+          "default": "Shop Collection"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "header",
+          "content": "Colours"
+        },
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Card background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "label_color",
+          "label": "Collection name colour",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Collections",
+      "blocks": [
+        {
+          "type": "collection_card",
+          "settings": {
+            "collection_name": "THOGAI",
+            "caption": "pegboard and accessories.",
+            "cta_label": "Shop Thogai",
+            "card_bg": "#ffffff",
+            "label_color": "#ffffff"
+          }
+        },
+        {
+          "type": "collection_card",
+          "settings": {
+            "collection_name": "TULAI",
+            "caption": "Modular sofa and it's accessories.",
+            "cta_label": "Shop Tulai",
+            "card_bg": "#c56833",
+            "label_color": "#e9e0d4"
+          }
+        },
+        {
+          "type": "collection_card",
+          "settings": {
+            "collection_name": "THUNN",
+            "caption": "Shelving system and it's accessories.",
+            "cta_label": "Shop Thunn",
+            "card_bg": "#ffffff",
+            "label_color": "#ffffff"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

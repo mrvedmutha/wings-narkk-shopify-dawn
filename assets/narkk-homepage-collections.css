@@ -1,0 +1,233 @@
+/* ============================================================
+   NARKK HOMEPAGE — COLLECTIONS
+   ============================================================ */
+
+.narkk-collections {
+  background: var(--narkk-beige);
+}
+
+.narkk-collections__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5rem, 8.3vw, 12rem);
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: clamp(6rem, 8.3vw, 12rem) 2.3% clamp(4rem, 5.6vw, 8rem);
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.narkk-collections__header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+  text-align: center;
+}
+
+.narkk-collections__eyebrow {
+  color: var(--narkk-primary);
+  font-size: var(--narkk-font-eyebrow);
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-collections__heading-group {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.narkk-collections__heading {
+  color: var(--narkk-dark);
+  font-size: clamp(3.2rem, 4.2vw, 6rem);
+  font-weight: 300;
+  letter-spacing: var(--narkk-ls-h1);
+  line-height: 1.083;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-collections__body {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+  max-width: 52rem;
+}
+
+/* ── Cards ───────────────────────────────────────────────────── */
+.narkk-collections__cards {
+  display: flex;
+  gap: 1.1rem;
+  width: 100%;
+}
+
+/* Card column — Shopify block unit (image card + caption) */
+.narkk-collections__card-col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Card image container */
+.narkk-collections__card {
+  aspect-ratio: 3 / 4;
+  background: var(--card-bg, #fff);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.narkk-collections__card-img-wrap {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.narkk-collections__card-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  will-change: transform;
+}
+
+.narkk-collections__card-img--placeholder {
+  background: var(--narkk-secondary);
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* Collection name label */
+.narkk-collections__card-label {
+  bottom: 2.4rem;
+  color: var(--label-color, #fff);
+  font-size: clamp(4rem, 5.6vw, 8rem);
+  font-weight: 300;
+  left: 50%;
+  line-height: 1.125;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  will-change: transform;
+  z-index: 2;
+}
+
+/* CTA inside card — desktop: hidden, revealed by GSAP on hover */
+.narkk-collections__card-cta {
+  bottom: 2.6rem;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-50%);
+  width: calc(100% - 4rem);
+  z-index: 2;
+}
+
+.narkk-collections__card-cta .button {
+  width: 100%;
+}
+
+.narkk-collections__card-cta--soon {
+  cursor: default;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Caption below card */
+.narkk-collections__caption {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* Word split utility (extends narkk-brand.css split helpers) */
+.narkk-split__word {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ── Curtain: initial hidden states (tablet + desktop) ───────── */
+@media (width >= 768px) {
+  .narkk-collections__card-col:nth-child(odd) .narkk-collections__card {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .narkk-collections__card-col:nth-child(even) .narkk-collections__card {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+/* ── Tablet: 768–1024px — label top, CTA always visible ─────── */
+@media (768px <= width <= 1024px) {
+  .narkk-collections__card-label {
+    bottom: auto;
+    top: 2.4rem;
+  }
+
+  .narkk-collections__card-cta {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ── Mobile: <768px — horizontal free-scroll slider ─────────── */
+@media (width < 768px) {
+  .narkk-collections__inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .narkk-collections__header {
+    padding: 0 2rem;
+  }
+
+  .narkk-collections__cards {
+    -ms-overflow-style: none;
+    gap: 1.2rem;
+    overflow-x: scroll;
+    padding: 0 2rem 0.4rem;
+    scrollbar-width: none;
+  }
+
+  .narkk-collections__cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 426–767px: 1 full card + ~35% of next peeking */
+  .narkk-collections__card-col {
+    flex: 0 0 75%;
+  }
+
+  .narkk-collections__card-label {
+    bottom: auto;
+    top: 2.4rem;
+  }
+
+  .narkk-collections__card-cta {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ≤425px: tighter peek — 1 full card + ~25% of next ─────────── */
+@media (width <= 425px) {
+  .narkk-collections__card-col {
+    flex: 0 0 82%;
+  }
+}

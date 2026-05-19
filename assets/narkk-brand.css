@@ -185,6 +185,7 @@ hr {
 /* Suppress Dawn's ::after box-shadow border on all narkk button variants */
 .narkk-btn-outlined::after,
 .narkk-btn-filled-dark::after,
+.narkk-btn-filled-light::after,
 .narkk-btn-primary::after {
   box-shadow: none;
 }
@@ -210,6 +211,18 @@ hr {
 .narkk-btn-filled-dark:hover {
   background: transparent;
   color: var(--narkk-dark);
+}
+
+.narkk-btn-filled-light {
+  background: var(--narkk-beige);
+  border: 1px solid var(--narkk-beige);
+  color: var(--narkk-dark);
+}
+
+.narkk-btn-filled-light:hover {
+  background: var(--narkk-dark);
+  border-color: var(--narkk-dark);
+  color: var(--narkk-beige);
 }
 
 .narkk-btn-primary {
