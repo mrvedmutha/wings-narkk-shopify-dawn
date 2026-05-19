@@ -43,6 +43,7 @@
       if (!chars.length) return;
 
       gsap.set(chars, { yPercent: 110 });
+      el.style.visibility = 'visible';
 
       var delay       = parseFloat(el.getAttribute('data-narkk-split-delay')   || '0');
       var staggerEach = parseFloat(el.getAttribute('data-narkk-split-stagger') || '0.04');

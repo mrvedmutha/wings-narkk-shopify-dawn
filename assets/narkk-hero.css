@@ -14,6 +14,11 @@
   width: 100%;
 }
 
+/* Hide split-text elements until JS splits and positions them */
+[data-narkk-split] {
+  visibility: hidden;
+}
+
 /* INTRODUCING — sits above everything */
 .narkk-hero__eyebrow {
   color: var(--narkk-dark);
