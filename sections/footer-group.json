@@ -1,17 +1,84 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
     "narkk-footer": {
       "type": "narkk-footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "launching_soon_aYxmxH": {
+          "type": "launching_soon",
+          "settings": {
+            "collection_name": "THUNN"
+          }
+        },
+        "payment_icon_jpQrff": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/visa-icon.png"
+          }
+        },
+        "payment_icon_X97MFY": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/master-card-icon.png"
+          }
+        },
+        "payment_icon_tDpgzP": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/gpay-icon.png"
+          }
+        },
+        "payment_icon_MB6heE": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/apple-pay-icon.png"
+          }
+        },
+        "support_contact_JEdV47": {
+          "type": "support_contact",
+          "settings": {
+            "contact_type": "phone",
+            "contact_value": "+1234567890"
+          }
+        },
+        "support_contact_q6tPNC": {
+          "type": "support_contact",
+          "settings": {
+            "contact_type": "phone",
+            "contact_value": "info@narkk.com"
+          }
+        }
+      },
+      "block_order": [
+        "launching_soon_aYxmxH",
+        "payment_icon_jpQrff",
+        "payment_icon_X97MFY",
+        "payment_icon_tDpgzP",
+        "payment_icon_MB6heE",
+        "support_contact_JEdV47",
+        "support_contact_q6tPNC"
+      ],
       "settings": {
         "heading_shop": "SHOP",
+        "menu_shop": "footer-shop",
         "heading_company": "COMPANY",
+        "menu_company": "footer-company",
         "heading_orders": "ORDERS",
+        "menu_orders": "footer-orders",
         "heading_social": "SOCIAL",
-        "heading_support": "SUPPORT"
+        "menu_social": "footer-social",
+        "heading_support": "SUPPORT",
+        "menu_bar": "footer-policies"
       }
     }
   },

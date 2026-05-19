@@ -9,76 +9,34 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+    "narkk_hero_hAUkd6": {
+      "type": "narkk-hero",
+      "name": "Narkk Hero",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "heading_line1": "Introducing",
+        "heading_line2": "TULAI",
+        "image": "shopify://shop_images/homepage-tulai-image.webp",
+        "image_position": 30,
+        "cta_text": "A versatile pegboard collection designed to simplify your space and bring clarity to your daily routines",
+        "cta_label": "View Collection",
+        "cta_url": "shopify://collections"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "narkk_homepage_product_collage_LLRjUr": {
+      "type": "narkk-homepage-product-collage",
+      "name": "Narkk Product Collage",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "image_1": "shopify://shop_images/homepage-product-collage-01.webp",
+        "image_2": "shopify://shop_images/homepage-product-collage-02.webp",
+        "eyebrow": "About Narkk",
+        "heading": "Based in Chennai — India, we design modular products that evolves as you evolve with it.",
+        "cta_label": "About Narkk",
+        "cta_url": "#"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "narkk_hero_hAUkd6",
+    "narkk_homepage_product_collage_LLRjUr"
   ]
 }
