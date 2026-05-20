@@ -61,6 +61,10 @@
     // Observers fire lazily — inactive panels trigger when tab is switched
     panels.forEach(function (panel) { initCardAnimations(panel); });
 
+    // ── Load videos only in the active panel — others load on tab switch ──
+    var activePanel = section.querySelector('.narkk-bundle__panel.is-active');
+    if (activePanel) loadPanelVideos(activePanel);
+
     // ── Tab switching ─────────────────────────────────────────────────────
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
@@ -88,6 +92,17 @@
     });
   }
 
+  // ── Lazy-load videos inside a panel ──────────────────────────────────────
+
+  function loadPanelVideos(panel) {
+    panel.querySelectorAll('video[data-lazy-src]').forEach(function (video) {
+      if (!video.getAttribute('src')) {
+        video.src = video.dataset.lazySrc;
+        video.load();
+      }
+    });
+  }
+
   // ── Tab switching (crossfade only, no animation replay) ───────────────────
 
   function switchTab(section, tabs, tabId) {
@@ -111,6 +126,7 @@
       onComplete: function () {
         currentPanel.classList.remove('is-active');
         nextPanel.classList.add('is-active');
+        loadPanelVideos(nextPanel);
         gsap.fromTo(nextPanel, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power1.out' });
       }
     });

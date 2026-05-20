@@ -3,7 +3,7 @@
 {%- liquid
   assign speed     = section.settings.speed | default: 30
   assign separator = section.settings.separator | default: '–'
-  assign video     = section.settings.video
+  assign video_url = section.settings.video_url
 -%}
 
 <section
@@ -13,20 +13,17 @@
 >
 
   {%- comment -%}── Background video ──────────────────────────────────────{%- endcomment -%}
-  {%- if video != blank -%}
+  {%- if video_url != blank -%}
     <div class="narkk-marquee-banner__video-wrap" aria-hidden="true">
       <video
         class="narkk-marquee-banner__video"
+        src="{{ video_url | escape }}"
         autoplay
         muted
         loop
         playsinline
         preload="none"
-      >
-        {%- for source in video.sources -%}
-          <source src="{{ source.url }}" type="{{ source.mime_type }}">
-        {%- endfor -%}
-      </video>
+      ></video>
     </div>
   {%- endif -%}
 
@@ -87,10 +84,10 @@
       "content": "Video"
     },
     {
-      "type": "video",
-      "id": "video",
-      "label": "Background video",
-      "info": "Upload an MP4. Plays automatically, muted and looped."
+      "type": "text",
+      "id": "video_url",
+      "label": "Background video URL",
+      "info": "Paste your Shopify CDN link (MP4). Plays automatically, muted and looped."
     },
     {
       "type": "header",

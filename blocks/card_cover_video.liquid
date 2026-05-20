@@ -3,15 +3,15 @@ Cover video card — full-bleed video, auto-plays muted and looped.
 {% enddoc %}
 
 <div class="narkk-bundle__card narkk-bundle__card--cover" {{ block.shopify_attributes }}>
-  {%- if block.settings.video != blank -%}
-    <div class="narkk-bundle__cover-media-wrap">
-      {{- block.settings.video | video_tag:
-        autoplay: true,
-        loop: true,
-        muted: true,
-        playsinline: true
-      -}}
-    </div>
+  {%- if block.settings.video_url != blank -%}
+    <video
+      class="narkk-bundle__cover-media"
+      autoplay
+      loop
+      muted
+      playsinline
+      data-lazy-src="{{ block.settings.video_url | escape }}"
+    ></video>
   {%- else -%}
     {{ 'image' | placeholder_svg_tag: 'narkk-bundle__cover-media narkk-bundle__cover-media--placeholder' }}
   {%- endif -%}
@@ -22,10 +22,10 @@ Cover video card — full-bleed video, auto-plays muted and looped.
   "name": "Card — Cover Video",
   "settings": [
     {
-      "type": "video",
-      "id": "video",
-      "label": "Cover video",
-      "info": "Auto-plays muted and looped"
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL",
+      "info": "Paste your Shopify CDN link (MP4). Video loads only when this tab is opened."
     }
   ],
   "presets": [
