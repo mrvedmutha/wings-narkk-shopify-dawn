@@ -1,8 +1,9 @@
 (function () {
   'use strict';
 
-  if (window.__narkkTextRevealInit) return;
-  window.__narkkTextRevealInit = true;
+  // ── Shared DOM split helpers ─────────────────────────────────────────────
+  // Exposed as window.narkkSplit so section JS files can use these directly
+  // without duplicating code. Each section still owns its own GSAP timeline.
 
   function splitIntoChars(el) {
     var original = el.textContent;
@@ -15,7 +16,7 @@
       if (ch === ' ') {
         var space = document.createElement('span');
         space.className = 'narkk-split__space';
-        space.textContent = ' ';
+        space.textContent = ' ';
         el.appendChild(space);
       } else {
         var mask = document.createElement('span');
@@ -31,6 +32,40 @@
 
     return chars;
   }
+
+  function splitIntoWords(el) {
+    var text = el.textContent.trim();
+    el.textContent = '';
+    var words = text.split(/\s+/);
+    var wordEls = [];
+
+    words.forEach(function (word, i) {
+      var mask = document.createElement('span');
+      mask.className = 'narkk-split__mask';
+      var inner = document.createElement('span');
+      inner.className = 'narkk-split__word';
+      inner.textContent = word;
+      mask.appendChild(inner);
+      el.appendChild(mask);
+      wordEls.push(inner);
+
+      if (i < words.length - 1) {
+        var sp = document.createElement('span');
+        sp.className = 'narkk-split__space';
+        sp.textContent = ' ';
+        el.appendChild(sp);
+      }
+    });
+
+    return wordEls;
+  }
+
+  window.narkkSplit = { chars: splitIntoChars, words: splitIntoWords };
+
+  // ── Attribute-based auto-init (used by narkk-hero) ───────────────────────
+
+  if (window.__narkkTextRevealInit) return;
+  window.__narkkTextRevealInit = true;
 
   function init() {
     if (typeof gsap === 'undefined') return;

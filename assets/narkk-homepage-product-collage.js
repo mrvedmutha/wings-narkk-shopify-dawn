@@ -1,59 +1,6 @@
 (function () {
   'use strict';
 
-  function splitIntoChars(el) {
-    var text = el.textContent;
-    el.textContent = '';
-    var chars = [];
-
-    for (var i = 0; i < text.length; i++) {
-      var ch = text[i];
-      if (ch === ' ') {
-        var space = document.createElement('span');
-        space.className = 'narkk-split__space';
-        space.textContent = ' ';
-        el.appendChild(space);
-      } else {
-        var mask = document.createElement('span');
-        mask.className = 'narkk-split__mask';
-        var inner = document.createElement('span');
-        inner.className = 'narkk-split__char';
-        inner.textContent = ch;
-        mask.appendChild(inner);
-        el.appendChild(mask);
-        chars.push(inner);
-      }
-    }
-    return chars;
-  }
-
-  function splitIntoWords(el) {
-    var text = el.textContent.trim();
-    el.textContent = '';
-    var words = text.split(/\s+/);
-    var wordEls = [];
-
-    words.forEach(function (word, i) {
-      var mask = document.createElement('span');
-      mask.className = 'narkk-split__mask';
-      var inner = document.createElement('span');
-      inner.className = 'narkk-split__word';
-      inner.textContent = word;
-      mask.appendChild(inner);
-      el.appendChild(mask);
-      wordEls.push(inner);
-
-      if (i < words.length - 1) {
-        var sp = document.createElement('span');
-        sp.className = 'narkk-split__space';
-        sp.textContent = ' ';
-        el.appendChild(sp);
-      }
-    });
-
-    return wordEls;
-  }
-
   function attachHover(wrap) {
     var img = wrap.querySelector('.narkk-collage__img');
     gsap.set(wrap, { pointerEvents: 'auto' });
@@ -67,7 +14,7 @@
   }
 
   function initCollage() {
-    if (typeof gsap === 'undefined') return;
+    if (typeof gsap === 'undefined' || !window.narkkSplit) return;
 
     var section = document.querySelector('[data-narkk-collage]');
     if (!section) return;
@@ -81,8 +28,8 @@
     var heading   = section.querySelector('.narkk-collage__heading');
     var ctaBtn    = section.querySelector('.narkk-collage__body-group .button');
 
-    var eyebrowChars = eyebrow ? splitIntoChars(eyebrow) : [];
-    var headingWords = heading ? splitIntoWords(heading) : [];
+    var eyebrowChars = eyebrow ? window.narkkSplit.chars(eyebrow) : [];
+    var headingWords = heading ? window.narkkSplit.words(heading) : [];
 
     // ── Initial states ───────────────────────────────────────
     if (isWide && hLine) gsap.set(hLine, { scaleX: 0 });
@@ -126,7 +73,7 @@
         }, isWide ? 0.85 : 0.25);
       }
 
-      // 4. Eyebrow — char by char (same as INTRODUCING)
+      // 4. Eyebrow — char by char
       if (eyebrowChars.length) {
         tl.to(eyebrowChars, {
           yPercent: 0,

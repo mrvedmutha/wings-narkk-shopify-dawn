@@ -1,33 +1,6 @@
 (function () {
   'use strict';
 
-  function splitIntoWords(el) {
-    var text = el.textContent.trim();
-    el.textContent = '';
-    var words = text.split(/\s+/);
-    var wordEls = [];
-
-    words.forEach(function (word, i) {
-      var mask = document.createElement('span');
-      mask.className = 'narkk-split__mask';
-      var inner = document.createElement('span');
-      inner.className = 'narkk-split__word';
-      inner.textContent = word;
-      mask.appendChild(inner);
-      el.appendChild(mask);
-      wordEls.push(inner);
-
-      if (i < words.length - 1) {
-        var sp = document.createElement('span');
-        sp.className = 'narkk-split__space';
-        sp.textContent = ' ';
-        el.appendChild(sp);
-      }
-    });
-
-    return wordEls;
-  }
-
   function initHover(cardCols) {
     var BOTTOM_PX     = 24; // matches CSS bottom: 2.4rem (1rem = 10px)
     var TARGET_TOP_PX = 40; // px from card top the label travels to (Figma: top: 40.1px)
@@ -64,7 +37,7 @@
   }
 
   function init() {
-    if (typeof gsap === 'undefined') return;
+    if (typeof gsap === 'undefined' || !window.narkkSplit) return;
 
     var section = document.querySelector('[data-narkk-collections]');
     if (!section) return;
@@ -74,7 +47,7 @@
 
     // ── Body text: word-split reveal ─────────────────────────
     var bodyEl    = section.querySelector('.narkk-collections__body');
-    var bodyWords = bodyEl ? splitIntoWords(bodyEl) : [];
+    var bodyWords = bodyEl ? window.narkkSplit.words(bodyEl) : [];
     if (bodyWords.length) gsap.set(bodyWords, { yPercent: 110 });
 
     // ── Mobile: body reveal only, no curtain or hover ─────────
