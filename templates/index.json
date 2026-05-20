@@ -85,11 +85,70 @@
         "heading": "NARKK COLLECTIONS",
         "body_text": "Each of our three collections bears its own distinct identity. Because each one requires a different set of materials and techniques, they're not only visually unique they're tonally diverse, as well."
       }
+    },
+    "narkk_homepage_manifesto_9E4hby": {
+      "type": "narkk-homepage-manifesto",
+      "name": "Narkk Manifesto",
+      "settings": {
+        "eyebrow": "The Re-Manifesto",
+        "heading": "Built for Life, Not the Landfill",
+        "body": "<p>We stand as a direct counter-narrative to “fast furniture” and planned obsolescence. We believe that what you buy, how you live with it, and what you become of it are all interconnected. Our ultimate goal is to build a circular economy where no piece of Narkk furniture ever enters a landfill.</p><p>To ensure our products remain lifelong companions, we design, we operate by these 6 core principles</p>"
+      }
+    },
+    "narkk_homepage_marquee_vid_banner_7PHtz4": {
+      "type": "narkk-homepage-marquee-vid-banner",
+      "blocks": {
+        "item_fkEW3L": {
+          "type": "item",
+          "settings": {
+            "text": "Restore"
+          }
+        },
+        "item_GmrB97": {
+          "type": "item",
+          "settings": {
+            "text": "Recycle"
+          }
+        },
+        "item_GmqRiJ": {
+          "type": "item",
+          "settings": {
+            "text": "Resale"
+          }
+        },
+        "item_ExQ7zy": {
+          "type": "item",
+          "settings": {
+            "text": "Return"
+          }
+        },
+        "item_LBqMEj": {
+          "type": "item",
+          "settings": {
+            "text": "Reimagined"
+          }
+        }
+      },
+      "block_order": [
+        "item_fkEW3L",
+        "item_GmrB97",
+        "item_GmqRiJ",
+        "item_ExQ7zy",
+        "item_LBqMEj"
+      ],
+      "name": "Narkk Marquee Banner",
+      "settings": {
+        "video": "shopify://files/videos/narkk-video-sample-section-homepage.mp4",
+        "speed": 30,
+        "separator": "–"
+      }
     }
   },
   "order": [
     "narkk_hero_hAUkd6",
     "narkk_homepage_product_collage_LLRjUr",
-    "narkk_homepage_collections_96Y6pQ"
+    "narkk_homepage_collections_96Y6pQ",
+    "narkk_homepage_manifesto_9E4hby",
+    "narkk_homepage_marquee_vid_banner_7PHtz4"
   ]
 }
