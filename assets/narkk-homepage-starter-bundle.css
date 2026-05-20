@@ -1,0 +1,303 @@
+/* ── Section ─────────────────────────────────────────────────────────────── */
+
+.narkk-bundle {
+  background: #f9f4f0;
+  padding: 120px 30px;
+}
+
+.narkk-bundle__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* ── Heading ─────────────────────────────────────────────────────────────── */
+
+.narkk-bundle__heading {
+  font-family: Outfit, sans-serif;
+  font-weight: 300;
+  font-size: 60px;
+  line-height: 65px;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  color: #17242f;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Tabs wrap (sticky) ──────────────────────────────────────────────────── */
+
+.narkk-bundle__tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f9f4f0;
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.narkk-bundle__tabs {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.narkk-bundle__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.narkk-bundle__tab {
+  flex: 0 0 200px;
+  height: 48px;
+  border: 1px solid #b2b2b2;
+  background: transparent;
+  color: #17242f;
+  font-family: Outfit, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  white-space: nowrap;
+}
+
+.narkk-bundle__tab.is-active {
+  background: #be5832;
+  color: #f9f4f0;
+  border-color: #be5832;
+}
+
+.narkk-bundle__tab:not(.is-active):hover {
+  border-color: #17242f;
+}
+
+/* ── Panels ──────────────────────────────────────────────────────────────── */
+
+.narkk-bundle__panel {
+  display: none;
+}
+
+.narkk-bundle__panel.is-active {
+  display: block;
+}
+
+/* No-JS fallback: show first panel before JS runs */
+.narkk-bundle:not(.js-ready) .narkk-bundle__panel:first-child {
+  display: block;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+
+.narkk-bundle__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Cards (shared) ──────────────────────────────────────────────────────── */
+
+.narkk-bundle__card {
+  aspect-ratio: 333 / 427;
+  position: relative;
+  overflow: hidden;
+  clip-path: inset(100% 0 0 0); /* hidden from first paint — JS animates in */
+}
+
+/* No-JS fallback: show cards as normal */
+.narkk-bundle:not(.js-ready) .narkk-bundle__card {
+  clip-path: none;
+}
+
+/* ── Card A — Image (contained, beige bg) ───────────────────────────────── */
+
+.narkk-bundle__card--image {
+  background: #e9e0d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17% 14%;
+}
+
+.narkk-bundle__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.narkk-bundle__card-img--placeholder {
+  opacity: 0.3;
+}
+
+/* ── Card B — Text (no bg) ───────────────────────────────────────────────── */
+
+.narkk-bundle__card--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 16px 16px;
+}
+
+/* ── Card C — Cover (full bleed image / video) ───────────────────────────── */
+
+.narkk-bundle__card--cover {
+  background: #e9e0d4;
+  padding: 0;
+}
+
+.narkk-bundle__cover-media,
+.narkk-bundle__cover-media-wrap,
+.narkk-bundle__cover-media-wrap video,
+.narkk-bundle__cover-media-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.narkk-bundle__cover-media--placeholder {
+  object-fit: contain;
+  padding: 40px;
+  opacity: 0.3;
+  box-sizing: border-box;
+}
+
+/* ── Card D — Feature (primary colour bg) ───────────────────────────────── */
+
+.narkk-bundle__card--feature {
+  background: #be5832;
+}
+
+.narkk-bundle__feature-icon-wrap {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  pointer-events: none;
+}
+
+.narkk-bundle__feature-icon {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100px;
+}
+
+.narkk-bundle__feature-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 16px 24px;
+}
+
+.narkk-bundle__feature-text p {
+  font-family: Outfit, sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 40px;
+  text-transform: uppercase;
+  color: #f9f4f0;
+  margin: 0;
+}
+
+/* ── Card E — CTA (no bg) ────────────────────────────────────────────────── */
+
+.narkk-bundle__card--cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 16px 16px;
+}
+
+.narkk-bundle__cta-top {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.narkk-bundle__card--cta .button {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* ── Card typography ─────────────────────────────────────────────────────── */
+
+.narkk-bundle__card-heading {
+  font-family: Outfit, sans-serif;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 40px;
+  text-transform: uppercase;
+  color: #17242f;
+  margin: 0;
+}
+
+.narkk-bundle__card-body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #17242f;
+  margin: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media screen and (width <= 1024px) {
+  .narkk-bundle__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (width <= 767px) {
+  .narkk-bundle {
+    padding: 80px 16px;
+  }
+
+  .narkk-bundle__inner {
+    gap: 48px;
+  }
+
+  .narkk-bundle__heading {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: -1.6px;
+  }
+
+  .narkk-bundle__tabs {
+    gap: 12px;
+  }
+
+  .narkk-bundle__tab {
+    flex: 0 0 160px;
+    font-size: 16px;
+    height: 44px;
+  }
+
+  .narkk-bundle__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .narkk-bundle__card-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .narkk-bundle__card-body {
+    font-size: 15px;
+  }
+
+  .narkk-bundle__feature-text p {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}

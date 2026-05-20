@@ -1,0 +1,60 @@
+{% doc %}
+CTA card — heading and body top, full-width outlined button pinned to bottom. No background.
+{% enddoc %}
+
+<div class="narkk-bundle__card narkk-bundle__card--cta" {{ block.shopify_attributes }}>
+  <div class="narkk-bundle__cta-top">
+    {%- if block.settings.heading != blank -%}
+      <p class="narkk-bundle__card-heading">
+        {{- block.settings.heading -}}
+      </p>
+    {%- endif -%}
+    {%- if block.settings.body != blank -%}
+      <p class="narkk-bundle__card-body" data-narkk-fade>
+        {{- block.settings.body -}}
+      </p>
+    {%- endif -%}
+  </div>
+  {%- if block.settings.cta_label != blank -%}
+    <a
+      href="{{ block.settings.cta_url | default: '#' }}"
+      class="button narkk-btn-outlined narkk-btn--plus narkk-btn--full-width"
+      data-narkk-fade
+    >
+      <span class="narkk-btn__plus">+</span><span class="narkk-btn__label">{{- block.settings.cta_label -}}</span>
+    </a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Card — CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Product name"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "View Product"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    { "name": "Card — CTA" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+{% doc %}
+Text card — heading anchored top, body anchored bottom, no background.
+{% enddoc %}
+
+<div class="narkk-bundle__card narkk-bundle__card--text" {{ block.shopify_attributes }}>
+  {%- if block.settings.heading != blank -%}
+    <p class="narkk-bundle__card-heading">
+      {{- block.settings.heading -}}
+    </p>
+  {%- endif -%}
+  {%- if block.settings.body != blank -%}
+    <p class="narkk-bundle__card-body" data-narkk-fade>
+      {{- block.settings.body -}}
+    </p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Card — Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Product name"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text"
+    }
+  ],
+  "presets": [
+    { "name": "Card — Text" }
+  ]
+}
+{% endschema %}

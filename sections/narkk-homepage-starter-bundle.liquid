@@ -1,0 +1,61 @@
+{{ 'narkk-homepage-starter-bundle.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-bundle" data-narkk-bundle>
+  <div class="narkk-bundle__inner">
+
+    {%- if section.settings.heading != blank -%}
+      <h2
+        class="narkk-bundle__heading"
+        data-narkk-split
+        data-narkk-split-stagger="0.04"
+        style="visibility:hidden"
+      >
+        {{- section.settings.heading -}}
+      </h2>
+    {%- endif -%}
+
+    <div class="narkk-bundle__tabs-wrap" data-narkk-bundle-tabs-wrap>
+      <div
+        class="narkk-bundle__tabs"
+        role="tablist"
+        aria-label="{{ section.settings.heading | escape }}"
+        data-narkk-bundle-tabs
+      >
+      </div>
+    </div>
+
+    {%- comment -%}── Panels — rendered by tab.liquid via content_for 'blocks' ─{%- endcomment -%}
+    <div class="narkk-bundle__panels" data-narkk-bundle-panels>
+      {% content_for 'blocks' %}
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-homepage-starter-bundle.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Starter Bundle",
+  "tag": "section",
+  "class": "narkk-bundle-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Starter Bundle"
+    }
+  ],
+  "blocks": [
+    { "type": "tab" }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Starter Bundle"
+    }
+  ]
+}
+{% endschema %}

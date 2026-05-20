@@ -1,0 +1,37 @@
+{% doc %}
+Bundle tab — parent block that holds card blocks inside a grid panel.
+{% enddoc %}
+
+<div
+  class="narkk-bundle__panel"
+  id="narkk-bundle-panel-{{ block.id }}"
+  role="tabpanel"
+  aria-labelledby="narkk-bundle-tab-{{ block.id }}"
+  data-panel-id="{{ block.id }}"
+  data-tab-label="{{ block.settings.label | default: 'Tab' | escape }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="narkk-bundle__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bundle Tab",
+  "blocks": [
+    { "type": "@theme" }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Tab label",
+      "default": "Standard"
+    }
+  ],
+  "presets": [
+    { "name": "Bundle Tab" }
+  ]
+}
+{% endschema %}

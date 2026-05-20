@@ -142,6 +142,521 @@
         "speed": 30,
         "separator": "–"
       }
+    },
+    "narkk_homepage_starter_bundle_8XYHKW": {
+      "type": "narkk-homepage-starter-bundle",
+      "blocks": {
+        "tab_XQfidb": {
+          "type": "tab",
+          "name": "Bundle Tab",
+          "settings": {
+            "label": "Standard"
+          },
+          "blocks": {
+            "card_image_8cimLq": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-01.webp"
+              },
+              "blocks": {}
+            },
+            "card_text_m6bCe4": {
+              "type": "card_text",
+              "name": "Card — Text",
+              "settings": {
+                "heading": "Pegboard with accesories",
+                "body": "We stand as a direct counter-narrative to “fast furniture” and planned obsolescence."
+              },
+              "blocks": {}
+            },
+            "card_image_GdjAHP": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-02.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_TQAaeK": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-03.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_YbrqH7": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-04.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_UeWPQU": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-05.webp"
+              },
+              "blocks": {}
+            },
+            "card_cover_video_y6tdbW": {
+              "type": "card_cover_video",
+              "name": "Card — Cover Video",
+              "settings": {
+                "video": "shopify://files/videos/sb-06.mp4"
+              },
+              "blocks": {}
+            },
+            "card_feature_rpWC8W": {
+              "type": "card_feature",
+              "name": "Card — Feature",
+              "settings": {
+                "line_1": "Interactive",
+                "line_2": "Multi-functional",
+                "line_3": "Adjustable height"
+              },
+              "blocks": {}
+            },
+            "card_image_piCpeV": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-07.webp"
+              },
+              "blocks": {}
+            },
+            "card_cta_nqAG3h": {
+              "type": "card_cta",
+              "name": "Card — CTA",
+              "settings": {
+                "heading": "Baltic birch plywood",
+                "body": "Finished with a food-and-child-safe, matte PU water-based coating",
+                "cta_label": "View Product",
+                "cta_url": ""
+              },
+              "blocks": {}
+            },
+            "card_image_cKEWQH": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-08.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_74RFMf": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-09.webp"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card_image_8cimLq",
+            "card_text_m6bCe4",
+            "card_image_GdjAHP",
+            "card_image_TQAaeK",
+            "card_image_YbrqH7",
+            "card_image_UeWPQU",
+            "card_cover_video_y6tdbW",
+            "card_feature_rpWC8W",
+            "card_image_piCpeV",
+            "card_cta_nqAG3h",
+            "card_image_cKEWQH",
+            "card_image_74RFMf"
+          ]
+        },
+        "tab_nxwAQt": {
+          "type": "tab",
+          "name": "Bundle Tab",
+          "settings": {
+            "label": "Small"
+          },
+          "blocks": {
+            "card_image_kzCTTi": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-01.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_E3BhMM": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-03.webp"
+              },
+              "blocks": {}
+            },
+            "card_feature_XhJn3M": {
+              "type": "card_feature",
+              "name": "Card — Feature",
+              "settings": {
+                "line_1": "Interactive",
+                "line_2": "Multi-functional",
+                "line_3": "Adjustable height"
+              },
+              "blocks": {}
+            },
+            "card_cover_video_UiinQB": {
+              "type": "card_cover_video",
+              "name": "Card — Cover Video",
+              "settings": {
+                "video": "shopify://files/videos/sb-06.mp4"
+              },
+              "blocks": {}
+            },
+            "card_image_kqnxKM": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-07.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_QddgGa": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-04.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_rabRpi": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-05.webp"
+              },
+              "blocks": {}
+            },
+            "card_text_aHXe6i": {
+              "type": "card_text",
+              "name": "Card — Text",
+              "settings": {
+                "heading": "Pegboard with accesories",
+                "body": "We stand as a direct counter-narrative to “fast furniture” and planned obsolescence."
+              },
+              "blocks": {}
+            },
+            "card_cta_YrJmy8": {
+              "type": "card_cta",
+              "name": "Card — CTA",
+              "settings": {
+                "heading": "Baltic birch plywood",
+                "body": "Finished with a food-and-child-safe, matte PU water-based coating",
+                "cta_label": "View Product",
+                "cta_url": ""
+              },
+              "blocks": {}
+            },
+            "card_image_faGcfy": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-08.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_pDc9Xp": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-02.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_R6eRPX": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-09.webp"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card_image_kzCTTi",
+            "card_image_E3BhMM",
+            "card_feature_XhJn3M",
+            "card_cover_video_UiinQB",
+            "card_image_kqnxKM",
+            "card_image_QddgGa",
+            "card_image_rabRpi",
+            "card_text_aHXe6i",
+            "card_cta_YrJmy8",
+            "card_image_faGcfy",
+            "card_image_pDc9Xp",
+            "card_image_R6eRPX"
+          ]
+        },
+        "tab_LyaYpP": {
+          "type": "tab",
+          "name": "Bundle Tab",
+          "settings": {
+            "label": "Large"
+          },
+          "blocks": {
+            "card_image_3xcEap": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-03.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_fetYw4": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-09.webp"
+              },
+              "blocks": {}
+            },
+            "card_text_tQBnMq": {
+              "type": "card_text",
+              "name": "Card — Text",
+              "settings": {
+                "heading": "Pegboard with accesories",
+                "body": "We stand as a direct counter-narrative to “fast furniture” and planned obsolescence."
+              },
+              "blocks": {}
+            },
+            "card_cover_video_bcWwiN": {
+              "type": "card_cover_video",
+              "name": "Card — Cover Video",
+              "settings": {
+                "video": "shopify://files/videos/sb-06.mp4"
+              },
+              "blocks": {}
+            },
+            "card_image_qRJAUC": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-07.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_XwpdJ9": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-04.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_Q8mfFi": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-05.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_DTLHQF": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-01.webp"
+              },
+              "blocks": {}
+            },
+            "card_feature_rmAzGg": {
+              "type": "card_feature",
+              "name": "Card — Feature",
+              "settings": {
+                "line_1": "Interactive",
+                "line_2": "Multi-functional",
+                "line_3": "Adjustable height"
+              },
+              "blocks": {}
+            },
+            "card_image_iJd9fr": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-08.webp"
+              },
+              "blocks": {}
+            },
+            "card_cta_gytXKW": {
+              "type": "card_cta",
+              "name": "Card — CTA",
+              "settings": {
+                "heading": "Baltic birch plywood",
+                "body": "Finished with a food-and-child-safe, matte PU water-based coating",
+                "cta_label": "View Product",
+                "cta_url": ""
+              },
+              "blocks": {}
+            },
+            "card_image_iCXVgB": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-02.webp"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card_image_3xcEap",
+            "card_image_fetYw4",
+            "card_text_tQBnMq",
+            "card_cover_video_bcWwiN",
+            "card_image_qRJAUC",
+            "card_image_XwpdJ9",
+            "card_image_Q8mfFi",
+            "card_image_DTLHQF",
+            "card_feature_rmAzGg",
+            "card_image_iJd9fr",
+            "card_cta_gytXKW",
+            "card_image_iCXVgB"
+          ]
+        },
+        "tab_hnywgB": {
+          "type": "tab",
+          "name": "Bundle Tab",
+          "settings": {
+            "label": "Tiny"
+          },
+          "blocks": {
+            "card_image_MQn7kK": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-09.webp"
+              },
+              "blocks": {}
+            },
+            "card_text_cabe3y": {
+              "type": "card_text",
+              "name": "Card — Text",
+              "settings": {
+                "heading": "Pegboard with accesories",
+                "body": "We stand as a direct counter-narrative to “fast furniture” and planned obsolescence."
+              },
+              "blocks": {}
+            },
+            "card_image_CAfEHa": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-04.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_YXYLzm": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-03.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_XQLMXF": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-05.webp"
+              },
+              "blocks": {}
+            },
+            "card_cta_4Ap9yf": {
+              "type": "card_cta",
+              "name": "Card — CTA",
+              "settings": {
+                "heading": "Baltic birch plywood",
+                "body": "Finished with a food-and-child-safe, matte PU water-based coating",
+                "cta_label": "View Product",
+                "cta_url": ""
+              },
+              "blocks": {}
+            },
+            "card_image_QX6tbP": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-01.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_MhJMqg": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-07.webp"
+              },
+              "blocks": {}
+            },
+            "card_cover_video_F6EHdK": {
+              "type": "card_cover_video",
+              "name": "Card — Cover Video",
+              "settings": {
+                "video": "shopify://files/videos/sb-06.mp4"
+              },
+              "blocks": {}
+            },
+            "card_feature_LVk9n6": {
+              "type": "card_feature",
+              "name": "Card — Feature",
+              "settings": {
+                "line_1": "Interactive",
+                "line_2": "Multi-functional",
+                "line_3": "Adjustable height"
+              },
+              "blocks": {}
+            },
+            "card_image_qUi7aY": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-08.webp"
+              },
+              "blocks": {}
+            },
+            "card_image_9xgqyw": {
+              "type": "card_image",
+              "name": "Card — Image",
+              "settings": {
+                "image": "shopify://shop_images/sb-02.webp"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card_image_MQn7kK",
+            "card_text_cabe3y",
+            "card_image_CAfEHa",
+            "card_image_YXYLzm",
+            "card_image_XQLMXF",
+            "card_cta_4Ap9yf",
+            "card_image_QX6tbP",
+            "card_image_MhJMqg",
+            "card_cover_video_F6EHdK",
+            "card_feature_LVk9n6",
+            "card_image_qUi7aY",
+            "card_image_9xgqyw"
+          ]
+        }
+      },
+      "block_order": [
+        "tab_XQfidb",
+        "tab_nxwAQt",
+        "tab_LyaYpP",
+        "tab_hnywgB"
+      ],
+      "name": "Narkk Starter Bundle",
+      "settings": {
+        "heading": "Starter Bundle"
+      }
     }
   },
   "order": [
@@ -149,6 +664,7 @@
     "narkk_homepage_product_collage_LLRjUr",
     "narkk_homepage_collections_96Y6pQ",
     "narkk_homepage_manifesto_9E4hby",
-    "narkk_homepage_marquee_vid_banner_7PHtz4"
+    "narkk_homepage_marquee_vid_banner_7PHtz4",
+    "narkk_homepage_starter_bundle_8XYHKW"
   ]
 }

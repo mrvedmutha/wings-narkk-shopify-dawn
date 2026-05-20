@@ -1,0 +1,32 @@
+{% doc %}
+Cover image card — full-bleed image, object-fit cover.
+{% enddoc %}
+
+<div class="narkk-bundle__card narkk-bundle__card--cover" {{ block.shopify_attributes }}>
+  {%- if block.settings.image != blank -%}
+    <img
+      src="{{ block.settings.image | image_url: width: 800 }}"
+      alt="{{ block.settings.image.alt | escape }}"
+      loading="lazy"
+      class="narkk-bundle__cover-media"
+    >
+  {%- else -%}
+    {{ 'image' | placeholder_svg_tag: 'narkk-bundle__cover-media narkk-bundle__cover-media--placeholder' }}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Card — Cover Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Cover image"
+    }
+  ],
+  "presets": [
+    { "name": "Card — Cover Image" }
+  ]
+}
+{% endschema %}

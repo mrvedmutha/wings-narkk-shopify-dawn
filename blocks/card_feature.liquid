@@ -1,0 +1,61 @@
+{% doc %}
+Feature card — terracotta background, swirl icon top-left, text lines bottom-left.
+{% enddoc %}
+
+<div class="narkk-bundle__card narkk-bundle__card--feature" {{ block.shopify_attributes }}>
+  <div class="narkk-bundle__feature-icon-wrap" aria-hidden="true">
+    {%- if block.settings.icon_image != blank -%}
+      <img
+        src="{{ block.settings.icon_image | image_url: width: 200 }}"
+        alt=""
+        class="narkk-bundle__feature-icon"
+      >
+    {%- else -%}
+      <img
+        src="{{ 'icon-narkk-swirl-arrow.svg' | asset_url }}"
+        alt=""
+        class="narkk-bundle__feature-icon"
+      >
+    {%- endif -%}
+  </div>
+  <div class="narkk-bundle__feature-text">
+    {%- if block.settings.line_1 != blank -%}<p>{{ block.settings.line_1 }}</p>{%- endif -%}
+    {%- if block.settings.line_2 != blank -%}<p>{{ block.settings.line_2 }}</p>{%- endif -%}
+    {%- if block.settings.line_3 != blank -%}<p>{{ block.settings.line_3 }}</p>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Card — Feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "line_1",
+      "label": "Feature line 1",
+      "default": "Interactive"
+    },
+    {
+      "type": "text",
+      "id": "line_2",
+      "label": "Feature line 2",
+      "default": "Multi-functional"
+    },
+    {
+      "type": "text",
+      "id": "line_3",
+      "label": "Feature line 3",
+      "default": "Adjustable height"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Custom icon (optional)",
+      "info": "Leave blank to use the default swirl arrow"
+    }
+  ],
+  "presets": [
+    { "name": "Card — Feature" }
+  ]
+}
+{% endschema %}
