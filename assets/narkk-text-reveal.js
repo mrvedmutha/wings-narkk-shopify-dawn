@@ -60,7 +60,14 @@
     return wordEls;
   }
 
-  window.narkkSplit = { chars: splitIntoChars, words: splitIntoWords };
+  function fadeRise(els) {
+    if (!els) return els;
+    var hasItems = els.length !== undefined ? els.length > 0 : true;
+    if (hasItems && typeof gsap !== 'undefined') gsap.set(els, { opacity: 0, y: 20 });
+    return els;
+  }
+
+  window.narkkSplit = { chars: splitIntoChars, words: splitIntoWords, fadeRise: fadeRise };
 
   // ── Attribute-based auto-init (used by narkk-hero) ───────────────────────
 

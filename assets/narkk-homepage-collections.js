@@ -45,23 +45,17 @@
     var isDesktop = window.matchMedia('(width > 1024px)').matches;
     var isMobile  = window.matchMedia('(width < 768px)').matches;
 
-    // ── Body text: word-split reveal ─────────────────────────
-    var bodyEl    = section.querySelector('.narkk-collections__body');
-    var bodyWords = bodyEl ? window.narkkSplit.words(bodyEl) : [];
-    if (bodyWords.length) gsap.set(bodyWords, { yPercent: 110 });
+    // ── Body text: fade + rise ────────────────────────────────
+    var bodyEl = section.querySelector('.narkk-collections__body');
+    window.narkkSplit.fadeRise(bodyEl);
 
     // ── Mobile: body reveal only, no curtain or hover ─────────
     if (isMobile) {
-      if (!bodyWords.length) return;
+      if (!bodyEl) return;
       var mobIo = new IntersectionObserver(function (entries) {
         if (!entries[0].isIntersecting) return;
         mobIo.unobserve(section);
-        gsap.to(bodyWords, {
-          yPercent: 0,
-          duration: 0.9,
-          ease: 'power4.out',
-          stagger: { each: 0.05 }
-        });
+        gsap.to(bodyEl, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' });
       }, { threshold: 0.1 });
       mobIo.observe(section);
       return;
@@ -97,14 +91,9 @@
         }, i * 0.15);
       });
 
-      // Body words: start mid-way through card reveals
-      if (bodyWords.length) {
-        tl.to(bodyWords, {
-          yPercent: 0,
-          duration: 0.9,
-          ease: 'power4.out',
-          stagger: { each: 0.06 }
-        }, 0.6);
+      // Body text: fade + rise mid-way through card reveals
+      if (bodyEl) {
+        tl.to(bodyEl, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 0.6);
       }
     }, { threshold: 0.2 });
 

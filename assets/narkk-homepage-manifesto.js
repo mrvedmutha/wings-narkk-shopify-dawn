@@ -38,9 +38,7 @@
       gsap.set(headingWords, { yPercent: 110, skewX: -15 });
       heading.style.visibility = 'visible';
     }
-    if (bodyParas.length) {
-      gsap.set(bodyParas, { opacity: 0, y: 20 });
-    }
+    window.narkkSplit.fadeRise(bodyParas);
 
     // ── Scroll trigger ───────────────────────────────────────
     var io = new IntersectionObserver(function (entries) {
