@@ -257,7 +257,7 @@
   }
 }
 
-@media screen and (width <= 767px) {
+@media screen and (width <= 768px) {
   .narkk-bundle {
     padding: 80px 16px;
   }
@@ -288,16 +288,49 @@
   }
 
   .narkk-bundle__card-heading {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 22px;
+    line-height: 28px;
   }
 
   .narkk-bundle__card-body {
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .narkk-bundle__feature-text p {
     font-size: 18px;
-    line-height: 30px;
+    line-height: 28px;
+  }
+}
+
+@media screen and (width <= 425px) {
+  .narkk-bundle__card-heading {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .narkk-bundle__card-body {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .narkk-bundle__card--text,
+  .narkk-bundle__card--cta {
+    padding: 8px 10px 10px;
+  }
+
+  .narkk-bundle__cta-top {
+    gap: 8px;
+  }
+
+  .narkk-bundle__feature-text p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (width <= 375px) {
+  .narkk-bundle__grid {
+    grid-template-columns: 1fr;
   }
 }
