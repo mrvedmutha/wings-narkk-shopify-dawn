@@ -1,0 +1,144 @@
+{{ 'narkk-homepage-marquee-vid-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign speed     = section.settings.speed | default: 30
+  assign separator = section.settings.separator | default: '–'
+  assign video     = section.settings.video
+-%}
+
+<section
+  class="narkk-marquee-banner"
+  data-narkk-marquee-banner
+  id="narkk-marquee-banner-{{ section.id }}"
+>
+
+  {%- comment -%}── Background video ──────────────────────────────────────{%- endcomment -%}
+  {%- if video != blank -%}
+    <div class="narkk-marquee-banner__video-wrap" aria-hidden="true">
+      <video
+        class="narkk-marquee-banner__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+      >
+        {%- for source in video.sources -%}
+          <source src="{{ source.url }}" type="{{ source.mime_type }}">
+        {%- endfor -%}
+      </video>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}── Marquee ───────────────────────────────────────────────{%- endcomment -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="narkk-marquee-banner__marquee-wrap">
+      <div
+        class="narkk-marquee-banner__track"
+        style="--marquee-duration: {{ speed }}s;"
+        role="marquee"
+        aria-label="
+          {%- for block in section.blocks -%}
+            {{- block.settings.text -}}
+            {%- unless forloop.last %} {{ separator }} {% endunless -%}
+          {%- endfor -%}
+        "
+      >
+        {%- comment -%}
+          Render blocks twice so the track is 2× wide.
+          CSS translateX(-50%) creates a seamless infinite loop.
+          Every item (including the last in each set) is followed by a
+          separator — this fills the gap at the wrap-around point.
+        {%- endcomment -%}
+
+        {%- for n in (1..2) -%}
+          {%- for block in section.blocks -%}
+            <span
+              class="narkk-marquee-banner__item"
+              {%- if n == 2 %} aria-hidden="true"{%- endif -%}
+              {{ block.shopify_attributes }}
+            >
+              {{- block.settings.text | upcase | escape -}}
+            </span>
+            <span class="narkk-marquee-banner__sep" aria-hidden="true">
+              {{- separator | escape -}}
+            </span>
+          {%- endfor -%}
+        {%- endfor -%}
+
+      </div>
+    </div>
+  {%- endif -%}
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-homepage-marquee-vid-banner.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Marquee Banner",
+  "tag": "section",
+  "class": "narkk-marquee-banner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video",
+      "info": "Upload an MP4. Plays automatically, muted and looped."
+    },
+    {
+      "type": "header",
+      "content": "Marquee"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds per loop)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Item separator",
+      "default": "–",
+      "info": "Character shown between marquee items."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Marquee item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "RESTORE"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Narkk Marquee Banner",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Restore" } },
+        { "type": "item", "settings": { "text": "Recycle" } },
+        { "type": "item", "settings": { "text": "Resale" } },
+        { "type": "item", "settings": { "text": "Return" } },
+        { "type": "item", "settings": { "text": "Reimagined" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

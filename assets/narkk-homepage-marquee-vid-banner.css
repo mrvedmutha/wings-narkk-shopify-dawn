@@ -1,0 +1,80 @@
+/* ── narkk-marquee-banner ───────────────────────────────────────────────── */
+
+.narkk-marquee-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 39.03vw, 620px);
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ── Video ──────────────────────────────────────────────────────────────── */
+
+.narkk-marquee-banner__video-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.narkk-marquee-banner__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Marquee wrapper (GSAP fade target) ─────────────────────────────────── */
+
+.narkk-marquee-banner__marquee-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ── Track ──────────────────────────────────────────────────────────────── */
+
+.narkk-marquee-banner__track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+
+  /* paused by default; JS adds .is-running after fade-in */
+  animation: narkk-marquee var(--marquee-duration, 30s) linear infinite;
+  animation-play-state: paused;
+}
+
+.narkk-marquee-banner__track.is-running {
+  animation-play-state: running;
+}
+
+@keyframes narkk-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Items & separators ─────────────────────────────────────────────────── */
+
+.narkk-marquee-banner__item,
+.narkk-marquee-banner__sep {
+  font-family: Outfit, sans-serif;
+  font-weight: 300;
+
+  /* 80 / 1440 × 100 = 5.56vw */
+  font-size: clamp(28px, 5.56vw, 96px);
+  line-height: 1;
+  color: #f9f4f0;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.narkk-marquee-banner__sep {
+  /* 20 / 1440 × 100 = 1.39vw */
+  margin: 0 clamp(10px, 1.39vw, 22px);
+  opacity: 0.55;
+  user-select: none;
+}
