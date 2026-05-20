@@ -98,7 +98,7 @@
         }, 1.2);
       }
 
-    }, { threshold: 0.15 });
+    }, { threshold: 0.35 });
 
     io.observe(section);
   }

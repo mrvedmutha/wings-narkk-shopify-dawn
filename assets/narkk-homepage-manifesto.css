@@ -96,6 +96,42 @@
   margin-bottom: 0;
 }
 
+/* ── Tablet: 768px–1023px ──────────────────────────────────── */
+
+@media (768px <= width < 1024px) {
+  .narkk-manifesto__inner {
+    padding: 80px 33px;
+    gap: 24px;
+  }
+
+  .narkk-manifesto__visual {
+    min-height: 300px;
+  }
+
+  .narkk-manifesto__ellipse {
+    width: 270px;
+    height: 270px;
+  }
+
+  .narkk-manifesto__logo {
+    width: 165px;
+  }
+
+  .narkk-manifesto__text {
+    gap: 28px;
+    padding: 40px 0;
+  }
+
+  .narkk-manifesto__heading {
+    font-size: 34px;
+    max-width: 100%;
+  }
+
+  .narkk-manifesto__body {
+    max-width: 100%;
+  }
+}
+
 /* ── Mobile: ≤767px ────────────────────────────────────────── */
 
 @media (width < 768px) {
