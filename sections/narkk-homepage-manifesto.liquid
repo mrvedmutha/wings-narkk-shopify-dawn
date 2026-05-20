@@ -1,0 +1,88 @@
+{{ 'narkk-homepage-manifesto.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-manifesto" data-narkk-manifesto>
+  <div class="narkk-manifesto__inner">
+
+    {%- comment -%}── LEFT: Logo + Ellipse ──────────────────────────────────{%- endcomment -%}
+    <div class="narkk-manifesto__visual">
+      <svg
+        class="narkk-manifesto__ellipse"
+        viewBox="0 0 360 360"
+        aria-hidden="true"
+        data-manifesto-ellipse
+      >
+        <circle cx="180" cy="180" r="175" fill="none" stroke="#BE5832" stroke-width="1"/>
+      </svg>
+      <div class="narkk-manifesto__logo-wrap" data-manifesto-logo>
+        <img
+          src="{{ 'narkk-chair-logo-primary.svg' | asset_url }}"
+          alt="Narkk"
+          class="narkk-manifesto__logo"
+          width="207"
+          height="156"
+          loading="lazy"
+        >
+      </div>
+    </div>
+
+    {%- comment -%}── RIGHT: Text ──────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-manifesto__text">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="narkk-manifesto__eyebrow" data-manifesto-eyebrow>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="narkk-manifesto__heading" data-manifesto-heading>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="narkk-manifesto__body" data-manifesto-body>
+          {{ section.settings.body }}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-homepage-manifesto.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Manifesto",
+  "tag": "section",
+  "class": "narkk-manifesto-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "The Re-Manifesto"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built for Life, Not the Landfill"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>We stand as a direct counter-narrative to “fast furniture” and planned obsolescence. We believe that what you buy, how you live with it, and what you become of it are all interconnected. Our ultimate goal is to build a circular economy where no piece of Narkk furniture ever enters a landfill.<\/p><p>To ensure our products remain lifelong companions, we design, we operate by these 6 core principles<\/p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Manifesto"
+    }
+  ]
+}
+{% endschema %}

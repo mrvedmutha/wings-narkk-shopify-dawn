@@ -1,0 +1,157 @@
+/* ─── NARKK MANIFESTO ─────────────────────────────────────── */
+
+.narkk-manifesto {
+  background-color: #e9e0d4;
+}
+
+.narkk-manifesto__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 120px 33px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ── Left: logo + ellipse ──────────────────────────────────── */
+
+.narkk-manifesto__visual {
+  flex: 0 0 48%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+}
+
+.narkk-manifesto__ellipse {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  transform: rotate(-90deg); /* start stroke draw from 12 o'clock */
+  transform-origin: 50% 50%;
+}
+
+.narkk-manifesto__logo-wrap {
+  position: relative;
+  z-index: 1;
+  visibility: hidden;
+}
+
+.narkk-manifesto__logo {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+/* ── Right: text ───────────────────────────────────────────── */
+
+.narkk-manifesto__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 80px 0;
+}
+
+.narkk-manifesto__eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.875;
+  letter-spacing: 4.48px;
+  text-transform: uppercase;
+  color: #be5832;
+  margin: 0;
+  visibility: hidden;
+}
+
+.narkk-manifesto__heading {
+  font-family: Outfit, sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #000;
+  margin: 0;
+  max-width: 503px;
+  visibility: hidden;
+}
+
+.narkk-manifesto__body {
+  font-family: Outfit, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.333;
+  color: #000;
+  max-width: 457px;
+}
+
+.narkk-manifesto__body p {
+  margin: 0 0 1.5em;
+}
+
+.narkk-manifesto__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Mobile: ≤767px ────────────────────────────────────────── */
+
+@media (width < 768px) {
+  .narkk-manifesto__inner {
+    flex-direction: column;
+    padding: 80px 24px;
+    gap: 48px;
+  }
+
+  .narkk-manifesto__visual {
+    flex: none;
+    width: 100%;
+    min-height: 280px;
+  }
+
+  .narkk-manifesto__ellipse {
+    width: 260px;
+    height: 260px;
+  }
+
+  .narkk-manifesto__logo {
+    width: 150px;
+  }
+
+  .narkk-manifesto__text {
+    flex: none;
+    width: 100%;
+    gap: 24px;
+    padding: 0;
+  }
+
+  .narkk-manifesto__heading {
+    font-size: 32px;
+    max-width: 100%;
+  }
+
+  .narkk-manifesto__body {
+    max-width: 100%;
+  }
+}
+
+/* ── Text split helpers (shared animation pattern) ─────────── */
+
+.narkk-manifesto .narkk-split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: inherit;
+}
+
+.narkk-manifesto .narkk-split__char,
+.narkk-manifesto .narkk-split__word {
+  display: inline-block;
+}
+
+.narkk-manifesto .narkk-split__space {
+  display: inline-block;
+  white-space: pre;
+}
