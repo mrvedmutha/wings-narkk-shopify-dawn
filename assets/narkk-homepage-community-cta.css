@@ -1,0 +1,260 @@
+/* ============================================================
+   NARKK HOMEPAGE — COMMUNITY CTA
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-community {
+  display: flex;
+  min-height: 90rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.narkk-community__inner {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  margin: 0 auto;
+  max-width: 144rem;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Background image ─────────────────────────────────────── */
+.narkk-community__bg {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.narkk-community__bg img,
+.narkk-community__bg-placeholder {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Divider lines ────────────────────────────────────────── */
+.narkk-community__h-line,
+.narkk-community__v-line {
+  background: var(--narkk-divider);
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Horizontal — full width, top aligned to card; position updated via JS */
+.narkk-community__h-line {
+  height: 1px;
+  left: 0;
+  right: 0;
+  top: var(--community-card-top, 30%);
+  transform: scaleX(0);
+}
+
+/* Vertical — full height, left aligned to card; position updated via JS */
+.narkk-community__v-line {
+  bottom: 0;
+  left: var(--community-card-left, 26%);
+  top: 0;
+  transform: scaleY(0);
+  width: 1px;
+}
+
+/* ── Content card ─────────────────────────────────────────── */
+.narkk-community__card {
+  background: var(--narkk-beige);
+  flex-shrink: 0;
+  padding: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card width variants (desktop only) */
+@media (width >= 1025px) {
+  .narkk-community--compact .narkk-community__card {
+    margin-left: min(38rem, 26.4vw);
+    width: 63.5rem;
+  }
+
+  .narkk-community--narrow .narkk-community__card {
+    margin-left: min(38rem, 26.4vw);
+    width: 69rem;
+  }
+
+  .narkk-community--wide .narkk-community__card {
+    margin-left: min(24.8rem, 17.2vw);
+    max-width: 98.7rem;
+    width: calc(100% - min(24.8rem, 17.2vw) - 2rem);
+  }
+}
+
+/* ── Card inner layout ────────────────────────────────────── */
+.narkk-community__card-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-community__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h2);
+  margin: 0 0 2.4rem;
+  text-transform: uppercase;
+}
+
+/* ── Text blocks ──────────────────────────────────────────── */
+.narkk-community__text {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  margin: 0 0 2.4rem;
+}
+
+.narkk-community__text--body1 {
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+}
+
+.narkk-community__text--body2 {
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+}
+
+/* ── Subheading block ─────────────────────────────────────── */
+.narkk-community__sub-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin: 0.8rem 0 2.4rem;
+}
+
+.narkk-community__subheading {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-community__sub-text {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* ── Steps grid ───────────────────────────────────────────── */
+.narkk-community__steps {
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 3.2rem 0 0;
+}
+
+.narkk-community__step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.narkk-community__step-icon-wrap {
+  flex-shrink: 0;
+  height: 6rem;
+  width: 6rem;
+}
+
+.narkk-community__step-icon {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.narkk-community__step-text {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+.narkk-community__step-accent {
+  color: var(--narkk-primary);
+}
+
+/* ── CTA ──────────────────────────────────────────────────── */
+.narkk-community__cta {
+  margin-top: 8rem;
+}
+
+.narkk-community__cta .narkk-btn-outlined {
+  width: 27.5rem;
+}
+
+.narkk-community__cta .narkk-btn-primary {
+  width: 32.2rem;
+}
+
+/* ── Mobile (≤1024px) ─────────────────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-community {
+    min-height: unset;
+  }
+
+  .narkk-community__inner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .narkk-community__bg {
+    bottom: auto;
+    height: 60vw;
+    left: auto;
+    max-height: 48rem;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+
+  .narkk-community__h-line,
+  .narkk-community__v-line {
+    display: none;
+  }
+
+  .narkk-community__card {
+    flex-shrink: unset;
+    margin-left: 0 !important;
+    max-width: unset !important;
+    padding: 3.2rem 2.4rem;
+    width: 100% !important;
+    z-index: auto;
+  }
+
+  .narkk-community__steps {
+    gap: 3.2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .narkk-community__cta .narkk-btn-outlined,
+  .narkk-community__cta .narkk-btn-primary {
+    max-width: 100%;
+    width: 100%;
+  }
+}

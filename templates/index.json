@@ -138,7 +138,7 @@
       ],
       "name": "Narkk Marquee Banner",
       "settings": {
-        "video": "shopify://files/videos/narkk-video-sample-section-homepage.mp4",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/05c29824b2074bacb31adf2f00d9e05c.mp4",
         "speed": 30,
         "separator": "–"
       }
@@ -206,7 +206,7 @@
               "type": "card_cover_video",
               "name": "Card — Cover Video",
               "settings": {
-                "video": "shopify://files/videos/sb-06.mp4"
+                "video_url": "https://cdn.shopify.com/videos/c/o/v/8923ad33b6044ce0bef80196e9767edf.mp4"
               },
               "blocks": {}
             },
@@ -308,7 +308,7 @@
               "type": "card_cover_video",
               "name": "Card — Cover Video",
               "settings": {
-                "video": "shopify://files/videos/sb-06.mp4"
+                "video_url": "https://cdn.shopify.com/videos/c/o/v/8923ad33b6044ce0bef80196e9767edf.mp4"
               },
               "blocks": {}
             },
@@ -432,7 +432,7 @@
               "type": "card_cover_video",
               "name": "Card — Cover Video",
               "settings": {
-                "video": "shopify://files/videos/sb-06.mp4"
+                "video_url": "https://cdn.shopify.com/videos/c/o/v/8923ad33b6044ce0bef80196e9767edf.mp4"
               },
               "blocks": {}
             },
@@ -600,7 +600,7 @@
               "type": "card_cover_video",
               "name": "Card — Cover Video",
               "settings": {
-                "video": "shopify://files/videos/sb-06.mp4"
+                "video_url": "https://cdn.shopify.com/videos/c/o/v/8923ad33b6044ce0bef80196e9767edf.mp4"
               },
               "blocks": {}
             },
@@ -657,6 +657,37 @@
       "settings": {
         "heading": "Starter Bundle"
       }
+    },
+    "narkk_homepage_community_cta_PFem8B": {
+      "type": "narkk-homepage-community-cta",
+      "blocks": {
+        "text_FVaEea": {
+          "type": "text",
+          "settings": {
+            "content": "Loop is our growing community of mindful consumers — people who don’t just buy things, but ask why, how, and what next. It’s where we share tips to declutter, organise, build better habits, and treat your space like it matters. Here, we also listen — your inputs help shape the next product we make.",
+            "text_style": "body1"
+          }
+        },
+        "cta_8KgJHL": {
+          "type": "cta",
+          "settings": {
+            "label": "Join The Loop",
+            "url": "#",
+            "style": "outlined"
+          }
+        }
+      },
+      "block_order": [
+        "text_FVaEea",
+        "cta_8KgJHL"
+      ],
+      "name": "Narkk Community CTA",
+      "settings": {
+        "bg_image": "shopify://shop_images/nark-homepage-community-pic-loop-circle.webp",
+        "image_position": "center center",
+        "heading": "Loop Circle",
+        "card_width": "compact"
+      }
     }
   },
   "order": [
@@ -665,6 +696,7 @@
     "narkk_homepage_collections_96Y6pQ",
     "narkk_homepage_manifesto_9E4hby",
     "narkk_homepage_marquee_vid_banner_7PHtz4",
-    "narkk_homepage_starter_bundle_8XYHKW"
+    "narkk_homepage_starter_bundle_8XYHKW",
+    "narkk_homepage_community_cta_PFem8B"
   ]
 }

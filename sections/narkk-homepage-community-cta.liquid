@@ -1,0 +1,294 @@
+{{ 'narkk-homepage-community-cta.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  case section.settings.card_width
+    when 'compact'
+      assign card_width_class = 'narkk-community--compact'
+    when 'wide'
+      assign card_width_class = 'narkk-community--wide'
+    else
+      assign card_width_class = 'narkk-community--narrow'
+  endcase
+
+  assign has_steps = false
+  for block in section.blocks
+    if block.type == 'step'
+      assign has_steps = true
+      break
+    endif
+  endfor
+-%}
+
+<section class="narkk-community {{ card_width_class }}" data-narkk-community>
+
+  {%- comment -%}── Background image ──────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-community__bg" aria-hidden="true">
+    {%- if section.settings.bg_image != blank -%}
+      <img
+        src="{{ section.settings.bg_image | image_url: width: 2000 }}"
+        srcset="
+          {{ section.settings.bg_image | image_url: width: 800 }} 800w,
+          {{ section.settings.bg_image | image_url: width: 1200 }} 1200w,
+          {{ section.settings.bg_image | image_url: width: 2000 }} 2000w
+        "
+        sizes="100vw"
+        alt=""
+        loading="lazy"
+        width="{{ section.settings.bg_image.width }}"
+        height="{{ section.settings.bg_image.height }}"
+        style="object-position: {{ section.settings.image_position }};"
+      >
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'narkk-community__bg-placeholder' }}
+    {%- endif -%}
+  </div>
+
+  {%- comment -%}── Divider lines ─────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-community__h-line" aria-hidden="true">&nbsp;</div>
+  <div class="narkk-community__v-line" aria-hidden="true">&nbsp;</div>
+
+  <div class="narkk-community__inner">
+
+  {%- comment -%}── Content card ──────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-community__card">
+    <div class="narkk-community__card-inner">
+
+      {%- comment -%}── Heading (section setting) ──────────────────────────{%- endcomment -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="narkk-community__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- comment -%}── Text paragraph blocks ──────────────────────────────{%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'text' and block.settings.content != blank -%}
+          <p
+            class="narkk-community__text narkk-community__text--{{ block.settings.text_style }}"
+            {{ block.shopify_attributes }}
+          >{{ block.settings.content }}</p>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- comment -%}── Subheading + text blocks ──────────────────────────{%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'subheading' -%}
+          <div class="narkk-community__sub-group" {{ block.shopify_attributes }}>
+            {%- if block.settings.label != blank -%}
+              <p class="narkk-community__subheading">{{ block.settings.label }}</p>
+            {%- endif -%}
+            {%- if block.settings.content != blank -%}
+              <p class="narkk-community__sub-text">{{ block.settings.content }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- comment -%}── Steps grid (for 'How to Apply' variant) ──────────{%- endcomment -%}
+      {%- if has_steps -%}
+        <div class="narkk-community__steps">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'step' -%}
+              <div class="narkk-community__step" {{ block.shopify_attributes }}>
+                {%- if block.settings.icon != blank -%}
+                  <div class="narkk-community__step-icon-wrap">
+                    <img
+                      src="{{ block.settings.icon | image_url: width: 120 }}"
+                      alt="{{ block.settings.icon.alt | escape }}"
+                      class="narkk-community__step-icon"
+                      loading="lazy"
+                      width="60"
+                      height="60"
+                    >
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.content != blank or block.settings.accent != blank -%}
+                  <p class="narkk-community__step-text">
+                    {{- block.settings.content -}}
+                    {%- if block.settings.accent != blank -%}
+                      <span class="narkk-community__step-accent"> {{ block.settings.accent }}</span>
+                    {%- endif -%}
+                  </p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%}── CTA button block ──────────────────────────────────{%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'cta' -%}
+          <div class="narkk-community__cta" {{ block.shopify_attributes }}>
+            {%- render 'narkk-button',
+              label: block.settings.label,
+              url: block.settings.url,
+              style: block.settings.style,
+              show_plus: true
+            -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+
+  </div>
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-homepage-community-cta.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Community CTA",
+  "tag": "section",
+  "class": "narkk-community-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image focal point",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top",    "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center",   "label": "Left" },
+        { "value": "right center",  "label": "Right" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Loop Circle"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "card_width",
+      "label": "Card width",
+      "info": "Use Wide when adding Step blocks (3-column layout needs more room)",
+      "options": [
+        { "value": "compact", "label": "Compact — 555px" },
+        { "value": "narrow",  "label": "Narrow — 610px" },
+        { "value": "wide",    "label": "Wide — 907px" }
+      ],
+      "default": "narrow"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "label": "Text size",
+          "options": [
+            { "value": "body1", "label": "Large — 18px Light" },
+            { "value": "body2", "label": "Standard — 16px Regular" }
+          ],
+          "default": "body1"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading + text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label (terracotta)",
+          "default": "Who We're Looking For"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "name": "CTA button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button label",
+          "default": "Join The Loop"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Button style",
+          "options": [
+            { "value": "outlined", "label": "Outlined (dark border)" },
+            { "value": "primary",  "label": "Primary (terracotta fill)" }
+          ],
+          "default": "outlined"
+        }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "Step item",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Step description"
+        },
+        {
+          "type": "textarea",
+          "id": "accent",
+          "label": "Highlighted text (terracotta)",
+          "info": "Optional — appended after the main text in terracotta colour"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Community CTA"
+    }
+  ]
+}
+{% endschema %}
