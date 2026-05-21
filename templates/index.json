@@ -688,6 +688,44 @@
         "heading": "Loop Circle",
         "card_width": "compact"
       }
+    },
+    "narkk_homepage_product_launch_deikGJ": {
+      "type": "narkk-homepage-product-launch",
+      "blocks": {
+        "slide_cRtDC9": {
+          "type": "slide",
+          "settings": {
+            "word": "SERTHAL",
+            "image": "shopify://shop_images/narkk-product-launch-collection-02-t.webp"
+          }
+        },
+        "slide_tzByVi": {
+          "type": "slide",
+          "settings": {
+            "word": "SERTHAL",
+            "image": "shopify://shop_images/narkk-product-launch-collection-03-t-new.webp"
+          }
+        },
+        "slide_4pyDrX": {
+          "type": "slide",
+          "settings": {
+            "word": "SERTHAL",
+            "image": "shopify://shop_images/narkk-product-launch-collection-01-t.webp"
+          }
+        }
+      },
+      "block_order": [
+        "slide_cRtDC9",
+        "slide_tzByVi",
+        "slide_4pyDrX"
+      ],
+      "name": "Narkk Product Launch",
+      "settings": {
+        "heading": "SINGLE MODULAR SEATING, ENDLESS POSSIBILITIES",
+        "body": "Designed to be precisely what you need it to be. Whether it stands alone as a sculptural lounge chair or connects to form an expansive landscape of comfort.",
+        "cta_label": "LAUNCHING SOON",
+        "cta_url": ""
+      }
     }
   },
   "order": [
@@ -697,6 +735,7 @@
     "narkk_homepage_manifesto_9E4hby",
     "narkk_homepage_marquee_vid_banner_7PHtz4",
     "narkk_homepage_starter_bundle_8XYHKW",
-    "narkk_homepage_community_cta_PFem8B"
+    "narkk_homepage_community_cta_PFem8B",
+    "narkk_homepage_product_launch_deikGJ"
   ]
 }

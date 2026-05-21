@@ -1,0 +1,146 @@
+{{ 'narkk-homepage-product-launch.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-launch" data-narkk-launch>
+
+  {%- comment -%}── LEFT PANEL ─────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-launch__left">
+
+    <div class="narkk-launch__content">
+
+      <div class="narkk-launch__text-group">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="narkk-launch__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body != blank -%}
+          <p class="narkk-launch__body">{{ section.settings.body }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="narkk-launch__cta">
+        {%- render 'narkk-button',
+          label: section.settings.cta_label,
+          url: section.settings.cta_url,
+          style: 'outlined',
+          show_plus: true
+        -%}
+      </div>
+
+    </div>
+
+    <div class="narkk-launch__divider" aria-hidden="true">&nbsp;</div>
+
+  </div>
+
+  {%- comment -%}── RIGHT PANEL ────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-launch__right">
+
+    {%- for block in section.blocks -%}
+      <div
+        class="narkk-launch__slide{% if forloop.first %} is-active{% endif %}"
+        data-slide="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      >
+
+        {%- if block.settings.word != blank -%}
+          <div class="narkk-launch__word" aria-hidden="true">{{ block.settings.word }}</div>
+        {%- endif -%}
+
+        <div class="narkk-launch__image-wrap">
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 900 }}"
+              alt="{{ block.settings.image.alt | escape }}"
+              class="narkk-launch__image"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'narkk-launch__image narkk-launch__image--placeholder' }}
+          {%- endif -%}
+        </div>
+
+      </div>
+    {%- endfor -%}
+
+  </div>
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-homepage-product-launch.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Product Launch",
+  "tag": "section",
+  "class": "narkk-launch-section",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Product Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "word",
+          "label": "Product word",
+          "info": "Single uppercase word shown as large background text (e.g. SERTHAL)",
+          "default": "PRODUCT"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product image"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SINGLE MODULAR SEATING, ENDLESS POSSIBILITIES"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body copy",
+      "default": "Designed to be precisely what you need it to be. Whether it stands alone as a sculptural lounge chair or connects to form an expansive landscape of comfort."
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "LAUNCHING SOON"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Product Launch",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "word": "SERTHAL"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
