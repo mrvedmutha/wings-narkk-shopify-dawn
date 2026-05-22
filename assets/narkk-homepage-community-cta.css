@@ -214,6 +214,7 @@
 /* ── Mobile (≤1024px) ─────────────────────────────────────── */
 @media (width <= 1024px) {
   .narkk-community {
+    flex-direction: column;
     min-height: unset;
   }
 
@@ -256,5 +257,42 @@
   .narkk-community__cta .narkk-btn-primary {
     max-width: 100%;
     width: 100%;
+  }
+}
+
+/* ── Small mobile (≤425px) ────────────────────────────────── */
+@media (width <= 425px) {
+  .narkk-community__heading {
+    font-size: 3.2rem;
+  }
+
+  .narkk-community__subheading {
+    font-size: 2rem;
+  }
+
+  .narkk-community__text--body1,
+  .narkk-community__sub-text {
+    font-size: 1.6rem;
+  }
+}
+
+/* ── Extra-small mobile (≤320px) ─────────────────────────── */
+@media (width <= 320px) {
+  .narkk-community__heading {
+    font-size: 2.8rem;
+  }
+
+  .narkk-community__subheading {
+    font-size: 1.8rem;
+  }
+
+  .narkk-community__text--body1,
+  .narkk-community__sub-text {
+    font-size: 1.5rem;
+  }
+
+  .narkk-community__text--body2,
+  .narkk-community__step-text {
+    font-size: 1.4rem;
   }
 }

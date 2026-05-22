@@ -156,6 +156,7 @@
   }
 
   .narkk-launch__left {
+    order: 1;
     overflow: visible;
   }
 
@@ -187,6 +188,7 @@
   .narkk-launch__right {
     height: 80vw;
     max-height: 60rem;
+    order: 0;
     overflow: hidden;
     position: relative;
   }
