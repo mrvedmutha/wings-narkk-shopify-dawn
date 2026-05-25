@@ -1,0 +1,303 @@
+{{ 'narkk-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_heading   = false
+  assign has_side      = false
+  assign has_paragraph = false
+  assign has_cta       = false
+  for block in section.blocks
+    if block.type == 'heading'
+      assign has_heading = true
+    endif
+    if block.type == 'side_text'
+      assign has_side = true
+    endif
+    if block.type == 'paragraph'
+      assign has_paragraph = true
+    endif
+    if block.type == 'cta'
+      assign has_cta = true
+    endif
+  endfor
+-%}
+
+<section
+  class="narkk-ibanner{% unless has_paragraph or has_cta %} narkk-ibanner--centered{% endunless %}"
+  data-narkk-ibanner
+  style="--ibanner-height: {{ section.settings.height | default: 800 }}px;"
+>
+
+  {%- comment -%}── Background image ──────────────────────────────{%- endcomment -%}
+  <div class="narkk-ibanner__bg" aria-hidden="true">
+    {%- if section.settings.bg_image != blank -%}
+      <img
+        src="{{ section.settings.bg_image | image_url: width: 2400 }}"
+        srcset="
+          {{ section.settings.bg_image | image_url: width: 800  }}  800w,
+          {{ section.settings.bg_image | image_url: width: 1200 }} 1200w,
+          {{ section.settings.bg_image | image_url: width: 2000 }} 2000w,
+          {{ section.settings.bg_image | image_url: width: 2400 }} 2400w
+        "
+        sizes="100vw"
+        alt=""
+        loading="lazy"
+        width="{{ section.settings.bg_image.width }}"
+        height="{{ section.settings.bg_image.height }}"
+        style="object-position: {{ section.settings.image_position }};"
+      >
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'narkk-ibanner__bg-placeholder' }}
+    {%- endif -%}
+  </div>
+
+  {%- comment -%}── Heading + side text zone (top) ────────────────{%- endcomment -%}
+  {%- if has_heading or has_side -%}
+  <div class="narkk-ibanner__head-zone">
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'heading' -%}
+        <div class="narkk-ibanner__heading-wrap" {{ block.shopify_attributes }}>
+          <h2
+            class="narkk-ibanner__heading narkk-ibanner__heading--{{ block.settings.size }}"
+            data-narkk-ibanner-heading
+          >{{- block.settings.text | default: 'Heading' -}}</h2>
+
+          {%- comment -%}── Side text anchored inside heading wrap ─{%- endcomment -%}
+          {%- for inner in section.blocks -%}
+            {%- if inner.type == 'side_text' and inner.settings.text != blank -%}
+              <p class="narkk-ibanner__side" data-narkk-ibanner-side {{ inner.shopify_attributes }}>
+                {{- inner.settings.text -}}
+              </p>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- comment -%}── Side text without a heading block (fallback) ─{%- endcomment -%}
+    {%- unless has_heading -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'side_text' and block.settings.text != blank -%}
+          <p class="narkk-ibanner__side" data-narkk-ibanner-side {{ block.shopify_attributes }}>
+            {{- block.settings.text -}}
+          </p>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endunless -%}
+
+  </div>
+  {%- endif -%}
+
+  {%- comment -%}── Lower content zone (paragraph + CTAs) ─────────{%- endcomment -%}
+  {%- if has_paragraph or has_cta -%}
+  <div class="narkk-ibanner__lower">
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'paragraph' and block.settings.text != blank -%}
+        <p
+          class="narkk-ibanner__paragraph"
+          data-narkk-ibanner-paragraph
+          {{ block.shopify_attributes }}
+        >{{- block.settings.text -}}</p>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if has_cta -%}
+      <div class="narkk-ibanner__ctas">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'cta' and block.settings.label != blank -%}
+            <div class="narkk-ibanner__cta-item" data-narkk-ibanner-cta {{ block.shopify_attributes }}>
+              {%- render 'narkk-button',
+                label: block.settings.label,
+                url:   block.settings.url,
+                style: block.settings.style,
+                show_plus: true
+              -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+  {%- endif -%}
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-button.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-image-banner.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Image Banner",
+  "tag": "section",
+  "class": "narkk-ibanner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image focal point",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top",    "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center",   "label": "Left" },
+        { "value": "right center",  "label": "Right" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "number",
+      "id": "height",
+      "label": "Section height (desktop, px)",
+      "info": "On tablet and mobile the section switches to a 5:4 aspect ratio instead.",
+      "default": 800
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading text",
+          "default": "Philosophy"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            { "value": "s", "label": "Small — 160px" },
+            { "value": "m", "label": "Medium — 200px" },
+            { "value": "l", "label": "Large — 250px" }
+          ],
+          "default": "l"
+        }
+      ]
+    },
+    {
+      "type": "side_text",
+      "name": "Side text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Side text",
+          "default": "& Contract",
+          "info": "Sits lower-right beside the main heading"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "name": "CTA button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button label",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Button style",
+          "info": "Light and Outlined work best on dark images. Dark works best on light areas.",
+          "options": [
+            { "value": "outlined", "label": "Outlined (beige border on image)" },
+            { "value": "light",    "label": "Light (cream fill → dark hover)" },
+            { "value": "primary",  "label": "Primary (terracotta → dark hover)" },
+            { "value": "dark",     "label": "Dark (charcoal → light hover)" }
+          ],
+          "default": "light"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Banner — Philosophy",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": { "text": "Philosophy", "size": "s" }
+        }
+      ]
+    },
+    {
+      "name": "Image Banner — Loop",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": { "text": "Loop", "size": "l" }
+        },
+        {
+          "type": "paragraph",
+          "settings": {
+            "text": "In a world designed to break, we design to endure. This collection is the rejection of the disposable."
+          }
+        },
+        {
+          "type": "cta",
+          "settings": { "label": "Join the Loop", "style": "light" }
+        }
+      ]
+    },
+    {
+      "name": "Image Banner — Trade",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": { "text": "Trade", "size": "l" }
+        },
+        {
+          "type": "side_text",
+          "settings": { "text": "& Contract" }
+        },
+        {
+          "type": "paragraph",
+          "settings": {
+            "text": "If you're specifying for a space that belongs to someone else and you care deeply about what ends up in it — this program is for you."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

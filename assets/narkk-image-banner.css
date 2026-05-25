@@ -1,0 +1,187 @@
+/* ============================================================
+   NARKK IMAGE BANNER
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-ibanner {
+  height: var(--ibanner-height, 800px);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Background ───────────────────────────────────────────── */
+.narkk-ibanner__bg {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.narkk-ibanner__bg img,
+.narkk-ibanner__bg-placeholder {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Head zone ────────────────────────────────────────────── */
+
+/* Anchored to the top of the section; heading + side text live here */
+.narkk-ibanner__head-zone {
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 8rem;
+  z-index: 2;
+}
+
+/* Heading-only variant: vertically center the head zone */
+.narkk-ibanner--centered .narkk-ibanner__head-zone {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Relative container so side text can be absolutely positioned */
+.narkk-ibanner__heading-wrap {
+  pointer-events: none;
+  position: relative;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-ibanner__heading {
+  color: var(--narkk-beige);
+  display: block;
+  font-family: Outfit, sans-serif;
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.narkk-ibanner__heading--s { font-size: 16rem; }
+.narkk-ibanner__heading--m { font-size: 20rem; }
+.narkk-ibanner__heading--l { font-size: 25rem; }
+
+/* ── Side text ────────────────────────────────────────────── */
+
+/* Sits lower-right of the heading; absolute within heading-wrap */
+.narkk-ibanner__side {
+  bottom: -2rem;
+  color: var(--narkk-beige);
+  font-family: Outfit, sans-serif;
+  font-size: 6rem;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 8rem;
+}
+
+/* ── Lower content zone ───────────────────────────────────── */
+
+/* Paragraph + CTAs: pinned to section bottom, centred */
+.narkk-ibanner__lower {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  left: 0;
+  padding-bottom: 6rem;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+}
+
+/* ── Paragraph ────────────────────────────────────────────── */
+.narkk-ibanner__paragraph {
+  color: var(--narkk-beige);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+  max-width: 50rem;
+}
+
+/* ── CTAs ─────────────────────────────────────────────────── */
+.narkk-ibanner__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  justify-content: center;
+}
+
+/* Outlined on dark image: use beige border + text so it's visible */
+.narkk-ibanner__cta-item .narkk-btn-outlined {
+  border-color: var(--narkk-beige);
+  color: var(--narkk-beige);
+}
+
+.narkk-ibanner__cta-item .narkk-btn-outlined:hover {
+  background: var(--narkk-beige);
+  border-color: var(--narkk-beige);
+  color: var(--narkk-dark);
+}
+
+/* Dark button hover → light (beige), since it's always on a dark image */
+.narkk-ibanner__cta-item .narkk-btn-filled-dark:hover {
+  background: var(--narkk-beige);
+  border-color: var(--narkk-beige);
+  color: var(--narkk-dark);
+}
+
+/* ── Tablet / Mobile (≤1024px) ────────────────────────────── */
+@media (width <= 1024px) {
+  /* Switch from fixed px height to 5:4 aspect ratio */
+  .narkk-ibanner {
+    aspect-ratio: 5 / 4;
+    height: auto;
+  }
+
+  .narkk-ibanner__head-zone {
+    top: 6vw;
+  }
+
+  /* clamp() scales smoothly from 1024px down to phone width */
+  .narkk-ibanner__heading--s { font-size: clamp(5rem,  14vw, 16rem); }
+  .narkk-ibanner__heading--m { font-size: clamp(6rem,  18vw, 20rem); }
+  .narkk-ibanner__heading--l { font-size: clamp(7rem,  22vw, 25rem); }
+
+  .narkk-ibanner__side {
+    bottom: -1rem;
+    font-size: clamp(3rem, 6vw, 6rem);
+    right: 4vw;
+  }
+
+  .narkk-ibanner__lower {
+    gap: 2rem;
+    padding-bottom: 5vw;
+  }
+
+  .narkk-ibanner__paragraph {
+    font-size: min(var(--narkk-font-body-1), 3.5vw);
+    max-width: 80vw;
+  }
+}
+
+/* ── Small mobile (≤480px) ────────────────────────────────── */
+@media (width <= 480px) {
+  .narkk-ibanner__lower {
+    padding-bottom: 6vw;
+  }
+
+  .narkk-ibanner__paragraph {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+}

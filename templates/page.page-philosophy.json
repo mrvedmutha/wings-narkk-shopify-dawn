@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narkk_image_banner_qPtK4H": {
+      "type": "narkk-image-banner",
+      "blocks": {
+        "heading_AXfUxL": {
+          "type": "heading",
+          "settings": {
+            "text": "Philosophy",
+            "size": "s"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AXfUxL"
+      ],
+      "name": "Image Banner — Philosophy",
+      "settings": {
+        "bg_image": "shopify://shop_images/nark-page-philosophy-1.webp",
+        "image_position": "center center",
+        "height": 800
+      }
+    },
+    "narkk_homepage_community_cta_awLGwi": {
+      "type": "narkk-homepage-community-cta",
+      "blocks": {
+        "text_fAHBLD": {
+          "type": "text",
+          "settings": {
+            "content": "This isn’t just a brand. It’s a position.\nAnd we’re looking for people who share it.",
+            "text_style": "body1"
+          }
+        },
+        "text_hWNj9J": {
+          "type": "text",
+          "settings": {
+            "content": "The Inner Loop is narkk’s circle of people who don’t just buy mindfully, but think, make, and advocate for a different way of living. Designers, makers, writers — people who’ve long believed this, but never had a place for it.",
+            "text_style": "body1"
+          }
+        },
+        "text_XgrxCV": {
+          "type": "text",
+          "settings": {
+            "content": "This is that place. Built slowly and deliberately. No noise. No numbers game. Just the right people, doing meaningful work together.",
+            "text_style": "body1"
+          }
+        },
+        "subheading_4YHrJh": {
+          "type": "subheading",
+          "settings": {
+            "label": "Who We're Looking For",
+            "content": "Designers, Makers, Writers, Sustainability, \nAdvocates, Intentional Consumers"
+          }
+        },
+        "cta_eYUcgy": {
+          "type": "cta",
+          "settings": {
+            "label": "Join The Loop",
+            "url": "#",
+            "style": "outlined"
+          }
+        }
+      },
+      "block_order": [
+        "text_fAHBLD",
+        "text_hWNj9J",
+        "text_XgrxCV",
+        "subheading_4YHrJh",
+        "cta_eYUcgy"
+      ],
+      "name": "Narkk Community CTA",
+      "settings": {
+        "bg_image": "shopify://shop_images/nark-homepage-community-pic-loop-circle.webp",
+        "image_position": "center center",
+        "heading": "A CALL FOR COLLABORATORS",
+        "card_width": "narrow"
+      }
+    }
+  },
+  "order": [
+    "narkk_image_banner_qPtK4H",
+    "narkk_homepage_community_cta_awLGwi"
+  ]
+}
