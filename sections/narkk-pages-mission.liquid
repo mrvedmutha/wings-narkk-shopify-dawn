@@ -1,0 +1,105 @@
+{{ 'narkk-pages-mission.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-mission" data-narkk-mission>
+
+  {%- comment -%}── Background image ──────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-mission__bg" aria-hidden="true">
+    {%- if section.settings.bg_image != blank -%}
+      <img
+        src="{{ section.settings.bg_image | image_url: width: 2000 }}"
+        srcset="
+          {{ section.settings.bg_image | image_url: width: 800 }} 800w,
+          {{ section.settings.bg_image | image_url: width: 1200 }} 1200w,
+          {{ section.settings.bg_image | image_url: width: 2000 }} 2000w
+        "
+        sizes="100vw"
+        alt=""
+        loading="lazy"
+        width="{{ section.settings.bg_image.width }}"
+        height="{{ section.settings.bg_image.height }}"
+        style="object-position: {{ section.settings.image_position }};"
+      >
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-mission__bg-placeholder' }}
+    {%- endif -%}
+  </div>
+
+  <div class="narkk-mission__inner">
+
+    {%- comment -%}── Divider lines (desktop only) ──────────────────────────────{%- endcomment -%}
+    <div class="narkk-mission__h-line" aria-hidden="true">&nbsp;</div>
+    <div class="narkk-mission__v-line" aria-hidden="true">&nbsp;</div>
+
+    {%- comment -%}── Text (right column) ────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-mission__text">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="narkk-mission__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="narkk-mission__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-mission.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Mission Statement",
+  "tag": "section",
+  "class": "narkk-mission-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image focal point",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top",    "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center",   "label": "Left" },
+        { "value": "right center",  "label": "Right" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Mission statement",
+      "default": "To design modular, repairable, and beautiful objects that become lifelong companions — and to build a community that chooses quality over convenience, always."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Mission Statement"
+    }
+  ]
+}
+{% endschema %}

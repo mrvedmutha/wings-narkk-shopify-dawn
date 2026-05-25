@@ -1,0 +1,183 @@
+/* ============================================================
+   NARKK — MISSION STATEMENT
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-mission {
+  background: #9db8ba;
+  height: min(55.56vw, 80rem); /* 800/1440; capped at 800px */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Background image ─────────────────────────────────────── */
+.narkk-mission__bg {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.narkk-mission__bg img,
+.narkk-mission__bg-placeholder {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── 1440 constraint inner ────────────────────────────────── */
+.narkk-mission__inner {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 144rem;
+  position: relative;
+}
+
+/* ── Divider lines ────────────────────────────────────────── */
+.narkk-mission__h-line,
+.narkk-mission__v-line {
+  background: rgb(249 244 240 / 20%);
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Horizontal — at 36.67% (293.32 / 800) from top */
+.narkk-mission__h-line {
+  height: 1px;
+  left: 0;
+  right: 0;
+  top: 36.67%;
+  transform: scaleX(0);
+  transform-origin: center center;
+}
+
+/* Vertical — at 43.54% (626.99 / 1440) from left */
+.narkk-mission__v-line {
+  bottom: 0;
+  left: 43.54%;
+  top: 0;
+  transform: scaleY(0);
+  transform-origin: center center;
+  width: 1px;
+}
+
+/* ── Text column (right of v-line) ───────────────────────── */
+.narkk-mission__text {
+  bottom: 0;
+  left: 43.54%;
+  padding-left: 2.15%; /* 30.94 / 1440 — gap from v-line */
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+/* ── Eyebrow ──────────────────────────────────────────────── */
+.narkk-mission__eyebrow {
+  color: var(--narkk-beige);
+  font-size: var(--narkk-font-eyebrow);
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  position: absolute;
+  text-transform: uppercase;
+  top: 10.36%; /* 82.87 / 800 */
+}
+
+/* ── Heading / mission statement ─────────────────────────── */
+.narkk-mission__heading {
+  color: var(--narkk-beige);
+  font-size: clamp(2.4rem, 2.78vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 51.2rem; /* 512px — nearest multiple of 8 */
+  position: absolute;
+  text-transform: uppercase;
+  top: 40.63%; /* 325.02 / 800 */
+}
+
+/* ── Split masks — clip chars/words during reveal ────────── */
+.narkk-mission .narkk-split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.narkk-mission .narkk-split__char,
+.narkk-mission .narkk-split__word {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ── Mobile (≤1024px) ─────────────────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-mission {
+    background: var(--narkk-dark);
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Image becomes a fixed-height block at the top */
+  .narkk-mission__bg {
+    bottom: auto;
+    height: 60vw;
+    left: auto;
+    max-height: 48rem;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+
+  .narkk-mission__h-line,
+  .narkk-mission__v-line {
+    display: none;
+  }
+
+  .narkk-mission__inner {
+    height: auto;
+    max-width: 100%;
+    padding: 3.2rem 2.4rem 6rem;
+  }
+
+  .narkk-mission__text {
+    bottom: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    left: auto;
+    padding-left: 0;
+    position: static;
+    right: auto;
+    top: auto;
+  }
+
+  .narkk-mission__eyebrow,
+  .narkk-mission__heading {
+    left: auto;
+    max-width: 100%;
+    position: static;
+    top: auto;
+  }
+
+  .narkk-mission__eyebrow {
+    color: var(--narkk-beige);
+  }
+
+  .narkk-mission__heading {
+    color: var(--narkk-beige);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+  }
+}
+
+/* ── Small mobile (≤425px) ────────────────────────────────── */
+@media (width <= 425px) {
+  .narkk-mission__heading {
+    font-size: 3.2rem;
+  }
+}
