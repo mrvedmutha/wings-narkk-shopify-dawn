@@ -115,7 +115,7 @@
 /* ── Mobile (≤1024px) ─────────────────────────────────────── */
 @media (width <= 1024px) {
   .narkk-mission {
-    background: var(--narkk-dark);
+    background: var(--narkk-beige);
     display: flex;
     flex-direction: column;
     height: auto;
@@ -166,11 +166,11 @@
   }
 
   .narkk-mission__eyebrow {
-    color: var(--narkk-beige);
+    color: var(--narkk-dark);
   }
 
   .narkk-mission__heading {
-    color: var(--narkk-beige);
+    color: var(--narkk-dark);
     font-size: clamp(2.4rem, 6vw, 4rem);
   }
 }
