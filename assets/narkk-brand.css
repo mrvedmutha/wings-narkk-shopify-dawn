@@ -248,7 +248,8 @@ hr {
   vertical-align: bottom;
 }
 
-.narkk-split__char {
+.narkk-split__char,
+.narkk-split__word {
   display: inline-block;
   will-change: transform;
 }

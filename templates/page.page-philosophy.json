@@ -30,6 +30,16 @@
         "height": 800
       }
     },
+    "narkk_pages_text_rich_hqFQYf": {
+      "type": "narkk-pages-text-rich",
+      "name": "Text Rich",
+      "settings": {
+        "heading": "What you buy, how you live with it, and what you become of it, it's  all interconnected.",
+        "uppercase": true,
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
     "narkk_homepage_community_cta_awLGwi": {
       "type": "narkk-homepage-community-cta",
       "blocks": {
@@ -88,6 +98,7 @@
   },
   "order": [
     "narkk_image_banner_qPtK4H",
+    "narkk_pages_text_rich_hqFQYf",
     "narkk_homepage_community_cta_awLGwi"
   ]
 }

@@ -1,0 +1,34 @@
+/* ============================================================
+   NARKK PAGES — TEXT RICH
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-text-rich {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.narkk-text-rich__inner {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 102.4rem;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-text-rich__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: clamp(2.8rem, 5.5vw, 6rem);
+  font-weight: 300;
+  letter-spacing: var(--narkk-ls-h1);
+  line-height: clamp(3.2rem, 6.2vw, 6.5rem);
+  margin: 0;
+  text-align: center;
+}
+
+.narkk-text-rich__heading--upper {
+  text-transform: uppercase;
+}
