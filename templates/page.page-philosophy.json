@@ -40,6 +40,74 @@
         "padding_bottom": 120
       }
     },
+    "narkk_pages_mission_VFL6ig": {
+      "type": "narkk-pages-mission",
+      "name": "Narkk Mission Statement",
+      "settings": {
+        "bg_image": "shopify://shop_images/nark-page-philosophy-1.webp",
+        "image_position": "center center",
+        "eyebrow": "Our Mission",
+        "heading": "To design modular, repairable, and beautiful objects that become lifelong companions — and to build a community that chooses quality over convenience, always."
+      }
+    },
+    "narkk_pages_beliefs_pbTJNd": {
+      "type": "narkk-pages-beliefs",
+      "blocks": {
+        "belief_NhBGHM": {
+          "type": "belief",
+          "settings": {
+            "index_label": "001",
+            "heading": "Against Planned Obsolescence",
+            "body": "We build for the long haul. When a product reaches the end of its life, that decision belongs to the owner — not the manufacturer."
+          }
+        },
+        "belief_EX8jk6": {
+          "type": "belief",
+          "settings": {
+            "index_label": "002",
+            "heading": "Modularity as a Responsibility",
+            "body": "Every part that can be replaced should be. Modular design isn't a feature — it's an obligation to reduce waste and extend the life of everything we make."
+          }
+        },
+        "belief_gkmiB4": {
+          "type": "belief",
+          "settings": {
+            "index_label": "003",
+            "heading": "Timeless Over Trend",
+            "body": "We don't chase seasons. Our products are designed to belong in any decade — built on proportion, material honesty, and quiet restraint."
+          }
+        },
+        "belief_NTJLTe": {
+          "type": "belief",
+          "settings": {
+            "index_label": "004",
+            "heading": "Honest Materials, Honest Making",
+            "body": "Every piece is made in our Chennai workshop. We know exactly who made it, how, and from what. Full chain accountability — no exceptions."
+          }
+        },
+        "belief_wqe9hp": {
+          "type": "belief",
+          "settings": {
+            "index_label": "005",
+            "heading": "Buy Less. Choose Well.",
+            "body": "We are not in the business of urgency. We'd rather you own fewer things with real care than many things on impulse."
+          }
+        }
+      },
+      "block_order": [
+        "belief_NhBGHM",
+        "belief_EX8jk6",
+        "belief_gkmiB4",
+        "belief_NTJLTe",
+        "belief_wqe9hp"
+      ],
+      "name": "What We Believe",
+      "settings": {
+        "section_title": "What we believe",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
     "narkk_homepage_community_cta_awLGwi": {
       "type": "narkk-homepage-community-cta",
       "blocks": {
@@ -99,6 +167,8 @@
   "order": [
     "narkk_image_banner_qPtK4H",
     "narkk_pages_text_rich_hqFQYf",
+    "narkk_pages_mission_VFL6ig",
+    "narkk_pages_beliefs_pbTJNd",
     "narkk_homepage_community_cta_awLGwi"
   ]
 }

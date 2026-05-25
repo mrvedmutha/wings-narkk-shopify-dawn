@@ -1,0 +1,148 @@
+/* ============================================================
+   NARKK PAGES — WHAT WE BELIEVE
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-beliefs {
+  background: var(--narkk-secondary);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  width: 100%;
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.narkk-beliefs__inner {
+  display: flex;
+  margin: 0 auto;
+  max-width: 138rem;
+}
+
+/* ── Left column ──────────────────────────────────────────── */
+.narkk-beliefs__left {
+  flex: 0 0 40%;
+  padding-right: 4rem;
+}
+
+.narkk-beliefs__section-title {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h2);
+  margin: 0;
+  position: sticky;
+  text-transform: uppercase;
+  top: 8rem;
+}
+
+/* ── Right column ─────────────────────────────────────────── */
+.narkk-beliefs__right {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Entry ────────────────────────────────────────────────── */
+.narkk-beliefs__entry {
+  width: 100%;
+}
+
+/* ── Entry inner row: [index] | [content] ─────────────────── */
+.narkk-beliefs__entry-inner {
+  display: grid;
+  gap: 0 2.4rem;
+  grid-template-columns: 2fr 3fr;
+  padding: 3.2rem 0;
+}
+
+.narkk-beliefs__entry:first-child .narkk-beliefs__entry-inner {
+  padding-top: 0;
+}
+
+/* ── Index number ─────────────────────────────────────────── */
+.narkk-beliefs__index {
+  color: var(--narkk-primary);
+  display: block;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-highlight);
+  font-weight: 400;
+  line-height: var(--narkk-lh-highlight);
+  padding-top: 0.4rem;
+  visibility: hidden;
+}
+
+/* ── Content column ───────────────────────────────────────── */
+.narkk-beliefs__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* ── Belief heading ───────────────────────────────────────── */
+.narkk-beliefs__heading {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  visibility: hidden;
+}
+
+/* ── Body text ────────────────────────────────────────────── */
+.narkk-beliefs__body {
+  color: var(--narkk-body-muted);
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+/* ── Divider (animated left → right via GSAP scaleX) ─────── */
+.narkk-beliefs__divider {
+  background: var(--narkk-divider);
+  height: 1px;
+  transform-origin: left center;
+  width: 100%;
+}
+
+/* ── Mobile ───────────────────────────────────────────────── */
+@media (width < 750px) {
+  .narkk-beliefs {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .narkk-beliefs__inner {
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+
+  .narkk-beliefs__left {
+    flex: none;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .narkk-beliefs__section-title {
+    font-size: clamp(2.8rem, 8vw, 4rem);
+    position: static;
+  }
+
+  .narkk-beliefs__right {
+    width: 100%;
+  }
+
+  .narkk-beliefs__entry-inner {
+    gap: 0 1.2rem;
+    grid-template-columns: 4.8rem 1fr;
+    padding: 2.4rem 0;
+  }
+
+  .narkk-beliefs__entry:first-child .narkk-beliefs__entry-inner {
+    padding-top: 0;
+  }
+
+  .narkk-beliefs__index {
+    padding-top: 0.2rem;
+  }
+}

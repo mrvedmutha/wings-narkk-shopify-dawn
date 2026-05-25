@@ -1,0 +1,178 @@
+{{ 'narkk-pages-beliefs.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-beliefs {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-beliefs" data-narkk-beliefs>
+  <div class="narkk-beliefs__inner">
+
+    {%- comment -%}── Left sticky column ───────────────────────────────────{%- endcomment -%}
+    <div class="narkk-beliefs__left">
+      {%- if section.settings.section_title != blank -%}
+        <p class="narkk-beliefs__section-title">{{ section.settings.section_title }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}── Right entries column ─────────────────────────────────{%- endcomment -%}
+    <div class="narkk-beliefs__right">
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'belief' -%}
+          <div class="narkk-beliefs__entry" data-beliefs-entry {{ block.shopify_attributes }}>
+
+            <div class="narkk-beliefs__entry-inner">
+
+              {%- if block.settings.index_label != blank -%}
+                <span class="narkk-beliefs__index" data-beliefs-index>{{ block.settings.index_label }}</span>
+              {%- else -%}
+                <span></span>
+              {%- endif -%}
+
+              <div class="narkk-beliefs__content">
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="narkk-beliefs__heading" data-beliefs-heading>{{ block.settings.heading }}</h3>
+                {%- endif -%}
+                {%- if block.settings.body != blank -%}
+                  <p class="narkk-beliefs__body" data-beliefs-body>{{ block.settings.body }}</p>
+                {%- endif -%}
+              </div>
+
+            </div>
+
+            {%- unless forloop.last -%}
+              <div class="narkk-beliefs__divider" data-beliefs-divider aria-hidden="true">&nbsp;</div>
+            {%- endunless -%}
+
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-beliefs.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "What We Believe",
+  "tag": "section",
+  "class": "narkk-beliefs-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "What we believe"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "belief",
+      "name": "Belief entry",
+      "settings": [
+        {
+          "type": "text",
+          "id": "index_label",
+          "label": "Index label",
+          "default": "001"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Against Planned Obsolescence"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body text",
+          "default": "We build for the long haul. When a product reaches the end of its life, that decision belongs to the owner — not the manufacturer."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What We Believe",
+      "blocks": [
+        {
+          "type": "belief",
+          "settings": {
+            "index_label": "001",
+            "heading": "Against Planned Obsolescence",
+            "body": "We build for the long haul. When a product reaches the end of its life, that decision belongs to the owner — not the manufacturer."
+          }
+        },
+        {
+          "type": "belief",
+          "settings": {
+            "index_label": "002",
+            "heading": "Modularity as a Responsibility",
+            "body": "Every part that can be replaced should be. Modular design isn't a feature — it's an obligation to reduce waste and extend the life of everything we make."
+          }
+        },
+        {
+          "type": "belief",
+          "settings": {
+            "index_label": "003",
+            "heading": "Timeless Over Trend",
+            "body": "We don't chase seasons. Our products are designed to belong in any decade — built on proportion, material honesty, and quiet restraint."
+          }
+        },
+        {
+          "type": "belief",
+          "settings": {
+            "index_label": "004",
+            "heading": "Honest Materials, Honest Making",
+            "body": "Every piece is made in our Chennai workshop. We know exactly who made it, how, and from what. Full chain accountability — no exceptions."
+          }
+        },
+        {
+          "type": "belief",
+          "settings": {
+            "index_label": "005",
+            "heading": "Buy Less. Choose Well.",
+            "body": "We are not in the business of urgency. We'd rather you own fewer things with real care than many things on impulse."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
