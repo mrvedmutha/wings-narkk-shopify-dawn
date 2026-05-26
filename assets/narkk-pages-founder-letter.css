@@ -1,0 +1,155 @@
+/* ============================================================
+   NARKK PAGES — FOUNDER LETTER
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-founder-letter {
+  background-color: var(--narkk-beige);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  width: 100%;
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.narkk-founder-letter__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 0 auto;
+  max-width: 68rem;
+  width: 100%;
+}
+
+/* ── Image ─────────────────────────────────────────────────── */
+.narkk-founder-letter__image-wrap {
+  aspect-ratio: 679 / 504;
+  background-color: var(--narkk-white);
+  overflow: hidden;
+  width: 100%;
+}
+
+.narkk-founder-letter__image,
+.narkk-founder-letter__image-placeholder {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Content ───────────────────────────────────────────────── */
+.narkk-founder-letter__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Heading ───────────────────────────────────────────────── */
+.narkk-founder-letter__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h2);
+  margin: 0;
+  text-align: center;
+}
+
+.narkk-founder-letter__heading--upper {
+  text-transform: uppercase;
+}
+
+/* ── Body ──────────────────────────────────────────────────── */
+.narkk-founder-letter__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* ── Salutation ────────────────────────────────────────────── */
+.narkk-founder-letter__salutation {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2.6rem;
+  margin: 0;
+}
+
+/* ── Text (richtext output) ────────────────────────────────── */
+.narkk-founder-letter__text {
+  position: relative;
+}
+
+.narkk-founder-letter__text p {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+.narkk-founder-letter__text p + p {
+  margin-top: 1.6rem;
+}
+
+.narkk-founder-letter__text strong {
+  font-weight: 600;
+}
+
+.narkk-founder-letter__text em {
+  font-style: italic;
+}
+
+.narkk-founder-letter__text a {
+  color: var(--narkk-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.narkk-founder-letter__text ul,
+.narkk-founder-letter__text ol {
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.narkk-founder-letter__text li {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin-top: 0.8rem;
+}
+
+/* ── Overflow container (hidden paragraphs — JS-controlled) ── */
+.narkk-founder-letter__overflow {
+  height: 0;
+  overflow: hidden;
+}
+
+.narkk-founder-letter__overflow > *:first-child {
+  margin-top: 1.6rem;
+}
+
+/* ── Fade gradient on collapsed state ──────────────────────── */
+.narkk-founder-letter__text--collapsed::after {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--narkk-beige) 100%
+  );
+  bottom: 0;
+  content: "";
+  height: 6rem;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+/* ── Read more button ──────────────────────────────────────── */
+.narkk-founder-letter__more-btn {
+  display: none;
+  width: 100%;
+}

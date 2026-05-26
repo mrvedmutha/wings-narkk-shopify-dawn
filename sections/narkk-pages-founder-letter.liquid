@@ -1,0 +1,170 @@
+{{ 'narkk-pages-founder-letter.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-founder-letter {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-founder-letter" data-narkk-founder-letter>
+  <div class="narkk-founder-letter__inner">
+
+    {%- comment -%}── Image ──────────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-founder-letter__image-wrap">
+      {%- if section.settings.image != blank -%}
+        <img
+          class="narkk-founder-letter__image"
+          src="{{ section.settings.image | image_url: width: 1400 }}"
+          srcset="
+            {{ section.settings.image | image_url: width: 750 }} 750w,
+            {{ section.settings.image | image_url: width: 1100 }} 1100w,
+            {{ section.settings.image | image_url: width: 1400 }} 1400w
+          "
+          sizes="(min-width: 750px) 680px, 100vw"
+          alt="{{ section.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          style="object-position: {{ section.settings.image_position }};"
+        >
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-founder-letter__image-placeholder' }}
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}── Content ──────────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-founder-letter__content">
+
+      {%- if section.settings.heading != blank -%}
+        <h2
+          class="narkk-founder-letter__heading{% if section.settings.uppercase %} narkk-founder-letter__heading--upper{% endif %}"
+          data-founder-heading
+        >{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <div class="narkk-founder-letter__body">
+
+        {%- if section.settings.salutation != blank -%}
+          <p class="narkk-founder-letter__salutation">{{ section.settings.salutation }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.letter_content != blank -%}
+          <div class="narkk-founder-letter__text" data-founder-text>
+            {{ section.settings.letter_content }}
+          </div>
+
+          <button
+            class="narkk-founder-letter__more-btn narkk-btn-outlined narkk-btn--plus button"
+            data-founder-more
+            aria-expanded="false"
+          >
+            <span aria-hidden="true">+</span>
+            <span>{{ section.settings.read_more_label | upcase }}</span>
+          </button>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-founder-letter.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Founder Letter",
+  "tag": "section",
+  "class": "narkk-pages-founder-letter-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image focal point",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top",    "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center",   "label": "Left" },
+        { "value": "right center",  "label": "Right" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A letter from our founder"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase",
+      "label": "Uppercase heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "salutation",
+      "label": "Salutation",
+      "default": "Dear customer,"
+    },
+    {
+      "type": "richtext",
+      "id": "letter_content",
+      "label": "Letter body",
+      "info": "First 3 paragraphs are shown. A read more button appears automatically if there are more."
+    },
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "Read more label",
+      "default": "read more"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder Letter"
+    }
+  ]
+}
+{% endschema %}
