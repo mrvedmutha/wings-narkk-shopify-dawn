@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narkk_image_banner_3jk4NK": {
+      "type": "narkk-image-banner",
+      "blocks": {
+        "heading_ykkra4": {
+          "type": "heading",
+          "settings": {
+            "text": "Loop",
+            "size": "l"
+          }
+        },
+        "paragraph_jpA344": {
+          "type": "paragraph",
+          "settings": {
+            "text": "In a world designed to break, we design to endure. This collection is the rejection of the disposable. These are objects intended to age with you, be restored by us and eventually find new stories through resale."
+          }
+        },
+        "cta_FmCVNd": {
+          "type": "cta",
+          "settings": {
+            "label": "Join the Loop",
+            "url": "",
+            "style": "light"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ykkra4",
+        "paragraph_jpA344",
+        "cta_FmCVNd"
+      ],
+      "name": "Image Banner — Loop",
+      "settings": {
+        "bg_image": "shopify://shop_images/narkk-loop-img-banner.webp",
+        "image_position": "center center",
+        "height": 800
+      }
+    },
+    "narkk_homepage_community_cta_CAmMp8": {
+      "type": "narkk-homepage-community-cta",
+      "blocks": {
+        "text_43M3RG": {
+          "type": "text",
+          "settings": {
+            "content": "We are seeking voices that value depth over density. If you are a writer dedicated to mindful consumerism, intentional living, and the circular economy, we invite you to help us articulate the Narkk narrative.",
+            "text_style": "body1"
+          }
+        },
+        "cta_Ux9bwA": {
+          "type": "cta",
+          "settings": {
+            "label": "Write For Us",
+            "url": "",
+            "style": "outlined"
+          }
+        }
+      },
+      "block_order": [
+        "text_43M3RG",
+        "cta_Ux9bwA"
+      ],
+      "name": "Narkk Community CTA",
+      "settings": {
+        "bg_image": "shopify://shop_images/narkk-loop-join-bg-img.webp",
+        "image_position": "center center",
+        "heading": "To mindful content writers",
+        "card_width": "735px"
+      }
+    }
+  },
+  "order": [
+    "narkk_image_banner_3jk4NK",
+    "narkk_homepage_community_cta_CAmMp8"
+  ]
+}
