@@ -1,0 +1,328 @@
+/* ============================================================
+   NARKK PAGES — RE-MANIFESTO
+   Desktop: 100vw × 100vh pinned section, horizontal scroll track
+   Tablet:  stacked rows — image left / content right
+   Mobile:  fully stacked — image full-width above content
+   ============================================================ */
+
+/* ── Outer Shopify wrapper reset ──────────────────────────── */
+.narkk-re-manifesto-section {
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-re-manifesto {
+  background: var(--narkk-beige);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ── Left intro panel ─────────────────────────────────────── */
+.narkk-re-manifesto__left {
+  align-self: center;
+  flex: 0 0 38%;
+  height: 70rem;
+  max-width: 38%;
+  padding: 8rem 3rem 8rem 5vw;
+}
+
+.narkk-re-manifesto__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 53rem;
+}
+
+.narkk-re-manifesto__eyebrow {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-eyebrow);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-re-manifesto__heading {
+  color: var(--narkk-dark);
+  font-size: clamp(2.8rem, 2.78vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-re-manifesto__body {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+}
+
+.narkk-re-manifesto__body p {
+  margin: 0 0 1.6rem;
+}
+
+.narkk-re-manifesto__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Right panel (overflow container) ────────────────────── */
+.narkk-re-manifesto__right {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Scrollable track ─────────────────────────────────────── */
+.narkk-re-manifesto__track {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.narkk-re-manifesto__card {
+  align-items: flex-end;
+  display: flex;
+  flex-shrink: 0;
+  gap: 2.4rem;
+  height: 70rem;
+  padding: 8rem clamp(3rem, 3.5vw, 5rem);
+}
+
+/* ── Card image block ─────────────────────────────────────── */
+.narkk-re-manifesto__card-image {
+  flex-shrink: 0;
+  height: 54rem;
+  overflow: hidden;
+  position: relative;
+  width: 38rem;
+}
+
+.narkk-re-manifesto__card-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.narkk-re-manifesto__card-img--placeholder {
+  height: 100%;
+  width: 100%;
+}
+
+/* Frame overlay — sits on top of the image, pointer-events: none */
+.narkk-re-manifesto__card-frame {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.narkk-re-manifesto__card-frame img {
+  display: block;
+  height: 90.3%;
+  left: 0;
+  object-fit: fill;
+  position: absolute;
+  top: 13.3%;
+  width: 100%;
+}
+
+/* ── Card content block ───────────────────────────────────── */
+.narkk-re-manifesto__card-content {
+  display: flex;
+  flex-direction: column;
+  height: 54rem;
+  justify-content: space-between;
+  width: 38rem;
+}
+
+.narkk-re-manifesto__card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-re-manifesto__card-eyebrow {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-eyebrow);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-re-manifesto__card-heading {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-re-manifesto__card-body {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+/* ── Large screens (> 1440px) — scale proportionally ─────── */
+@media (width > 1440px) {
+  .narkk-re-manifesto__left {
+    height: clamp(70rem, 48.6vw, 90rem);
+  }
+
+  .narkk-re-manifesto__card {
+    height: clamp(70rem, 48.6vw, 90rem);
+  }
+
+  .narkk-re-manifesto__card-image {
+    height: 100%;
+    width: clamp(38rem, 26.4vw, 50rem);
+  }
+
+  .narkk-re-manifesto__card-content {
+    height: 100%;
+    width: clamp(38rem, 26.4vw, 50rem);
+  }
+}
+
+/* ── Tablet (750px – 1024px) ──────────────────────────────── */
+@media (750px <= width <= 1024px) {
+  .narkk-re-manifesto {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Intro becomes full-width top block */
+  .narkk-re-manifesto__left {
+    align-self: auto;
+    flex: none;
+    height: auto;
+    max-width: 100%;
+    padding: 6rem 4rem;
+    width: 100%;
+  }
+
+  .narkk-re-manifesto__intro {
+    gap: 2.4rem;
+    max-width: 100%;
+  }
+
+  /* Right panel flows normally */
+  .narkk-re-manifesto__right {
+    flex: none;
+    overflow: visible;
+    width: 100%;
+  }
+
+  /* Track becomes a vertical list */
+  .narkk-re-manifesto__track {
+    align-items: flex-start;
+    flex-direction: column;
+    height: auto;
+    padding: 0 4rem 6rem;
+    will-change: unset;
+  }
+
+  /* Each card: image left, content right, one below the other */
+  .narkk-re-manifesto__card {
+    align-items: flex-start;
+    border-top: 1px solid var(--narkk-divider);
+    flex-direction: row;
+    height: auto;
+    padding: 4rem 0;
+    width: 100%;
+  }
+
+  .narkk-re-manifesto__card-image {
+    flex: 0 0 48%;
+    height: clamp(28rem, 48vw, 44rem);
+    width: auto;
+  }
+
+  .narkk-re-manifesto__card-content {
+    flex: 1;
+    height: clamp(28rem, 48vw, 44rem);
+    width: auto;
+  }
+}
+
+/* ── Mobile (< 750px) ─────────────────────────────────────── */
+@media (width < 750px) {
+  .narkk-re-manifesto {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .narkk-re-manifesto__left {
+    align-self: auto;
+    flex: none;
+    height: auto;
+    max-width: 100%;
+    padding: 5rem 2.4rem;
+    width: 100%;
+  }
+
+  .narkk-re-manifesto__intro {
+    gap: 2rem;
+    max-width: 100%;
+  }
+
+  .narkk-re-manifesto__heading {
+    font-size: clamp(2.8rem, 8vw, 3.6rem);
+  }
+
+  .narkk-re-manifesto__right {
+    flex: none;
+    overflow: visible;
+    width: 100%;
+  }
+
+  .narkk-re-manifesto__track {
+    align-items: flex-start;
+    flex-direction: column;
+    height: auto;
+    padding: 0 2.4rem 5rem;
+    will-change: unset;
+  }
+
+  /* Each card: image full-width, content below */
+  .narkk-re-manifesto__card {
+    border-top: 1px solid var(--narkk-divider);
+    flex-direction: column;
+    gap: 2.4rem;
+    height: auto;
+    padding: 3.2rem 0;
+    width: 100%;
+  }
+
+  .narkk-re-manifesto__card-image {
+    height: clamp(28rem, 80vw, 40rem);
+    width: 100%;
+  }
+
+  .narkk-re-manifesto__card-content {
+    height: auto;
+    justify-content: flex-start;
+    gap: 2.4rem;
+    width: 100%;
+  }
+}

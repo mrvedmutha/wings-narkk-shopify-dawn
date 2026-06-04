@@ -40,6 +40,21 @@
         "padding_bottom": 120
       }
     },
+    "narkk_pages_founder_letter_aEywMR": {
+      "type": "narkk-pages-founder-letter",
+      "name": "Founder Letter",
+      "settings": {
+        "image": "shopify://shop_images/narkk-philosophy-founder-letter-img.webp",
+        "image_position": "center center",
+        "heading": "A letter from our founder",
+        "uppercase": true,
+        "salutation": "Dear customer,",
+        "letter_content": "<p>My name is Niranjan. I’m the Creative Principal of narkk, and I want to share something I’ve never said in a brochure or product listing.For four years, I made furniture I wasn’t proud of.</p><p>Not because I didn’t care — but because the market had its own logic. Clients wanted pieces that looked good and lasted just long enough five years, maybe. And I delivered exactly that. Cheaper boards, faster finishes, borrowed designs. The business worked. But every time I walked away, something felt hollow.</p><p>Around the same time, in my own life, things I bought kept failing a phone that slowed after updates, appliances that died just after warranty, earphones that stopped working overnight. I told myself I was unlucky. That I’d picked the wrong products.But standing in my workshop one day, it clicked this wasn’t bad luck. This was the plan.</p><p>Products failing quietly, just past the point of complaint. Replacements framed as upgrades. A system designed to keep us buying.</p>",
+        "read_more_label": "read more",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
     "narkk_pages_mission_VFL6ig": {
       "type": "narkk-pages-mission",
       "name": "Narkk Mission Statement",
@@ -48,6 +63,69 @@
         "image_position": "center center",
         "eyebrow": "Our Mission",
         "heading": "To design modular, repairable, and beautiful objects that become lifelong companions — and to build a community that chooses quality over convenience, always."
+      }
+    },
+    "narkk_pages_re_manifesto_mQyRaU": {
+      "type": "narkk-pages-re-manifesto",
+      "blocks": {
+        "commitment_QfJhBP": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/narkk-re-manifesto-img-1.webp",
+            "eyebrow": "(01) Restore",
+            "heading": "We'll help you bring it back.",
+            "body": "If something wears out, fades, or breaks — we want to know. narkk products are designed so that components can be repaired or replaced individually. No part of what we make should ever force a full replacement. We'll guide you through the fix, or do it with you."
+          }
+        },
+        "commitment_cRNrnR": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/narkk-re-manifesto-img-2.webp",
+            "eyebrow": "(02) Recycle",
+            "heading": "When it's truly done, we close the loop.",
+            "body": "If a narkk product reaches the genuine end of its usable life, we take responsibility for what comes next. We work to ensure materials are broken down responsibly — not dumped. A landfill is never the answer, and we don't design products that quietly accept it as one."
+          }
+        },
+        "commitment_H36V68": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/narkk-re-manifesto-img-3.webp",
+            "eyebrow": "(03) Resale",
+            "heading": "Good things deserve a second home.",
+            "body": "A narkk product that no longer fits your space shouldn't disappear — it should find someone who needs it. We actively support resale within our community and will help connect sellers with buyers. Objects built to last are worth passing on."
+          }
+        },
+        "commitment_tCyrWa": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/narkk-re-manifesto-img-4.webp",
+            "eyebrow": "(04) Return",
+            "heading": "Send it back. We'll take it from here.",
+            "body": "If a narkk product reaches the genuine end of its usable life, we take responsibility for what comes next. We work to ensure materials are broken down responsibly — not dumped. A landfill is never the answer, and we don't design products that quietly accept it as one."
+          }
+        },
+        "commitment_eFxxnr": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/narkk-re-manifesto-img-5.webp",
+            "eyebrow": "(05) Reimagined",
+            "heading": "Make it something new.",
+            "body": "Modularity means your narkk product can change with you — rearranged, repurposed, reconfigured for a new room, a new need, a new chapter. We'll share ideas, guides, and community stories on how people are reimagining what they already own instead of buying something new."
+          }
+        }
+      },
+      "block_order": [
+        "commitment_QfJhBP",
+        "commitment_cRNrnR",
+        "commitment_H36V68",
+        "commitment_tCyrWa",
+        "commitment_eFxxnr"
+      ],
+      "name": "Re-Manifesto",
+      "settings": {
+        "eyebrow": "The Re-Manifesto",
+        "heading": "Every product has a next chapter. We intend to be part of it.",
+        "body": "<p>Most things are made to be replaced. We make things to be kept. <br/>Keeping isn’t just about durability — it’s about what happens years later, as homes and lives change. At narkk, a product’s story doesn’t end at the sale.<br/>We take responsibility for the full arc — through five commitments.</p>"
       }
     },
     "narkk_pages_beliefs_pbTJNd": {
@@ -167,7 +245,9 @@
   "order": [
     "narkk_image_banner_qPtK4H",
     "narkk_pages_text_rich_hqFQYf",
+    "narkk_pages_founder_letter_aEywMR",
     "narkk_pages_mission_VFL6ig",
+    "narkk_pages_re_manifesto_mQyRaU",
     "narkk_pages_beliefs_pbTJNd",
     "narkk_homepage_community_cta_awLGwi"
   ]

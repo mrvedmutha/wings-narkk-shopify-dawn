@@ -1,0 +1,207 @@
+{{ 'narkk-pages-re-manifesto.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-re-manifesto" data-narkk-re-manifesto>
+
+  {%- comment -%}── Left intro panel ─────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-re-manifesto__left">
+    <div class="narkk-re-manifesto__intro">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="narkk-re-manifesto__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="narkk-re-manifesto__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="narkk-re-manifesto__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+  {%- comment -%}── Right scrollable track ────────────────────────────────{%- endcomment -%}
+  <div class="narkk-re-manifesto__right" data-manifesto-right>
+    <div class="narkk-re-manifesto__track" data-manifesto-track>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'commitment' -%}
+          <div class="narkk-re-manifesto__card" data-manifesto-card {{ block.shopify_attributes }}>
+
+            {%- comment -%}── Image ──{%- endcomment -%}
+            <div class="narkk-re-manifesto__card-image">
+              {%- if block.settings.image != blank -%}
+                <img
+                  class="narkk-re-manifesto__card-img"
+                  src="{{ block.settings.image | image_url: width: 800 }}"
+                  srcset="
+                    {{ block.settings.image | image_url: width: 500 }} 500w,
+                    {{ block.settings.image | image_url: width: 800 }} 800w,
+                    {{ block.settings.image | image_url: width: 1100 }} 1100w
+                  "
+                  sizes="(min-width: 1025px) 22vw, (min-width: 750px) 48vw, 100vw"
+                  alt="{{ block.settings.image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              {%- else -%}
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-re-manifesto__card-img narkk-re-manifesto__card-img--placeholder' }}
+              {%- endif -%}
+              {%- if section.settings.frame_image != blank -%}
+                <div class="narkk-re-manifesto__card-frame" aria-hidden="true">
+                  <img src="{{ section.settings.frame_image | image_url: width: 800 }}" alt="">
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- comment -%}── Text content ──{%- endcomment -%}
+            <div class="narkk-re-manifesto__card-content">
+
+              <div class="narkk-re-manifesto__card-header">
+                {%- if block.settings.eyebrow != blank -%}
+                  <p class="narkk-re-manifesto__card-eyebrow">{{ block.settings.eyebrow }}</p>
+                {%- endif -%}
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="narkk-re-manifesto__card-heading">{{ block.settings.heading }}</h3>
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.body != blank -%}
+                <p class="narkk-re-manifesto__card-body">{{ block.settings.body }}</p>
+              {%- endif -%}
+
+            </div>
+
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-re-manifesto.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Re-Manifesto",
+  "tag": "section",
+  "class": "narkk-re-manifesto-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intro panel"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Re-Manifesto"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Every product has a next chapter. We intend to be part of it."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text"
+    },
+    {
+      "type": "header",
+      "content": "Card frame overlay"
+    },
+    {
+      "type": "image_picker",
+      "id": "frame_image",
+      "label": "Frame overlay image",
+      "info": "Optional decorative frame layered over each card image. Export the Component 26 PNG from Figma and upload here."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "commitment",
+      "name": "Commitment",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow label",
+          "default": "(01) Restore"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "We'll help you bring it back."
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body text",
+          "default": "If something wears out, fades, or breaks — we want to know. narkk products are designed so that components can be repaired or replaced individually. No part of what we make should ever force a full replacement. We'll guide you through the fix, or do it with you."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Re-Manifesto",
+      "blocks": [
+        {
+          "type": "commitment",
+          "settings": {
+            "eyebrow": "(01) Restore",
+            "heading": "We'll help you bring it back.",
+            "body": "If something wears out, fades, or breaks — we want to know. narkk products are designed so that components can be repaired or replaced individually. No part of what we make should ever force a full replacement. We'll guide you through the fix, or do it with you."
+          }
+        },
+        {
+          "type": "commitment",
+          "settings": {
+            "eyebrow": "(02) Recycle",
+            "heading": "When it's truly done, we close the loop.",
+            "body": "If a narkk product reaches the genuine end of its usable life, we take responsibility for what comes next. We work to ensure materials are broken down responsibly — not dumped. A landfill is never the answer, and we don't design products that quietly accept it as one."
+          }
+        },
+        {
+          "type": "commitment",
+          "settings": {
+            "eyebrow": "(03) Resale",
+            "heading": "Good things deserve a second home.",
+            "body": "A narkk product that no longer fits your space shouldn't disappear — it should find someone who needs it. We actively support resale within our community and will help connect sellers with buyers. Objects built to last are worth passing on."
+          }
+        },
+        {
+          "type": "commitment",
+          "settings": {
+            "eyebrow": "(04) Return",
+            "heading": "Send it back. We'll take it from here.",
+            "body": "If a narkk product reaches the genuine end of its usable life, we take responsibility for what comes next. We work to ensure materials are broken down responsibly — not dumped. A landfill is never the answer, and we don't design products that quietly accept it as one."
+          }
+        },
+        {
+          "type": "commitment",
+          "settings": {
+            "eyebrow": "(05) Reimagined",
+            "heading": "Make it something new.",
+            "body": "Modularity means your narkk product can change with you — rearranged, repurposed, reconfigured for a new room, a new need, a new chapter. We'll share ideas, guides, and community stories on how people are reimagining what they already own instead of buying something new."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

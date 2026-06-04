@@ -10,6 +10,7 @@
   "globals": {
     "gsap": "readonly",
     "Lenis": "readonly",
+    "ScrollTrigger": "readonly",
     "Shopify": "readonly",
     "subscribe": "readonly",
     "PUB_SUB_EVENTS": "readonly",
