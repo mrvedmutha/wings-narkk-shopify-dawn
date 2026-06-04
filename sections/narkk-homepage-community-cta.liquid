@@ -1,14 +1,10 @@
 {{ 'narkk-homepage-community-cta.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  case section.settings.card_width
-    when 'compact'
-      assign card_width_class = 'narkk-community--compact'
-    when 'wide'
-      assign card_width_class = 'narkk-community--wide'
-    else
-      assign card_width_class = 'narkk-community--narrow'
-  endcase
+  assign card_width = section.settings.card_width | strip
+  if card_width == blank
+    assign card_width = '635px'
+  endif
 
   assign has_steps = false
   for block in section.blocks
@@ -19,7 +15,7 @@
   endfor
 -%}
 
-<section class="narkk-community {{ card_width_class }}" data-narkk-community>
+<section class="narkk-community" data-narkk-community style="--card-width: {{ card_width }};">
 
   {%- comment -%}── Background image ──────────────────────────────────────{%- endcomment -%}
   <div class="narkk-community__bg" aria-hidden="true">
@@ -182,16 +178,11 @@
       "content": "Layout"
     },
     {
-      "type": "select",
+      "type": "text",
       "id": "card_width",
       "label": "Card width",
-      "info": "Use Wide when adding Step blocks (3-column layout needs more room)",
-      "options": [
-        { "value": "compact", "label": "Compact — 555px" },
-        { "value": "narrow",  "label": "Narrow — 610px" },
-        { "value": "wide",    "label": "Wide — 907px" }
-      ],
-      "default": "narrow"
+      "info": "Enter any valid CSS width (e.g. 635px, 50rem, 80%). Defaults to 635px if left blank.",
+      "default": "635px"
     }
   ],
   "blocks": [

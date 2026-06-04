@@ -75,22 +75,11 @@
   z-index: 2;
 }
 
-/* Card width variants (desktop only) */
+/* Card width (desktop only) — driven by --card-width CSS var set inline */
 @media (width >= 1025px) {
-  .narkk-community--compact .narkk-community__card {
+  .narkk-community__card {
     margin-left: min(38rem, 26.4vw);
-    width: 63.5rem;
-  }
-
-  .narkk-community--narrow .narkk-community__card {
-    margin-left: min(38rem, 26.4vw);
-    width: 69rem;
-  }
-
-  .narkk-community--wide .narkk-community__card {
-    margin-left: min(24.8rem, 17.2vw);
-    max-width: 98.7rem;
-    width: calc(100% - min(24.8rem, 17.2vw) - 2rem);
+    width: var(--card-width, 635px);
   }
 }
 
