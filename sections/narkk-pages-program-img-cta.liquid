@@ -1,0 +1,148 @@
+{{ 'narkk-pages-program-img-cta.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-program-img-cta {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-program-img-cta" data-narkk-program-img-cta>
+  <div class="narkk-program-img-cta__inner">
+
+    {%- comment -%}── Image column ──────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-program-img-cta__image-wrap" data-program-image>
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 1400 }}"
+          srcset="
+            {{ section.settings.image | image_url: width: 600 }} 600w,
+            {{ section.settings.image | image_url: width: 900 }} 900w,
+            {{ section.settings.image | image_url: width: 1400 }} 1400w
+          "
+          sizes="(max-width: 768px) 100vw, 60vw"
+          alt="{{ section.settings.image.alt | escape }}"
+          class="narkk-program-img-cta__image"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          style="object-position: {{ section.settings.image_position }};"
+        >
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-program-img-cta__image-placeholder' }}
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}── Content column ────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-program-img-cta__content">
+
+      {%- if section.settings.body != blank -%}
+        <div class="narkk-program-img-cta__body" data-program-body>
+          {{ section.settings.body }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <div data-program-cta>
+          {%- render 'narkk-button',
+            label: section.settings.button_label,
+            url: section.settings.button_url,
+            style: 'outlined',
+            show_plus: true
+          -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-program-img-cta.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Program Image CTA",
+  "tag": "section",
+  "class": "narkk-program-img-cta-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image focal point",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top",    "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center",   "label": "Left" },
+        { "value": "right center",  "label": "Right" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>If you specify furniture for a living, you know the frustration — beautiful product, gone in four years. Client calls. You explain. The relationship takes the hit, not the brand that made it. narkk exists because we believe furniture should outlast the project. We’d like to work with designers who believe the same thing.</p><p>The narkk Trade Program is for professionals who are specifying with intention — people who want to put something into a client’s home that they won’t have to apologise for later. If that’s you, let’s talk.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Join Program"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Program Image CTA"
+    }
+  ]
+}
+{% endschema %}

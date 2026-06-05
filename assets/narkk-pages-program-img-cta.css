@@ -1,0 +1,85 @@
+/* ============================================================
+   NARKK PAGES — PROGRAM IMAGE CTA
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-program-img-cta {
+  width: 100%;
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.narkk-program-img-cta__inner {
+  align-items: flex-end;
+  display: grid;
+  gap: 8rem;
+  grid-template-columns: 3fr 2fr;
+  margin: 0 auto;
+  max-width: 144rem;
+  padding-inline: 3.2rem;
+}
+
+/* ── Image column ─────────────────────────────────────────── */
+.narkk-program-img-cta__image-wrap {
+  aspect-ratio: 679 / 504;
+  overflow: hidden;
+}
+
+.narkk-program-img-cta__image,
+.narkk-program-img-cta__image-placeholder {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Content column ───────────────────────────────────────── */
+.narkk-program-img-cta__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Body text (richtext) ─────────────────────────────────── */
+.narkk-program-img-cta__body p {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+.narkk-program-img-cta__body p + p {
+  margin-top: 1.6rem;
+}
+
+.narkk-program-img-cta__body strong {
+  font-weight: 600;
+}
+
+.narkk-program-img-cta__body em {
+  font-style: italic;
+}
+
+.narkk-program-img-cta__body a {
+  color: var(--narkk-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* ── Tablet (≤1024px) ─────────────────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-program-img-cta__inner {
+    gap: 4rem;
+    padding-inline: 2.4rem;
+  }
+}
+
+/* ── Mobile (≤768px) ──────────────────────────────────────── */
+@media (width <= 768px) {
+  .narkk-program-img-cta__inner {
+    gap: 3.2rem;
+    grid-template-columns: 1fr;
+    padding-inline: 1.6rem;
+  }
+}
