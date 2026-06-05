@@ -1,0 +1,207 @@
+/* ── Section ─────────────────────────────────────────────────────────────── */
+.narkk-blog-grid {
+  background-color: var(--narkk-beige);
+}
+
+.narkk-blog-grid__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 12rem 3rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.narkk-blog-grid__heading {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: var(--narkk-lh-h2);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Content (heading → rows) ────────────────────────────────────────────── */
+.narkk-blog-grid__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+/* ── Row 1: Featured arrangement ─────────────────────────────────────────── */
+.narkk-blog-grid__row-featured {
+  display: grid;
+  gap: clamp(1.5rem, 5.5vw, 7.5rem);
+}
+
+.narkk-blog-grid__row-featured--right {
+  grid-template-columns: 1fr 1fr 2.47fr;
+}
+
+.narkk-blog-grid__row-featured--left {
+  grid-template-columns: 2.47fr 1fr 1fr;
+}
+
+/* Featured card (always first in DOM) moves to col 3 in right variant */
+.narkk-blog-grid__row-featured--right .narkk-blog-grid__card--featured {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* ── Row 2+: Equal 4-col grid ────────────────────────────────────────────── */
+.narkk-blog-grid__row-more {
+  display: grid;
+  gap: clamp(1.5rem, 6.5vw, 9.2rem);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ── Card base ───────────────────────────────────────────────────────────── */
+.narkk-blog-grid__card {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  text-decoration: none;
+}
+
+.narkk-blog-grid__card--no-link {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Card image ──────────────────────────────────────────────────────────── */
+.narkk-blog-grid__card-img-wrap {
+  background-color: var(--narkk-secondary);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Small card: portrait 275:356 */
+.narkk-blog-grid__card:not(.narkk-blog-grid__card--featured) .narkk-blog-grid__card-img-wrap {
+  aspect-ratio: 275 / 356;
+}
+
+/* Featured card: landscape 679:504 */
+.narkk-blog-grid__card--featured .narkk-blog-grid__card-img-wrap {
+  aspect-ratio: 679 / 504;
+}
+
+.narkk-blog-grid__card-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+}
+
+.narkk-blog-grid__card:not(.narkk-blog-grid__card--no-link):hover .narkk-blog-grid__card-img {
+  transform: scale(1.04);
+}
+
+/* Placeholder SVG */
+.narkk-blog-grid__card-placeholder {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Card text ───────────────────────────────────────────────────────────── */
+.narkk-blog-grid__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-blog-grid__card-eyebrow {
+  color: #7a8f90;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-highlight);
+  font-weight: 400;
+  line-height: var(--narkk-lh-highlight);
+  margin: 0;
+}
+
+.narkk-blog-grid__card-title {
+  color: #000;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* Placeholder muted state */
+.narkk-blog-grid__card--placeholder .narkk-blog-grid__card-eyebrow,
+.narkk-blog-grid__card--placeholder .narkk-blog-grid__card-title {
+  color: var(--narkk-meta);
+}
+
+/* ── Hidden (load more) ──────────────────────────────────────────────────── */
+.narkk-blog-grid__card--hidden {
+  display: none;
+}
+
+/* ── Load more CTA ───────────────────────────────────────────────────────── */
+.narkk-blog-grid__cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.narkk-blog-grid__cta {
+  min-width: 30.9rem;
+}
+
+/* ── Responsive: tablet (750px–1023px) ───────────────────────────────────── */
+@media (width >= 750px) and (width <= 1023px) {
+  .narkk-blog-grid__inner {
+    padding: 8rem 2.4rem;
+    gap: 6rem;
+  }
+}
+
+/* ── Responsive: mobile (<750px) — 2-col equal grid ─────────────────────── */
+@media (width < 750px) {
+  .narkk-blog-grid__inner {
+    gap: 5rem;
+    padding: 6rem 2rem;
+  }
+
+  .narkk-blog-grid__content {
+    gap: 4rem;
+  }
+
+  .narkk-blog-grid__heading {
+    font-size: var(--narkk-font-h3);
+    line-height: var(--narkk-lh-h3);
+  }
+
+  /* Both rows: 2-col equal */
+  .narkk-blog-grid__row-featured--right,
+  .narkk-blog-grid__row-featured--left {
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Reset explicit col placement for featured card */
+  .narkk-blog-grid__row-featured--right .narkk-blog-grid__card--featured {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  /* Featured reverts to portrait ratio on mobile */
+  .narkk-blog-grid__card--featured .narkk-blog-grid__card-img-wrap {
+    aspect-ratio: 275 / 356;
+  }
+
+  .narkk-blog-grid__row-more {
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .narkk-blog-grid__cta {
+    min-width: 0;
+    width: 100%;
+  }
+}
