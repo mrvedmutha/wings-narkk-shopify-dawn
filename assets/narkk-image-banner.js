@@ -17,7 +17,8 @@
 
     // ── Initial states ───────────────────────────────────────
     if (headingChars.length) gsap.set(headingChars, { yPercent: 110 });
-    if (sideWords.length)    gsap.set(sideWords,    { opacity: 0, y: 16 });
+    // Side text animates in on desktop; stays visible statically on tablet/mobile
+    if (isDesktop && sideWords.length) gsap.set(sideWords, { opacity: 0, y: 16 });
 
     // Paragraph: animate on desktop only (mobile stays static)
     if (isDesktop) {

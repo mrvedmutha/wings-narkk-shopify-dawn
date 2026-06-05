@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narkk_image_banner_DVAWFU": {
+      "type": "narkk-image-banner",
+      "blocks": {
+        "heading_fUNi7J": {
+          "type": "heading",
+          "settings": {
+            "text": "Trade",
+            "size": "l"
+          }
+        },
+        "side_text_EbNyRW": {
+          "type": "side_text",
+          "settings": {
+            "text": "& Contract"
+          }
+        },
+        "paragraph_AcwWWq": {
+          "type": "paragraph",
+          "settings": {
+            "text": "If you're specifying for a space that belongs to someone else and you care deeply about what ends up in it — this program is for you."
+          }
+        }
+      },
+      "block_order": [
+        "heading_fUNi7J",
+        "side_text_EbNyRW",
+        "paragraph_AcwWWq"
+      ],
+      "name": "Image Banner — Trade",
+      "settings": {
+        "bg_image": "shopify://shop_images/narkk-pages-trade-hero.webp",
+        "image_position": "center center",
+        "height": 800
+      }
+    },
+    "narkk_pages_text_rich_7WhXRz": {
+      "type": "narkk-pages-text-rich",
+      "name": "Text Rich",
+      "settings": {
+        "heading": "We build things that last. So do good designers.",
+        "uppercase": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_homepage_community_cta_fcfK3g": {
+      "type": "narkk-homepage-community-cta",
+      "blocks": {
+        "text_zUmwRN": {
+          "type": "text",
+          "settings": {
+            "content": "Simple process. No unnecessary gatekeeping. We just want to know who you are and what you do.",
+            "text_style": "body1"
+          }
+        },
+        "step_zzVQCk": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/narkk-how-to-apply-icon-1.svg",
+            "content": "Fill out the short application form: your name, studio or practice, and a brief note on the kind of work you do.",
+            "accent": ""
+          }
+        },
+        "step_ibthRh": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/narkk-how-to-apply-icon-2.svg",
+            "content": "We'll review and come back to you within 3 working days. If we have questions, Niranjan will reach out directly.",
+            "accent": ""
+          }
+        },
+        "step_CD77yg": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/narkk-how-to-apply-icon-3.svg",
+            "content": "Once approved, your trade account is activated on the narkk website,",
+            "accent": "15% applied automatically at checkout from your first order."
+          }
+        },
+        "cta_KTyFbM": {
+          "type": "cta",
+          "settings": {
+            "label": "Apply Now",
+            "url": "",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "text_zUmwRN",
+        "step_zzVQCk",
+        "step_ibthRh",
+        "step_CD77yg",
+        "cta_KTyFbM"
+      ],
+      "name": "Narkk Community CTA",
+      "settings": {
+        "bg_image": "shopify://shop_images/narkk-trade-how-to-apply.webp",
+        "image_position": "center center",
+        "heading": "HOW TO APPLY",
+        "card_width": "988px"
+      }
+    }
+  },
+  "order": [
+    "narkk_image_banner_DVAWFU",
+    "narkk_pages_text_rich_7WhXRz",
+    "narkk_homepage_community_cta_fcfK3g"
+  ]
+}

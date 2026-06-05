@@ -46,10 +46,12 @@
   transform: translateY(-50%);
 }
 
-/* Relative container so side text can be absolutely positioned */
+/* Shrinks to heading text width and centers — side text is then relative to Trade's right edge */
 .narkk-ibanner__heading-wrap {
+  margin: 0 auto;
   pointer-events: none;
   position: relative;
+  width: fit-content;
 }
 
 /* ── Heading ──────────────────────────────────────────────── */
@@ -71,9 +73,10 @@
 
 /* ── Side text ────────────────────────────────────────────── */
 
-/* Sits lower-right of the heading; absolute within heading-wrap */
+/* Sits below Trade, right edge aligned to Trade's right edge */
 .narkk-ibanner__side {
-  bottom: -2rem;
+  top: 100%;
+  right: 0;
   color: var(--narkk-beige);
   font-family: Outfit, sans-serif;
   font-size: 6rem;
@@ -82,7 +85,7 @@
   margin: 0;
   pointer-events: none;
   position: absolute;
-  right: 8rem;
+  white-space: nowrap;
 }
 
 /* ── Lower content zone ───────────────────────────────────── */
@@ -158,9 +161,7 @@
   .narkk-ibanner__heading--l { font-size: clamp(7rem,  22vw, 25rem); }
 
   .narkk-ibanner__side {
-    bottom: -1rem;
     font-size: clamp(3rem, 6vw, 6rem);
-    right: 4vw;
   }
 
   .narkk-ibanner__lower {
