@@ -13,25 +13,27 @@
     });
   }
 
-  function initCollagTwo() {
-    if (typeof gsap === 'undefined') return;
+  function initCollageTwo() {
+    if (typeof gsap === 'undefined' || !window.narkkSplit) return;
 
     var section = document.querySelector('[data-narkk-collage-two]');
     if (!section) return;
 
-    var isWide   = window.matchMedia('(width > 749px)').matches;
-    var hLine    = section.querySelector('.narkk-collage-two__h-line');
-    var vLine    = section.querySelector('.narkk-collage-two__v-line');
-    var img1Wrap = section.querySelector('.narkk-collage-two__img-wrap--1');
-    var img2Wrap = section.querySelector('.narkk-collage-two__img-wrap--2');
-    var lines    = section.querySelectorAll('.narkk-collage-two__line');
+    var isWide      = window.matchMedia('(width > 749px)').matches;
+    var hLine       = section.querySelector('.narkk-collage-two__h-line');
+    var vLine       = section.querySelector('.narkk-collage-two__v-line');
+    var img1Wrap    = section.querySelector('.narkk-collage-two__img-wrap--1');
+    var img2Wrap    = section.querySelector('.narkk-collage-two__img-wrap--2');
+    var heading     = section.querySelector('.narkk-collage-two__heading');
+
+    var headingWords = heading ? window.narkkSplit.words(heading) : [];
 
     // ── Initial states ───────────────────────────────────────
     if (isWide && hLine) gsap.set(hLine, { scaleX: 0 });
     if (isWide && vLine) gsap.set(vLine, { scaleY: 0 });
     if (img1Wrap) gsap.set(img1Wrap, { clipPath: 'inset(100% 0% 0% 0%)', pointerEvents: 'none' });
     if (img2Wrap) gsap.set(img2Wrap, { clipPath: 'inset(0% 0% 100% 0%)', pointerEvents: 'none' });
-    if (lines.length) gsap.set(lines, { yPercent: 110 });
+    if (headingWords.length) gsap.set(headingWords, { yPercent: 110, skewX: -15 });
 
     // ── Trigger on scroll into view ──────────────────────────
     var io = new IntersectionObserver(function (entries) {
@@ -66,13 +68,14 @@
         }, isWide ? 0.85 : 0.25);
       }
 
-      // 4. Heading lines — staggered slide up from behind mask
-      if (lines.length) {
-        tl.to(lines, {
+      // 4. Heading — word by word, slanting in
+      if (headingWords.length) {
+        tl.to(headingWords, {
           yPercent: 0,
+          skewX: 0,
           duration: 0.9,
           ease: 'power4.out',
-          stagger: { each: 0.15, from: 'start' }
+          stagger: { each: 0.07, from: 'start' }
         }, isWide ? 1.3 : 0.7);
       }
 
@@ -82,8 +85,8 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCollagTwo);
+    document.addEventListener('DOMContentLoaded', initCollageTwo);
   } else {
-    initCollagTwo();
+    initCollageTwo();
   }
 }());

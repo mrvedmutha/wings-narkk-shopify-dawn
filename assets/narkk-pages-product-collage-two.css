@@ -5,12 +5,19 @@
 .narkk-collage-two {
   background: var(--narkk-teal);
   color: var(--narkk-beige);
-  display: grid;
-  grid-template-columns: 49.68fr 50.32fr;
   height: 55.6vw;
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+/* Inner grid — capped at 1440px; lines + bg bleed full-width */
+.narkk-collage-two__inner {
+  display: grid;
+  grid-template-columns: 49.68fr 50.32fr;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
 }
 
 /* ── Divider lines ────────────────────────────────────────── */
@@ -91,10 +98,13 @@
 }
 
 /* ── Right: Text content ──────────────────────────────────── */
+
+/*
+  Top padding positions text 32px below the h-line.
+  h-line = 36.67% of section height = 36.67% of 55.6vw = 20.39vw
+*/
 .narkk-collage-two__text {
-  align-items: center;
-  display: flex;
-  padding: 5.6vw 4vw 5.6vw 2.15vw;
+  padding: calc(20.39vw + 3.2rem) 4vw 5.6vw 3.2rem;
 }
 
 .narkk-collage-two__heading {
@@ -105,24 +115,17 @@
   text-transform: uppercase;
 }
 
-/* Line-reveal masks */
-.narkk-collage-two__line-mask {
-  display: block;
-  overflow: hidden;
-}
-
-.narkk-collage-two__line {
-  display: block;
-  will-change: transform;
-}
-
 /* ── Mobile (≤749px) ──────────────────────────────────────── */
 @media (width <= 749px) {
   .narkk-collage-two {
+    height: auto;
+    overflow: visible;
+  }
+
+  .narkk-collage-two__inner {
     display: flex;
     flex-direction: column;
     height: auto;
-    overflow: visible;
   }
 
   .narkk-collage-two__h-line,
@@ -157,7 +160,6 @@
 
   /* Text stacked below images */
   .narkk-collage-two__text {
-    align-items: flex-start;
     padding: 3.2rem 2rem 6rem;
   }
 
@@ -173,6 +175,11 @@
     min-height: 55.6vw;
   }
 
+  .narkk-collage-two__inner {
+    height: 100%;
+    min-height: 55.6vw;
+  }
+
   .narkk-collage-two__heading {
     font-size: clamp(2rem, 2.4vw, 3.2rem);
   }
@@ -184,7 +191,8 @@
     height: 800px;
   }
 
+  /* h-line = 36.67% of 800px = 293.32px; text starts 32px below = 325.32px = 32.5rem */
   .narkk-collage-two__text {
-    padding: 8rem 5.8rem 8rem 3.1rem;
+    padding: 32.5rem 5.8rem 8rem 3.2rem;
   }
 }
