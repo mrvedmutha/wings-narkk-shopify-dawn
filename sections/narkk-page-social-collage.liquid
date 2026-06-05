@@ -1,0 +1,236 @@
+{{ 'narkk-page-social-collage.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign collage_blocks = section.blocks | where: 'type', 'collage_image'
+  assign panel_img_l = collage_blocks[0]
+  assign panel_img_r = collage_blocks[1] | default: collage_blocks[0]
+  assign social_blocks = section.blocks | where: 'type', 'social_icon'
+-%}
+
+<section class="narkk-sc" data-narkk-sc>
+
+  <div class="narkk-sc__h-line narkk-sc__h-line--top" aria-hidden="true">&nbsp;</div>
+
+  <div class="narkk-sc__body">
+
+    {%- comment -%}── Left panel ────────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-sc__panel narkk-sc__panel--l" aria-hidden="true">
+
+      <div class="narkk-sc__panel-img-wrap">
+        {%- if panel_img_l and panel_img_l.settings.image != blank -%}
+          <img
+            src="{{ panel_img_l.settings.image | image_url: width: 600 }}"
+            srcset="
+              {{ panel_img_l.settings.image | image_url: width: 300 }} 300w,
+              {{ panel_img_l.settings.image | image_url: width: 600 }} 600w
+            "
+            sizes="244px"
+            alt="{{ panel_img_l.settings.image.alt | escape }}"
+            class="narkk-sc__panel-img"
+            loading="lazy"
+            width="{{ panel_img_l.settings.image.width }}"
+            height="{{ panel_img_l.settings.image.height }}"
+          >
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'narkk-sc__panel-img' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}── Color overlays at fixed grid positions ──────────────{%- endcomment -%}
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c2r1">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--primary narkk-sc__ctile--c3r1">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c3r2">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c1r4">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c3r4">&nbsp;</div>
+
+      {%- comment -%}── Divider lines ────────────────────────────────────────{%- endcomment -%}
+      <div class="narkk-sc__pline narkk-sc__pline--vert narkk-sc__pline--v1" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--vert narkk-sc__pline--v2" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--horiz narkk-sc__pline--h1" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--horiz narkk-sc__pline--h2" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--horiz narkk-sc__pline--h3" aria-hidden="true">&nbsp;</div>
+
+    </div>
+
+    {%- comment -%}── Center content ────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-sc__center">
+      <div class="narkk-sc__text-group">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="narkk-sc__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="narkk-sc__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body_text != blank -%}
+          <p class="narkk-sc__body-text">{{ section.settings.body_text }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.social_label != blank or social_blocks.size > 0 -%}
+        <div class="narkk-sc__social">
+          {%- if section.settings.social_label != blank -%}
+            <p class="narkk-sc__social-label">{{ section.settings.social_label }}</p>
+          {%- endif -%}
+          {%- if social_blocks.size > 0 -%}
+            <div class="narkk-sc__icons">
+              {%- for block in social_blocks -%}
+                <a
+                  href="{{ block.settings.url | default: '#' }}"
+                  class="narkk-sc__icon-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="{{ block.settings.platform | remove: 'icon-social-' | remove: 'icon-' | capitalize }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <span class="narkk-sc__icon-svg">
+                    {{- block.settings.platform | append: '.svg' | inline_asset_content -}}
+                  </span>
+                </a>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}── Right panel ───────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-sc__panel narkk-sc__panel--r" aria-hidden="true">
+
+      <div class="narkk-sc__panel-img-wrap">
+        {%- if panel_img_r and panel_img_r.settings.image != blank -%}
+          <img
+            src="{{ panel_img_r.settings.image | image_url: width: 600 }}"
+            srcset="
+              {{ panel_img_r.settings.image | image_url: width: 300 }} 300w,
+              {{ panel_img_r.settings.image | image_url: width: 600 }} 600w
+            "
+            sizes="244px"
+            alt="{{ panel_img_r.settings.image.alt | escape }}"
+            class="narkk-sc__panel-img"
+            loading="lazy"
+            width="{{ panel_img_r.settings.image.width }}"
+            height="{{ panel_img_r.settings.image.height }}"
+          >
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'narkk-sc__panel-img' }}
+        {%- endif -%}
+      </div>
+
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c2r1">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--primary narkk-sc__ctile--c3r1">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c3r2">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c1r4">&nbsp;</div>
+      <div class="narkk-sc__ctile narkk-sc__ctile--teal   narkk-sc__ctile--c3r4">&nbsp;</div>
+
+      <div class="narkk-sc__pline narkk-sc__pline--vert narkk-sc__pline--v1" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--vert narkk-sc__pline--v2" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--horiz narkk-sc__pline--h1" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--horiz narkk-sc__pline--h2" aria-hidden="true">&nbsp;</div>
+      <div class="narkk-sc__pline narkk-sc__pline--horiz narkk-sc__pline--h3" aria-hidden="true">&nbsp;</div>
+
+    </div>
+
+  </div>
+
+  <div class="narkk-sc__h-line narkk-sc__h-line--bot" aria-hidden="true">&nbsp;</div>
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-page-social-collage.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Social Collage",
+  "tag": "section",
+  "class": "narkk-sc-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Find Your Community"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Where spaces turn into stories"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Our story continues where the trends end. Follow our journey of intentional living, behind-the-scenes craft, and mindful community on:"
+    },
+    {
+      "type": "text",
+      "id": "social_label",
+      "label": "Social label",
+      "default": "Join our community on"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collage_image",
+      "name": "Panel image",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "First block = left panel, second block = right panel. Add one block to use the same image on both sides."
+        }
+      ]
+    },
+    {
+      "type": "social_icon",
+      "name": "Social icon",
+      "settings": [
+        {
+          "type": "select",
+          "id": "platform",
+          "label": "Platform",
+          "options": [
+            { "value": "icon-social-discord",   "label": "Discord"    },
+            { "value": "icon-social-facebook",  "label": "Facebook"   },
+            { "value": "icon-social-github",    "label": "GitHub"     },
+            { "value": "icon-social-google",    "label": "Google"     },
+            { "value": "icon-social-instagram", "label": "Instagram"  },
+            { "value": "icon-social-linkedin",  "label": "LinkedIn"   },
+            { "value": "icon-social-messenger", "label": "Messenger"  },
+            { "value": "icon-social-pinterest", "label": "Pinterest"  },
+            { "value": "icon-social-reddit",    "label": "Reddit"     },
+            { "value": "icon-social-snapchat",  "label": "Snapchat"   },
+            { "value": "icon-social-spotify",   "label": "Spotify"    },
+            { "value": "icon-social-telegram",  "label": "Telegram"   },
+            { "value": "icon-social-thread",    "label": "Threads"    },
+            { "value": "icon-social-tiktok",    "label": "TikTok"     },
+            { "value": "icon-social-twitch",    "label": "Twitch"     },
+            { "value": "icon-social-whatsapp",  "label": "WhatsApp"   },
+            { "value": "icon-social-x",         "label": "X (Twitter)"},
+            { "value": "icon-social-youtube",   "label": "YouTube"    }
+          ],
+          "default": "icon-social-instagram"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Profile URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Social Collage"
+    }
+  ]
+}
+{% endschema %}

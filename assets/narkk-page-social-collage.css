@@ -1,0 +1,302 @@
+/* ============================================================
+   NARKK PAGE — SOCIAL COLLAGE
+   Panel: one full image + color overlays + grid lines on top
+   Grid dims: 244px × 619px  |  cols 70/70/100  |  rows 70/70/403/70
+   Gap between cells: 2px (lines sit in these gap positions)
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-sc {
+  background: var(--narkk-beige);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Full-width top / bottom divider lines ────────────────── */
+.narkk-sc__h-line {
+  background: var(--narkk-dark);
+  height: 1px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.narkk-sc__h-line--top {
+  top: 80px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.narkk-sc__h-line--bot {
+  bottom: 80px;
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+/* ── Three-column body ────────────────────────────────────── */
+.narkk-sc__body {
+  align-items: center;
+  column-gap: 80px;
+  display: grid;
+  grid-template-columns: 244px 1fr 244px;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 112px 0;
+}
+
+@media (width >= 1350px) {
+  .narkk-sc__body {
+    padding: 112px 88px;
+  }
+}
+
+/* ── Panel ────────────────────────────────────────────────── */
+.narkk-sc__panel {
+  height: 619px;
+  position: relative;
+  width: 244px;
+}
+
+/* ── Full-panel image ─────────────────────────────────────── */
+.narkk-sc__panel-img-wrap {
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.narkk-sc__panel-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+/* ── Color overlays ───────────────────────────────────────── */
+.narkk-sc__ctile {
+  position: absolute;
+  transform: scaleY(0);
+  transform-origin: top center;
+  z-index: 2;
+}
+
+.narkk-sc__ctile--primary {
+  background: var(--narkk-primary);
+}
+
+.narkk-sc__ctile--teal {
+  background: var(--narkk-teal);
+}
+
+.narkk-sc__ctile--c2r1 {
+  height: 70px;
+  left: 72px;
+  top: 0;
+  width: 70px;
+}
+
+.narkk-sc__ctile--c3r1 {
+  height: 70px;
+  left: 144px;
+  top: 0;
+  width: 100px;
+}
+
+.narkk-sc__ctile--c3r2 {
+  height: 70px;
+  left: 144px;
+  top: 72px;
+  width: 100px;
+}
+
+.narkk-sc__ctile--c1r4 {
+  height: 70px;
+  left: 0;
+  top: 549px;
+  width: 70px;
+}
+
+.narkk-sc__ctile--c3r4 {
+  height: 70px;
+  left: 144px;
+  top: 549px;
+  width: 100px;
+}
+
+/* ── Panel divider lines ──────────────────────────────────── */
+.narkk-sc__pline {
+  background: var(--narkk-divider);
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.narkk-sc__pline--vert {
+  bottom: 0;
+  top: 0;
+  width: 2px;
+}
+
+.narkk-sc__pline--horiz {
+  height: 2px;
+  left: 0;
+  right: 0;
+}
+
+.narkk-sc__pline--v1 {
+  left: 70px;
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.narkk-sc__pline--v2 {
+  left: 142px;
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.narkk-sc__pline--h1 {
+  top: 70px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.narkk-sc__pline--h2 {
+  top: 142px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.narkk-sc__pline--h3 {
+  top: 547px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ── Center content ───────────────────────────────────────── */
+.narkk-sc__center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 0 auto;
+  max-width: 61rem;
+  text-align: center;
+}
+
+.narkk-sc__text-group {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-sc__eyebrow {
+  color: var(--narkk-teal);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-eyebrow);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0 0 1.2rem;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.narkk-sc__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: clamp(3.2rem, 4.17vw, 6rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1.083;
+  margin: 0 0 2.4rem;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.narkk-sc__body-text {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* ── Social ───────────────────────────────────────────────── */
+.narkk-sc__social {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.narkk-sc__social-label {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+.narkk-sc__icons {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+.narkk-sc__icon-link {
+  align-items: center;
+  color: var(--narkk-dark);
+  display: flex;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.narkk-sc__icon-link:hover {
+  opacity: 0.65;
+}
+
+.narkk-sc__icon-svg svg {
+  display: block;
+  height: 30px;
+  width: 30px;
+}
+
+/* ── Mobile / tablet (<1025px) ────────────────────────────── */
+@media (width < 1025px) {
+  .narkk-sc {
+    padding: 0;
+  }
+
+  .narkk-sc__h-line {
+    display: none;
+  }
+
+  .narkk-sc__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .narkk-sc__panel {
+    display: none;
+  }
+
+  .narkk-sc__center {
+    gap: 40px;
+    padding: 48px 24px;
+  }
+
+  .narkk-sc__heading {
+    font-size: clamp(2.8rem, 7.5vw, 4.8rem);
+  }
+}
