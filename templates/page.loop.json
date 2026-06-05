@@ -149,6 +149,100 @@
         "heading": "What you buy, how you live with it and what you become of it,\nIt's all Inter-Connected."
       }
     },
+    "narkk_blog_grid_aH9H7R": {
+      "type": "narkk-blog-grid",
+      "blocks": {
+        "article_card_hE8cF9": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-3.webp",
+            "eyebrow": "Advice",
+            "title": "Move beyond trends. Design a timeless sanctuary.",
+            "url": ""
+          }
+        },
+        "article_card_h6EmwB": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-1.webp",
+            "eyebrow": "Tips",
+            "title": "The art of intentional living starts here.",
+            "url": ""
+          }
+        },
+        "article_card_QLV4RY": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-2.webp",
+            "eyebrow": "Advice",
+            "title": "Craft spaces that reflect who you truly are.",
+            "url": ""
+          }
+        },
+        "article_card_AYdhtK": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-4.webp",
+            "eyebrow": "Tips",
+            "title": "Simple changes, lasting impact on your home.",
+            "url": ""
+          }
+        },
+        "article_card_qEyDVp": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-2.webp",
+            "eyebrow": "Advice",
+            "title": "Why quality always outlives the trend cycle.",
+            "url": ""
+          }
+        },
+        "article_card_niDCQx": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-5.webp",
+            "eyebrow": "Advice",
+            "title": "Building rituals around the objects you love.",
+            "url": ""
+          }
+        },
+        "article_card_dh7GP7": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-2.webp",
+            "eyebrow": "Tips",
+            "title": "A beginner's guide to curating with purpose.",
+            "url": ""
+          }
+        },
+        "article_card_c3qjVK": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-2.webp",
+            "eyebrow": "Tips",
+            "title": "A beginner's guide to curating with purpose.",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_card_hE8cF9",
+        "article_card_h6EmwB",
+        "article_card_QLV4RY",
+        "article_card_AYdhtK",
+        "article_card_qEyDVp",
+        "article_card_niDCQx",
+        "article_card_dh7GP7",
+        "article_card_c3qjVK"
+      ],
+      "name": "Narkk Blog Grid",
+      "settings": {
+        "heading": "LIVING WITH NARKK",
+        "blog": "",
+        "featured_position": "left",
+        "cta_label": "LOAD MORE"
+      }
+    },
     "narkk_page_social_collage_wnxY8Y": {
       "type": "narkk-page-social-collage",
       "blocks": {
@@ -230,6 +324,7 @@
     "narkk_image_banner_3jk4NK",
     "narkk_blog_grid_aYPPVm",
     "narkk_pages_product_collage_two_JJR3np",
+    "narkk_blog_grid_aH9H7R",
     "narkk_page_social_collage_wnxY8Y",
     "narkk_homepage_community_cta_CAmMp8"
   ]
