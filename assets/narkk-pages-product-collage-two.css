@@ -1,0 +1,190 @@
+/* ============================================================
+   NARKK PAGES — PRODUCT COLLAGE TWO
+   ============================================================ */
+
+.narkk-collage-two {
+  background: var(--narkk-teal);
+  color: var(--narkk-beige);
+  display: grid;
+  grid-template-columns: 49.68fr 50.32fr;
+  height: 55.6vw;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Divider lines ────────────────────────────────────────── */
+.narkk-collage-two__h-line,
+.narkk-collage-two__v-line {
+  background: rgb(249 244 240 / 25%);
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+/* Horizontal line at 36.67% from top (293.32 / 800) */
+.narkk-collage-two__h-line {
+  height: 1px;
+  left: 0;
+  top: 36.67%;
+  transform: scaleX(0);
+  transform-origin: center center;
+  width: 100%;
+}
+
+/* Vertical line at 49.68% from left (715.4 / 1440) */
+.narkk-collage-two__v-line {
+  height: 100%;
+  left: 49.68%;
+  top: 0;
+  transform: scaleY(0);
+  transform-origin: center center;
+  width: 1px;
+}
+
+/* ── Left: Image cluster ──────────────────────────────────── */
+.narkk-collage-two__images {
+  height: 100%;
+  position: relative;
+}
+
+.narkk-collage-two__img-wrap {
+  overflow: hidden;
+  position: absolute;
+}
+
+/*
+  Image 1 — small, top-left
+  Figma: Component 20 at left=31px, top=43px, w=211px, h=250px
+  within left column 715.4px wide × 800px tall section
+*/
+.narkk-collage-two__img-wrap--1 {
+  clip-path: inset(100% 0% 0% 0%);
+  height: 31.25%;
+  left: 4.36%;
+  top: 5.38%;
+  width: 29.5%;
+}
+
+/*
+  Image 2 — large, starts at h-line
+  Figma: left=241.73px, top=293.32px, w=350.66px, h=489.58px
+  within left column
+*/
+.narkk-collage-two__img-wrap--2 {
+  clip-path: inset(0% 0% 100% 0%);
+  height: 61.2%;
+  left: 33.79%;
+  top: 36.67%;
+  width: 49.01%;
+}
+
+.narkk-collage-two__img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.narkk-collage-two__img--placeholder {
+  background: color-mix(in srgb, var(--narkk-teal) 75%, #000 25%);
+}
+
+/* ── Right: Text content ──────────────────────────────────── */
+.narkk-collage-two__text {
+  align-items: center;
+  display: flex;
+  padding: 5.6vw 4vw 5.6vw 2.15vw;
+}
+
+.narkk-collage-two__heading {
+  font-size: clamp(2.4rem, 2.78vw, 5.6rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Line-reveal masks */
+.narkk-collage-two__line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.narkk-collage-two__line {
+  display: block;
+  will-change: transform;
+}
+
+/* ── Mobile (≤749px) ──────────────────────────────────────── */
+@media (width <= 749px) {
+  .narkk-collage-two {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .narkk-collage-two__h-line,
+  .narkk-collage-two__v-line {
+    display: none;
+  }
+
+  /* Images side-by-side */
+  .narkk-collage-two__images {
+    display: flex;
+    gap: 1.2rem;
+    height: auto;
+    padding: 3.2rem 2rem 0;
+  }
+
+  .narkk-collage-two__img-wrap {
+    flex: 1;
+    height: auto;
+    overflow: hidden;
+    position: static;
+  }
+
+  .narkk-collage-two__img-wrap--1 {
+    aspect-ratio: 4 / 5;
+    width: auto;
+  }
+
+  .narkk-collage-two__img-wrap--2 {
+    aspect-ratio: 3 / 4;
+    width: auto;
+  }
+
+  /* Text stacked below images */
+  .narkk-collage-two__text {
+    align-items: flex-start;
+    padding: 3.2rem 2rem 6rem;
+  }
+
+  .narkk-collage-two__heading {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+  }
+}
+
+/* ── Mid-range: 750px–989px ───────────────────────────────── */
+@media (750px <= width <= 989px) {
+  .narkk-collage-two {
+    height: auto;
+    min-height: 55.6vw;
+  }
+
+  .narkk-collage-two__heading {
+    font-size: clamp(2rem, 2.4vw, 3.2rem);
+  }
+}
+
+/* ── Large screens (≥1440px) — pin to Figma dimensions ───── */
+@media (width >= 1440px) {
+  .narkk-collage-two {
+    height: 800px;
+  }
+
+  .narkk-collage-two__text {
+    padding: 8rem 5.8rem 8rem 3.1rem;
+  }
+}

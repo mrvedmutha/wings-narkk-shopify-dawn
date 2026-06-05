@@ -1,0 +1,102 @@
+{{ 'narkk-pages-product-collage-two.css' | asset_url | stylesheet_tag }}
+
+<section class="narkk-collage-two" data-narkk-collage-two>
+
+  {%- comment -%}── DIVIDER LINES (desktop only) ─────────────────────────{%- endcomment -%}
+  <div class="narkk-collage-two__h-line" aria-hidden="true">&nbsp;</div>
+  <div class="narkk-collage-two__v-line" aria-hidden="true">&nbsp;</div>
+
+  {%- comment -%}── LEFT: Image collage ──────────────────────────────────{%- endcomment -%}
+  <div class="narkk-collage-two__images">
+
+    <div class="narkk-collage-two__img-wrap narkk-collage-two__img-wrap--1">
+      {%- if section.settings.image_1 != blank -%}
+        <img
+          src="{{ section.settings.image_1 | image_url: width: 600 }}"
+          alt="{{ section.settings.image_1.alt | escape }}"
+          class="narkk-collage-two__img"
+          loading="lazy"
+          width="{{ section.settings.image_1.width }}"
+          height="{{ section.settings.image_1.height }}"
+        >
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'narkk-collage-two__img narkk-collage-two__img--placeholder' }}
+      {%- endif -%}
+    </div>
+
+    <div class="narkk-collage-two__img-wrap narkk-collage-two__img-wrap--2">
+      {%- if section.settings.image_2 != blank -%}
+        <img
+          src="{{ section.settings.image_2 | image_url: width: 1000 }}"
+          alt="{{ section.settings.image_2.alt | escape }}"
+          class="narkk-collage-two__img"
+          loading="lazy"
+          width="{{ section.settings.image_2.width }}"
+          height="{{ section.settings.image_2.height }}"
+        >
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'narkk-collage-two__img narkk-collage-two__img--placeholder' }}
+      {%- endif -%}
+    </div>
+
+  </div>
+
+  {%- comment -%}── RIGHT: Text content ──────────────────────────────────{%- endcomment -%}
+  <div class="narkk-collage-two__text">
+    {%- if section.settings.heading != blank -%}
+      <p class="narkk-collage-two__heading">
+        {%- assign heading_lines = section.settings.heading | split: "\n" -%}
+        {%- for line in heading_lines -%}
+          {%- assign clean_line = line | strip -%}
+          {%- if clean_line != blank -%}
+            <span class="narkk-collage-two__line-mask"><span class="narkk-collage-two__line">{{ clean_line }}</span></span>
+          {%- endif -%}
+        {%- endfor -%}
+      </p>
+    {%- endif -%}
+  </div>
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-product-collage-two.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Product Collage Two",
+  "tag": "section",
+  "class": "narkk-collage-two-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1 — small (top left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2 — large (lower left)"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading — use line break to split into two lines",
+      "default": "What you buy, how you live with it and what you become of it,\nIt's all Inter-Connected."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Product Collage Two"
+    }
+  ]
+}
+{% endschema %}
