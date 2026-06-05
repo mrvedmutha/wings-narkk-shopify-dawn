@@ -77,9 +77,22 @@
 
 /* Card width (desktop only) — driven by --card-width CSS var set inline */
 @media (width >= 1025px) {
+  .narkk-community__inner {
+    padding-right: 4rem;
+  }
+
   .narkk-community__card {
     margin-left: min(38rem, 26.4vw);
+    max-width: calc(100% - min(38rem, 26.4vw) - 4rem);
     width: var(--card-width, 635px);
+  }
+}
+
+/* Mid-desktop (1025–1399px): pull card closer to the left edge */
+@media (1025px <= width <= 1399px) {
+  .narkk-community__card {
+    margin-left: min(20rem, 16vw);
+    max-width: calc(100% - min(20rem, 16vw) - 4rem);
   }
 }
 
@@ -238,14 +251,27 @@
   }
 
   .narkk-community__steps {
-    gap: 3.2rem;
-    grid-template-columns: 1fr;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .narkk-community__cta .narkk-btn-outlined,
   .narkk-community__cta .narkk-btn-primary {
     max-width: 100%;
     width: 100%;
+  }
+}
+
+/* ── Mobile steps: 2-col grid (≤767px) ───────────────────── */
+@media (width <= 767px) {
+  .narkk-community__steps {
+    gap: 2.4rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Last step alone in its row (odd position) spans full width */
+  .narkk-community__step:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 }
 
