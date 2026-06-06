@@ -1,0 +1,250 @@
+{{ 'narkk-pages-trade-perks.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-trade-perks {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-trade-perks" data-narkk-trade-perks>
+  <div class="narkk-trade-perks__inner">
+
+    {%- comment -%}── Left sticky column ───────────────────────────────────{%- endcomment -%}
+    <div class="narkk-trade-perks__left">
+      <div class="narkk-trade-perks__left-sticky">
+
+        {%- assign tp_before    = section.settings.heading_before    | strip -%}
+        {%- assign tp_highlight = section.settings.heading_highlight | strip -%}
+        {%- assign tp_after     = section.settings.heading_after     | strip -%}
+
+        {%- if tp_before != blank or tp_highlight != blank or tp_after != blank -%}
+          <p class="narkk-trade-perks__heading" data-tp-heading>
+            {%- if tp_before != blank -%}
+              <span class="narkk-trade-perks__heading-default">{{- tp_before -}}</span>
+            {%- endif -%}
+            {%- if tp_highlight != blank -%}
+              <span class="narkk-trade-perks__heading-accent">{{- tp_highlight -}}</span>
+            {%- endif -%}
+            {%- if tp_after != blank -%}
+              <span class="narkk-trade-perks__heading-default">{{- tp_after -}}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        {%- if section.settings.subtext != blank -%}
+          <p class="narkk-trade-perks__subtext" data-tp-subtext>{{ section.settings.subtext }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.cta_label != blank -%}
+          <div data-tp-cta>
+            {%- render 'narkk-button',
+              style: 'outlined-sm',
+              label: section.settings.cta_label,
+              url: section.settings.cta_url,
+              show_plus: true
+            -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+    {%- comment -%}── Right entries column ─────────────────────────────────{%- endcomment -%}
+    <div class="narkk-trade-perks__right">
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'perk' -%}
+          <div class="narkk-trade-perks__entry" data-tp-entry {{ block.shopify_attributes }}>
+
+            <div class="narkk-trade-perks__entry-inner">
+
+              {%- if block.settings.index_label != blank -%}
+                <span class="narkk-trade-perks__index" data-tp-index>{{ block.settings.index_label }}</span>
+              {%- else -%}
+                <span></span>
+              {%- endif -%}
+
+              <div class="narkk-trade-perks__content">
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="narkk-trade-perks__perk-heading" data-tp-perk-heading>{{ block.settings.heading }}</h3>
+                {%- endif -%}
+                {%- if block.settings.body != blank -%}
+                  <p class="narkk-trade-perks__body" data-tp-body>{{ block.settings.body }}</p>
+                {%- endif -%}
+              </div>
+
+            </div>
+
+            {%- unless forloop.last -%}
+              <div class="narkk-trade-perks__divider" data-tp-divider aria-hidden="true">&nbsp;</div>
+            {%- endunless -%}
+
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-trade-perks.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Trade Perks",
+  "tag": "section",
+  "class": "narkk-trade-perks-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_before",
+      "label": "Heading — first part",
+      "info": "Appears in dark colour",
+      "default": "Your client will still love it in ten years."
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading — highlight",
+      "info": "Appears in terracotta",
+      "default": "That matters more than you think."
+    },
+    {
+      "type": "text",
+      "id": "heading_after",
+      "label": "Heading — last part",
+      "info": "Appears in dark colour. Leave blank if not needed."
+    },
+    {
+      "type": "header",
+      "content": "Body"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Sub-paragraph",
+      "default": "When you specify narkk, you're recommending something with a story behind it and a commitment in front of it. Here's what makes it an honest recommendation."
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Join Program"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Perk entry",
+      "settings": [
+        {
+          "type": "text",
+          "id": "index_label",
+          "label": "Index label",
+          "default": "001"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "No logo on any product"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body text",
+          "default": "Narkk furniture belongs to the space, not to us. It will never look dated because of branding."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trade Perks",
+      "blocks": [
+        {
+          "type": "perk",
+          "settings": {
+            "index_label": "001",
+            "heading": "No logo on any product",
+            "body": "Narkk furniture belongs to the space, not to us. It will never look dated because of branding."
+          }
+        },
+        {
+          "type": "perk",
+          "settings": {
+            "index_label": "002",
+            "heading": "Modular and repairable by design",
+            "body": "If a component wears, it's replaced, not the whole piece. Your client won't be back to you with a problem in two years."
+          }
+        },
+        {
+          "type": "perk",
+          "settings": {
+            "index_label": "003",
+            "heading": "Timeless, minimal aesthetic",
+            "body": "Designed to sit quietly in any space, any decade, without demanding attention or becoming inconvenient to live with."
+          }
+        },
+        {
+          "type": "perk",
+          "settings": {
+            "index_label": "004",
+            "heading": "Made in Chennai, by us",
+            "body": "Not outsourced. You know exactly what you're specifying and where it came from."
+          }
+        },
+        {
+          "type": "perk",
+          "settings": {
+            "index_label": "005",
+            "heading": "Backed by the Re-manifesto",
+            "body": "Restore, Recycle, Resale, Return, Reimagine. We stand behind the product for its full life, not just until it ships."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
