@@ -1,0 +1,187 @@
+/* ============================================================
+   NARKK PAGES — WHAT YOU GET
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-what-you-get {
+  background: var(--narkk-beige);
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.narkk-what-you-get__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin: 0 auto;
+  max-width: 144rem;
+  padding-inline: 3.2rem;
+  width: 100%;
+}
+
+/* ── Section heading ──────────────────────────────────────── */
+.narkk-what-you-get__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h1);
+  font-weight: 300;
+  letter-spacing: var(--narkk-ls-h1);
+  line-height: var(--narkk-lh-h1);
+  margin: 0;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+/* ── Grid ─────────────────────────────────────────────────── */
+.narkk-what-you-get__grid {
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ── Shared card base ─────────────────────────────────────── */
+.narkk-what-you-get__text-card,
+.narkk-what-you-get__image-card {
+  aspect-ratio: 333 / 427;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Image card ───────────────────────────────────────────── */
+.narkk-what-you-get__image-card {
+  background: #e9e0d4;
+}
+
+/* Image sits centered inside the card with warm sand background visible around it.
+   Insets calculated from Figma: image container is 221.95×287.324 inside 333×427 card. */
+.narkk-what-you-get__image-inner {
+  bottom: 16.36%;
+  left: 16.67%;
+  overflow: hidden;
+  position: absolute;
+  right: 16.67%;
+  top: 16.36%;
+}
+
+.narkk-what-you-get__image,
+.narkk-what-you-get__image-placeholder {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Text card ────────────────────────────────────────────── */
+.narkk-what-you-get__text-card {
+  border: 1px solid #d5d5d5;
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+}
+
+.narkk-what-you-get__text-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ── Eyebrow ──────────────────────────────────────────────── */
+.narkk-what-you-get__eyebrow {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin: 0;
+}
+
+/* ── Card heading ─────────────────────────────────────────── */
+.narkk-what-you-get__card-heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h3);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h3);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-what-you-get__highlight {
+  color: var(--narkk-primary);
+}
+
+/* ── Plus icon ────────────────────────────────────────────── */
+.narkk-what-you-get__plus-icon {
+  bottom: 1.6rem;
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  right: 1.6rem;
+  user-select: none;
+  width: 4.7rem;
+}
+
+/* ── Tablet (≤1024px) — 4 cols, reduce card heading size ──── */
+@media (width <= 1024px) {
+  .narkk-what-you-get__inner {
+    padding-inline: 2.4rem;
+  }
+
+  .narkk-what-you-get__grid {
+    gap: 1rem;
+  }
+
+  .narkk-what-you-get__card-heading {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+  }
+
+  .narkk-what-you-get__plus-icon {
+    width: 3.6rem;
+  }
+}
+
+/* ── Mobile (≤640px) — 2 columns ──────────────────────────── */
+@media (width <= 640px) {
+  .narkk-what-you-get__inner {
+    gap: 4rem;
+    padding-inline: 1.6rem;
+  }
+
+  .narkk-what-you-get__heading {
+    font-size: 4rem;
+    line-height: 4.8rem;
+  }
+
+  .narkk-what-you-get__grid {
+    gap: 0.8rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .narkk-what-you-get__card-heading {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+
+  .narkk-what-you-get__eyebrow {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+  .narkk-what-you-get__plus-icon {
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+  }
+}
+
+/* ── Small mobile (≤375px) — 1 column ─────────────────────── */
+@media (width <= 375px) {
+  .narkk-what-you-get__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .narkk-what-you-get__card-heading {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+}

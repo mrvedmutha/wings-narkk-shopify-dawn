@@ -1,0 +1,238 @@
+{{ 'narkk-pages-what-you-get.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-what-you-get {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-what-you-get" data-narkk-what-you-get>
+  <div class="narkk-what-you-get__inner">
+
+    {%- comment -%}── Section heading ──────────────────────────────────────{%- endcomment -%}
+    {%- if section.settings.heading != blank -%}
+      <p class="narkk-what-you-get__heading" data-wyg-heading>
+        {{ section.settings.heading }}
+      </p>
+    {%- endif -%}
+
+    {%- comment -%}── Card grid ─────────────────────────────────────────────{%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="narkk-what-you-get__grid" data-wyg-grid>
+        {%- for block in section.blocks -%}
+
+          {%- if block.type == 'image_card' -%}
+            <div class="narkk-what-you-get__image-card" data-wyg-card {{ block.shopify_attributes }}>
+              <div class="narkk-what-you-get__image-inner">
+                {%- if block.settings.image != blank -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 700 }}"
+                    srcset="
+                      {{ block.settings.image | image_url: width: 350 }} 350w,
+                      {{ block.settings.image | image_url: width: 700 }} 700w
+                    "
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    class="narkk-what-you-get__image"
+                    loading="lazy"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                {%- else -%}
+                  {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-what-you-get__image-placeholder' }}
+                {%- endif -%}
+              </div>
+            </div>
+
+          {%- elsif block.type == 'text_card' -%}
+            <div class="narkk-what-you-get__text-card" data-wyg-card {{ block.shopify_attributes }}>
+              <div class="narkk-what-you-get__text-card-content">
+                {%- if block.settings.eyebrow != blank -%}
+                  <p class="narkk-what-you-get__eyebrow">{{ block.settings.eyebrow }}</p>
+                {%- endif -%}
+                {%- assign wyg_before    = block.settings.text_before | strip -%}
+                {%- assign wyg_highlight = block.settings.highlight   | strip -%}
+                {%- assign wyg_after     = block.settings.text_after  | strip -%}
+                {%- if wyg_before != blank and wyg_highlight != blank -%}
+                  {%- assign wyg_before = wyg_before | append: ' ' -%}
+                {%- endif -%}
+                {%- if wyg_after != blank and wyg_highlight != blank -%}
+                  {%- assign wyg_after = ' ' | append: wyg_after -%}
+                {%- endif -%}
+                {%- if wyg_before != blank or wyg_highlight != blank or wyg_after != blank -%}
+                  <p class="narkk-what-you-get__card-heading" data-wyg-card-heading>
+                    {{- wyg_before -}}
+                    {%- if wyg_highlight != blank -%}
+                      <span class="narkk-what-you-get__highlight">{{ wyg_highlight }}</span>
+                    {%- endif -%}
+                    {{- wyg_after -}}
+                  </p>
+                {%- endif -%}
+              </div>
+              <img
+                src="{{ 'icon-narkk-wyg-plus.svg' | asset_url }}"
+                alt=""
+                aria-hidden="true"
+                class="narkk-what-you-get__plus-icon"
+                width="47"
+                height="49"
+              >
+            </div>
+
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-what-you-get.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "What You Get",
+  "tag": "section",
+  "class": "narkk-what-you-get-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "What You Get"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_card",
+      "name": "Text Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "info": "e.g. 001, 002",
+          "default": "001"
+        },
+        {
+          "type": "text",
+          "id": "text_before",
+          "label": "Text",
+          "info": "Full heading, or text before the highlighted word"
+        },
+        {
+          "type": "text",
+          "id": "highlight",
+          "label": "Highlighted word / phrase",
+          "info": "Appears in terracotta. Leave blank if no highlight."
+        },
+        {
+          "type": "text",
+          "id": "text_after",
+          "label": "Text after highlight",
+          "info": "Optional — any text that follows the highlighted word"
+        }
+      ]
+    },
+    {
+      "type": "image_card",
+      "name": "Image Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What You Get",
+      "blocks": [
+        {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "001",
+            "text_before": "Trade pricing ",
+            "highlight": "15%",
+            "text_after": " from day one"
+          }
+        },
+        { "type": "image_card" },
+        {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "002",
+            "text_before": "A direct line, not a support ticket"
+          }
+        },
+        { "type": "image_card" },
+        { "type": "image_card" },
+        {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "003",
+            "text_before": "Material and finish samples on request"
+          }
+        },
+        { "type": "image_card" },
+        {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "004",
+            "text_before": "Colour and finish customisation"
+          }
+        },
+        {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "005",
+            "text_before": "Early access to new collections"
+          }
+        },
+        { "type": "image_card" },
+        {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "006",
+            "text_before": "Portfolio collaboration and feature credit"
+          }
+        },
+        { "type": "image_card" }
+      ]
+    }
+  ]
+}
+{% endschema %}
