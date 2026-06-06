@@ -73,6 +73,7 @@
   --narkk-btn-sm-gap: 1rem;
   --narkk-btn-sm-font-plus: 1.6rem;
   --narkk-btn-sm-font-label: 1.24rem;
+  --narkk-btn-sm-min-width: 21.3rem;
 }
 
 /* ── HEADING GLOBALS ─────────────────────────────────────────── */
@@ -261,13 +262,12 @@ hr {
   gap: var(--narkk-btn-sm-gap);
   height: auto;
   min-height: 0;
-  min-width: 0;
+  min-width: var(--narkk-btn-sm-min-width);
   padding-bottom: var(--narkk-btn-sm-padding-y);
   padding-left: var(--narkk-btn-sm-padding-x);
   padding-right: var(--narkk-btn-sm-padding-x);
   padding-top: var(--narkk-btn-sm-padding-y);
   white-space: nowrap;
-  width: fit-content;
 }
 
 .narkk-btn-outlined-sm .narkk-btn__plus {

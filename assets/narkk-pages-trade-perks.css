@@ -56,6 +56,7 @@
   font-weight: 300;
   line-height: var(--narkk-lh-body-1);
   margin: 0;
+  max-width: 63%;
 }
 
 
@@ -131,6 +132,17 @@
   width: 100%;
 }
 
+/* ── Tablet ───────────────────────────────────────────────── */
+@media (750px <= width < 1024px) {
+  .narkk-trade-perks__left {
+    max-width: 70%;
+  }
+
+  .narkk-trade-perks__right {
+    width: 70%;
+  }
+}
+
 /* ── Mobile ───────────────────────────────────────────────── */
 @media (width < 750px) {
   .narkk-trade-perks {
@@ -139,7 +151,7 @@
   }
 
   .narkk-trade-perks__inner {
-    gap: 3.2rem;
+    gap: 12rem;
   }
 
   .narkk-trade-perks__left {
@@ -148,6 +160,10 @@
 
   .narkk-trade-perks__left-sticky {
     gap: 2rem;
+  }
+
+  .narkk-trade-perks__subtext {
+    max-width: 100%;
   }
 
   .narkk-trade-perks__heading {
