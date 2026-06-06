@@ -111,16 +111,15 @@
 .narkk-collections__card-label {
   bottom: 2.4rem;
   color: var(--label-color, #fff);
-  font-size: clamp(4rem, 5.6vw, 8rem);
+  font-size: var(--label-font-size, clamp(4rem, 5.6vw, 8rem));
   font-weight: 300;
-  left: 50%;
+  left: 1.6rem;
+  right: 1.6rem;
   line-height: 1.125;
   margin: 0;
   position: absolute;
   text-align: center;
   text-transform: uppercase;
-  transform: translateX(-50%);
-  white-space: nowrap;
   will-change: transform;
   z-index: 2;
 }
@@ -177,6 +176,7 @@
 @media (768px <= width <= 1024px) {
   .narkk-collections__card-label {
     bottom: auto;
+    font-size: min(var(--label-font-size, 5.5rem), 3.8vw);
     top: 2.4rem;
   }
 
