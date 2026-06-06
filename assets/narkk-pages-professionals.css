@@ -1,0 +1,127 @@
+/* ============================================================
+   NARKK PAGES — PROFESSIONALS (WHO THIS IS FOR)
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-professionals {
+  background: var(--narkk-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
+
+/* ── Inner (shared max-width constraint) ──────────────────── */
+.narkk-professionals__inner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin: 0 auto;
+  max-width: 144rem;
+  padding-inline: 3.2rem;
+  width: 100%;
+}
+
+/* ── Eyebrow heading ──────────────────────────────────────── */
+.narkk-professionals__eyebrow {
+  color: var(--narkk-beige);
+  font-family: Outfit, sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 4.8rem;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ── Image zone (line + image, line at vertical centre) ──── */
+.narkk-professionals__image-zone {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Full-bleed divider line ──────────────────────────────── */
+.narkk-professionals__line {
+  background: rgb(249 244 240 / 20%);
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+/* ── Image ────────────────────────────────────────────────── */
+.narkk-professionals__image-wrap {
+  overflow: hidden;
+  width: 27.5rem;
+}
+
+.narkk-professionals__image,
+.narkk-professionals__image-placeholder {
+  aspect-ratio: 275 / 356;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Text block ───────────────────────────────────────────── */
+.narkk-professionals__text {
+  text-align: center;
+  width: 100%;
+}
+
+.narkk-professionals__text p {
+  color: rgb(249 244 240 / 40%);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h1);
+  font-weight: 300;
+  letter-spacing: var(--narkk-ls-h1);
+  line-height: var(--narkk-lh-h1);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-professionals__text p strong {
+  color: var(--narkk-beige);
+  font-weight: 300;
+}
+
+/* ── Tablet (≤1024px) ─────────────────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-professionals__inner {
+    padding-inline: 2.4rem;
+  }
+
+  .narkk-professionals__text p {
+    font-size: 4.8rem;
+    line-height: 5.5rem;
+  }
+}
+
+/* ── Mobile (≤768px) ──────────────────────────────────────── */
+@media (width <= 768px) {
+  .narkk-professionals {
+    gap: 4rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .narkk-professionals__inner {
+    gap: 4rem;
+    padding-inline: 1.6rem;
+  }
+
+  .narkk-professionals__image-wrap {
+    width: min(27.5rem, 72vw);
+  }
+
+  .narkk-professionals__text p {
+    font-size: 3.2rem;
+    letter-spacing: -0.02em;
+    line-height: 3.8rem;
+  }
+}

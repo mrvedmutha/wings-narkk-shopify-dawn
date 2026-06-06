@@ -1,0 +1,176 @@
+{{ 'narkk-pages-professionals.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-professionals {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-professionals" data-narkk-professionals>
+
+  {%- comment -%}── Eyebrow ──────────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-professionals__inner">
+    {%- if section.settings.heading != blank -%}
+      <p class="narkk-professionals__eyebrow" data-prof-eyebrow>
+        {{ section.settings.heading }}
+      </p>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%}── Image zone: line sits at vertical centre of image ────{%- endcomment -%}
+  <div class="narkk-professionals__image-zone">
+    <div class="narkk-professionals__line" data-prof-line>&nbsp;</div>
+    <div class="narkk-professionals__inner">
+      <div class="narkk-professionals__image-wrap" data-prof-image>
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            srcset="
+              {{ section.settings.image | image_url: width: 300 }} 300w,
+              {{ section.settings.image | image_url: width: 600 }} 600w
+            "
+            sizes="(max-width: 768px) 72vw, 275px"
+            alt="{{ section.settings.image.alt | escape }}"
+            class="narkk-professionals__image"
+            loading="lazy"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+          >
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-professionals__image narkk-professionals__image-placeholder' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%}── Text lines (blocks) ──────────────────────────────────{%- endcomment -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="narkk-professionals__inner">
+      <div class="narkk-professionals__text" data-prof-text>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'text_line' -%}
+            <p {{ block.shopify_attributes }}>
+              {{- block.settings.text_before -}}
+              {%- if block.settings.highlight != blank -%}
+                <strong>{{ block.settings.highlight }}</strong>
+              {%- endif -%}
+              {{- block.settings.text_after -}}
+            </p>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-professionals.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Professionals",
+  "tag": "section",
+  "class": "narkk-professionals-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Eyebrow heading",
+      "default": "Who This Is For"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_line",
+      "name": "Text Line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_before",
+          "label": "Text",
+          "info": "Full line text, or text before the highlighted word"
+        },
+        {
+          "type": "text",
+          "id": "highlight",
+          "label": "Highlighted word / phrase",
+          "info": "Leave blank if no highlight on this line. Appears bright white."
+        },
+        {
+          "type": "text",
+          "id": "text_after",
+          "label": "Text after highlight",
+          "info": "Optional — any text that follows the highlighted word"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Professionals",
+      "blocks": [
+        {
+          "type": "text_line",
+          "settings": {
+            "text_before": "Interior designers, ",
+            "highlight": "Architects,",
+            "text_after": ""
+          }
+        },
+        {
+          "type": "text_line",
+          "settings": {
+            "text_before": "Home stagers, Hospitality consultants,",
+            "highlight": "",
+            "text_after": ""
+          }
+        },
+        {
+          "type": "text_line",
+          "settings": {
+            "text_before": "Set designers, Design studios",
+            "highlight": "",
+            "text_after": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
