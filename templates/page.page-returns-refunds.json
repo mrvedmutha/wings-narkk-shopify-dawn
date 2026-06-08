@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "narkk_policy_hero": {
+      "type": "narkk-pages-policy-hero",
+      "name": "Policy Hero",
+      "settings": {
+        "eyebrow": "LEGAL",
+        "title": "Returns & Refunds",
+        "last_updated": "Last updated: March 2026",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_policy_content": {
+      "type": "narkk-pages-policy-content",
+      "blocks": {
+        "section_heading_1": {
+          "type": "section_heading",
+          "settings": {
+            "heading": "Our Return Policy"
+          }
+        },
+        "intro_text_1": {
+          "type": "intro_text",
+          "settings": {
+            "content": "<p>If you are unhappy with your purchase, Narkk will be pleased to accept items for return or exchange that fall under our requirements. For any questions and further assistance, please contact us at <a href=\"mailto:hello@naarkk.com\">hello@naarkk.com</a>.</p>"
+          }
+        },
+        "subsection_1": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Return Window",
+            "content": "<ul><li>You may request a return within 3 days from the date of delivery.</li><li>Returned items must be unused, unworn, unwashed and must include the original tags and packaging.</li></ul>"
+          }
+        },
+        "subsection_2": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Replacement Policy",
+            "content": "<p>You are eligible for a replacement under the following conditions:</p><ul><li>The product arrives damaged or broken (unboxing video is mandatory).</li><li>You receive the wrong product, size, or variant.</li><li>Missing components or accessories in the package.</li><li>The item delivered is defective or not functioning as intended.</li><li>A manufacturing defect is identified immediately upon delivery.</li></ul><p>Note: Damage-related replacement requests will not be approved without an unboxing video.</p>"
+          }
+        },
+        "subsection_3": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Returns for Personal Preference",
+            "content": "<p>If you change your mind or are not satisfied with the product, you may still request a return.<br>No return handling fee will be charged — Narkk will take care of it.</p>"
+          }
+        },
+        "subsection_4": {
+          "type": "subsection",
+          "settings": {
+            "heading": "How to Initiate a Return or Replacement",
+            "content": "<p>You can reach us through any of the following:</p><ul><li>Website contact form</li><li>Email: <a href=\"mailto:hello@naarkk.com\">hello@naarkk.com</a></li><li>Social media platforms (links available in the website footer)</li></ul><p>After your request is reviewed and approved, we will provide you with return instructions.<br>Note: Items sent back without prior approval will not be accepted.</p>"
+          }
+        },
+        "subsection_5": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Refund Processing",
+            "content": "<ul><li>Refunds will be processed to your original payment method within 5–7 working days after the returned item is received and inspected.</li><li>Your bank or payment provider may require additional time to reflect the refund in your account.</li></ul>"
+          }
+        },
+        "subsection_6": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Non-Returnable Items",
+            "content": "<p>The following items are not eligible for return or refund:</p><ul><li>Customized or personalized products</li><li>Clearance or sale items</li><li>Products without original packaging or tags</li><li>Wallpapers and mirrors</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_1",
+        "intro_text_1",
+        "subsection_1",
+        "subsection_2",
+        "subsection_3",
+        "subsection_4",
+        "subsection_5",
+        "subsection_6"
+      ],
+      "name": "Policy Content",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "narkk_policy_hero",
+    "narkk_policy_content"
+  ]
+}

@@ -1,0 +1,58 @@
+/* ============================================================
+   NARKK PAGES — POLICY HERO
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-policy-hero {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.narkk-policy-hero__inner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ── Eyebrow ──────────────────────────────────────────────── */
+.narkk-policy-hero__eyebrow {
+  color: var(--narkk-meta);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+/* ── Title ────────────────────────────────────────────────── */
+.narkk-policy-hero__title {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: var(--narkk-lh-h2);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Last-updated meta ────────────────────────────────────── */
+.narkk-policy-hero__meta {
+  color: var(--narkk-meta);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+@media (width < 750px) {
+  .narkk-policy-hero__title {
+    font-size: clamp(2.8rem, 8vw, 4rem);
+  }
+}

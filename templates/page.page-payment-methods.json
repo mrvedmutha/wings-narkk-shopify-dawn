@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "narkk_policy_hero": {
+      "type": "narkk-pages-policy-hero",
+      "name": "Policy Hero",
+      "settings": {
+        "eyebrow": "LEGAL",
+        "title": "Payment Methods",
+        "last_updated": "Last updated: March 2026",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_policy_content": {
+      "type": "narkk-pages-policy-content",
+      "blocks": {
+        "section_heading_1": {
+          "type": "section_heading",
+          "settings": {
+            "heading": "Completing Your Purchase"
+          }
+        },
+        "intro_text_1": {
+          "type": "intro_text",
+          "settings": {
+            "content": "<p>To finalise your order on naarkk.com, you will be asked to choose a payment method to pay for the products in your shopping bag and any applicable delivery charge.</p><p>All orders are placed with Narkk. Your card issuer or payment provider may apply additional international bank charges. Narkk has no control over these charges and cannot predict their amount.</p>"
+          }
+        },
+        "subsection_1": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Supported Currencies",
+            "content": "<p>Purchased products and standard delivery charges are billed in the nominated currency of the shipping destination. The primary payment currency supported on naarkk.com is INR.</p><p>If your credit or debit card is not denominated in the currency of your purchase, the final price will be charged in the currency of your card and calculated by your card issuer. Please contact your issuing bank for further information before placing your order.</p>"
+          }
+        },
+        "subsection_2": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Accepted Payment Methods",
+            "content": "<p>naarkk.com accepts the following methods of payment:</p><ul><li>Visa and Mastercard</li><li>American Express — accepted in select countries only</li><li>Apple Pay — available in select countries</li><li>Google Pay</li><li>UPI — available for Indian customers</li></ul>"
+          }
+        },
+        "subsection_3": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Important Payment Information",
+            "content": "<p>Please note the following when placing your order:</p><ul><li>American Express is accepted in the United States and United Arab Emirates only</li><li>Apple Pay availability varies by country and device</li><li>UPI is available for Indian customers only</li></ul>"
+          }
+        },
+        "subsection_4": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Order Processing",
+            "content": "<p>Once your payment is verified and authorisation is received from your card issuer, the order is transmitted for processing.</p><p>In case of unavailability of products ordered, we will contact you by email or phone. If your order includes multiple products, you may choose to cancel the whole order and receive a full refund, or receive only the available products. In the latter case, only the price of available products and the applicable shipping costs will be charged.</p>"
+          }
+        },
+        "subsection_5": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Price Modifications",
+            "content": "<p>Narkk reserves the right to modify at any moment and without prior notice the price of products offered on naarkk.com.</p>"
+          }
+        },
+        "subsection_6": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Contact Us",
+            "content": "<p>For any questions about payment, please contact us at <a href=\"mailto:hello@naarkk.com\">hello@naarkk.com</a> or via Live Chat on our website.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_1",
+        "intro_text_1",
+        "subsection_1",
+        "subsection_2",
+        "subsection_3",
+        "subsection_4",
+        "subsection_5",
+        "subsection_6"
+      ],
+      "name": "Policy Content",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "narkk_policy_hero",
+    "narkk_policy_content"
+  ]
+}

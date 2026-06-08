@@ -1,0 +1,90 @@
+{{ 'narkk-pages-policy-hero.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-policy-hero {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-policy-hero" data-narkk-policy-hero>
+  <div class="narkk-policy-hero__inner">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="narkk-policy-hero__eyebrow">{{- section.settings.eyebrow -}}</p>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h1 class="narkk-policy-hero__title">{{- section.settings.title -}}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.last_updated != blank -%}
+      <p class="narkk-policy-hero__meta">{{- section.settings.last_updated -}}</p>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Policy Hero",
+  "tag": "section",
+  "class": "narkk-policy-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "LEGAL"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Policy title",
+      "default": "Shipping Policy"
+    },
+    {
+      "type": "text",
+      "id": "last_updated",
+      "label": "Last updated",
+      "default": "Last updated: March 2026"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policy Hero"
+    }
+  ]
+}
+{% endschema %}

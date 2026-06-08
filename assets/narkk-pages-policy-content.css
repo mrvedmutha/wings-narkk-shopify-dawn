@@ -1,0 +1,148 @@
+/* ============================================================
+   NARKK PAGES — POLICY CONTENT
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-policy-content {
+  background: var(--narkk-beige);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  width: 100%;
+}
+
+/* ── Inner — 760px content column, centred ────────────────── */
+.narkk-policy-content__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin: 0 auto;
+  max-width: 76rem;
+}
+
+/* ── Section heading (H2 tag – H3 visual scale) ───────────── */
+.narkk-policy-content__section-heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h3);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: var(--narkk-lh-h3);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Intro text ────────────────────────────────────────────── */
+.narkk-policy-content__intro {
+  color: var(--narkk-text);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+}
+
+.narkk-policy-content__intro p {
+  margin: 0;
+}
+
+/* ── Sub-section wrapper ──────────────────────────────────── */
+.narkk-policy-content__subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding-bottom: 3.2rem;
+}
+
+/* ── Sub-section heading (H3 tag – H4 visual scale) ──────── */
+.narkk-policy-content__sub-heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Hairline divider ─────────────────────────────────────── */
+.narkk-policy-content__divider {
+  background: var(--narkk-meta);
+  font-size: 0;
+  height: 1px;
+  line-height: 0;
+  width: 100%;
+}
+
+/* ── Body (richtext output) ────────────────────────────────── */
+.narkk-policy-content__body {
+  color: var(--narkk-text);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+}
+
+.narkk-policy-content__body p {
+  margin: 0 0 1.6rem;
+}
+
+.narkk-policy-content__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* 27px left-indent matches Figma ms-[27px] spec */
+.narkk-policy-content__body ul {
+  list-style-type: disc;
+  margin: 0 0 1.6rem;
+  padding-left: 2.7rem;
+}
+
+.narkk-policy-content__body ul:last-child {
+  margin-bottom: 0;
+}
+
+.narkk-policy-content__body li {
+  margin-bottom: 0.4rem;
+}
+
+.narkk-policy-content__body li:last-child {
+  margin-bottom: 0;
+}
+
+.narkk-policy-content__body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.narkk-policy-content__body a:hover {
+  color: var(--narkk-primary);
+}
+
+/* ── Tablet (750px – 1023px) ──────────────────────────────── */
+@media (750px <= width < 1024px) {
+  .narkk-policy-content__inner {
+    max-width: 100%;
+  }
+}
+
+/* ── Mobile (< 750px) ─────────────────────────────────────── */
+@media (width < 750px) {
+  .narkk-policy-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .narkk-policy-content__section-heading {
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+  }
+
+  .narkk-policy-content__sub-heading {
+    font-size: clamp(2rem, 5vw, 2.4rem);
+  }
+
+  .narkk-policy-content__subsection {
+    gap: 1.6rem;
+    padding-bottom: 2.4rem;
+  }
+}

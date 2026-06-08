@@ -1,0 +1,197 @@
+{
+  "sections": {
+    "narkk_policy_hero": {
+      "type": "narkk-pages-policy-hero",
+      "name": "Policy Hero",
+      "settings": {
+        "eyebrow": "LEGAL",
+        "title": "Terms & Conditions",
+        "last_updated": "Last updated: March 2026",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_policy_content": {
+      "type": "narkk-pages-policy-content",
+      "blocks": {
+        "section_heading_1": {
+          "type": "section_heading",
+          "settings": {
+            "heading": "Overview"
+          }
+        },
+        "intro_text_1": {
+          "type": "intro_text",
+          "settings": {
+            "content": "<p>Welcome to Naarkk! The terms \"we\", \"us\", and \"our\" refer to Naarkk. We operate this store and website, including all related information, content, features, tools, products, and services in order to provide you, the customer, with a curated shopping experience (the \"Services\").</p><p>The below terms and conditions, together with any policies referenced herein (these \"Terms of Service\" or \"Terms\") describe your rights and responsibilities when you use the Services. Please read these Terms carefully, as they include important information about your legal rights.</p><p>By visiting, interacting with, or using our Services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, you should not use or access our Services.</p>"
+          }
+        },
+        "subsection_1": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Access and Account",
+            "content": "<p>By agreeing to these Terms of Service, you confirm that you are at least the age of majority in your state or province of residence. You may be asked to provide certain information for purchases, including your email address, billing, payment, and shipping details. You agree that all information you provide is accurate and up-to-date.</p><p>You are responsible for maintaining the confidentiality of your account credentials and all activity under your account.</p>"
+          }
+        },
+        "subsection_2": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Our Products",
+            "content": "<p>We make every effort to display accurate product images and descriptions, but product colors and appearance may vary depending on your device and settings. We do not guarantee that products will meet your expectations.</p><p>All descriptions and prices are subject to change without notice. We reserve the right to discontinue any product at any time.</p>"
+          }
+        },
+        "subsection_3": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Orders",
+            "content": "<p>When placing an order, you are making an offer to purchase. We may accept or decline your order at our discretion. Your order is not confirmed until payment is processed and accepted. Orders can only be returned or exchanged according to our Refund Policy.</p>"
+          }
+        },
+        "subsection_4": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Prices and Billing",
+            "content": "<p>All prices are subject to change without notice. Posted prices do not include taxes, shipping, or customs fees unless stated otherwise. You agree to provide accurate and current billing information for all purchases.</p>"
+          }
+        },
+        "subsection_5": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Shipping and Delivery",
+            "content": "<p>We are not responsible for delays caused by shipping carriers, customs, or events beyond our control. Risk of loss passes to you once items are handed to the carrier.</p>"
+          }
+        },
+        "subsection_6": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Intellectual Property",
+            "content": "<p>All content, including text, images, graphics, logos, and designs, is owned by Naarkk or its licensors and is protected by applicable intellectual property laws. Unauthorized use is prohibited.</p>"
+          }
+        },
+        "subsection_7": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Optional Tools",
+            "content": "<p>We may provide access to third-party tools on an \"as is\" basis without warranties. Use of such tools is at your own risk and subject to third-party terms.</p>"
+          }
+        },
+        "subsection_8": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Third-Party Links",
+            "content": "<p>Our Services may contain links to third-party websites. We are not responsible for the content or accuracy of third-party sites, and accessing them is at your own risk.</p>"
+          }
+        },
+        "subsection_9": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Privacy Policy",
+            "content": "<p>Your use of the Services is subject to our Privacy Policy, which explains how we collect, use, and protect your personal information.</p>"
+          }
+        },
+        "subsection_10": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Feedback",
+            "content": "<p>By submitting feedback or suggestions, you grant us the right to use it for any purpose without obligation or compensation.</p>"
+          }
+        },
+        "subsection_11": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Errors and Omissions",
+            "content": "<p>We reserve the right to correct any errors, inaccuracies, or omissions, and to change or update information at any time without prior notice.</p>"
+          }
+        },
+        "subsection_12": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Prohibited Uses",
+            "content": "<p>You may not use the Services for unlawful purposes, infringe on intellectual property rights, spread harmful code, or interfere with the security and functionality of the Services.</p>"
+          }
+        },
+        "subsection_13": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Termination",
+            "content": "<p>We may terminate your access at any time without notice if you violate these Terms. Certain sections will survive termination.</p>"
+          }
+        },
+        "subsection_14": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Disclaimer of Warranties",
+            "content": "<p>Services and products are provided \"as is\" without warranties of any kind. We do not guarantee uninterrupted or error-free operation.</p>"
+          }
+        },
+        "subsection_15": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Limitation of Liability",
+            "content": "<p>To the maximum extent permitted by law, Naarkk shall not be liable for indirect, incidental, or consequential damages arising from your use of the Services.</p>"
+          }
+        },
+        "subsection_16": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Indemnification",
+            "content": "<p>You agree to indemnify and hold harmless Naarkk from claims arising from your breach of these Terms or misuse of the Services.</p>"
+          }
+        },
+        "subsection_17": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Governing Law",
+            "content": "<p>These Terms shall be governed by the laws of India, and disputes shall be subject to the jurisdiction of the courts located in Chennai, Tamil Nadu.</p>"
+          }
+        },
+        "subsection_18": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Changes to Terms",
+            "content": "<p>We reserve the right to update or modify these Terms at any time. Continued use of the Services constitutes acceptance of any changes.</p>"
+          }
+        },
+        "subsection_19": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Contact Information",
+            "content": "<p>For questions regarding these Terms of Service, please contact us at <a href=\"mailto:hello@naarkk.com\">hello@naarkk.com</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_1",
+        "intro_text_1",
+        "subsection_1",
+        "subsection_2",
+        "subsection_3",
+        "subsection_4",
+        "subsection_5",
+        "subsection_6",
+        "subsection_7",
+        "subsection_8",
+        "subsection_9",
+        "subsection_10",
+        "subsection_11",
+        "subsection_12",
+        "subsection_13",
+        "subsection_14",
+        "subsection_15",
+        "subsection_16",
+        "subsection_17",
+        "subsection_18",
+        "subsection_19"
+      ],
+      "name": "Policy Content",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "narkk_policy_hero",
+    "narkk_policy_content"
+  ]
+}

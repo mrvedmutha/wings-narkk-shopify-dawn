@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "narkk_policy_hero": {
+      "type": "narkk-pages-policy-hero",
+      "name": "Policy Hero",
+      "settings": {
+        "eyebrow": "LEGAL",
+        "title": "Shipping Policy",
+        "last_updated": "Last updated: March 2026",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_policy_content": {
+      "type": "narkk-pages-policy-content",
+      "blocks": {
+        "section_heading_1": {
+          "type": "section_heading",
+          "settings": {
+            "heading": "Order Processing"
+          }
+        },
+        "intro_text_1": {
+          "type": "intro_text",
+          "settings": {
+            "content": "<p>All orders are processed within 1-2 Business Days after payment confirmation. Business days are Monday to Saturday - 10:00AM to 07:00PM (IST), excluding public holidays.</p>"
+          }
+        },
+        "subsection_1": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Order Shipping",
+            "content": "<p>Most of our products are made to order, crafted individually with careful attention to detail.</p><ul><li>Once an order is placed, production begins and requires a minimum of 3 weeks to complete.</li><li>Shipping timelines will be shared after production is finished, based on your delivery location.</li><li>Since items are custom-made, cancellations or changes are not permitted once production has started.</li><li>You will receive regular updates on your order status, including tracking details once your product is dispatched.</li></ul>"
+          }
+        },
+        "subsection_2": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Business Hours",
+            "content": "<p>Our operational hours are Monday to Saturday, from 10:00AM to 07:00PM. Orders placed outside business hours or on holidays will be processed on the next working day.</p>"
+          }
+        },
+        "subsection_3": {
+          "type": "subsection",
+          "settings": {
+            "heading": "Additional Information",
+            "content": "<p>Once your order is shipped, you will receive a tracking number via email. Please allow up to 24 hours for the tracking information to update.</p><p>For any shipping-related queries, contact us at <a href=\"mailto:hello@naarkk.com\">hello@naarkk.com</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_1",
+        "intro_text_1",
+        "subsection_1",
+        "subsection_2",
+        "subsection_3"
+      ],
+      "name": "Policy Content",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "narkk_policy_hero",
+    "narkk_policy_content"
+  ]
+}
