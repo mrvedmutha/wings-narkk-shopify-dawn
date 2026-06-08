@@ -1,0 +1,130 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narkk_image_banner_zxNwgH": {
+      "type": "narkk-image-banner",
+      "blocks": {
+        "heading_hmTcfX": {
+          "type": "heading",
+          "settings": {
+            "text": "CONTACT US",
+            "size": "l"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hmTcfX"
+      ],
+      "name": "Image Banner — Loop",
+      "settings": {
+        "bg_image": "shopify://shop_images/narkk-pages-contact-hero.webp",
+        "image_position": "center center",
+        "height": 800
+      }
+    },
+    "narkk_pages_contact_form_VFeJbB": {
+      "type": "narkk-pages-contact-form",
+      "name": "Contact Form",
+      "settings": {
+        "eyebrow": "Reach us directly",
+        "address": "Address Line 1, No 123, Street, Area,\nChennai - 600096",
+        "email": "hello@naarkk.com",
+        "phone": "+91 98765 43210",
+        "heading": "Thoughtful spaces begin with a conversation.",
+        "subtext": "We’ll get back to you within 24–48 hours with the right guidance.",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_pages_contact_who_mWTYwb": {
+      "type": "narkk-pages-contact-who",
+      "blocks": {
+        "card_Kb4irY": {
+          "type": "card",
+          "settings": {
+            "icon": "customers",
+            "heading": "For Customers",
+            "body": "Looking to purchase or need help choosing the right piece?",
+            "button_label": "Get in touch",
+            "button_url": ""
+          }
+        },
+        "card_fPpqbk": {
+          "type": "card",
+          "settings": {
+            "icon": "professionals",
+            "heading": "For Designers & Professionals",
+            "body": "Looking to purchase or need help choosing the right piece?",
+            "button_label": "Apply for trade program",
+            "button_url": ""
+          }
+        },
+        "card_ehhmiA": {
+          "type": "card",
+          "settings": {
+            "icon": "support",
+            "heading": "For Support & Orders",
+            "body": "Questions about your order, delivery, or installation?",
+            "button_label": "Contact support",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_Kb4irY",
+        "card_fPpqbk",
+        "card_ehhmiA"
+      ],
+      "name": "Contact Categories",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_homepage_community_cta_jE37dB": {
+      "type": "narkk-homepage-community-cta",
+      "blocks": {
+        "subheading_6E99ha": {
+          "type": "subheading",
+          "settings": {
+            "label": "",
+            "content": "They’re built with intention, shaped by thoughtful decisions, the right materials, and the right people. Every space deserves care, clarity, and purpose from the start. We’re here to guide that process, helping you make choices that feel right today and continue to hold value over time."
+          }
+        },
+        "cta_8VbRep": {
+          "type": "cta",
+          "settings": {
+            "label": "Let's Get Started",
+            "url": "",
+            "style": "outlined"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_6E99ha",
+        "cta_8VbRep"
+      ],
+      "name": "Narkk Community CTA",
+      "settings": {
+        "bg_image": "shopify://shop_images/narkk-pages-contact-cta-img.webp",
+        "image_position": "center center",
+        "heading": "Good spaces don’t happen by chance",
+        "card_width": "700px"
+      }
+    }
+  },
+  "order": [
+    "narkk_image_banner_zxNwgH",
+    "narkk_pages_contact_form_VFeJbB",
+    "narkk_pages_contact_who_mWTYwb",
+    "narkk_homepage_community_cta_jE37dB"
+  ]
+}

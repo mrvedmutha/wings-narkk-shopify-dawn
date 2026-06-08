@@ -1,0 +1,144 @@
+/* ============================================================
+   NARKK PAGES — CONTACT CATEGORIES (who to contact)
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-pcw {
+  --pcw-rule: #868686;
+
+  background: var(--narkk-beige);
+  border-top: 1px solid var(--pcw-rule);
+  width: 100%;
+}
+
+/* ── Grid — fluid flex, no max-width ─────────────────────── */
+.narkk-pcw__grid {
+  align-items: stretch;
+  display: flex;
+
+  /* ~80px gap at 1440px viewport */
+  gap: 5.56vw;
+
+  /* ~30px side padding at 1440px viewport */
+  padding-left: 2.08vw;
+  padding-right: 2.08vw;
+}
+
+/* ── Card block ───────────────────────────────────────────── */
+
+/*
+  No top/bottom padding here — set via {% style %} on .narkk-pcw__block so the
+  grid fills the full section height and the dividers can stretch end-to-end.
+*/
+.narkk-pcw__block {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+/* ── Card top — icon + heading + body ─────────────────────── */
+.narkk-pcw__block-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* ── Icon ─────────────────────────────────────────────────── */
+.narkk-pcw__icon {
+  height: 6rem;
+  line-height: 0;
+}
+
+.narkk-pcw__icon img {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-pcw__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h3);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h3);
+  margin: 0;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+/* ── Body ─────────────────────────────────────────────────── */
+.narkk-pcw__body {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* ── Button ───────────────────────────────────────────────── */
+.narkk-pcw__btn {
+  margin-top: 3.2rem;
+  width: 100%;
+}
+
+/* Left-align content — overrides .button { justify-content: center } */
+.narkk-pcw__btn.narkk-btn--plus {
+  justify-content: flex-start;
+}
+
+/* ── Vertical divider ─────────────────────────────────────── */
+.narkk-pcw__divider {
+  background: var(--pcw-rule);
+  flex-shrink: 0;
+  font-size: 0;
+  line-height: 0;
+  width: 1px;
+}
+
+/* ── Tablet (750px – 1023px) — 3-column grid, no dividers ── */
+@media (750px <= width < 1024px) {
+  .narkk-pcw__grid {
+    display: grid;
+    gap: 2.4rem;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .narkk-pcw__divider {
+    display: none;
+  }
+}
+
+/* ── Mobile (< 750px) — single column ────────────────────── */
+@media (width < 750px) {
+  .narkk-pcw__grid {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 1fr;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Horizontal divider — bleeds past grid padding to fill full width */
+  .narkk-pcw__divider {
+    display: block;
+    height: 1px;
+    margin-left: -2rem;
+    width: calc(100% + 4rem);
+  }
+
+  .narkk-pcw__heading {
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+  }
+
+  .narkk-pcw__btn {
+    width: 100%;
+  }
+}

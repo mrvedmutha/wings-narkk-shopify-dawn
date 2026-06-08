@@ -1,0 +1,198 @@
+{{ 'narkk-pages-contact-who.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-pcw__block {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-pcw" data-narkk-pcw>
+  <div class="narkk-pcw__grid">
+
+    {%- for block in section.blocks -%}
+
+      {%- unless forloop.first -%}
+        <div class="narkk-pcw__divider" aria-hidden="true">&nbsp;</div>
+      {%- endunless -%}
+
+      {%- liquid
+        case block.settings.icon
+          when 'customers'
+            assign pcw_icon = 'icon-narkk-contact-customers.svg'
+          when 'professionals'
+            assign pcw_icon = 'icon-narkk-contact-professionals.svg'
+          when 'support'
+            assign pcw_icon = 'icon-narkk-contact-support.svg'
+          else
+            assign pcw_icon = ''
+        endcase
+      -%}
+
+      <div
+        class="narkk-pcw__block"
+        data-pcw-block="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      >
+
+        <div class="narkk-pcw__block-top">
+
+          {%- if pcw_icon != '' -%}
+            <div class="narkk-pcw__icon" data-pcw-icon>
+              <img
+                src="{{ pcw_icon | asset_url }}"
+                width="60"
+                height="60"
+                alt=""
+                loading="lazy"
+              >
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.heading != blank -%}
+            <p class="narkk-pcw__heading" data-pcw-heading>
+              {{- block.settings.heading -}}
+            </p>
+          {%- endif -%}
+
+          {%- if block.settings.body != blank -%}
+            <p class="narkk-pcw__body" data-pcw-body>
+              {{- block.settings.body -}}
+            </p>
+          {%- endif -%}
+
+        </div>
+
+        {%- if block.settings.button_label != blank -%}
+          <a
+            href="{{ block.settings.button_url | default: '#' }}"
+            class="button narkk-btn-outlined narkk-btn--plus narkk-pcw__btn"
+            data-pcw-btn
+            {% if block.settings.button_url == blank %}aria-disabled="true"{% endif %}
+          >
+            <span class="narkk-btn__plus">+</span>
+            <span class="narkk-btn__label">{{- block.settings.button_label -}}</span>
+          </a>
+        {%- endif -%}
+
+      </div>
+
+    {%- endfor -%}
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-contact-who.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Contact Categories",
+  "tag": "section",
+  "class": "narkk-pcw-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Contact card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "customers",     "label": "Customers" },
+            { "value": "professionals", "label": "Designers & Professionals" },
+            { "value": "support",       "label": "Support & Orders" }
+          ],
+          "default": "customers"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "For Customers"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body text",
+          "default": "Looking to purchase or need help choosing the right piece?"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Get in touch"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Contact Categories",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "icon": "customers",
+            "heading": "For Customers",
+            "body": "Looking to purchase or need help choosing the right piece?",
+            "button_label": "Get in touch"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "icon": "professionals",
+            "heading": "For Designers & Professionals",
+            "body": "Looking to purchase or need help choosing the right piece?",
+            "button_label": "Apply for trade program"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "icon": "support",
+            "heading": "For Support & Orders",
+            "body": "Questions about your order, delivery, or installation?",
+            "button_label": "Contact support"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
