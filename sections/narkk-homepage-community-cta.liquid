@@ -113,13 +113,24 @@
       {%- comment -%}── CTA button block ──────────────────────────────────{%- endcomment -%}
       {%- for block in section.blocks -%}
         {%- if block.type == 'cta' -%}
+          {%- comment -%}
+            TODO: CTA opens the trade application modal (narkk-trade-apply-modal snippet).
+            Set the block URL in the theme editor to bypass the modal trigger once business logic is live.
+          {%- endcomment -%}
           <div class="narkk-community__cta" {{ block.shopify_attributes }}>
-            {%- render 'narkk-button',
-              label: block.settings.label,
-              url: block.settings.url,
-              style: block.settings.style,
-              show_plus: true
-            -%}
+            {%- if block.settings.url == blank -%}
+              <button type="button" class="button narkk-btn-{{ block.settings.style }} narkk-btn--plus" data-trade-modal-open>
+                <span class="narkk-btn__plus">+</span>
+                <span class="narkk-btn__label">{{ block.settings.label }}</span>
+              </button>
+            {%- else -%}
+              {%- render 'narkk-button',
+                label: block.settings.label,
+                url: block.settings.url,
+                style: block.settings.style,
+                show_plus: true
+              -%}
+            {%- endif -%}
           </div>
         {%- endif -%}
       {%- endfor -%}

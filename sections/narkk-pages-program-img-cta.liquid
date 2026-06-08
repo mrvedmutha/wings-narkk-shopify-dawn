@@ -43,13 +43,24 @@
       {%- endif -%}
 
       {%- if section.settings.button_label != blank -%}
+        {%- comment -%}
+          TODO: CTA opens the trade application modal (narkk-trade-apply-modal snippet).
+          Set button_url in the theme editor to bypass the modal trigger once business logic is live.
+        {%- endcomment -%}
         <div data-program-cta>
-          {%- render 'narkk-button',
-            label: section.settings.button_label,
-            url: section.settings.button_url,
-            style: 'outlined',
-            show_plus: true
-          -%}
+          {%- if section.settings.button_url == blank -%}
+            <button type="button" class="button narkk-btn-outlined narkk-btn--plus" data-trade-modal-open>
+              <span class="narkk-btn__plus">+</span>
+              <span class="narkk-btn__label">{{ section.settings.button_label }}</span>
+            </button>
+          {%- else -%}
+            {%- render 'narkk-button',
+              label: section.settings.button_label,
+              url: section.settings.button_url,
+              style: 'outlined',
+              show_plus: true
+            -%}
+          {%- endif -%}
         </div>
       {%- endif -%}
 
@@ -60,6 +71,8 @@
 
 <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'narkk-pages-program-img-cta.js' | asset_url }}" defer="defer"></script>
+
+{%- render 'narkk-trade-apply-modal' -%}
 
 {% schema %}
 {

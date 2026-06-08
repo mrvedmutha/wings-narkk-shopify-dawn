@@ -1,0 +1,94 @@
+{%- comment -%}
+  Snippet: narkk-trade-apply-modal
+  Renders the Trade Program application modal.
+
+  Usage: {% render 'narkk-trade-apply-modal' %}
+  Include once per page — currently rendered inside narkk-pages-program-img-cta.
+
+  TODO: Business logic required before launch:
+    - Client-side form validation
+    - Submission handler (Shopify Contact Form, Klaviyo, or custom backend endpoint)
+    - Success / error state UI
+    - Email notification to trade team
+{%- endcomment -%}
+
+{{ 'narkk-trade-apply-modal.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}── Overlay ───────────────────────────────────────────{%- endcomment -%}
+<div class="narkk-tam__overlay" id="narkk-tam-overlay" aria-hidden="true">&nbsp;</div>
+
+{%- comment -%}── Modal ─────────────────────────────────────────────{%- endcomment -%}
+<div
+  class="narkk-tam"
+  id="narkk-tam"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Apply for Trade Program"
+  aria-hidden="true"
+>
+  <div class="narkk-tam__panel">
+
+    {%- comment -%}── Close button ──────────────────────────────────{%- endcomment -%}
+    <button class="narkk-tam__close" type="button" data-tam-close aria-label="{{ 'accessibility.close' | t }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 4L20 20M20 4L4 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    {%- comment -%}── Left panel — pitch copy (no scroll) ───────────{%- endcomment -%}
+    <div class="narkk-tam__left">
+      <p class="narkk-tam__eyebrow">Apply for trade program</p>
+      <div class="narkk-tam__left-text">
+        <p class="narkk-tam__heading">Join the Narkk<br>Trade Program</p>
+        <p class="narkk-tam__desc">We partner with designers who specify with intention. Tell us about your work, and we'll get back to you with the next steps.</p>
+      </div>
+    </div>
+
+    {%- comment -%}── Right panel — scrollable form ─────────────────{%- endcomment -%}
+    <div class="narkk-tam__right">
+
+      {%- comment -%}
+        TODO: Business logic needed.
+        Form has no submission handler yet. Wire up before launch — Shopify Contact Form,
+        Klaviyo, or a custom backend endpoint. Add validation and success / error states.
+      {%- endcomment -%}
+      <form class="narkk-tam__form" novalidate>
+
+        <div class="narkk-tam__form-body">
+
+          <div class="narkk-tam__fields">
+            <input class="narkk-tam__input" type="text"  name="contact[full_name]"      placeholder="Full Name"                       autocomplete="name"             aria-label="Full Name">
+            <input class="narkk-tam__input" type="email" name="contact[email]"           placeholder="E-Mail ID"                       autocomplete="email"            aria-label="E-Mail ID">
+            <input class="narkk-tam__input" type="tel"   name="contact[phone]"           placeholder="Phone number"                    autocomplete="tel"              aria-label="Phone number">
+            <input class="narkk-tam__input" type="text"  name="contact[role]"            placeholder="Role"                                                            aria-label="Role">
+            <input class="narkk-tam__input" type="text"  name="contact[company]"         placeholder="Company"                         autocomplete="organization"     aria-label="Company">
+            <input class="narkk-tam__input" type="text"  name="contact[city]"            placeholder="City"                            autocomplete="address-level2"   aria-label="City">
+            <input class="narkk-tam__input" type="url"   name="contact[portfolio_link]"  placeholder="Portfolio Link"                                                  aria-label="Portfolio Link">
+            <input class="narkk-tam__input" type="text"  name="contact[referral]"        placeholder="How did you hear about Narkk?"                                   aria-label="How did you hear about Narkk?">
+          </div>
+
+          <textarea
+            class="narkk-tam__textarea"
+            name="contact[project_note]"
+            rows="3"
+            placeholder="Brief note on kind of projects you work on"
+            aria-label="Brief note on kind of projects you work on"
+          ></textarea>
+
+        </div>
+
+        {%- comment -%}── Submit — sticky so it stays visible while scrolling through form ──{%- endcomment -%}
+        <div class="narkk-tam__form-foot">
+          <button type="submit" class="button narkk-btn-filled-dark narkk-btn--plus narkk-tam__submit">
+            <span class="narkk-tam__submit-plus">+</span>
+            <span class="narkk-btn__label">Submit Form</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ 'narkk-trade-apply-modal.js' | asset_url }}" defer="defer"></script>

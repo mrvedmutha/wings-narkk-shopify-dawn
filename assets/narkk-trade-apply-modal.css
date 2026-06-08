@@ -1,0 +1,312 @@
+/* ============================================================
+   NARKK — TRADE APPLY MODAL (Placeholder)
+   ============================================================ */
+
+/* ── Overlay ───────────────────────────────────────────────── */
+.narkk-tam__overlay {
+  background: rgb(23 36 47 / 72%);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  visibility: hidden;
+  z-index: 9000;
+}
+
+.narkk-tam__overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Modal wrapper ─────────────────────────────────────────── */
+.narkk-tam {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  opacity: 0;
+  padding: 3rem 2rem;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  visibility: hidden;
+  z-index: 9001;
+}
+
+.narkk-tam.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* ── Panel (white card) ────────────────────────────────────── */
+
+/*
+  Desktop: content row is 1171px (Figma) — left 395px + gap 141px + right 635px
+  justify-content: center + gap: 14.1rem centres the row naturally within max-width 1440px
+  padding: 0 4rem keeps a minimum breathing room at the panel edges
+*/
+.narkk-tam__panel {
+  align-items: flex-start;
+  background: var(--narkk-white);
+  display: flex;
+  gap: 14.1rem;
+  justify-content: center;
+  max-width: 1440px;
+  padding: 0 4rem;
+  position: relative;
+  width: 100%;
+}
+
+/* ── Close button ──────────────────────────────────────────── */
+.narkk-tam__close {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--narkk-dark);
+  cursor: pointer;
+  display: flex;
+  height: 6rem;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+  transition: opacity 0.2s ease;
+  width: 6rem;
+  z-index: 2;
+}
+
+.narkk-tam__close:hover {
+  opacity: 0.5;
+}
+
+/* ── Left panel — 395px, no scroll ────────────────────────── */
+.narkk-tam__left {
+  display: flex;
+  flex: 0 0 39.5rem;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 7rem 0;
+}
+
+/* ── Right panel — 635px, scrollable ──────────────────────── */
+.narkk-tam__right {
+  flex: 0 1 63.5rem;
+  max-height: calc(100vh - 6rem);
+  min-width: 0;
+  overflow-y: auto;
+  padding: 7rem 1.5rem 0 0;
+
+  /* 1.5rem right padding gives the scrollbar track visual clearance */
+}
+
+/* ── Left copy ─────────────────────────────────────────────── */
+.narkk-tam__eyebrow {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-eyebrow);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-tam__left-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-tam__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h3);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h3);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-tam__desc {
+  color: var(--narkk-meta);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* ── Form ──────────────────────────────────────────────────── */
+.narkk-tam__form {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.narkk-tam__form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.narkk-tam__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Input / Textarea ──────────────────────────────────────── */
+.narkk-tam__input,
+.narkk-tam__textarea {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--narkk-divider);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--narkk-dark);
+  display: block;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  outline: none;
+  padding: 0.8rem 0;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.narkk-tam__input::placeholder,
+.narkk-tam__textarea::placeholder {
+  color: var(--narkk-meta);
+  font-weight: 300;
+  opacity: 1;
+}
+
+/* Remove all focus indicators — no outline, no box-shadow */
+.narkk-tam__input:focus,
+.narkk-tam__input:focus-visible,
+.narkk-tam__textarea:focus,
+.narkk-tam__textarea:focus-visible {
+  border-bottom-color: var(--narkk-dark);
+  box-shadow: none;
+  outline: 0;
+}
+
+.narkk-tam__textarea {
+  min-height: 8rem;
+  resize: none;
+}
+
+/* ── Submit foot — sticky so button stays visible while form scrolls ── */
+
+/*
+  The white background on the foot covers form content scrolling behind it.
+  bottom: 0 keeps it pinned to the bottom of the right panel viewport.
+*/
+.narkk-tam__form-foot {
+  background: var(--narkk-white);
+  bottom: 0;
+  padding-bottom: 3.2rem;
+  padding-top: 2.4rem;
+  position: sticky;
+  z-index: 1;
+}
+
+/* ── Submit button ─────────────────────────────────────────── */
+
+/*
+  Explicit colour override ensures Dawn colour-scheme variables
+  don't bleed through and hide the button against the white panel.
+*/
+.narkk-tam__submit {
+  background: var(--narkk-dark);
+  border-color: var(--narkk-dark);
+  color: var(--narkk-beige);
+  min-width: 27.5rem;
+}
+
+.narkk-tam__submit:hover {
+  background: transparent;
+  color: var(--narkk-dark);
+}
+
+.narkk-tam__submit-plus {
+  font-family: Lato, sans-serif;
+  font-size: 1.6rem;
+}
+
+/* ── Tablet + Mobile (< 1024px): stack vertically, full scroll ── */
+@media (width < 1024px) {
+  .narkk-tam {
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .narkk-tam__panel {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    justify-content: flex-start;
+    max-height: 100dvh;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  .narkk-tam__close {
+    right: 2.4rem;
+    top: 2.4rem;
+  }
+
+  .narkk-tam__left {
+    flex: 0 0 auto;
+    padding: 5.6rem 4rem 3.2rem;
+  }
+
+  .narkk-tam__right {
+    flex: 1;
+    max-height: none;
+    min-width: 0;
+    overflow-y: visible;
+    padding: 0 4rem;
+  }
+
+  /* On stacked layout the sticky foot uses the panel's scroll, not the right panel's */
+  .narkk-tam__form-foot {
+    padding-bottom: 5.6rem;
+  }
+}
+
+/* ── Mobile (< 750px) ───────────────────────────────────────── */
+@media (width < 750px) {
+  .narkk-tam__left {
+    padding: 5.6rem 2rem 3.2rem;
+  }
+
+  .narkk-tam__right {
+    padding: 0 2rem;
+  }
+
+  .narkk-tam__form {
+    gap: 2.4rem;
+  }
+
+  .narkk-tam__form-body {
+    gap: 2.4rem;
+  }
+
+  .narkk-tam__fields {
+    gap: 2.4rem;
+  }
+
+  .narkk-tam__submit {
+    min-width: 0;
+    width: 100%;
+  }
+}

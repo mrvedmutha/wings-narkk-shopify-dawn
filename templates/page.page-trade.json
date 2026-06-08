@@ -67,6 +67,225 @@
         "padding_bottom": 80
       }
     },
+    "narkk_pages_professionals_izYXb4": {
+      "type": "narkk-pages-professionals",
+      "blocks": {
+        "text_line_TGABwi": {
+          "type": "text_line",
+          "settings": {
+            "text_before": "Interior designers,",
+            "highlight": "Architects,",
+            "text_after": ""
+          }
+        },
+        "text_line_dY4dNL": {
+          "type": "text_line",
+          "settings": {
+            "text_before": "Home stagers, Hospitality consultants,",
+            "highlight": "",
+            "text_after": ""
+          }
+        },
+        "text_line_AUcB47": {
+          "type": "text_line",
+          "settings": {
+            "text_before": "Set designers, Design studios",
+            "highlight": "",
+            "text_after": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_line_TGABwi",
+        "text_line_dY4dNL",
+        "text_line_AUcB47"
+      ],
+      "name": "Professionals",
+      "settings": {
+        "heading": "Who This Is For",
+        "image": "shopify://shop_images/narkk-pages-professionals.webp",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "narkk_pages_what_you_get_46WD6A": {
+      "type": "narkk-pages-what-you-get",
+      "blocks": {
+        "text_card_ETtg9c": {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "001",
+            "text_before": "Trade pricing",
+            "highlight": "15%",
+            "text_after": "from day one"
+          }
+        },
+        "image_card_M8nJ63": {
+          "type": "image_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-pages-professionals.webp"
+          }
+        },
+        "text_card_PCzQwG": {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "002",
+            "text_before": "A direct line, not a support ticket",
+            "highlight": "",
+            "text_after": ""
+          }
+        },
+        "image_card_nRGzFJ": {
+          "type": "image_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-pages-professionals.webp"
+          }
+        },
+        "image_card_dQzV88": {
+          "type": "image_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-pages-professionals.webp"
+          }
+        },
+        "text_card_HYw3GX": {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "003",
+            "text_before": "Material and finish samples on request",
+            "highlight": "",
+            "text_after": ""
+          }
+        },
+        "image_card_HErCNA": {
+          "type": "image_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-pages-professionals-2.webp"
+          }
+        },
+        "text_card_kAay4T": {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "004",
+            "text_before": "Colour and finish customisation",
+            "highlight": "",
+            "text_after": ""
+          }
+        },
+        "text_card_cJw3Q3": {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "005",
+            "text_before": "Early access to new collections",
+            "highlight": "",
+            "text_after": ""
+          }
+        },
+        "image_card_4iyVGm": {
+          "type": "image_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-pages-professionals-2.webp"
+          }
+        },
+        "text_card_rhBctN": {
+          "type": "text_card",
+          "settings": {
+            "eyebrow": "006",
+            "text_before": "Portfolio collaboration and feature credit",
+            "highlight": "",
+            "text_after": ""
+          }
+        },
+        "image_card_ndpTYb": {
+          "type": "image_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-pages-professionals-2.webp"
+          }
+        }
+      },
+      "block_order": [
+        "text_card_ETtg9c",
+        "image_card_M8nJ63",
+        "text_card_PCzQwG",
+        "image_card_nRGzFJ",
+        "image_card_dQzV88",
+        "text_card_HYw3GX",
+        "image_card_HErCNA",
+        "text_card_kAay4T",
+        "text_card_cJw3Q3",
+        "image_card_4iyVGm",
+        "text_card_rhBctN",
+        "image_card_ndpTYb"
+      ],
+      "name": "What You Get",
+      "settings": {
+        "heading": "What You Get",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "narkk_pages_trade_perks_Gk4yp7": {
+      "type": "narkk-pages-trade-perks",
+      "blocks": {
+        "perk_ADLgiQ": {
+          "type": "perk",
+          "settings": {
+            "index_label": "001",
+            "heading": "No logo on any product",
+            "body": "Narkk furniture belongs to the space, not to us. It will never look dated because of branding."
+          }
+        },
+        "perk_fW8qbe": {
+          "type": "perk",
+          "settings": {
+            "index_label": "002",
+            "heading": "Modular and repairable by design",
+            "body": "If a component wears, it's replaced, not the whole piece. Your client won't be back to you with a problem in two years."
+          }
+        },
+        "perk_Yk9DLU": {
+          "type": "perk",
+          "settings": {
+            "index_label": "003",
+            "heading": "Timeless, minimal aesthetic",
+            "body": "Designed to sit quietly in any space, any decade, without demanding attention or becoming inconvenient to live with."
+          }
+        },
+        "perk_rfQNJn": {
+          "type": "perk",
+          "settings": {
+            "index_label": "004",
+            "heading": "Made in Chennai, by us",
+            "body": "Not outsourced. You know exactly what you're specifying and where it came from."
+          }
+        },
+        "perk_DjnQFf": {
+          "type": "perk",
+          "settings": {
+            "index_label": "005",
+            "heading": "Backed by the Re-manifesto",
+            "body": "Restore, Recycle, Resale, Return, Reimagine. We stand behind the product for its full life, not just until it ships."
+          }
+        }
+      },
+      "block_order": [
+        "perk_ADLgiQ",
+        "perk_fW8qbe",
+        "perk_Yk9DLU",
+        "perk_rfQNJn",
+        "perk_DjnQFf"
+      ],
+      "name": "Trade Perks",
+      "settings": {
+        "heading_before": "Your client will still love it in ten years.",
+        "heading_highlight": "That matters more than you think.",
+        "heading_after": "",
+        "subtext": "When you specify narkk, you're recommending something with a story behind it and a commitment in front of it. Here's what makes it an honest recommendation.",
+        "cta_label": "Join Program",
+        "cta_url": "",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
     "narkk_homepage_community_cta_fcfK3g": {
       "type": "narkk-homepage-community-cta",
       "blocks": {
@@ -124,12 +343,85 @@
         "heading": "HOW TO APPLY",
         "card_width": "988px"
       }
+    },
+    "narkk_pages_trade_faq_K4M9jP": {
+      "type": "narkk-pages-trade-faq",
+      "blocks": {
+        "faq_7rhEPx": {
+          "type": "faq",
+          "settings": {
+            "question": "Is there a minimum order quantity to qualify for trade pricing?",
+            "answer": "No minimum order quantity is required to access trade pricing. You can order as little or as much as you need for each project."
+          }
+        },
+        "faq_9FUXBc": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I get to 20% discount?",
+            "answer": "After three confirmed project orders through your trade account, your discount upgrades to 20% permanently — no application needed. We'll update your account automatically."
+          }
+        },
+        "faq_7HnFqX": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I request custom colours or finishes for a project?",
+            "answer": "Yes, custom colour and finish requests are available for qualifying projects. Reach out to your trade account manager to discuss options and lead times."
+          }
+        },
+        "faq_W4yhEf": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I view or touch the products before specifying?",
+            "answer": "Yes, we have a showroom available for trade clients. Contact us to arrange a visit or request a sample pack for your studio."
+          }
+        },
+        "faq_PdDUwA": {
+          "type": "faq",
+          "settings": {
+            "question": "What are typical lead times for trade orders?",
+            "answer": "Standard lead times are 8–12 weeks depending on the product and current production schedule. Rush options may be available for select items."
+          }
+        },
+        "faq_D4hDJd": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I mark up narkk products when billing my client?",
+            "answer": "Yes, you're free to apply your own margin when billing your clients. Your trade pricing is confidential between you and narkk."
+          }
+        },
+        "faq_7iengR": {
+          "type": "faq",
+          "settings": {
+            "question": "Will narkk feature my project if I use your products?",
+            "answer": "We love to share well-specified projects. If you'd like your project considered for our journal or social channels, send us the details and we'll review it."
+          }
+        }
+      },
+      "block_order": [
+        "faq_7rhEPx",
+        "faq_9FUXBc",
+        "faq_7HnFqX",
+        "faq_W4yhEf",
+        "faq_PdDUwA",
+        "faq_D4hDJd",
+        "faq_7iengR"
+      ],
+      "name": "Trade FAQ",
+      "settings": {
+        "heading": "Trade FAQ",
+        "padding_top": 120,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [
     "narkk_image_banner_DVAWFU",
     "narkk_pages_text_rich_7WhXRz",
     "narkk_pages_program_img_cta_C7aLde",
-    "narkk_homepage_community_cta_fcfK3g"
+    "narkk_pages_professionals_izYXb4",
+    "narkk_pages_what_you_get_46WD6A",
+    "narkk_pages_trade_perks_Gk4yp7",
+    "narkk_homepage_community_cta_fcfK3g",
+    "narkk_pages_trade_faq_K4M9jP"
   ]
 }
