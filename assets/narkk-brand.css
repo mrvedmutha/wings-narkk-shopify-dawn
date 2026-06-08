@@ -28,6 +28,11 @@
   --narkk-meta: #868686;
   --narkk-teal: #9db8ba;
 
+  /* Trade FAQ */
+  --narkk-faq-bg: #f3ede8;
+  --narkk-faq-border: #b6b6b6;
+  --narkk-faq-answer: #4c5053;
+
   /* Type scale — 1rem = 10px (Dawn sets html at 62.5%) */
   --narkk-font-h1: 6rem;
   --narkk-lh-h1: 6.5rem;

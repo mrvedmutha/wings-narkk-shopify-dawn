@@ -1,0 +1,153 @@
+/* ============================================================
+   NARKK PAGES — TRADE FAQ
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-trade-faq {
+  background: var(--narkk-faq-bg);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  width: 100%;
+}
+
+/* ── Inner container ──────────────────────────────────────── */
+
+/* max-width: 92rem matches Figma's 920px content on 1440px canvas */
+.narkk-trade-faq__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 0 auto;
+  max-width: 92rem;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-trade-faq__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: var(--narkk-lh-h2);
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+/* ── FAQ list ─────────────────────────────────────────────── */
+.narkk-trade-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+/* ── Item ─────────────────────────────────────────────────── */
+.narkk-trade-faq__item {
+  border: 1px solid var(--narkk-faq-border);
+}
+
+/* ── Trigger button ───────────────────────────────────────── */
+.narkk-trade-faq__trigger {
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--narkk-dark);
+  cursor: pointer;
+  display: flex;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  gap: 2.2rem;
+  justify-content: space-between;
+  line-height: var(--narkk-lh-body-1);
+  padding: 1.6rem;
+  text-align: left;
+  width: 100%;
+}
+
+.narkk-trade-faq__question {
+  flex: 1;
+}
+
+/* ── Chevron ──────────────────────────────────────────────── */
+.narkk-trade-faq__chevron {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.narkk-trade-faq__chevron-down,
+.narkk-trade-faq__chevron-up {
+  display: block;
+  height: 0.7rem;
+  width: 1.1rem;
+}
+
+.narkk-trade-faq__chevron-up {
+  display: none;
+}
+
+.narkk-trade-faq__item.is-open .narkk-trade-faq__chevron-down {
+  display: none;
+}
+
+.narkk-trade-faq__item.is-open .narkk-trade-faq__chevron-up {
+  display: block;
+}
+
+/* ── Answer panel ─────────────────────────────────────────── */
+
+/* overflow: hidden is required for GSAP height animation */
+.narkk-trade-faq__panel {
+  overflow: hidden;
+}
+
+/* ── Answer text ──────────────────────────────────────────── */
+
+/* top padding (0.6rem) + trigger bottom padding (1.6rem) = 2.2rem gap (Figma spec) */
+.narkk-trade-faq__answer {
+  color: var(--narkk-faq-answer);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+  padding: 0.6rem 1.6rem 1.6rem;
+}
+
+/* ── Tablet ────────────────────────────────────────────────── */
+@media (750px <= width < 1024px) {
+  .narkk-trade-faq__inner {
+    gap: 3.6rem;
+  }
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+@media (width < 750px) {
+  .narkk-trade-faq {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .narkk-trade-faq__inner {
+    gap: 3.2rem;
+  }
+
+  .narkk-trade-faq__heading {
+    font-size: clamp(2.8rem, 8vw, 4rem);
+    letter-spacing: 0;
+  }
+
+  .narkk-trade-faq__list {
+    gap: 1.6rem;
+  }
+
+  .narkk-trade-faq__trigger {
+    gap: 1.6rem;
+    padding: 1.4rem;
+  }
+
+  .narkk-trade-faq__answer {
+    padding: 0.4rem 1.4rem 1.4rem;
+  }
+}

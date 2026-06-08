@@ -1,0 +1,176 @@
+{{ 'narkk-pages-trade-faq.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-trade-faq {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-trade-faq" data-narkk-trade-faq>
+  <div class="narkk-trade-faq__inner">
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="narkk-trade-faq__heading" data-tfaq-heading>
+        {{- section.settings.heading -}}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="narkk-trade-faq__list">
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            <div class="narkk-trade-faq__item{%- if forloop.first %} is-open{%- endif -%}"
+                 data-tfaq-item
+                 {{ block.shopify_attributes }}>
+
+              <button class="narkk-trade-faq__trigger"
+                      data-tfaq-trigger
+                      aria-expanded="{%- if forloop.first -%}true{%- else -%}false{%- endif -%}">
+                <span class="narkk-trade-faq__question">{{- block.settings.question -}}</span>
+                <span class="narkk-trade-faq__chevron" aria-hidden="true">
+                  <img class="narkk-trade-faq__chevron-down"
+                       src="{{ 'icon-primary-chevron-down.svg' | asset_url }}"
+                       width="11" height="7" alt="">
+                  <img class="narkk-trade-faq__chevron-up"
+                       src="{{ 'icon-primary-chevron-up.svg' | asset_url }}"
+                       width="11" height="7" alt="">
+                </span>
+              </button>
+
+              <div class="narkk-trade-faq__panel" data-tfaq-panel>
+                <p class="narkk-trade-faq__answer" data-tfaq-answer>
+                  {{- block.settings.answer -}}
+                </p>
+              </div>
+
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-trade-faq.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Trade FAQ",
+  "tag": "section",
+  "class": "narkk-trade-faq-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trade FAQ"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Your question here"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Your answer here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trade FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is there a minimum order quantity to qualify for trade pricing?",
+            "answer": "No minimum order quantity is required to access trade pricing. You can order as little or as much as you need for each project."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I get to 20% discount?",
+            "answer": "After three confirmed project orders through your trade account, your discount upgrades to 20% permanently — no application needed. We'll update your account automatically."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I request custom colours or finishes for a project?",
+            "answer": "Yes, custom colour and finish requests are available for qualifying projects. Reach out to your trade account manager to discuss options and lead times."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I view or touch the products before specifying?",
+            "answer": "Yes, we have a showroom available for trade clients. Contact us to arrange a visit or request a sample pack for your studio."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What are typical lead times for trade orders?",
+            "answer": "Standard lead times are 8–12 weeks depending on the product and current production schedule. Rush options may be available for select items."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I mark up narkk products when billing my client?",
+            "answer": "Yes, you're free to apply your own margin when billing your clients. Your trade pricing is confidential between you and narkk."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Will narkk feature my project if I use your products?",
+            "answer": "We love to share well-specified projects. If you'd like your project considered for our journal or social channels, send us the details and we'll review it."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
