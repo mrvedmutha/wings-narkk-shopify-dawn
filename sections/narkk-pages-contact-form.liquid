@@ -1,0 +1,237 @@
+{{ 'narkk-pages-contact-form.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-pcf {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-pcf" data-narkk-pcf>
+  <div class="narkk-pcf__inner">
+
+    {%- comment -%}── Left — sticky info column ──────────────────────{%- endcomment -%}
+    <div class="narkk-pcf__left">
+      <div class="narkk-pcf__left-sticky">
+
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="narkk-pcf__eyebrow" data-pcf-eyebrow>
+            {{- section.settings.eyebrow -}}
+          </p>
+        {%- endif -%}
+
+        <div class="narkk-pcf__contact-info" data-pcf-info>
+          {%- if section.settings.address != blank -%}
+            <p class="narkk-pcf__address">{{- section.settings.address | newline_to_br -}}</p>
+          {%- endif -%}
+          {%- if section.settings.email != blank -%}
+            <a href="mailto:{{ section.settings.email }}" class="narkk-pcf__link">
+              {{- section.settings.email -}}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.phone != blank -%}
+            <a href="tel:{{ section.settings.phone | remove: ' ' }}" class="narkk-pcf__link">
+              {{- section.settings.phone -}}
+            </a>
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+    {%- comment -%}── Right — form column ───────────────────────────{%- endcomment -%}
+    <div class="narkk-pcf__right">
+
+      <div class="narkk-pcf__form-header">
+        {%- if section.settings.heading != blank -%}
+          <p class="narkk-pcf__heading" data-pcf-heading>
+            {{- section.settings.heading -}}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}
+          <p class="narkk-pcf__subtext" data-pcf-subtext>
+            {{- section.settings.subtext -}}
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}
+        Placeholder form — no submission handler.
+        TODO: Wire up before launch — Shopify Contact Form, Klaviyo, or custom endpoint.
+        Add client-side validation and success/error states.
+      {%- endcomment -%}
+      <form class="narkk-pcf__form" novalidate>
+
+        <div class="narkk-pcf__inputs">
+
+          <input
+            class="narkk-pcf__input"
+            data-pcf-field
+            type="text"
+            name="contact[full_name]"
+            placeholder="Full Name"
+            autocomplete="name"
+            aria-label="Full Name"
+          >
+
+          <input
+            class="narkk-pcf__input"
+            data-pcf-field
+            type="email"
+            name="contact[email]"
+            placeholder="E-mail"
+            autocomplete="email"
+            aria-label="E-mail"
+          >
+
+          <input
+            class="narkk-pcf__input"
+            data-pcf-field
+            type="tel"
+            name="contact[phone]"
+            placeholder="Phone number"
+            autocomplete="tel"
+            aria-label="Phone number"
+          >
+
+          {%- comment -%}── Custom dropdown ──────────────────────────{%- endcomment -%}
+          <div class="narkk-pcf__select" data-pcf-field data-pcf-select>
+            <button
+              class="narkk-pcf__select-trigger"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              data-pcf-select-trigger
+            >
+              <span class="narkk-pcf__select-label" data-pcf-select-label>What are you reaching out?</span>
+              <span class="narkk-pcf__select-chevron" aria-hidden="true">
+                <img
+                  src="{{ 'icon-primary-chevron-down.svg' | asset_url }}"
+                  width="11"
+                  height="7"
+                  alt=""
+                >
+              </span>
+            </button>
+            <ul class="narkk-pcf__select-dropdown" role="listbox" data-pcf-select-dropdown>
+              <li class="narkk-pcf__select-option" role="option" data-value="general-inquiry">General Inquiry</li>
+              <li class="narkk-pcf__select-option" role="option" data-value="trade-program">Trade Program</li>
+              <li class="narkk-pcf__select-option" role="option" data-value="custom-order">Custom Order</li>
+              <li class="narkk-pcf__select-option" role="option" data-value="press-media">Press &amp; Media</li>
+              <li class="narkk-pcf__select-option" role="option" data-value="other">Other</li>
+            </ul>
+            <input type="hidden" name="contact[reason]" data-pcf-select-value>
+          </div>
+
+        </div>
+
+        {%- comment -%}── Textarea — 80px gap via CSS (.narkk-pcf__field--textarea margin-top) ──{%- endcomment -%}
+        <textarea
+          class="narkk-pcf__textarea"
+          data-pcf-field
+          name="contact[message]"
+          rows="1"
+          placeholder="Message"
+          aria-label="Message"
+        ></textarea>
+
+        <div class="narkk-pcf__form-foot">
+          <button type="submit" class="button narkk-btn-filled-dark narkk-btn--plus narkk-pcf__submit">
+            <span class="narkk-btn__plus">+</span>
+            <span class="narkk-btn__label">Submit Form</span>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-contact-form.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "tag": "section",
+  "class": "narkk-pcf-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left column"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Reach us directly"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "Address Line 1, No 123, Street, Area,\nChennai - 600096"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "hello@naarkk.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "+91 98765 43210"
+    },
+    {
+      "type": "header",
+      "content": "Right column"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughtful spaces begin with a conversation."
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "We’ll get back to you within 24–48 hours with the right guidance."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
+}
+{% endschema %}

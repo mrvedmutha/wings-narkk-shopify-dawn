@@ -1,0 +1,361 @@
+/* ============================================================
+   NARKK PAGES — CONTACT FORM
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-pcf {
+  background: var(--narkk-beige);
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+  width: 100%;
+}
+
+/* ── Inner container ──────────────────────────────────────── */
+
+/* align-items: flex-start is required for position: sticky to work inside flex */
+.narkk-pcf__inner {
+  align-items: flex-start;
+  display: flex;
+  margin: 0 auto;
+  max-width: 144rem;
+}
+
+/* ── Left column ──────────────────────────────────────────── */
+.narkk-pcf__left {
+  flex: 0 0 42.2rem;
+}
+
+.narkk-pcf__left-sticky {
+  display: flex;
+  flex-direction: column;
+  gap: 2.1rem;
+  position: sticky;
+  top: 8rem;
+}
+
+/* ── Eyebrow ──────────────────────────────────────────────── */
+.narkk-pcf__eyebrow {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Contact info block ───────────────────────────────────── */
+.narkk-pcf__contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-pcf__address {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-pcf__link {
+  color: var(--narkk-dark);
+  display: block;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  text-decoration: underline;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.narkk-pcf__link:hover {
+  color: var(--narkk-primary);
+}
+
+/* ── Right column ─────────────────────────────────────────── */
+.narkk-pcf__right {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 8rem;
+  margin-left: auto;
+  max-width: 61.9rem;
+}
+
+/* ── Form header ──────────────────────────────────────────── */
+.narkk-pcf__form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-pcf__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h3);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h3);
+  margin: 0;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+/* ── Subtext ──────────────────────────────────────────────── */
+.narkk-pcf__subtext {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* ── Form ─────────────────────────────────────────────────── */
+.narkk-pcf__form {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+/* ── Inputs group — 40px gap between each field ──────────── */
+.narkk-pcf__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Shared input + textarea styles ──────────────────────── */
+.narkk-pcf__input,
+.narkk-pcf__textarea {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--narkk-divider);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--narkk-dark);
+  display: block;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  outline: none;
+  padding: 0 0 0.8rem;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.narkk-pcf__input::placeholder,
+.narkk-pcf__textarea::placeholder {
+  color: var(--narkk-meta);
+  font-weight: 300;
+  opacity: 1;
+}
+
+.narkk-pcf__input:focus,
+.narkk-pcf__input:focus-visible,
+.narkk-pcf__textarea:focus,
+.narkk-pcf__textarea:focus-visible {
+  border-bottom-color: var(--narkk-dark);
+  box-shadow: none;
+  outline: 0;
+}
+
+/* ── Textarea specific ────────────────────────────────────── */
+.narkk-pcf__textarea {
+  min-height: 2.4rem;
+  overflow: hidden;
+  resize: none;
+}
+
+/* ── Custom select wrapper ────────────────────────────────── */
+.narkk-pcf__select {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Select trigger (same visual as input) ────────────────── */
+.narkk-pcf__select-trigger {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--narkk-divider);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--narkk-meta);
+  cursor: pointer;
+  display: flex;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  justify-content: space-between;
+  line-height: var(--narkk-lh-body-1);
+  outline: none;
+  padding: 0 0 0.8rem;
+  text-align: left;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  width: 100%;
+}
+
+.narkk-pcf__select-trigger.has-value {
+  color: var(--narkk-dark);
+}
+
+.narkk-pcf__select-trigger:focus,
+.narkk-pcf__select-trigger:focus-visible {
+  border-bottom-color: var(--narkk-dark);
+  outline: 0;
+}
+
+.narkk-pcf__select.is-open .narkk-pcf__select-trigger {
+  border-bottom-color: var(--narkk-dark);
+}
+
+.narkk-pcf__select.is-open {
+  z-index: 50;
+}
+
+/* ── Chevron icon ─────────────────────────────────────────── */
+.narkk-pcf__select-chevron {
+  flex-shrink: 0;
+  line-height: 0;
+  transition: transform 0.25s ease;
+}
+
+.narkk-pcf__select.is-open .narkk-pcf__select-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown list ────────────────────────────────────────── */
+.narkk-pcf__select-dropdown {
+  background: var(--narkk-white);
+  border: 1px solid var(--narkk-divider);
+  display: none;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  max-height: 14.4rem;
+  overflow-y: scroll;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  z-index: 100;
+}
+
+.narkk-pcf__select.is-open .narkk-pcf__select-dropdown {
+  display: block;
+}
+
+/* ── Dropdown option ──────────────────────────────────────── */
+.narkk-pcf__select-option {
+  color: var(--narkk-dark);
+  cursor: pointer;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  padding: 1.2rem 1.6rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.narkk-pcf__select-option:hover,
+.narkk-pcf__select-option.is-selected {
+  background: var(--narkk-primary);
+  color: var(--narkk-beige);
+}
+
+/* ── Form foot ────────────────────────────────────────────── */
+.narkk-pcf__form-foot {
+  display: flex;
+}
+
+/* ── Submit button ────────────────────────────────────────── */
+.narkk-pcf__submit {
+  background: var(--narkk-dark);
+  border-color: var(--narkk-dark);
+  color: var(--narkk-beige);
+  min-width: 27.5rem;
+}
+
+/* Double-class specificity (0,2,0) beats button[type='submit'] (0,1,1) in brand CSS */
+.narkk-pcf__submit.narkk-btn--plus {
+  justify-content: flex-start;
+}
+
+.narkk-pcf__form-foot .narkk-pcf__submit:hover {
+  background: var(--narkk-primary);
+  border-color: transparent;
+  color: var(--narkk-beige);
+  outline: none;
+}
+
+/* ── Tablet (750px – 1023px) — two columns, adjusted ─────── */
+@media (750px <= width < 1024px) {
+  .narkk-pcf__left {
+    flex: 0 0 28rem;
+  }
+
+  .narkk-pcf__right {
+    max-width: none;
+  }
+
+  .narkk-pcf__left-sticky {
+    top: 6rem;
+  }
+}
+
+/* ── Mobile (< 750px) — stack: info top, form below ─────── */
+@media (width < 750px) {
+  .narkk-pcf {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .narkk-pcf__inner {
+    flex-direction: column;
+    gap: 6.4rem;
+  }
+
+  .narkk-pcf__left {
+    flex: none;
+    width: 100%;
+  }
+
+  .narkk-pcf__left-sticky {
+    position: static;
+  }
+
+  .narkk-pcf__right {
+    gap: 4.8rem;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .narkk-pcf__heading {
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
+  }
+
+  .narkk-pcf__form {
+    gap: 4.8rem;
+  }
+
+  .narkk-pcf__inputs {
+    gap: 3.2rem;
+  }
+
+  .narkk-pcf__submit {
+    min-width: 0;
+    width: 100%;
+  }
+}
