@@ -1,0 +1,111 @@
+{%- liquid
+  assign is_placeholder = true
+  if product != blank and product != nil
+    assign is_placeholder = false
+  endif
+
+  assign card_size  = size  | default: 'small'
+  assign card_index = index | default: 0
+
+  if is_placeholder
+    assign display_image       = mock_image
+    assign display_image_hover = mock_image_hover
+    assign display_vendor      = mock_vendor | default: 'Collection Name'
+    assign display_title       = mock_title  | default: 'Product Title'
+    assign display_price       = mock_price  | default: 'Rs. 0000'
+    assign btn_url             = '#'
+  else
+    assign display_image       = product.featured_image
+    assign display_image_hover = product.images[1]
+    assign display_vendor      = product.vendor
+    assign display_title       = product.title
+    assign display_price       = product.price | money
+    assign btn_url             = product.url
+  endif
+
+  assign has_hover = false
+  if display_image_hover != blank and display_image_hover != nil
+    assign has_hover = true
+  endif
+
+  assign placeholder_num  = card_index | plus: 1
+  assign placeholder_name = 'product-' | append: placeholder_num
+-%}
+
+<div
+  class="narkk-pcard narkk-pcard--{{ card_size }}{% if has_hover %} narkk-pcard--has-hover{% endif %}"
+  data-narkk-fp-card
+  data-card-index="{{ card_index }}"
+>
+
+  {%- comment -%}── IMAGE (aria-hidden — title link covers navigation) ──{%- endcomment -%}
+  <a
+    class="narkk-pcard__img-link"
+    href="{{ btn_url }}"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    {%- if display_image != blank -%}
+      <img
+        class="narkk-pcard__img narkk-pcard__img--primary"
+        src="{{ display_image | image_url: width: 900 }}"
+        alt="{{ display_image.alt | escape }}"
+        loading="lazy"
+        width="{{ display_image.width }}"
+        height="{{ display_image.height }}"
+      >
+    {%- else -%}
+      {{- placeholder_name | placeholder_svg_tag: 'narkk-pcard__img narkk-pcard__img--primary narkk-pcard__img--placeholder' -}}
+    {%- endif -%}
+
+    {%- if has_hover -%}
+      <img
+        class="narkk-pcard__img narkk-pcard__img--hover"
+        src="{{ display_image_hover | image_url: width: 900 }}"
+        alt="{{ display_image_hover.alt | escape }}"
+        loading="lazy"
+        width="{{ display_image_hover.width }}"
+        height="{{ display_image_hover.height }}"
+      >
+    {%- endif -%}
+  </a>
+
+  {%- comment -%}── INFO ──────────────────────────────────────────────{%- endcomment -%}
+  <div class="narkk-pcard__info">
+
+    <div class="narkk-pcard__meta">
+      <p class="narkk-pcard__vendor narkk-highlight">{{ display_vendor }}</p>
+      {%- comment -%}── Title carries the stretched link via ::after ──{%- endcomment -%}
+      <a class="narkk-pcard__title narkk-product-name" href="{{ btn_url }}">{{ display_title }}</a>
+    </div>
+
+    <p class="narkk-pcard__price narkk-pricing">{{ display_price }}</p>
+
+    {%- comment -%}── ATC — z-index above the stretched link ────────{%- endcomment -%}
+    <div class="narkk-pcard__atc">
+      {%- if is_placeholder -%}
+        <a
+          href="#"
+          class="button narkk-btn-outlined narkk-btn--plus narkk-btn--full-width"
+          aria-disabled="true"
+        >
+          <span class="narkk-btn__plus">+</span>
+          <span class="narkk-btn__label">Add to Cart</span>
+        </a>
+      {%- else -%}
+        {%- form 'product', product -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button
+            type="submit"
+            class="button narkk-btn-outlined narkk-btn--plus narkk-btn--full-width"
+          >
+            <span class="narkk-btn__plus">+</span>
+            <span class="narkk-btn__label">Add to Cart</span>
+          </button>
+        {%- endform -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+
+</div>

@@ -34,6 +34,44 @@
         "cta_url": "#"
       }
     },
+    "narkk_homepage_featured_products_xXz9yk": {
+      "type": "narkk-homepage-featured-products",
+      "name": "Narkk Featured Products",
+      "settings": {
+        "heading": "Featured Products",
+        "collection": "",
+        "slot_1_image": "shopify://shop_images/narkk-pages-contact-cta-img.webp",
+        "slot_1_image_hover": "shopify://shop_images/narkk-pages-professionals-2.webp",
+        "slot_1_vendor": "Serthal Collection",
+        "slot_1_title": "Product Title",
+        "slot_1_price": "Rs. 0000",
+        "slot_2_image": "shopify://shop_images/narkk-blog-post-pc-img-5.webp",
+        "slot_2_image_hover": "shopify://shop_images/narkk-re-manifesto-img-3.webp",
+        "slot_2_vendor": "Serthal Collection",
+        "slot_2_title": "Product Title",
+        "slot_2_price": "Rs. 0000",
+        "slot_3_image": "shopify://shop_images/narkk-blog-post-pc-img-2.webp",
+        "slot_3_image_hover": "shopify://shop_images/narkk-re-manifesto-img-1.webp",
+        "slot_3_vendor": "Serthal Collection",
+        "slot_3_title": "Product Title",
+        "slot_3_price": "Rs. 0000",
+        "slot_4_image": "shopify://shop_images/narkk-re-manifesto-img-1.webp",
+        "slot_4_image_hover": "shopify://shop_images/narkk-re-manifesto-img-4.webp",
+        "slot_4_vendor": "Serthal Collection",
+        "slot_4_title": "Product Title",
+        "slot_4_price": "Rs. 0000",
+        "slot_5_image": "shopify://shop_images/narkk-re-manifesto-img-5.webp",
+        "slot_5_image_hover": "shopify://shop_images/narkk-re-manifesto-img-3.webp",
+        "slot_5_vendor": "Serthal Collection",
+        "slot_5_title": "Product Title",
+        "slot_5_price": "Rs. 0000",
+        "slot_6_image": "shopify://shop_images/homepage-product-collage-02.webp",
+        "slot_6_image_hover": "shopify://shop_images/narkk-re-manifesto-img-1.webp",
+        "slot_6_vendor": "Serthal Collection",
+        "slot_6_title": "Product Title",
+        "slot_6_price": "Rs. 0000"
+      }
+    },
     "narkk_homepage_collections_96Y6pQ": {
       "type": "narkk-homepage-collections",
       "blocks": {
@@ -83,7 +121,8 @@
       "settings": {
         "eyebrow": "Intentionally crafted for life",
         "heading": "NARKK COLLECTIONS",
-        "body_text": "Each of our three collections bears its own distinct identity. Because each one requires a different set of materials and techniques, they're not only visually unique they're tonally diverse, as well."
+        "body_text": "Each of our three collections bears its own distinct identity. Because each one requires a different set of materials and techniques, they're not only visually unique they're tonally diverse, as well.",
+        "label_font_size": 5.5
       }
     },
     "narkk_homepage_manifesto_9E4hby": {
@@ -731,6 +770,7 @@
   "order": [
     "narkk_hero_hAUkd6",
     "narkk_homepage_product_collage_LLRjUr",
+    "narkk_homepage_featured_products_xXz9yk",
     "narkk_homepage_collections_96Y6pQ",
     "narkk_homepage_manifesto_9E4hby",
     "narkk_homepage_marquee_vid_banner_7PHtz4",

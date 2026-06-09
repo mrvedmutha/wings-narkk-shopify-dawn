@@ -1,0 +1,292 @@
+/* ============================================================
+   NARKK HOMEPAGE — FEATURED PRODUCTS
+   ============================================================ */
+
+/* ── Section ─────────────────────────────────────────────────── */
+.narkk-fp {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+/* ── Inner ───────────────────────────────────────────────────── */
+.narkk-fp__inner {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 12rem 2.8rem 8rem;
+}
+
+/* ── Heading ─────────────────────────────────────────────────── */
+.narkk-fp__heading-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12rem;
+}
+
+.narkk-fp__heading {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-h1);
+  font-weight: 300;
+  letter-spacing: var(--narkk-ls-h1);
+  line-height: var(--narkk-lh-h1);
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ── Grid ────────────────────────────────────────────────────── */
+.narkk-fp__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14rem;
+}
+
+/* ── Rows ────────────────────────────────────────────────────── */
+.narkk-fp__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.narkk-fp__row--1 { align-items: flex-end; }
+.narkk-fp__row--2 { align-items: flex-start; }
+
+/* ── Slots ───────────────────────────────────────────────────── */
+.narkk-fp__slot--large {
+  width: 49.1%; /* 679 / 1383 */
+}
+
+.narkk-fp__slot--small-pair {
+  display: flex;
+  gap: 1.1rem;
+  width: 40.6%; /* (275 + 11 + 275) / 1383 */
+}
+
+.narkk-fp__slot--small-pair .narkk-pcard {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================================
+   PRODUCT CARD
+   ============================================================ */
+
+.narkk-pcard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  position: relative;
+}
+
+/* ── Stretched link: title::after covers the full card ──────────
+   img-link is aria-hidden; title is the accessible nav anchor.
+   ATC wrapper sits above this via z-index.                       */
+.narkk-pcard__title::after {
+  content: '';
+  cursor: pointer;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+/* ── Image link (aspect-ratio + overflow + stacking context) ─── */
+.narkk-pcard__img-link {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.narkk-pcard--large .narkk-pcard__img-link {
+  aspect-ratio: 679 / 504;
+  background: var(--narkk-white);
+}
+
+.narkk-pcard--small .narkk-pcard__img-link {
+  aspect-ratio: 275 / 356;
+  background: var(--narkk-secondary);
+}
+
+/* ── Images — both absolute-stacked to fill the link box ─────── */
+.narkk-pcard__img,
+.narkk-pcard__img--placeholder {
+  display: block;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+/* ── Primary: slide up + scale (only when no hover image) ─────── */
+.narkk-pcard__img--primary,
+.narkk-pcard__img--placeholder {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.narkk-pcard:not(.narkk-pcard--has-hover):hover .narkk-pcard__img--primary,
+.narkk-pcard:not(.narkk-pcard--has-hover):hover .narkk-pcard__img--placeholder {
+  transform: translateY(-8px) scale(1.04);
+}
+
+/* ── Hover image: clip reveal top → bottom + subtle scale up ──── */
+.narkk-pcard__img--hover {
+  clip-path: inset(0 0 100% 0);
+  transform: scale(1);
+  transition:
+    clip-path 0.55s cubic-bezier(0.76, 0, 0.24, 1),
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: clip-path, transform;
+}
+
+.narkk-pcard--has-hover:hover .narkk-pcard__img--hover {
+  clip-path: inset(0 0 0% 0);
+  transform: scale(1.04);
+}
+
+/* ── Info block ──────────────────────────────────────────────── */
+.narkk-pcard__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-pcard__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.narkk-pcard__vendor {
+  color: var(--narkk-collection-label);
+  margin: 0;
+}
+
+.narkk-pcard__title {
+  color: var(--narkk-dark);
+  display: block;
+  margin: 0;
+  text-decoration: none;
+}
+
+
+.narkk-pcard__price {
+  color: var(--narkk-dark);
+  margin: 0;
+}
+
+/* ── ATC: above stretched link, fully interactive ────────────── */
+.narkk-pcard__atc {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Button: full-width ──────────────────────────────────────── */
+.narkk-pcard .narkk-btn-outlined {
+  width: 100%;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ── Tablet: 3 equal columns (641px–1024px) ──────────────────── */
+@media (641px <= width <= 1024px) {
+  .narkk-fp__inner {
+    padding: 8rem 3.2rem 6rem;
+  }
+
+  .narkk-fp__heading-wrap {
+    margin-bottom: 6rem;
+  }
+
+  .narkk-fp__heading {
+    font-size: clamp(3.6rem, 5.5vw, 5.5rem);
+  }
+
+  .narkk-fp__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem;
+  }
+
+  /* Flatten nested flex/block wrappers into the grid */
+  .narkk-fp__row,
+  .narkk-fp__slot,
+  .narkk-fp__slot--small-pair {
+    display: contents;
+  }
+
+  /* Uniform portrait aspect ratio across all card sizes */
+  .narkk-pcard--large .narkk-pcard__img-link,
+  .narkk-pcard--small .narkk-pcard__img-link {
+    aspect-ratio: 3 / 4;
+    background: var(--narkk-secondary);
+  }
+}
+
+/* ── Mobile: 2 equal columns (441px–640px) ───────────────────── */
+@media (441px <= width <= 640px) {
+  .narkk-fp__inner {
+    padding: 6rem 2rem 5rem;
+  }
+
+  .narkk-fp__heading-wrap {
+    margin-bottom: 4rem;
+  }
+
+  .narkk-fp__heading {
+    font-size: clamp(3rem, 7vw, 4.4rem);
+  }
+
+  .narkk-fp__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+  }
+
+  .narkk-fp__row,
+  .narkk-fp__slot,
+  .narkk-fp__slot--small-pair {
+    display: contents;
+  }
+
+  .narkk-pcard--large .narkk-pcard__img-link,
+  .narkk-pcard--small .narkk-pcard__img-link {
+    aspect-ratio: 3 / 4;
+    background: var(--narkk-secondary);
+  }
+}
+
+/* ── XS: single column (≤440px) ─────────────────────────────── */
+@media (width <= 440px) {
+  .narkk-fp__inner {
+    padding: 5rem 1.6rem 4rem;
+  }
+
+  .narkk-fp__heading-wrap {
+    margin-bottom: 3.2rem;
+  }
+
+  .narkk-fp__heading {
+    font-size: clamp(2.8rem, 10vw, 4rem);
+    letter-spacing: -0.03em;
+  }
+
+  .narkk-fp__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .narkk-fp__row,
+  .narkk-fp__slot,
+  .narkk-fp__slot--small-pair {
+    display: contents;
+  }
+
+  .narkk-pcard--large .narkk-pcard__img-link,
+  .narkk-pcard--small .narkk-pcard__img-link {
+    aspect-ratio: 4 / 3;
+    background: var(--narkk-secondary);
+  }
+}
