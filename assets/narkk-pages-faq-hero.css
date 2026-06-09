@@ -1,0 +1,42 @@
+/* ============================================================
+   NARKK PAGES — FAQ HERO
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.narkk-faq-hero {
+  background: var(--narkk-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ── Inner ────────────────────────────────────────────────── */
+.narkk-faq-hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4rem;
+  width: 100%;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-faq-hero__heading {
+  color: var(--narkk-beige);
+  font-family: Outfit, sans-serif;
+  font-size: clamp(5rem, 18vw, 25rem);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+@media (width < 750px) {
+  .narkk-faq-hero__inner {
+    padding: 0 2rem;
+  }
+}
