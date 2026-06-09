@@ -1,0 +1,34 @@
+{% doc %}
+FAQ Category — parent block. Add FAQ Item blocks inside to build the accordion list.
+@example
+{% content_for 'block', type: 'faq-category', id: 'category-1' %}
+{% enddoc %}
+
+<div
+  class="narkk-faq-body__category"
+  data-faqb-category="{{ block.id }}"
+  data-faqb-cat-label="{{ block.settings.label | escape }}"
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Category",
+  "blocks": [
+    { "type": "faq-item" }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Category label",
+      "default": "Category"
+    }
+  ],
+  "presets": [
+    { "name": "FAQ Category" }
+  ]
+}
+{% endschema %}

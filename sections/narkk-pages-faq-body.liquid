@@ -1,0 +1,97 @@
+{{ 'narkk-pages-faq-body.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-faq-body {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-faq-body" data-narkk-faq-body>
+  <div class="narkk-faq-body__inner">
+
+    {%- if section.settings.intro_text != blank -%}
+      <div class="narkk-faq-body__intro">
+        {{- section.settings.intro_text -}}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="narkk-faq-body__layout">
+
+        {%- comment -%}
+          Nav: built by JS on init — reads data-faqb-cat-label + data-faqb-category
+          from the rendered panels. block.settings is not accessible when iterating
+          section.blocks for theme blocks (blocks/ directory); labels live in the
+          block template itself.
+        {%- endcomment -%}
+        <nav class="narkk-faq-body__nav" aria-label="FAQ categories" data-faqb-nav></nav>
+
+        {%- comment -%}
+          Panels: rendered by faq-category.liquid via content_for 'blocks'.
+          Each faq-category block renders its own panel div + child faq-item blocks.
+          JS matches nav buttons to panels via shared block.id.
+        {%- endcomment -%}
+        <div class="narkk-faq-body__panels" data-faqb-panels>
+          {% content_for 'blocks' %}
+        </div>
+
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-pages-faq-body.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "FAQ Body",
+  "tag": "section",
+  "class": "narkk-faq-body-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro text",
+      "default": "<p>We've put together a list of frequently-asked questions and their answers below. If we haven't covered your question or you'd like more information, please contact our Customer Service team.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    { "type": "faq-category" }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Body"
+    }
+  ]
+}
+{% endschema %}

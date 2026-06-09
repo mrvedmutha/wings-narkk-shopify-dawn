@@ -1,0 +1,64 @@
+{% doc %}
+FAQ Item — accordion item. Must be placed inside a FAQ Category block.
+@example
+{% content_for 'block', type: 'faq-item', id: 'item-1' %}
+{% enddoc %}
+
+<div
+  class="narkk-faq-body__item"
+  data-faqb-item
+  {{ block.shopify_attributes }}
+>
+  <button
+    class="narkk-faq-body__trigger"
+    data-faqb-trigger
+    aria-expanded="false"
+  >
+    <span class="narkk-faq-body__question">{{- block.settings.question -}}</span>
+    <span class="narkk-faq-body__chevron" aria-hidden="true">
+      <img
+        class="narkk-faq-body__chevron-down"
+        src="{{ 'icon-primary-chevron-down.svg' | asset_url }}"
+        width="11"
+        height="7"
+        alt=""
+      >
+      <img
+        class="narkk-faq-body__chevron-up"
+        src="{{ 'icon-primary-chevron-up.svg' | asset_url }}"
+        width="11"
+        height="7"
+        alt=""
+      >
+    </span>
+  </button>
+
+  <div class="narkk-faq-body__collapse" data-faqb-collapse>
+    <div class="narkk-faq-body__answer" data-faqb-answer>
+      {{- block.settings.answer -}}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Item",
+  "settings": [
+    {
+      "type": "text",
+      "id": "question",
+      "label": "Question",
+      "default": "Your question here"
+    },
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "Answer",
+      "default": "<p>Your answer here.</p>"
+    }
+  ],
+  "presets": [
+    { "name": "FAQ Item" }
+  ]
+}
+{% endschema %}

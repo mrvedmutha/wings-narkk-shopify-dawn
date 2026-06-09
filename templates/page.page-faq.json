@@ -1,0 +1,401 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narkk_pages_faq_hero_TNaXtW": {
+      "type": "narkk-pages-faq-hero",
+      "name": "FAQ Hero",
+      "settings": {
+        "heading": "FAQ's",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "narkk_pages_faq_body_main": {
+      "type": "narkk-pages-faq-body",
+      "name": "FAQ Body",
+      "settings": {
+        "intro_text": "<p>We've put together a list of frequently-asked questions and their answers below. If we haven't covered your question or you'd like more information, please contact our Customer Service team.</p>",
+        "padding_top": 80,
+        "padding_bottom": 80
+      },
+      "blocks": {
+        "cat_brand_A1b2C3": {
+          "type": "faq-category",
+          "name": "FAQ Category",
+          "settings": {
+            "label": "Brand"
+          },
+          "blocks": {
+            "item_b1_q1": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "What is narkk?",
+                "answer": "<p>narkk is a furniture brand built around one belief: good furniture should outlast the people who buy it. We design and make pieces that are built to be repaired, not replaced — quiet in their aesthetic, honest in their materials, and made to improve with age.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b1_q2": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Where are your products made?",
+                "answer": "<p>Everything is made in our own workshop in Chennai, India. We don't outsource production. Our team designs, builds, and finishes each piece in-house — which means we can stand behind the quality of every joint, surface, and detail.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b1_q3": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "What does the Re-manifesto mean?",
+                "answer": "<p>The Re-manifesto is our commitment to the full life of the product — not just the sale. It covers five principles: Restore, Recycle, Resale, Return, and Reimagine. In practice, it means we offer repair support, take back products at end of life, and design everything to be dismantled and recycled rather than binned.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b1_q4": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Is there a narkk showroom I can visit?",
+                "answer": "<p>Yes. Our Chennai studio is open to visitors by appointment. If you'd like to see the pieces in person, feel free to reach out and we'll arrange a time. Trade clients and designers are especially welcome — bring a project brief if you have one.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "item_b1_q1",
+            "item_b1_q2",
+            "item_b1_q3",
+            "item_b1_q4"
+          ]
+        },
+        "cat_products_D4e5F6": {
+          "type": "faq-category",
+          "name": "FAQ Category",
+          "settings": {
+            "label": "Products & Craftsmanship"
+          },
+          "blocks": {
+            "item_b2_q1": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "What materials do you use?",
+                "answer": "<p>We work primarily with solid hardwoods, Baltic birch plywood, and natural textiles. All wood is sustainably sourced and finished with water-based, food-safe coatings. We choose materials based on longevity and repairability — nothing that looks good for two years and falls apart in five.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b2_q2": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Are your products modular or configurable?",
+                "answer": "<p>Many of our pieces are designed with modularity in mind. Components can be replaced individually if they wear, and some collections allow you to combine units to fit your space. Configuration options are listed on each product page — if you're unsure what's possible, contact us and we'll walk you through it.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b2_q3": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "How do I care for and maintain narkk furniture?",
+                "answer": "<p>Day-to-day maintenance is straightforward — a dry or lightly damp cloth is enough for most surfaces. For deeper cleaning, avoid harsh chemicals; a mild soap solution works well. Wood pieces benefit from occasional oiling depending on the finish. Detailed care instructions are included with every order and available on the product page.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b2_q4": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Can I repair a narkk piece if it gets damaged?",
+                "answer": "<p>Yes — that's by design. Most of our furniture is built so that individual components can be repaired or replaced without replacing the whole piece. Contact us with photos and we'll advise on the best approach, whether that's a part replacement, a repair guide, or a referral to a local craftsperson.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b2_q5": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Do your products come with a warranty?",
+                "answer": "<p>All narkk pieces come with a 5-year structural warranty against manufacturing defects. This covers joints, frames, and structural components under normal use. Surface wear and cosmetic changes from use are not covered, but we're happy to advise on repair and restoration throughout the product's life.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "item_b2_q1",
+            "item_b2_q2",
+            "item_b2_q3",
+            "item_b2_q4",
+            "item_b2_q5"
+          ]
+        },
+        "cat_ordering_G7h8I9": {
+          "type": "faq-category",
+          "name": "FAQ Category",
+          "settings": {
+            "label": "Ordering & Customisation"
+          },
+          "blocks": {
+            "item_b3_q1": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Can I customise the colour or finish of a product?",
+                "answer": "<p>Yes. A range of finishes is available for most products — wood stains, painted options, and upholstery colours are listed on each product page. For bespoke finishes outside of these, reach out before ordering and we'll let you know what's possible and any lead time implications.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b3_q2": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Can I request a custom size or configuration?",
+                "answer": "<p>For most collections, we can accommodate non-standard dimensions on request. Custom sizing is subject to a lead time of 6–10 weeks and may carry an additional charge. Contact us with your requirements and we'll confirm feasibility and pricing before you commit.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b3_q3": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "How do I place an order?",
+                "answer": "<p>You can order directly through the website — add to cart, checkout, and we'll send a confirmation. For custom or trade orders, it's better to contact us first so we can confirm availability, lead time, and any specifics before payment is taken.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b3_q4": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Can I cancel or amend an order after placing it?",
+                "answer": "<p>Standard orders can be cancelled or amended within 24 hours of placement at no charge. After that, if production has begun, cancellations may incur a fee. Custom and made-to-order pieces cannot be cancelled once production starts. Contact us as soon as possible if you need to make a change.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b3_q5": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Can I see material samples before ordering?",
+                "answer": "<p>Yes. We offer a sample service for wood finishes and upholstery fabrics. Samples are dispatched within 3–5 working days. Contact us with the product and finish you're considering and we'll send what we have available.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "item_b3_q1",
+            "item_b3_q2",
+            "item_b3_q3",
+            "item_b3_q4",
+            "item_b3_q5"
+          ]
+        },
+        "cat_payments_J1k2L3": {
+          "type": "faq-category",
+          "name": "FAQ Category",
+          "settings": {
+            "label": "Payments"
+          },
+          "blocks": {
+            "item_b4_q1": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "What payment methods do you accept?",
+                "answer": "<p>We accept all major credit and debit cards (Visa, Mastercard, Amex), as well as bank transfer for trade and large orders. Payment is processed securely at checkout — we don't store card details.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b4_q2": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Do you offer payment in instalments?",
+                "answer": "<p>We're working on adding instalment options at checkout. For now, full payment is required at the time of order for standard products. For large or custom orders, staged payment arrangements may be possible — speak to us directly and we'll work something out.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b4_q3": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Is my payment information secure?",
+                "answer": "<p>Yes. All transactions are processed through Shopify's encrypted payment system. We don't have access to your full card details at any point. Look for the padlock icon in your browser's address bar to confirm the secure connection.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b4_q4": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Will I be charged VAT or import duties?",
+                "answer": "<p>Orders within India are subject to applicable GST, which is included in the displayed price. For international orders, import duties and local taxes are the responsibility of the customer and are not included in our pricing. We recommend checking your country's import thresholds before ordering.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "item_b4_q1",
+            "item_b4_q2",
+            "item_b4_q3",
+            "item_b4_q4"
+          ]
+        },
+        "cat_shipping_M4n5O6": {
+          "type": "faq-category",
+          "name": "FAQ Category",
+          "settings": {
+            "label": "Shipping & Delivery"
+          },
+          "blocks": {
+            "item_b5_q1": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Where do you deliver?",
+                "answer": "<p>We currently deliver across India and to select international destinations. If you're outside India and unsure whether we deliver to your location, contact us before placing an order and we'll confirm.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b5_q2": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "How long will delivery take?",
+                "answer": "<p>Standard in-stock items are dispatched within 5–7 working days and typically arrive within 10–14 working days depending on your location. Custom and made-to-order pieces carry a lead time of 6–10 weeks from order confirmation. You'll receive tracking details once your order ships.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b5_q3": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Will my furniture be assembled on delivery?",
+                "answer": "<p>White-glove delivery with in-room assembly is available in Chennai and select cities. For other locations, furniture is delivered flat-packed or partially assembled with clear instructions. Assembly service availability is shown at checkout based on your delivery address.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b5_q4": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "I missed my delivery slot — can the driver come back the same day?",
+                "answer": "<p>Same-day redelivery isn't always possible, as drivers operate on scheduled routes. If you miss a delivery, contact our team as soon as possible and we'll arrange the next available slot. For large or white-glove deliveries, we ask that someone is present during the confirmed window.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b5_q5": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "What if I am not at home on the delivery date?",
+                "answer": "<p>If you're unable to be home, please contact us at least 24 hours in advance to reschedule. Leaving a signed authority for delivery or nominating a neighbour to receive the item may also be possible depending on the delivery provider and item size.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b5_q6": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "What should I consider for apartment or commercial deliveries?",
+                "answer": "<p>For upper-floor apartments or commercial premises, please check lift dimensions and doorway widths before ordering — particularly for larger pieces. We include packaged dimensions on all product pages. If you have access restrictions, let us know in your order notes and we'll coordinate accordingly.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "item_b5_q1",
+            "item_b5_q2",
+            "item_b5_q3",
+            "item_b5_q4",
+            "item_b5_q5",
+            "item_b5_q6"
+          ]
+        },
+        "cat_returns_P7q8R9": {
+          "type": "faq-category",
+          "name": "FAQ Category",
+          "settings": {
+            "label": "Returns & Support"
+          },
+          "blocks": {
+            "item_b6_q1": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "What is your returns policy?",
+                "answer": "<p>We accept returns on standard, unmodified products within 14 days of delivery, provided they are in original condition and packaging. Custom and made-to-order pieces are non-returnable unless faulty. To initiate a return, contact us with your order number and we'll guide you through the process.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b6_q2": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "My order arrived damaged — what do I do?",
+                "answer": "<p>Contact us within 48 hours of delivery with photos of the damage and your order number. We'll assess and arrange a replacement, repair, or refund depending on the extent of the issue. We take transit damage seriously and use it to improve our packaging.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b6_q3": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Who covers return shipping costs?",
+                "answer": "<p>If the return is due to a fault or error on our part, we cover the return shipping cost in full. For change-of-mind returns, the customer is responsible for return shipping. We recommend using a tracked service, as we can't be liable for items lost in transit.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b6_q4": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "How long does a refund take?",
+                "answer": "<p>Once we receive and inspect the returned item, refunds are processed within 5 working days. The time it takes to appear in your account depends on your bank or card provider — typically 3–5 additional business days.</p>"
+              },
+              "blocks": {}
+            },
+            "item_b6_q5": {
+              "type": "faq-item",
+              "name": "FAQ Item",
+              "settings": {
+                "question": "Can I exchange a product instead of returning it?",
+                "answer": "<p>Yes, exchanges are available for standard products within the 14-day return window. If you'd like a different size, finish, or product, contact us and we'll confirm availability. Any price difference will be charged or refunded accordingly.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "item_b6_q1",
+            "item_b6_q2",
+            "item_b6_q3",
+            "item_b6_q4",
+            "item_b6_q5"
+          ]
+        }
+      },
+      "block_order": [
+        "cat_brand_A1b2C3",
+        "cat_products_D4e5F6",
+        "cat_ordering_G7h8I9",
+        "cat_payments_J1k2L3",
+        "cat_shipping_M4n5O6",
+        "cat_returns_P7q8R9"
+      ]
+    }
+  },
+  "order": [
+    "narkk_pages_faq_hero_TNaXtW",
+    "narkk_pages_faq_body_main"
+  ]
+}
