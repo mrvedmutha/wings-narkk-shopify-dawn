@@ -1,0 +1,400 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "plp-hero": {
+      "type": "narkk-plp-hero",
+      "settings": {
+        "image": "shopify://shop_images/tulai-collection-head.webp",
+        "heading": "Tulai Collection",
+        "description": "A versatile pegboard collection thoughtfully designed to simplify your space, organise your essentials, and bring a sense of clarity to your daily routines. Built to adapt to your needs, it helps you create a setup that feels intuitive, functional, and effortlessly tidy.",
+        "tagline": "Customisable Setup; Smart Storage; Effortless Organisation",
+        "padding_top": 24,
+        "padding_bottom": 160
+      }
+    },
+    "plp-filter-bar": {
+      "type": "narkk-plp-filter-bar",
+      "settings": {
+        "result_count": "29 Results",
+        "sort_label": "Bestselling",
+        "cta_label": "View Product (29)"
+      }
+    },
+    "plp-boards": {
+      "type": "narkk-plp-category-grid",
+      "blocks": {
+        "board-tiny": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-1-1.webp",
+            "badge": "TINY",
+            "title": "Tiny Pegboard - Birch",
+            "sub_info": "550 x 150 x 16 mm",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "board-small": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-1-2.webp",
+            "badge": "SMALL",
+            "title": "Small Pegboard - Birch",
+            "sub_info": "550 x 550 x 16 mm",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "board-standard": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-1-3.webp",
+            "badge": "STANDARD",
+            "title": "Standard Pegboard - Birch",
+            "sub_info": "550 x 1100 x 16 mm",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "board-large": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-1-4.webp",
+            "badge": "LARGE",
+            "title": "Large Pegboard - Birch",
+            "sub_info": "550 x 1750 x 16 mm",
+            "price": "Rs. 4,919.00"
+          }
+        }
+      },
+      "block_order": [
+        "board-tiny",
+        "board-small",
+        "board-standard",
+        "board-large"
+      ],
+      "settings": {
+        "step_number": 1,
+        "heading": "Start with Board",
+        "description": "Choose your base. Build from Solid Birch Plywood",
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "plp-accessories": {
+      "type": "narkk-plp-category-grid",
+      "blocks": {
+        "acc-shelf-short-narrow": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-1.webp",
+            "badge": "",
+            "title": "Shelf Short Narrow",
+            "sub_info": "",
+            "price": "Rs. 187.00"
+          }
+        },
+        "acc-shelf-long-narrow": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-2.webp",
+            "badge": "",
+            "title": "Shelf Long Narrow",
+            "sub_info": "",
+            "price": "Rs. 220.00"
+          }
+        },
+        "acc-shelf-long-wide": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-3.webp",
+            "badge": "",
+            "title": "Shelf Long Wide",
+            "sub_info": "",
+            "price": "Rs. 302.00"
+          }
+        },
+        "acc-portrait-shelf": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-4.webp",
+            "badge": "",
+            "title": "Portrait Shelf",
+            "sub_info": "",
+            "price": "Rs. 490.00"
+          }
+        },
+        "acc-wall-mount-kit": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-5.webp",
+            "badge": "",
+            "title": "Wall Mount Kit",
+            "sub_info": "",
+            "price": "Rs. 176.00"
+          }
+        },
+        "acc-metal-pegs": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-6.webp",
+            "badge": "",
+            "title": "Metal Pegs",
+            "sub_info": "(Pack of 6s)",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "acc-screw-peg-hook": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-7.webp",
+            "badge": "",
+            "title": "Screw-in Peg Hook",
+            "sub_info": "(Pack of 3s)",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "acc-short-metal-hooks": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-8.webp",
+            "badge": "",
+            "title": "Short Metal Hooks",
+            "sub_info": "(Pack of 4s)",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "acc-long-metal-hooks": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-9.webp",
+            "badge": "",
+            "title": "Long Metal Hooks",
+            "sub_info": "(Pack of 4s)",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "acc-short-wooden-pegs": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-10.webp",
+            "badge": "",
+            "title": "Short Wooden Pegs",
+            "sub_info": "(Pack of 4s)",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "acc-long-wooden-pegs": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-11.webp",
+            "badge": "",
+            "title": "Long Wooden Pegs",
+            "sub_info": "(Pack of 4s)",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "acc-floating-bookshelf": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-12.webp",
+            "badge": "",
+            "title": "Floating Book Shelf",
+            "sub_info": "",
+            "price": "Rs. 400.00"
+          }
+        },
+        "acc-small-cloth-basket": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-13.webp",
+            "badge": "",
+            "title": "Small Cloth Basket",
+            "sub_info": "",
+            "price": "Rs. 480.00"
+          }
+        },
+        "acc-large-cloth-basket": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-14.webp",
+            "badge": "",
+            "title": "Large Cloth Basket",
+            "sub_info": "",
+            "price": "Rs. 350.00"
+          }
+        },
+        "acc-helmet-stand": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-15.webp",
+            "badge": "",
+            "title": "Helmet Stand",
+            "sub_info": "",
+            "price": "Rs. 200.00"
+          }
+        },
+        "acc-mushroom-peg": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-16.webp",
+            "badge": "",
+            "title": "Mushroom Wooden Peg",
+            "sub_info": "(Pack of 2s)",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "acc-cloth-hanger-rod": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-17.webp",
+            "badge": "",
+            "title": "Cloth Hanger Rod",
+            "sub_info": "",
+            "price": "Rs. 300.00"
+          }
+        },
+        "acc-rail-hanger": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-18.webp",
+            "badge": "",
+            "title": "Rail Hanger with S Hooks",
+            "sub_info": "",
+            "price": "Rs. 0.00"
+          }
+        },
+        "acc-shelf-short-fiddle": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-19.webp",
+            "badge": "",
+            "title": "Shelf Short Narrow with Fiddle",
+            "sub_info": "",
+            "price": "Rs. 787.00"
+          }
+        },
+        "acc-shelf-long-fiddle": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-20.webp",
+            "badge": "",
+            "title": "Shelf Long Narrow with Fiddle",
+            "sub_info": "",
+            "price": "Rs. 820.00"
+          }
+        },
+        "acc-shelf-wide-fiddle": {
+          "type": "product_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-2-21.webp",
+            "badge": "",
+            "title": "Shelf Long Wide with Fiddle",
+            "sub_info": "",
+            "price": "Rs. 902.00"
+          }
+        }
+      },
+      "block_order": [
+        "acc-shelf-short-narrow",
+        "acc-shelf-long-narrow",
+        "acc-shelf-long-wide",
+        "acc-portrait-shelf",
+        "acc-wall-mount-kit",
+        "acc-metal-pegs",
+        "acc-screw-peg-hook",
+        "acc-short-metal-hooks",
+        "acc-long-metal-hooks",
+        "acc-short-wooden-pegs",
+        "acc-long-wooden-pegs",
+        "acc-floating-bookshelf",
+        "acc-small-cloth-basket",
+        "acc-large-cloth-basket",
+        "acc-helmet-stand",
+        "acc-mushroom-peg",
+        "acc-cloth-hanger-rod",
+        "acc-rail-hanger",
+        "acc-shelf-short-fiddle",
+        "acc-shelf-long-fiddle",
+        "acc-shelf-wide-fiddle"
+      ],
+      "settings": {
+        "step_number": 2,
+        "heading": "Add Accessories",
+        "description": "Pick what you need to build your setup. Up to 9 accessories with standard board",
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "plp-ready-setups": {
+      "type": "narkk-plp-big-grid",
+      "blocks": {
+        "bundle-desk": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-1.webp",
+            "title": "The Desk Setup",
+            "board_type": "Standard Board",
+            "accessories_count": "5 Accessories",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "bundle-declutter": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-2.webp",
+            "title": "The Declutter Wall",
+            "board_type": "Small Board",
+            "accessories_count": "5 Accessories",
+            "price": "Rs. 2,992.00"
+          }
+        },
+        "bundle-morning": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-3.webp",
+            "title": "The Morning Ritual",
+            "board_type": "Large Board",
+            "accessories_count": "7 Accessories",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "bundle-entryway": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-4.webp",
+            "title": "The Entryway Starter",
+            "board_type": "Tiny Board",
+            "accessories_count": "4 Accessories",
+            "price": "Rs. 4,919.00"
+          }
+        }
+      },
+      "block_order": [
+        "bundle-desk",
+        "bundle-declutter",
+        "bundle-morning",
+        "bundle-entryway"
+      ],
+      "settings": {
+        "step_number": 3,
+        "heading": "Ready Setups",
+        "description": "Curated combinations for every setup",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "plp-hero",
+    "plp-filter-bar",
+    "plp-boards",
+    "plp-accessories",
+    "plp-ready-setups"
+  ]
+}

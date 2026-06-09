@@ -1,0 +1,152 @@
+/* ============================================================
+   NARKK PLP — HERO / COLLECTION HEADER
+   1rem = 10px (Dawn sets html at 62.5%)
+   ============================================================ */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+.narkk-plp-hero {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+.narkk-plp-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 3rem;
+  width: 100%;
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────── */
+.narkk-plp-hero__breadcrumb {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.narkk-plp-hero__breadcrumb a,
+.narkk-plp-hero__breadcrumb-item,
+.narkk-plp-hero__breadcrumb-sep {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-highlight);
+  font-weight: 400;
+  line-height: var(--narkk-lh-highlight);
+  text-decoration: none;
+}
+
+.narkk-plp-hero__breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.narkk-plp-hero__breadcrumb-sep {
+  opacity: 0.45;
+}
+
+/* ── Content row ──────────────────────────────────────────── */
+.narkk-plp-hero__content {
+  align-items: flex-end;
+  display: flex;
+  gap: 4rem;
+  width: 100%;
+}
+
+/* ── Image ────────────────────────────────────────────────── */
+.narkk-plp-hero__image-wrap {
+  aspect-ratio: 814 / 635;
+  flex: 0 0 59%;
+  overflow: hidden;
+}
+
+.narkk-plp-hero__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  width: 100%;
+}
+
+.narkk-plp-hero__image--placeholder {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Side content ─────────────────────────────────────────── */
+.narkk-plp-hero__side {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-plp-hero__heading {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: clamp(4rem, 4.2vw, var(--narkk-font-h1));
+  font-weight: 300;
+  letter-spacing: var(--narkk-ls-h1);
+  line-height: 1.08;
+  margin: 0;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+/* ── Description & tagline ────────────────────────────────── */
+.narkk-plp-hero__description,
+.narkk-plp-hero__tagline {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* ── Tablet: stack columns ────────────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-plp-hero__content {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .narkk-plp-hero__image-wrap {
+    aspect-ratio: 16 / 9;
+    flex: none;
+    width: 100%;
+  }
+
+  .narkk-plp-hero__side {
+    gap: 2rem;
+  }
+
+  .narkk-plp-hero__heading {
+    font-size: 4.5rem;
+  }
+}
+
+/* ── Mobile ───────────────────────────────────────────────── */
+@media (width <= 640px) {
+  .narkk-plp-hero__inner {
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+
+  .narkk-plp-hero__image-wrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .narkk-plp-hero__heading {
+    font-size: 3.5rem;
+  }
+
+  .narkk-plp-hero__description,
+  .narkk-plp-hero__tagline {
+    font-size: var(--narkk-font-body-2);
+  }
+}

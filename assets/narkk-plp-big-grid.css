@@ -1,0 +1,171 @@
+/* ============================================================
+   NARKK PLP — BIG GRID (2-column lifestyle / bundle grid)
+   1rem = 10px (Dawn sets html at 62.5%)
+   ============================================================ */
+
+/* ── Section ─────────────────────────────────────────────── */
+.narkk-plp-big-grid {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+.narkk-plp-big-grid__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 3.2rem;
+  width: 100%;
+}
+
+/* ── Category header ─────────────────────────────────────── */
+.narkk-plp-big-grid__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.narkk-plp-big-grid__heading-list {
+  list-style-type: decimal;
+  margin: 0;
+  padding-left: 3.6rem;
+}
+
+.narkk-plp-big-grid__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  text-transform: uppercase;
+}
+
+.narkk-plp-big-grid__desc {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  max-width: 68rem;
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+.narkk-plp-big-grid__grid {
+  display: grid;
+  gap: 6rem 2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ── Bundle card ─────────────────────────────────────────── */
+.narkk-plp-bundle-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-plp-bundle-card__link {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  text-decoration: none;
+}
+
+/* ── Card image area ─────────────────────────────────────── */
+.narkk-plp-bundle-card__image-wrap {
+  aspect-ratio: 682 / 504;
+  background: var(--narkk-white);
+  overflow: hidden;
+  width: 100%;
+}
+
+.narkk-plp-bundle-card__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.narkk-plp-bundle-card__image--placeholder {
+  display: block;
+  height: 100%;
+  opacity: 0.15;
+  width: 100%;
+}
+
+/* ── Card info ───────────────────────────────────────────── */
+.narkk-plp-bundle-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-plp-bundle-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.narkk-plp-bundle-card__name {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-product-name);
+  font-weight: 400;
+  line-height: var(--narkk-lh-product-name);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Board type + accessories count row */
+.narkk-plp-bundle-card__sub {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.narkk-plp-bundle-card__board,
+.narkk-plp-bundle-card__count {
+  color: #545454;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  white-space: nowrap;
+}
+
+.narkk-plp-bundle-card__dot {
+  background: #545454;
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+  height: 0.56rem;
+  width: 0.56rem;
+}
+
+.narkk-plp-bundle-card__price {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-pricing);
+  font-weight: 400;
+  line-height: var(--narkk-lh-pricing);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Tablet ≤1024px → 1 column ──────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-plp-big-grid__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Mobile ≤640px ───────────────────────────────────────── */
+@media (width <= 640px) {
+  .narkk-plp-big-grid__inner {
+    padding: 0 2rem;
+  }
+
+  .narkk-plp-big-grid__grid {
+    gap: 4rem;
+  }
+}

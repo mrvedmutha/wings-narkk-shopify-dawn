@@ -1,0 +1,183 @@
+/* ============================================================
+   NARKK PLP — CATEGORY GRID (4-column product grid)
+   1rem = 10px (Dawn sets html at 62.5%)
+   ============================================================ */
+
+/* ── Section ─────────────────────────────────────────────── */
+.narkk-plp-category-grid {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+.narkk-plp-category-grid__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 3.2rem;
+  width: 100%;
+}
+
+/* ── Category header ─────────────────────────────────────── */
+.narkk-plp-category-grid__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.narkk-plp-category-grid__heading-list {
+  list-style-type: decimal;
+  margin: 0;
+  padding-left: 3.6rem;
+}
+
+.narkk-plp-category-grid__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  text-transform: uppercase;
+}
+
+.narkk-plp-category-grid__desc {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  max-width: 68rem;
+}
+
+/* ── Product grid ────────────────────────────────────────── */
+.narkk-plp-category-grid__grid {
+  display: grid;
+  gap: 6rem 2rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ── Product card ────────────────────────────────────────── */
+.narkk-plp-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-plp-card__link {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  text-decoration: none;
+}
+
+/* ── Card image area ─────────────────────────────────────── */
+.narkk-plp-card__image-wrap {
+  align-items: center;
+  aspect-ratio: 331 / 408;
+  background: var(--narkk-secondary);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.narkk-plp-card__image {
+  display: block;
+  height: auto;
+  max-height: 75%;
+  max-width: 82%;
+  object-fit: contain;
+  width: auto;
+}
+
+.narkk-plp-card__image--placeholder {
+  max-height: 55%;
+  max-width: 65%;
+  opacity: 0.3;
+}
+
+/* ── Size badge ──────────────────────────────────────────── */
+.narkk-plp-card__badge {
+  background: var(--narkk-white);
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  left: 1.2rem;
+  line-height: var(--narkk-lh-body-2);
+  padding: 0.4rem 1rem;
+  position: absolute;
+  top: 1.3rem;
+  white-space: nowrap;
+}
+
+/* ── Card info ───────────────────────────────────────────── */
+.narkk-plp-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-plp-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.narkk-plp-card__name {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-product-name);
+  font-weight: 400;
+  line-height: var(--narkk-lh-product-name);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-plp-card__sub-info {
+  color: #545454;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+.narkk-plp-card__price {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-pricing);
+  font-weight: 400;
+  line-height: var(--narkk-lh-pricing);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Tablet ≤1024px → 3 columns ─────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-plp-category-grid__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Mobile ≤640px → 2 columns ──────────────────────────── */
+@media (width <= 640px) {
+  .narkk-plp-category-grid__inner {
+    padding: 0 2rem;
+  }
+
+  .narkk-plp-category-grid__grid {
+    gap: 4rem 1.6rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── XS ≤390px → 1 column ───────────────────────────────── */
+@media (width <= 390px) {
+  .narkk-plp-category-grid__grid {
+    gap: 4rem;
+    grid-template-columns: 1fr;
+  }
+}

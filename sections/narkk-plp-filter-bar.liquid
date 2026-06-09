@@ -1,0 +1,260 @@
+{{ 'narkk-plp-filter-bar.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign result_count = section.settings.result_count
+  assign sort_label   = section.settings.sort_label
+  assign cta_label    = section.settings.cta_label
+-%}
+
+{%- comment -%}── FILTER BAR ────────────────────────────────────────────────{%- endcomment -%}
+<div class="narkk-filter-bar" data-narkk-filter-bar>
+  <div class="narkk-filter-bar__inner">
+
+    {%- comment -%} Left: trigger + count {%- endcomment -%}
+    <div class="narkk-filter-bar__left">
+      <button
+        class="narkk-filter-bar__trigger"
+        type="button"
+        data-filter-trigger
+        aria-haspopup="dialog"
+        aria-label="Open filters"
+      >
+        <svg class="narkk-filter-bar__trigger-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line x1="3" y1="5" x2="21" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="3" y1="19" x2="21" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="8"  cy="5"  r="2.25" fill="var(--narkk-beige)" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="16" cy="12" r="2.25" fill="var(--narkk-beige)" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="10" cy="19" r="2.25" fill="var(--narkk-beige)" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span class="narkk-filter-bar__trigger-label">Filters</span>
+      </button>
+      <span class="narkk-filter-bar__count">{{ result_count }}</span>
+    </div>
+
+    {%- comment -%} Right: sort {%- endcomment -%}
+    <div class="narkk-filter-bar__right">
+      <span class="narkk-filter-bar__sort-label">Sort</span>
+      <button
+        class="narkk-filter-bar__sort-btn"
+        type="button"
+        data-filter-sort-btn
+        aria-expanded="false"
+        aria-haspopup="listbox"
+      >
+        <span class="narkk-filter-bar__sort-value" data-filter-sort-value>{{ sort_label }}</span>
+        <svg class="narkk-filter-bar__sort-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="narkk-filter-bar__sort-dropdown" data-filter-sort-dropdown role="listbox">
+        <button class="narkk-filter-bar__sort-option is-active" data-filter-sort-option type="button">Bestselling</button>
+        <button class="narkk-filter-bar__sort-option" data-filter-sort-option type="button">Featured</button>
+        <button class="narkk-filter-bar__sort-option" data-filter-sort-option type="button">Price: Low to High</button>
+        <button class="narkk-filter-bar__sort-option" data-filter-sort-option type="button">Price: High to Low</button>
+        <button class="narkk-filter-bar__sort-option" data-filter-sort-option type="button">Newest</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{%- comment -%}── FILTER DRAWER ─────────────────────────────────────────────{%- endcomment -%}
+<div class="narkk-filter-backdrop" data-narkk-filter-backdrop aria-hidden="true">&nbsp;</div>
+
+<div class="narkk-filter-drawer"
+     data-narkk-filter-drawer
+     role="dialog"
+     aria-modal="true"
+     aria-label="Filters">
+
+  {%- comment -%} Header {%- endcomment -%}
+  <div class="narkk-filter-drawer__header">
+    <h2 class="narkk-filter-drawer__title">Filters</h2>
+    <button
+      class="narkk-filter-drawer__close"
+      type="button"
+      data-filter-close
+      aria-label="Close filters"
+    >
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="24" height="24">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  {%- comment -%} Scrollable body {%- endcomment -%}
+  <div class="narkk-filter-drawer__body" data-lenis-prevent>
+
+    {%- comment -%}── Group: Category ──────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-filter-group" data-filter-group>
+      <button class="narkk-filter-group__header" type="button" data-filter-group-header aria-expanded="true">
+        <span class="narkk-filter-group__name">Category</span>
+        <svg class="narkk-filter-group__toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line class="icon-minus" x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <g class="icon-plus">
+            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="5"  y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </button>
+      <div class="narkk-filter-group__items" data-filter-items>
+        {%- assign category_items = "Boards,4|Accessories,22|Bundles,4|Wall mount kits,1" | split: "|" -%}
+        {%- for item in category_items -%}
+          {%- assign parts = item | split: "," -%}
+          <div class="narkk-filter-item" data-filter-item>
+            <span class="narkk-filter-item__checkbox" aria-hidden="true">
+              <svg class="narkk-filter-item__checkbox-inner" viewBox="0 0 10 8" fill="none" width="10" height="8">
+                <path d="M1 4l3 3 5-6" stroke="var(--narkk-beige)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="narkk-filter-item__label">{{ parts[0] }}</span>
+            <span class="narkk-filter-item__count">({{ parts[1] }})</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <hr class="narkk-filter-divider">
+
+    {%- comment -%}── Group: Type ──────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-filter-group" data-filter-group>
+      <button class="narkk-filter-group__header" type="button" data-filter-group-header aria-expanded="true">
+        <span class="narkk-filter-group__name">Type (Accessories)</span>
+        <svg class="narkk-filter-group__toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line class="icon-minus" x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <g class="icon-plus">
+            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="5"  y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </button>
+      <div class="narkk-filter-group__items" data-filter-items>
+        {%- assign type_items = "Shelves,7|Pegs,4|Hooks,4|Basket,2|Holders and Utility,4" | split: "|" -%}
+        {%- for item in type_items -%}
+          {%- assign parts = item | split: "," -%}
+          <div class="narkk-filter-item" data-filter-item>
+            <span class="narkk-filter-item__checkbox" aria-hidden="true">
+              <svg class="narkk-filter-item__checkbox-inner" viewBox="0 0 10 8" fill="none" width="10" height="8">
+                <path d="M1 4l3 3 5-6" stroke="var(--narkk-beige)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="narkk-filter-item__label">{{ parts[0] }}</span>
+            <span class="narkk-filter-item__count">({{ parts[1] }})</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <hr class="narkk-filter-divider">
+
+    {%- comment -%}── Group: Materials ─────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-filter-group" data-filter-group>
+      <button class="narkk-filter-group__header" type="button" data-filter-group-header aria-expanded="true">
+        <span class="narkk-filter-group__name">Materials</span>
+        <svg class="narkk-filter-group__toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line class="icon-minus" x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <g class="icon-plus">
+            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="5"  y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </button>
+      <div class="narkk-filter-group__items" data-filter-items>
+        {%- assign materials_items = "Birch,11|Stainless Steel,6|Teak,3|White,1|Canvas,2" | split: "|" -%}
+        {%- for item in materials_items -%}
+          {%- assign parts = item | split: "," -%}
+          <div class="narkk-filter-item" data-filter-item>
+            <span class="narkk-filter-item__checkbox" aria-hidden="true">
+              <svg class="narkk-filter-item__checkbox-inner" viewBox="0 0 10 8" fill="none" width="10" height="8">
+                <path d="M1 4l3 3 5-6" stroke="var(--narkk-beige)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="narkk-filter-item__label">{{ parts[0] }}</span>
+            <span class="narkk-filter-item__count">({{ parts[1] }})</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <hr class="narkk-filter-divider">
+
+    {%- comment -%}── Group: Ready Setup ───────────────────────────────────{%- endcomment -%}
+    <div class="narkk-filter-group" data-filter-group>
+      <button class="narkk-filter-group__header" type="button" data-filter-group-header aria-expanded="true">
+        <span class="narkk-filter-group__name">Ready Setup</span>
+        <svg class="narkk-filter-group__toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line class="icon-minus" x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <g class="icon-plus">
+            <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="5"  y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </button>
+      <div class="narkk-filter-group__items" data-filter-items>
+        {%- assign setup_items = "Desk Setup,11|Declutter Wall,6|Morning Ritual,3|Entryway Starter,1" | split: "|" -%}
+        {%- for item in setup_items -%}
+          {%- assign parts = item | split: "," -%}
+          <div class="narkk-filter-item" data-filter-item>
+            <span class="narkk-filter-item__checkbox" aria-hidden="true">
+              <svg class="narkk-filter-item__checkbox-inner" viewBox="0 0 10 8" fill="none" width="10" height="8">
+                <path d="M1 4l3 3 5-6" stroke="var(--narkk-beige)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="narkk-filter-item__label">{{ parts[0] }}</span>
+            <span class="narkk-filter-item__count">({{ parts[1] }})</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <hr class="narkk-filter-divider">
+
+  </div>
+
+  {%- comment -%} Footer CTA {%- endcomment -%}
+  <div class="narkk-filter-drawer__footer">
+    <button
+      class="narkk-filter-drawer__cta"
+      type="button"
+      data-filter-close
+    >
+      {{ cta_label }}
+    </button>
+  </div>
+
+</div>
+
+<script src="{{ 'narkk-plp-filter-bar.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "PLP Filter Bar",
+  "tag": "section",
+  "class": "narkk-filter-bar-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "result_count",
+      "label": "Results count label",
+      "default": "29 Results"
+    },
+    {
+      "type": "text",
+      "id": "sort_label",
+      "label": "Default sort label",
+      "default": "Bestselling"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Drawer CTA button",
+      "default": "View Product (29)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PLP Filter Bar"
+    }
+  ]
+}
+{% endschema %}

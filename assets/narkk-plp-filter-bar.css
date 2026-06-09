@@ -1,0 +1,380 @@
+/* ============================================================
+   NARKK PLP — FILTER BAR + FILTER DRAWER
+   1rem = 10px (Dawn sets html at 62.5%)
+   ============================================================ */
+
+/* ── Filter bar ───────────────────────────────────────────── */
+.narkk-filter-bar {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+.narkk-filter-bar__inner {
+  align-items: center;
+  border-bottom: 1px solid var(--narkk-divider);
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: 4rem;
+  padding: 0 3rem 1.6rem;
+}
+
+/* ── Left: trigger + count ────────────────────────────────── */
+.narkk-filter-bar__left {
+  align-items: center;
+  display: flex;
+  gap: 1.6rem;
+}
+
+.narkk-filter-bar__trigger {
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  gap: 0.8rem;
+  padding: 0;
+}
+
+.narkk-filter-bar__trigger-icon {
+  display: block;
+  flex-shrink: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.narkk-filter-bar__trigger-label,
+.narkk-filter-bar__count {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  white-space: nowrap;
+}
+
+/* ── Right: sort ──────────────────────────────────────────── */
+.narkk-filter-bar__right {
+  align-items: center;
+  display: flex;
+  gap: 1.6rem;
+  position: relative;
+}
+
+.narkk-filter-bar__sort-label {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+}
+
+.narkk-filter-bar__sort-btn {
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  gap: 0.8rem;
+  padding: 0;
+}
+
+.narkk-filter-bar__sort-value {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  white-space: nowrap;
+}
+
+.narkk-filter-bar__sort-icon {
+  display: block;
+  flex-shrink: 0;
+  height: 2.4rem;
+  transition: transform 0.25s ease;
+  width: 2.4rem;
+}
+
+.narkk-filter-bar__sort-btn[aria-expanded="true"] .narkk-filter-bar__sort-icon {
+  transform: rotate(180deg);
+}
+
+/* ── Sort dropdown ────────────────────────────────────────── */
+.narkk-filter-bar__sort-dropdown {
+  background: var(--narkk-white);
+  border: 1px solid var(--narkk-divider);
+  display: none;
+  min-width: 18rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.8rem);
+  z-index: 200;
+}
+
+.narkk-filter-bar__sort-dropdown.is-open {
+  display: block;
+}
+
+.narkk-filter-bar__sort-option {
+  color: var(--narkk-dark);
+  cursor: pointer;
+  display: block;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  padding: 1rem 1.6rem;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.narkk-filter-bar__sort-option:hover,
+.narkk-filter-bar__sort-option.is-active {
+  background: var(--narkk-secondary);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FILTER DRAWER
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Backdrop ─────────────────────────────────────────────── */
+.narkk-filter-backdrop {
+  background: rgb(23 36 47 / 72%);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  visibility: hidden;
+  z-index: 9000;
+}
+
+.narkk-filter-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Drawer ───────────────────────────────────────────────── */
+.narkk-filter-drawer {
+  background: var(--narkk-white);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 45rem;
+  z-index: 9001;
+}
+
+.narkk-filter-drawer.is-open {
+  transform: translateX(0);
+}
+
+/* ── Drawer header ────────────────────────────────────────── */
+.narkk-filter-drawer__header {
+  align-items: center;
+  border-bottom: 1px solid var(--narkk-divider);
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  padding: 2.6rem 3rem;
+}
+
+.narkk-filter-drawer__title {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-filter-drawer__close {
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 2.4rem;
+  justify-content: center;
+  padding: 0;
+  width: 2.4rem;
+}
+
+/* ── Drawer scrollable body ───────────────────────────────── */
+.narkk-filter-drawer__body {
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 3rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--narkk-divider) transparent;
+}
+
+.narkk-filter-drawer__body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.narkk-filter-drawer__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.narkk-filter-drawer__body::-webkit-scrollbar-thumb {
+  background: var(--narkk-divider);
+  border-radius: 2px;
+}
+
+/* ── Filter group ─────────────────────────────────────────── */
+.narkk-filter-group {
+  padding: 2rem 0;
+}
+
+.narkk-filter-group + .narkk-filter-divider {
+  border: none;
+  border-top: 1px solid var(--narkk-divider);
+  margin: 0;
+}
+
+.narkk-filter-group__header {
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  width: 100%;
+}
+
+.narkk-filter-group__name {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 700;
+  line-height: var(--narkk-lh-body-1);
+}
+
+.narkk-filter-group__toggle-icon {
+  display: block;
+  flex-shrink: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.narkk-filter-group__toggle-icon .icon-minus { display: block; }
+.narkk-filter-group__toggle-icon .icon-plus  { display: none;  }
+
+.narkk-filter-group.is-collapsed .narkk-filter-group__toggle-icon .icon-minus { display: none;  }
+.narkk-filter-group.is-collapsed .narkk-filter-group__toggle-icon .icon-plus  { display: block; }
+
+/* ── Filter items list ────────────────────────────────────── */
+.narkk-filter-group__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  overflow: hidden;
+  transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.narkk-filter-group.is-collapsed .narkk-filter-group__items {
+  margin-top: 0;
+  max-height: 0 !important;
+  opacity: 0;
+}
+
+.narkk-filter-item {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 0.8rem;
+  user-select: none;
+}
+
+.narkk-filter-item__checkbox {
+  align-items: center;
+  border: 1.5px solid var(--narkk-dark);
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 1.8rem;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  width: 1.8rem;
+}
+
+.narkk-filter-item__checkbox-inner {
+  display: none;
+}
+
+.narkk-filter-item.is-checked .narkk-filter-item__checkbox {
+  background: var(--narkk-dark);
+  border-color: var(--narkk-dark);
+}
+
+.narkk-filter-item.is-checked .narkk-filter-item__checkbox-inner {
+  display: block;
+}
+
+.narkk-filter-item__label,
+.narkk-filter-item__count {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+}
+
+.narkk-filter-item__count {
+  opacity: 0.6;
+}
+
+/* ── Drawer footer ────────────────────────────────────────── */
+.narkk-filter-drawer__footer {
+  flex-shrink: 0;
+}
+
+.narkk-filter-drawer__cta {
+  align-items: center;
+  background: var(--narkk-dark);
+  border: none;
+  color: var(--narkk-white);
+  cursor: pointer;
+  display: flex;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 400;
+  height: 4.8rem;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* ── Mobile ───────────────────────────────────────────────── */
+@media (width <= 640px) {
+  .narkk-filter-bar__inner {
+    padding: 0 2rem;
+  }
+
+  .narkk-filter-drawer {
+    width: 100%;
+  }
+}

@@ -1,0 +1,151 @@
+{{ 'narkk-plp-hero.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-plp-hero {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-plp-hero" data-narkk-plp-hero>
+  <div class="narkk-plp-hero__inner">
+
+    {%- comment -%}── BREADCRUMB ────────────────────────────────────────────{%- endcomment -%}
+    <nav class="narkk-plp-hero__breadcrumb"
+         aria-label="Breadcrumb"
+         data-narkk-plp-breadcrumb>
+      <a href="{{ routes.root_url }}" class="narkk-plp-hero__breadcrumb-item">home</a>
+      <span class="narkk-plp-hero__breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
+      <span class="narkk-plp-hero__breadcrumb-item">products</span>
+      <span class="narkk-plp-hero__breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
+      <span class="narkk-plp-hero__breadcrumb-item">{{ section.settings.heading | downcase }}</span>
+    </nav>
+
+    {%- comment -%}── CONTENT ROW ───────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-plp-hero__content">
+
+      <div class="narkk-plp-hero__image-wrap">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            srcset="
+              {{ section.settings.image | image_url: width: 600 }} 600w,
+              {{ section.settings.image | image_url: width: 900 }} 900w,
+              {{ section.settings.image | image_url: width: 1200 }} 1200w
+            "
+            sizes="(max-width: 1024px) 100vw, 59vw"
+            alt="{{ section.settings.heading | escape }}"
+            loading="eager"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            class="narkk-plp-hero__image"
+            data-narkk-plp-image
+          >
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'narkk-plp-hero__image narkk-plp-hero__image--placeholder' }}
+        {%- endif -%}
+      </div>
+
+      <div class="narkk-plp-hero__side">
+        {%- if section.settings.heading != blank -%}
+          <h1 class="narkk-plp-hero__heading"
+              data-narkk-plp-heading
+              style="visibility:hidden">
+            {{- section.settings.heading -}}
+          </h1>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="narkk-plp-hero__description"
+             data-narkk-plp-description>
+            {{ section.settings.description }}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.tagline != blank -%}
+          <p class="narkk-plp-hero__tagline"
+             data-narkk-plp-tagline>
+            {{ section.settings.tagline }}
+          </p>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-plp-hero.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "PLP Hero",
+  "tag": "section",
+  "class": "narkk-plp-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "header",
+      "content": "Side content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Collection name",
+      "default": "Tulai Collection"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "A versatile pegboard collection thoughtfully designed to simplify your space, organise your essentials, and bring a sense of clarity to your daily routines. Built to adapt to your needs, it helps you create a setup that feels intuitive, functional, and effortlessly tidy."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Customisable Setup; Smart Storage; Effortless Organisation"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 160
+    }
+  ],
+  "presets": [
+    {
+      "name": "PLP Hero"
+    }
+  ]
+}
+{% endschema %}

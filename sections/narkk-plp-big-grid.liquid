@@ -1,0 +1,185 @@
+{{ 'narkk-plp-big-grid.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-plp-big-grid {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-plp-big-grid" data-narkk-plp-big-grid>
+  <div class="narkk-plp-big-grid__inner">
+
+    {%- comment -%}── HEADER ────────────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-plp-big-grid__header">
+      <ol class="narkk-plp-big-grid__heading-list" start="{{ section.settings.step_number }}">
+        <li class="narkk-plp-big-grid__heading">
+          {{- section.settings.heading -}}
+        </li>
+      </ol>
+      {%- if section.settings.description != blank -%}
+        <p class="narkk-plp-big-grid__desc">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}── BUNDLE GRID ───────────────────────────────────────────{%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="narkk-plp-big-grid__grid">
+        {%- for block in section.blocks -%}
+          <article class="narkk-plp-bundle-card" {{ block.shopify_attributes }}>
+            <a href="#" class="narkk-plp-bundle-card__link">
+
+              {%- comment -%} Image area {%- endcomment -%}
+              <div class="narkk-plp-bundle-card__image-wrap">
+                {%- if block.settings.image != blank -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 1400 }}"
+                    srcset="
+                      {{ block.settings.image | image_url: width: 700 }} 700w,
+                      {{ block.settings.image | image_url: width: 1000 }} 1000w,
+                      {{ block.settings.image | image_url: width: 1400 }} 1400w
+                    "
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    alt="{{ block.settings.title | escape }}"
+                    loading="lazy"
+                    class="narkk-plp-bundle-card__image"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                {%- else -%}
+                  {{ 'lifestyle-1' | placeholder_svg_tag: 'narkk-plp-bundle-card__image narkk-plp-bundle-card__image--placeholder' }}
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Card info {%- endcomment -%}
+              <div class="narkk-plp-bundle-card__info">
+                <div class="narkk-plp-bundle-card__meta">
+                  <h3 class="narkk-plp-bundle-card__name">{{ block.settings.title }}</h3>
+                  {%- if block.settings.board_type != blank or block.settings.accessories_count != blank -%}
+                    <div class="narkk-plp-bundle-card__sub">
+                      {%- if block.settings.board_type != blank -%}
+                        <span class="narkk-plp-bundle-card__board">{{ block.settings.board_type }}</span>
+                      {%- endif -%}
+                      {%- if block.settings.board_type != blank and block.settings.accessories_count != blank -%}
+                        <span class="narkk-plp-bundle-card__dot" aria-hidden="true"></span>
+                      {%- endif -%}
+                      {%- if block.settings.accessories_count != blank -%}
+                        <span class="narkk-plp-bundle-card__count">{{ block.settings.accessories_count }}</span>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+                {%- if block.settings.price != blank -%}
+                  <p class="narkk-plp-bundle-card__price">{{ block.settings.price }}</p>
+                {%- endif -%}
+              </div>
+
+            </a>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PLP Big Grid",
+  "tag": "section",
+  "class": "narkk-plp-big-grid-section",
+  "max_blocks": 12,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "step_number",
+      "label": "Step number",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Category heading",
+      "default": "Ready Setups"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Curated combinations for every setup"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bundle_card",
+      "name": "Bundle card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Lifestyle image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Bundle name",
+          "default": "The Setup"
+        },
+        {
+          "type": "text",
+          "id": "board_type",
+          "label": "Board type",
+          "info": "e.g. Standard Board, Small Board"
+        },
+        {
+          "type": "text",
+          "id": "accessories_count",
+          "label": "Accessories count",
+          "info": "e.g. 5 Accessories"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "Rs. 0.00"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PLP Big Grid"
+    }
+  ]
+}
+{% endschema %}
