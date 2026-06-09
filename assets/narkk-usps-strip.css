@@ -1,0 +1,82 @@
+/* ============================================================
+   NARKK USP STRIP — 4-column feature tiles
+   1rem = 10px (Dawn sets html at 62.5%)
+   ============================================================ */
+
+/* ── Section ─────────────────────────────────────────────── */
+.narkk-usps-strip {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+.narkk-usps-strip__inner {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 3rem;
+  width: 100%;
+}
+
+/* ── USP tile ────────────────────────────────────────────── */
+.narkk-usps-strip__tile {
+  align-items: center;
+  background: var(--narkk-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  justify-content: center;
+  padding: 2.4rem 2rem;
+  text-align: center;
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+.narkk-usps-strip__icon {
+  display: block;
+  flex-shrink: 0;
+  height: 5rem;
+  object-fit: contain;
+  width: 5rem;
+}
+
+/* ── Text block ──────────────────────────────────────────── */
+.narkk-usps-strip__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.narkk-usps-strip__title {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-product-name);
+  font-weight: 400;
+  line-height: var(--narkk-lh-product-name);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-usps-strip__desc {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+/* ── Tablet ≤1024px → 2×2 ───────────────────────────────── */
+@media (width <= 1024px) {
+  .narkk-usps-strip__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── XS ≤390px → 1 column ───────────────────────────────── */
+@media (width <= 390px) {
+  .narkk-usps-strip__inner {
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+  }
+}

@@ -388,6 +388,84 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "plp-usps": {
+      "type": "narkk-usps-strip",
+      "blocks": {
+        "usp-modular": {
+          "type": "usp_tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-cube.svg",
+            "title": "Modular and Adoptable",
+            "description": "Add, remove, rearrange your wall, your way"
+          }
+        },
+        "usp-build": {
+          "type": "usp_tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-checkboard.svg",
+            "title": "Build to Last",
+            "description": "Made from solid Birch, Designed for everyday life"
+          }
+        },
+        "usp-install": {
+          "type": "usp_tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-hammer.svg",
+            "title": "Easy to Install",
+            "description": "Wall mount kit included. Brick or dry wall"
+          }
+        },
+        "usp-shipping": {
+          "type": "usp_tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-truck.svg",
+            "title": "Free Shipping",
+            "description": "Across India on all orders"
+          }
+        }
+      },
+      "block_order": [
+        "usp-modular",
+        "usp-build",
+        "usp-install",
+        "usp-shipping"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_homepage_community_cta_HkXCiE": {
+      "type": "narkk-homepage-community-cta",
+      "blocks": {
+        "subheading_hQmLdq": {
+          "type": "subheading",
+          "settings": {
+            "label": "",
+            "content": "Loop is our growing community of mindful consumers — people who don’t just buy things, but ask why, how, and what next. It’s where we share tips to declutter, organise, build better habits, and treat your space like it matters. Here, we also listen — your inputs help shape the next product we make."
+          }
+        },
+        "cta_7D8Nan": {
+          "type": "cta",
+          "settings": {
+            "label": "Join The Loop",
+            "url": "shopify://pages/loop",
+            "style": "outlined"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_hQmLdq",
+        "cta_7D8Nan"
+      ],
+      "name": "Narkk Community CTA",
+      "settings": {
+        "bg_image": "shopify://shop_images/nark-homepage-community-pic-loop-circle.webp",
+        "image_position": "center center",
+        "heading": "Loop Circle",
+        "card_width": "635px"
+      }
     }
   },
   "order": [
@@ -395,6 +473,8 @@
     "plp-filter-bar",
     "plp-boards",
     "plp-accessories",
-    "plp-ready-setups"
+    "plp-ready-setups",
+    "plp-usps",
+    "narkk_homepage_community_cta_HkXCiE"
   ]
 }

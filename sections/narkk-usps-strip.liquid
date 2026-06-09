@@ -1,0 +1,134 @@
+{{ 'narkk-usps-strip.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-usps-strip {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="narkk-usps-strip" data-narkk-usps-strip>
+  <div class="narkk-usps-strip__inner">
+
+    {%- for block in section.blocks -%}
+      <div class="narkk-usps-strip__tile" {{ block.shopify_attributes }}>
+
+        {%- if block.settings.icon != blank -%}
+          <img
+            src="{{ block.settings.icon | image_url: width: 100 }}"
+            alt="{{ block.settings.title | escape }}"
+            class="narkk-usps-strip__icon"
+            width="50"
+            height="50"
+            loading="lazy"
+          >
+        {%- endif -%}
+
+        <div class="narkk-usps-strip__text">
+          {%- if block.settings.title != blank -%}
+            <p class="narkk-usps-strip__title">{{ block.settings.title }}</p>
+          {%- endif -%}
+          {%- if block.settings.description != blank -%}
+            <p class="narkk-usps-strip__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+
+      </div>
+    {%- endfor -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "USP Strip",
+  "tag": "section",
+  "class": "narkk-usps-strip-section",
+  "max_blocks": 8,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp_tile",
+      "name": "USP tile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Short description here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USP Strip",
+      "blocks": [
+        {
+          "type": "usp_tile",
+          "settings": {
+            "title": "Modular and Adoptable",
+            "description": "Add, remove, rearrange your wall, your way"
+          }
+        },
+        {
+          "type": "usp_tile",
+          "settings": {
+            "title": "Build to Last",
+            "description": "Made from solid Birch, Designed for everyday life"
+          }
+        },
+        {
+          "type": "usp_tile",
+          "settings": {
+            "title": "Easy to Install",
+            "description": "Wall mount kit included. Brick or dry wall"
+          }
+        },
+        {
+          "type": "usp_tile",
+          "settings": {
+            "title": "Free Shipping",
+            "description": "Across India on all orders"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

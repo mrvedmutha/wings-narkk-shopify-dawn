@@ -19,7 +19,7 @@
         "image_position": 30,
         "cta_text": "A versatile pegboard collection designed to simplify your space and bring clarity to your daily routines",
         "cta_label": "View Collection",
-        "cta_url": "shopify://collections"
+        "cta_url": "shopify://pages/plp-demo"
       }
     },
     "narkk_homepage_product_collage_LLRjUr": {
@@ -31,7 +31,7 @@
         "eyebrow": "About Narkk",
         "heading": "Based in Chennai — India, we design modular products that evolves as you evolve with it.",
         "cta_label": "About Narkk",
-        "cta_url": "#"
+        "cta_url": "shopify://pages/philosophy"
       }
     },
     "narkk_homepage_featured_products_xXz9yk": {
@@ -82,7 +82,7 @@
             "collection_name": "THOGAI",
             "caption": "pegboard and accessories.",
             "cta_label": "Shop Thogai",
-            "cta_url": "#",
+            "cta_url": "shopify://pages/plp-demo",
             "card_bg": "#ffffff",
             "label_color": "#ffffff"
           }
@@ -94,7 +94,7 @@
             "collection_name": "TULAI",
             "caption": "Modular sofa and it's accessories.",
             "cta_label": "Shop Tulai",
-            "cta_url": "#",
+            "cta_url": "shopify://pages/plp-demo",
             "card_bg": "#c56833",
             "label_color": "#e9e0d4"
           }
