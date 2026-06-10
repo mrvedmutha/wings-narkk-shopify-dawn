@@ -1,0 +1,105 @@
+/* ============================================================
+   NARKK USP STRIP
+   ============================================================ */
+
+.narkk-usp-strip {
+  --usp-tile-border: #ccb494;
+
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+.narkk-usp-strip__inner {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 80px 40px;
+}
+
+/* ── Tile ────────────────────────────────────────────────── */
+.narkk-usp-strip__tile {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--usp-tile-border);
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  min-height: 164px;
+  opacity: 0; /* Start hidden — GSAP animates opacity/y in on scroll reveal */
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+.narkk-usp-strip__icon {
+  display: block;
+  flex-shrink: 0;
+  height: 50px;
+  object-fit: contain;
+  width: 50px;
+}
+
+/* ── Text ────────────────────────────────────────────────── */
+.narkk-usp-strip__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+  width: 100%;
+}
+
+.narkk-usp-strip__title {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+  margin: 0;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.narkk-usp-strip__subtitle {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: 2.4rem;
+  margin: 0;
+  width: 100%;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (850px–1200px): 4 tiles, scaled padding
+   ============================================================ */
+
+@media (width <= 1200px) {
+  .narkk-usp-strip__inner {
+    padding: 60px 30px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (<850px): 2×2 grid
+   ============================================================ */
+
+@media (width <= 849px) {
+  .narkk-usp-strip__inner {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    padding: 48px 16px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — XS (≤425px): 1 column
+   ============================================================ */
+
+@media (width <= 425px) {
+  .narkk-usp-strip__inner {
+    grid-template-columns: 1fr;
+    padding: 32px 16px;
+  }
+}

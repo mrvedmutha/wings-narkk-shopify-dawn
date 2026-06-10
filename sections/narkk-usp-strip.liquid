@@ -1,0 +1,92 @@
+{{ 'narkk-usp-strip.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer="defer"></script>
+
+<section class="narkk-usp-strip" data-narkk-usp-strip>
+  <div class="narkk-usp-strip__inner">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'tile' -%}
+          <div class="narkk-usp-strip__tile" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              {%- assign icon_alt = block.settings.title | escape -%}
+              {{- block.settings.icon | image_url: width: 100 | image_tag:
+                width: 50,
+                height: 50,
+                class: 'narkk-usp-strip__icon',
+                alt: icon_alt,
+                loading: 'lazy'
+              -}}
+            {%- endif -%}
+
+            <div class="narkk-usp-strip__text">
+              {%- if block.settings.title != blank -%}
+                <p class="narkk-usp-strip__title">{{ block.settings.title }}</p>
+              {%- endif -%}
+              {%- if block.settings.subtitle != blank -%}
+                <p class="narkk-usp-strip__subtitle">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+<script src="{{ 'narkk-usp-strip.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "USP Strip",
+  "tag": "section",
+  "class": "narkk-usp-strip-section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "USP Tile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (SVG or image)",
+          "info": "Upload an SVG or image. Displayed at 50×50px."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk USP Strip",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": { "title": "Free Shipping", "subtitle": "Across India" }
+        },
+        {
+          "type": "tile",
+          "settings": { "title": "Secure Payments", "subtitle": "100% Protected" }
+        },
+        {
+          "type": "tile",
+          "settings": { "title": "Easy Return", "subtitle": "Hassle Free" }
+        },
+        {
+          "type": "tile",
+          "settings": { "title": "Support", "subtitle": "Here to Help" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
