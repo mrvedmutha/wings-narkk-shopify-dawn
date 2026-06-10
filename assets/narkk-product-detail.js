@@ -3,17 +3,6 @@
 
   const MOBILE_BP = 849;
 
-  // TODO: Remove console logs before going live
-  /* Kill Lenis on product pages — scroll-snap and Lenis inertia conflict */
-  if (window.__narkkLenis) {
-    console.log('[Narkk PDP] Lenis found — destroying for product page');
-    window.__narkkLenis.destroy();
-    window.__narkkLenis = null;
-    console.log('[Narkk PDP] Lenis destroyed — native scroll active');
-  } else {
-    console.log('[Narkk PDP] Lenis not present — native scroll already active');
-  }
-
   /* ── DOM refs ──────────────────────────────────────────────── */
   const pdp            = document.querySelector('[data-narkk-pdp]');
   if (!pdp) return;

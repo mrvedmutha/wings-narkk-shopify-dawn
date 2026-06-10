@@ -7,13 +7,6 @@
   // Skip in Shopify theme editor — smooth scroll conflicts with preview iframe
   if (typeof Shopify !== 'undefined' && Shopify.designMode) return;
 
-  // TODO: Remove console logs before going live
-  // Skip on product pages — gallery scroll-snap conflicts with Lenis inertia
-  if (window.location.pathname.indexOf('/products/') !== -1) {
-    console.log('[Narkk Lenis] Skipped — product page detected:', window.location.pathname);
-    return;
-  }
-
   if (typeof Lenis === 'undefined') return;
 
   var lenis = new Lenis({
