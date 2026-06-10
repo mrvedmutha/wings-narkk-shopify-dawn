@@ -1,0 +1,664 @@
+/* ============================================================
+   NARKK PRODUCT DETAIL PAGE (PDP)
+   ============================================================ */
+
+/* ── Section wrapper ─────────────────────────────────────────── */
+.narkk-pdp {
+  background: var(--narkk-beige);
+  width: 100%;
+}
+
+.narkk-pdp__inner {
+  display: flex;
+  gap: 110px;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 60px 30px;
+}
+
+/* ============================================================
+   LEFT COLUMN — IMAGE GALLERY
+   ============================================================ */
+
+.narkk-pdp__gallery-wrap {
+  flex: 0 0 639px;
+  min-width: 0;
+  width: 639px;
+}
+
+/* Sticky panel: fills viewport height so images scroll within it */
+.narkk-pdp__gallery-sticky {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--header-height, 0));
+  position: sticky;
+  top: var(--header-height, 0);
+}
+
+/* ── Images container ─────────────────────────────────────────── */
+.narkk-pdp__images {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.narkk-pdp__images::-webkit-scrollbar {
+  display: none;
+}
+
+.narkk-pdp__image-slide {
+  height: 100%;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  width: 100%;
+}
+
+.narkk-pdp__image-trigger {
+  background: var(--narkk-secondary);
+  border: none;
+  cursor: zoom-in;
+  display: block;
+  height: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+.narkk-pdp__image-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Thumbnails ──────────────────────────────────────────────── */
+.narkk-pdp__thumbs {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.narkk-pdp__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.narkk-pdp__thumb {
+  background: var(--narkk-secondary);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 100px;
+  overflow: hidden;
+  padding: 0;
+  transition: border-color 0.2s ease;
+  width: 100px;
+}
+
+.narkk-pdp__thumb:hover {
+  border-color: var(--narkk-dark);
+  opacity: 0.85;
+}
+
+.narkk-pdp__thumb.is-active {
+  border-color: var(--narkk-dark);
+}
+
+.narkk-pdp__thumb-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  width: 100%;
+}
+
+/* ============================================================
+   RIGHT COLUMN — PRODUCT INFO
+   ============================================================ */
+
+.narkk-pdp__info {
+  align-self: flex-start;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 120px;
+  max-width: 572px;
+  min-width: 0;
+}
+
+/* Groups top-block + form-block; 44px internal gap matching Figma */
+.narkk-pdp__top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+/* ── Top block: breadcrumb / title / price ────────────────────── */
+.narkk-pdp__top-block {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.narkk-pdp__meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Breadcrumb */
+.narkk-pdp__breadcrumb {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 2rem;
+  margin: 0;
+}
+
+.narkk-pdp__breadcrumb-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.narkk-pdp__breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+/* Title group */
+.narkk-pdp__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.narkk-pdp__title {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-pdp__subtitle {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+/* Price row */
+.narkk-pdp__price-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.narkk-pdp__price {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  text-transform: uppercase;
+}
+
+.narkk-pdp__price-note {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin: 0;
+}
+
+/* ── Form block: SKU / qty / ATC ─────────────────────────────── */
+.narkk-pdp__form-block {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.narkk-pdp__sku {
+  color: var(--narkk-meta);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-sku);
+  font-weight: 400;
+  line-height: var(--narkk-lh-sku);
+  margin: 0;
+}
+
+/* Actions row */
+.narkk-pdp__actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+/* Quantity stepper */
+.narkk-pdp__qty {
+  align-items: center;
+  border: 1px solid var(--narkk-dark);
+  display: flex;
+  flex-shrink: 0;
+  gap: 0;
+  height: 48px;
+  padding: 0 20px;
+}
+
+.narkk-pdp__qty-btn {
+  background: none;
+  border: none;
+  color: var(--narkk-dark);
+  cursor: pointer;
+  font-family: Outfit, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  height: 100%;
+  line-height: 1;
+  padding: 0 4px;
+  user-select: none;
+}
+
+.narkk-pdp__qty-input {
+  appearance: textfield;
+  background: none;
+  border: none;
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: 1;
+  padding: 0 8px;
+  text-align: center;
+  width: 40px;
+}
+
+.narkk-pdp__qty-input::-webkit-inner-spin-button,
+.narkk-pdp__qty-input::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+/* ATC button */
+.narkk-pdp__atc {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  gap: 10px;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: 0;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.narkk-pdp__atc--sold-out {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.narkk-pdp__atc-plus {
+  font-family: Lato, sans-serif;
+  font-size: var(--narkk-font-body-2);
+}
+
+.narkk-pdp__atc-note {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-highlight);
+  font-weight: 400;
+  line-height: var(--narkk-lh-highlight);
+  margin: 0;
+}
+
+/* ── Accordions ──────────────────────────────────────────────── */
+.narkk-pdp__accordions {
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-pdp__rule {
+  border: none;
+  border-top: 1px solid var(--narkk-divider);
+  margin: 0;
+  width: 100%;
+}
+
+.narkk-pdp__rule--last {
+  margin-top: 0;
+}
+
+.narkk-pdp__accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-pdp__accordion-hd {
+  align-items: flex-start;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.narkk-pdp__accordion-label {
+  color: var(--narkk-text);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+}
+
+.narkk-pdp__accordion-hd--light .narkk-pdp__accordion-label {
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+}
+
+/* ± icon via CSS pseudo-elements */
+.narkk-pdp__accordion-icon {
+  flex-shrink: 0;
+  height: 16px;
+  margin-top: 4px;
+  position: relative;
+  width: 16px;
+}
+
+.narkk-pdp__accordion-icon::before,
+.narkk-pdp__accordion-icon::after {
+  background: var(--narkk-text);
+  content: '';
+  left: 0;
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Horizontal bar (always visible) */
+.narkk-pdp__accordion-icon::before {
+  height: 1.5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+}
+
+/* Vertical bar (visible when closed, hidden when open = minus) */
+.narkk-pdp__accordion-icon::after {
+  height: 16px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) scaleY(1);
+  width: 1.5px;
+}
+
+.narkk-pdp__accordion.is-open .narkk-pdp__accordion-icon::after {
+  transform: translateX(-50%) scaleY(0);
+}
+
+/* Body — max-height animation */
+.narkk-pdp__accordion-bd {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.narkk-pdp__accordion.is-open .narkk-pdp__accordion-bd {
+  max-height: 3000px;
+  transition: max-height 0.6s ease;
+}
+
+.narkk-pdp__accordion-content {
+  padding-bottom: 24px;
+}
+
+/* RTE overrides inside accordion */
+.narkk-pdp__accordion-content.rte p {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0 0 0.5em;
+}
+
+.narkk-pdp__accordion-content.rte strong,
+.narkk-pdp__accordion-content.rte b {
+  font-weight: 700;
+}
+
+.narkk-pdp__accordion-content.rte p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Spec table ───────────────────────────────────────────────── */
+.narkk-pdp__spec-table {
+  border: 1px solid var(--narkk-dark);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.narkk-pdp__spec-row {
+  border-top: 1px solid var(--narkk-divider);
+  display: flex;
+  min-height: 40px;
+}
+
+.narkk-pdp__spec-row:first-child {
+  border-top: none;
+}
+
+.narkk-pdp__spec-key {
+  border-right: 1px solid var(--narkk-divider);
+  color: var(--narkk-text);
+  flex: 0 0 177px;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-3);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: var(--narkk-lh-body-3);
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
+
+.narkk-pdp__spec-val {
+  color: var(--narkk-text);
+  flex: 1 1 auto;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-3);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-3);
+  padding: 8px 12px;
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+
+.narkk-pdp__lightbox {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+}
+
+.narkk-pdp__lightbox[hidden] {
+  display: none;
+}
+
+.narkk-pdp__lightbox-bg {
+  background: rgb(23 36 47 / 90%);
+  cursor: zoom-out;
+  inset: 0;
+  position: absolute;
+}
+
+.narkk-pdp__lightbox-wrap {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: 90vh;
+  max-width: 90vw;
+  position: relative;
+  z-index: 1;
+}
+
+.narkk-pdp__lightbox-img {
+  display: block;
+  max-height: 90vh;
+  max-width: 90vw;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  width: auto;
+}
+
+.narkk-pdp__lightbox-img.is-loading {
+  opacity: 0;
+}
+
+.narkk-pdp__lightbox-close {
+  background: none;
+  border: none;
+  color: var(--narkk-beige);
+  cursor: pointer;
+  padding: 8px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 10000;
+}
+
+.narkk-pdp__lightbox-close:hover {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (850px–1200px): 2-column, fitted to screen
+   ============================================================ */
+
+@media (width <= 1200px) {
+  .narkk-pdp__inner {
+    gap: clamp(24px, 5vw, 80px);
+    padding: 40px 24px;
+  }
+
+  .narkk-pdp__gallery-wrap {
+    flex: 0 0 50%;
+    width: 50%;
+  }
+
+  .narkk-pdp__info {
+    gap: 60px;
+    max-width: none;
+  }
+
+  .narkk-pdp__title {
+    font-size: clamp(2rem, 2.8vw, var(--narkk-font-h4));
+  }
+
+  .narkk-pdp__price {
+    font-size: clamp(2rem, 2.8vw, var(--narkk-font-h4));
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (<850px): single column, horizontal slider
+   ============================================================ */
+
+@media (width <= 849px) {
+  .narkk-pdp__inner {
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px 16px;
+  }
+
+  /* ── Gallery: horizontal slider ──────────────────────────────── */
+  .narkk-pdp__gallery-wrap {
+    flex: none;
+    width: 100%;
+  }
+
+  .narkk-pdp__gallery-sticky {
+    height: auto;
+    position: relative;
+    top: auto;
+  }
+
+  .narkk-pdp__images {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  }
+
+  .narkk-pdp__image-slide {
+    aspect-ratio: 4 / 5;
+    flex: 0 0 100%;
+    height: auto;
+    scroll-snap-align: start;
+  }
+
+  .narkk-pdp__image-trigger {
+    height: 100%;
+    width: 100%;
+  }
+
+  /* ── Info: full width ─────────────────────────────────────────── */
+  .narkk-pdp__info {
+    max-width: none;
+    width: 100%;
+  }
+
+  .narkk-pdp__price-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .narkk-pdp__actions {
+    flex-wrap: wrap;
+  }
+
+  .narkk-pdp__atc {
+    flex: 1 1 200px;
+  }
+
+  /* ── Accordions: all collapsed on mobile ─────────────────────── */
+  .narkk-pdp__accordion.is-open.mobile-collapsed .narkk-pdp__accordion-bd {
+    max-height: 0;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .narkk-pdp__accordion.is-open.mobile-collapsed .narkk-pdp__accordion-icon::after {
+    transform: translateX(-50%) scaleY(1);
+  }
+}

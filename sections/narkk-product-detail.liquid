@@ -1,0 +1,342 @@
+{{ 'narkk-product-detail.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign short_desc      = product.metafields.custom.product_short_description.value
+  assign atc_eyebrow     = product.metafields.custom.product_atc_eyebrow_text.value
+  assign spec_meta       = product.metafields.custom.product_spec_boards.value
+  assign witb_meta       = product.metafields.custom.product_whats_in_the_box
+  assign install_meta    = product.metafields.custom.product_installation
+  assign care_meta       = product.metafields.custom.product_care_and_maintenance
+  assign breadcrumb_coll = product.collections | where: 'handle', collection.handle | first
+  if breadcrumb_coll == blank
+    assign breadcrumb_coll = product.collections.first
+  endif
+-%}
+
+<section class="narkk-pdp" data-narkk-pdp>
+  <div class="narkk-pdp__inner">
+
+    {%- comment -%}── LEFT: IMAGE GALLERY ────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-pdp__gallery-wrap">
+      <div class="narkk-pdp__gallery-sticky" data-narkk-pdp-sticky>
+
+        <div class="narkk-pdp__images" data-narkk-pdp-images data-lenis-prevent>
+          {%- for image in product.images -%}
+            {%- if forloop.first -%}
+              {%- assign img_loading = 'eager' -%}
+            {%- else -%}
+              {%- assign img_loading = 'lazy' -%}
+            {%- endif -%}
+            {%- assign img_alt = image.alt | default: product.title | escape -%}
+            <div class="narkk-pdp__image-slide" data-index="{{ forloop.index0 }}">
+              <button
+                class="narkk-pdp__image-trigger"
+                type="button"
+                data-narkk-pdp-lightbox-open
+                data-src="{{ image | image_url: width: 2400 }}"
+                data-alt="{{ img_alt }}"
+                aria-label="View full size: image {{ forloop.index }}"
+              >
+                {{- image | image_url: width: 1280 | image_tag:
+                  loading: img_loading,
+                  widths: '640, 960, 1280',
+                  sizes: '(max-width: 849px) 100vw, 50vw',
+                  class: 'narkk-pdp__image-img',
+                  alt: img_alt
+                -}}
+              </button>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if product.images.size > 1 -%}
+          <div class="narkk-pdp__thumbs" data-narkk-pdp-thumbs>
+            {%- for image in product.images -%}
+              {%- assign thumb_alt = image.alt | default: product.title | escape -%}
+              <button
+                class="narkk-pdp__thumb{% if forloop.first %} is-active{% endif %}"
+                type="button"
+                data-narkk-pdp-thumb="{{ forloop.index0 }}"
+                aria-label="View image {{ forloop.index }}"
+              >
+                {{- image | image_url: width: 200, height: 200, crop: 'center' | image_tag:
+                  loading: 'lazy',
+                  width: 100,
+                  height: 100,
+                  alt: thumb_alt,
+                  class: 'narkk-pdp__thumb-img'
+                -}}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+    {%- comment -%}── RIGHT: PRODUCT INFO ────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-pdp__info">
+
+      <div class="narkk-pdp__top-section">
+
+      {%- comment -%}── TOP INFO BLOCK ──────────────────────────────────────────{%- endcomment -%}
+      <div class="narkk-pdp__top-block">
+
+        <div class="narkk-pdp__meta-group">
+          {%- if breadcrumb_coll != blank -%}
+            <p class="narkk-pdp__breadcrumb">
+              <a class="narkk-pdp__breadcrumb-link" href="{{ breadcrumb_coll.url }}">{{ breadcrumb_coll.title | upcase }}</a>
+              <span aria-hidden="true">&nbsp;&gt;&nbsp;</span>
+              <span>{{ product.title | upcase }}</span>
+            </p>
+          {%- endif -%}
+
+          <div class="narkk-pdp__title-group">
+            <h1 class="narkk-pdp__title">{{ product.title }}</h1>
+            {%- if short_desc != blank -%}
+              <p class="narkk-pdp__subtitle">{{ short_desc }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="narkk-pdp__price-row">
+          <span class="narkk-pdp__price">{{ product.price | money }}</span>
+          <span class="narkk-pdp__price-note">{{ section.settings.gst_note }}</span>
+        </div>
+
+      </div>
+
+      {%- comment -%}── ATC FORM ────────────────────────────────────────────────{%- endcomment -%}
+      <div class="narkk-pdp__form-block">
+
+        <p class="narkk-pdp__sku">SKU: {{ current_variant.sku }}</p>
+
+        {%- form 'product', product,
+          id: 'narkk-pdp-form',
+          data-type: 'add-to-cart-form'
+        -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+          <div class="narkk-pdp__actions">
+
+            <div class="narkk-pdp__qty" data-narkk-pdp-qty>
+              <button type="button" class="narkk-pdp__qty-btn" data-narkk-pdp-qty-plus aria-label="Increase quantity">+</button>
+              <input
+                class="narkk-pdp__qty-input"
+                type="number"
+                name="quantity"
+                value="1"
+                min="1"
+                aria-label="Quantity"
+                data-narkk-pdp-qty-input
+              >
+              <button type="button" class="narkk-pdp__qty-btn" data-narkk-pdp-qty-minus aria-label="Decrease quantity">−</button>
+            </div>
+
+            <button
+              type="submit"
+              name="add"
+              class="narkk-pdp__atc button narkk-btn-filled-dark{% unless current_variant.available %} narkk-pdp__atc--sold-out{% endunless %}"
+              {% unless current_variant.available %}disabled{% endunless %}
+            >
+              {%- if current_variant.available -%}
+                <span class="narkk-pdp__atc-plus" aria-hidden="true">+</span>
+                <span>ADD TO CART</span>
+              {%- else -%}
+                <span>SOLD OUT</span>
+              {%- endif -%}
+            </button>
+
+          </div>
+
+          {%- if atc_eyebrow != blank -%}
+            <p class="narkk-pdp__atc-note">{{ atc_eyebrow }}</p>
+          {%- endif -%}
+
+        {%- endform -%}
+
+      </div>
+
+      </div>{%- comment -%} /narkk-pdp__top-section {%- endcomment -%}
+
+      {%- comment -%}── ACCORDIONS ─────────────────────────────────────────────{%- endcomment -%}
+      <div class="narkk-pdp__accordions">
+
+        {%- comment -%}── PRODUCT DETAILS ─────────────────────────────────────{%- endcomment -%}
+        {%- if product.description != blank -%}
+          <div class="narkk-pdp__accordion is-open" data-narkk-pdp-accordion>
+            <hr class="narkk-pdp__rule">
+            <button
+              class="narkk-pdp__accordion-hd"
+              type="button"
+              aria-expanded="true"
+              data-narkk-pdp-accordion-btn
+            >
+              <span class="narkk-pdp__accordion-label">PRODUCT DETAILS</span>
+              <span class="narkk-pdp__accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="narkk-pdp__accordion-bd" data-narkk-pdp-accordion-body>
+              <div class="narkk-pdp__accordion-content rte">
+                {{ product.description }}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%}── SPECIFICATION ───────────────────────────────────────{%- endcomment -%}
+        {%- comment -%}
+          spec_meta is a metaobject (custom.product_spec_boards) with single_line_text fields.
+          Expected field keys: sku, dimensions, material, finish, hole, accessory, weight,
+          wall_compatibility, load_capacity — all lowercase snake_case.
+        {%- endcomment -%}
+        {%- if spec_meta != blank -%}
+          {%- assign spec_keys   = 'sku,dimensions,material,finish,hole,accessory,weight,wall_compatibility,load_capacity' | split: ',' -%}
+          {%- assign spec_labels = 'SKU,Dimensions,Material,Finish,Hole,Accessory,Weight,Wall Compatibility,Load Capacity' | split: ',' -%}
+          <div class="narkk-pdp__accordion is-open" data-narkk-pdp-accordion>
+            <hr class="narkk-pdp__rule">
+            <button
+              class="narkk-pdp__accordion-hd narkk-pdp__accordion-hd--light"
+              type="button"
+              aria-expanded="true"
+              data-narkk-pdp-accordion-btn
+            >
+              <span class="narkk-pdp__accordion-label">SPECIFICATION</span>
+              <span class="narkk-pdp__accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="narkk-pdp__accordion-bd" data-narkk-pdp-accordion-body>
+              <div class="narkk-pdp__spec-table">
+                {%- for key in spec_keys -%}
+                  {%- assign field_val = spec_meta[key].value -%}
+                  {%- if field_val != blank -%}
+                    <div class="narkk-pdp__spec-row">
+                      <div class="narkk-pdp__spec-key">{{ spec_labels[forloop.index0] | upcase }}</div>
+                      <div class="narkk-pdp__spec-val">{{ field_val }}</div>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%}── WHAT'S IN THE BOX ───────────────────────────────────{%- endcomment -%}
+        {%- if witb_meta != blank -%}
+          <div class="narkk-pdp__accordion is-open" data-narkk-pdp-accordion>
+            <hr class="narkk-pdp__rule">
+            <button
+              class="narkk-pdp__accordion-hd"
+              type="button"
+              aria-expanded="true"
+              data-narkk-pdp-accordion-btn
+            >
+              <span class="narkk-pdp__accordion-label">WHAT'S IN THE BOX</span>
+              <span class="narkk-pdp__accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="narkk-pdp__accordion-bd" data-narkk-pdp-accordion-body>
+              <div class="narkk-pdp__accordion-content rte">
+                {{ witb_meta | metafield_tag }}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%}── INSTALLATION ────────────────────────────────────────{%- endcomment -%}
+        {%- if install_meta != blank -%}
+          <div class="narkk-pdp__accordion is-open" data-narkk-pdp-accordion>
+            <hr class="narkk-pdp__rule">
+            <button
+              class="narkk-pdp__accordion-hd"
+              type="button"
+              aria-expanded="true"
+              data-narkk-pdp-accordion-btn
+            >
+              <span class="narkk-pdp__accordion-label">INSTALLATION</span>
+              <span class="narkk-pdp__accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="narkk-pdp__accordion-bd" data-narkk-pdp-accordion-body>
+              <div class="narkk-pdp__accordion-content rte">
+                {{ install_meta | metafield_tag }}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%}── CARE AND MAINTENANCE ────────────────────────────────{%- endcomment -%}
+        {%- if care_meta != blank -%}
+          <div class="narkk-pdp__accordion is-open" data-narkk-pdp-accordion>
+            <hr class="narkk-pdp__rule">
+            <button
+              class="narkk-pdp__accordion-hd"
+              type="button"
+              aria-expanded="true"
+              data-narkk-pdp-accordion-btn
+            >
+              <span class="narkk-pdp__accordion-label">CARE AND MAINTENANCE</span>
+              <span class="narkk-pdp__accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="narkk-pdp__accordion-bd" data-narkk-pdp-accordion-body>
+              <div class="narkk-pdp__accordion-content rte">
+                {{ care_meta | metafield_tag }}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        <hr class="narkk-pdp__rule narkk-pdp__rule--last">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%}── LIGHTBOX ───────────────────────────────────────────────────────{%- endcomment -%}
+<div
+  class="narkk-pdp__lightbox"
+  data-narkk-pdp-lightbox
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+  hidden
+>
+  <button
+    class="narkk-pdp__lightbox-close"
+    type="button"
+    data-narkk-pdp-lightbox-close
+    aria-label="Close image viewer"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="4.5" y1="4.5" x2="19.5" y2="19.5" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="19.5" y1="4.5" x2="4.5" y2="19.5" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+  <div class="narkk-pdp__lightbox-bg" data-narkk-pdp-lightbox-bg>&nbsp;</div>
+  <div class="narkk-pdp__lightbox-wrap">
+    <img class="narkk-pdp__lightbox-img" src="" alt="" data-narkk-pdp-lightbox-img>
+  </div>
+</div>
+
+<script src="{{ 'narkk-product-detail.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Narkk Product Detail",
+  "tag": "section",
+  "class": "narkk-pdp-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "gst_note",
+      "label": "GST / tax note",
+      "default": "(Price inclusive of GST)",
+      "info": "Shown next to the price. Leave blank to hide."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Narkk Product Detail"
+    }
+  ]
+}
+{% endschema %}
