@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "narkk-pdp": {
@@ -8,6 +17,7 @@
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -23,10 +33,200 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "narkk_usp_strip_LQgTrd": {
+      "type": "narkk-usp-strip",
+      "blocks": {
+        "tile_ecjrDw": {
+          "type": "tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-truck.svg",
+            "title": "Free Shipping",
+            "subtitle": "Across India"
+          }
+        },
+        "tile_DATi8i": {
+          "type": "tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-lock.svg",
+            "title": "Secure Payments",
+            "subtitle": "100% Protected"
+          }
+        },
+        "tile_WGCYjb": {
+          "type": "tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-loop.svg",
+            "title": "Easy Return",
+            "subtitle": "Hassle Free"
+          }
+        },
+        "tile_dVe4WA": {
+          "type": "tile",
+          "settings": {
+            "icon": "shopify://shop_images/icon-narkk-headphones.svg",
+            "title": "Support",
+            "subtitle": "Here to Help"
+          }
+        }
+      },
+      "block_order": [
+        "tile_ecjrDw",
+        "tile_DATi8i",
+        "tile_WGCYjb",
+        "tile_dVe4WA"
+      ],
+      "name": "Narkk USP Strip",
+      "settings": {}
+    },
+    "narkk_product_why_the_JHNbXY": {
+      "type": "narkk-product-why-the",
+      "name": "Why The Standard",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_product_build_kLh4tN": {
+      "type": "narkk-product-build",
+      "name": "Build Your Wall",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_pages_trade_faq_gP8DJr": {
+      "type": "narkk-pages-trade-faq",
+      "blocks": {
+        "faq_LgXDzr": {
+          "type": "faq",
+          "settings": {
+            "question": "Is there a minimum order quantity to qualify for trade pricing?",
+            "answer": "No minimum order quantity is required to access trade pricing. You can order as little or as much as you need for each project."
+          }
+        },
+        "faq_QfLUGp": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I get to 20% discount?",
+            "answer": "After three confirmed project orders through your trade account, your discount upgrades to 20% permanently — no application needed. We'll update your account automatically."
+          }
+        },
+        "faq_8cJ4F6": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I request custom colours or finishes for a project?",
+            "answer": "Yes, custom colour and finish requests are available for qualifying projects. Reach out to your trade account manager to discuss options and lead times."
+          }
+        },
+        "faq_QJyknW": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I view or touch the products before specifying?",
+            "answer": "Yes, we have a showroom available for trade clients. Contact us to arrange a visit or request a sample pack for your studio."
+          }
+        },
+        "faq_rMw84j": {
+          "type": "faq",
+          "settings": {
+            "question": "What are typical lead times for trade orders?",
+            "answer": "Standard lead times are 8–12 weeks depending on the product and current production schedule. Rush options may be available for select items."
+          }
+        },
+        "faq_BajNyt": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I mark up narkk products when billing my client?",
+            "answer": "Yes, you're free to apply your own margin when billing your clients. Your trade pricing is confidential between you and narkk."
+          }
+        },
+        "faq_EpNXkf": {
+          "type": "faq",
+          "settings": {
+            "question": "Will narkk feature my project if I use your products?",
+            "answer": "We love to share well-specified projects. If you'd like your project considered for our journal or social channels, send us the details and we'll review it."
+          }
+        }
+      },
+      "block_order": [
+        "faq_LgXDzr",
+        "faq_QfLUGp",
+        "faq_8cJ4F6",
+        "faq_QJyknW",
+        "faq_rMw84j",
+        "faq_BajNyt",
+        "faq_EpNXkf"
+      ],
+      "name": "Trade FAQ",
+      "settings": {
+        "heading": "Trade FAQ",
+        "padding_top": 120,
+        "padding_bottom": 80
+      }
+    },
+    "narkk_homepage_community_cta_zafYAz": {
+      "type": "narkk-homepage-community-cta",
+      "blocks": {
+        "text_HBdDiK": {
+          "type": "text",
+          "settings": {
+            "content": "The Inner Loop is narkk’s circle of people who don’t just buy mindfully, but think, make, and advocate for a different way of living. Designers, makers, writers — people who’ve long believed this, but never had a place for it.",
+            "text_style": "body1"
+          }
+        },
+        "text_HqpDCN": {
+          "type": "text",
+          "settings": {
+            "content": "The Inner Loop is narkk’s circle of people who don’t just buy mindfully, but think, make, and advocate for a different way of living. Designers, makers, writers — people who’ve long believed this, but never had a place for it.",
+            "text_style": "body1"
+          }
+        },
+        "text_ydBD73": {
+          "type": "text",
+          "settings": {
+            "content": "This is that place. Built slowly and deliberately. No noise. No numbers game. Just the right people, doing meaningful work together.",
+            "text_style": "body1"
+          }
+        },
+        "subheading_daAacq": {
+          "type": "subheading",
+          "settings": {
+            "label": "Who We're Looking For",
+            "content": "Designers, Makers, Writers, Sustainability, \nAdvocates, Intentional Consumers"
+          }
+        },
+        "cta_8Dx9RE": {
+          "type": "cta",
+          "settings": {
+            "label": "Join The Loop",
+            "url": "shopify://pages/loop",
+            "style": "outlined"
+          }
+        }
+      },
+      "block_order": [
+        "text_HBdDiK",
+        "text_HqpDCN",
+        "text_ydBD73",
+        "subheading_daAacq",
+        "cta_8Dx9RE"
+      ],
+      "name": "Narkk Community CTA",
+      "settings": {
+        "bg_image": "shopify://shop_images/nark-homepage-community-pic-loop-circle.webp",
+        "image_position": "center center",
+        "heading": "A CALL FOR COLLABORATORS",
+        "card_width": "750px"
+      }
     }
   },
   "order": [
     "narkk-pdp",
-    "related-products"
+    "related-products",
+    "narkk_usp_strip_LQgTrd",
+    "narkk_product_why_the_JHNbXY",
+    "narkk_product_build_kLh4tN",
+    "narkk_pages_trade_faq_gP8DJr",
+    "narkk_homepage_community_cta_zafYAz"
   ]
 }
