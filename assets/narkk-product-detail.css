@@ -611,7 +611,9 @@
   }
 
   .narkk-pdp__images {
+    aspect-ratio: 4 / 5;
     display: flex;
+    flex: none;
     flex-direction: row;
     height: auto;
     overflow-x: scroll;
@@ -620,9 +622,8 @@
   }
 
   .narkk-pdp__image-slide {
-    aspect-ratio: 4 / 5;
     flex: 0 0 100%;
-    height: auto;
+    height: 100%;
     scroll-snap-align: start;
   }
 
