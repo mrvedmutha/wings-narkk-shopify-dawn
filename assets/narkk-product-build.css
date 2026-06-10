@@ -1,0 +1,148 @@
+/* ============================================================
+   NARKK — PRODUCT BUILD YOUR WALL
+   ============================================================ */
+
+.narkk-build {
+  background: var(--narkk-secondary);
+  width: 100%;
+}
+
+.narkk-build__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 80px 30px;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.narkk-build__heading {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  line-height: var(--narkk-lh-h2);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Cards row ────────────────────────────────────────────── */
+.narkk-build__cards {
+  display: flex;
+  gap: 1.1rem;
+  width: 100%;
+}
+
+.narkk-build__card-col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* ── Image wrap ───────────────────────────────────────────── */
+.narkk-build__card-img-wrap {
+  aspect-ratio: 450 / 491;
+  overflow: hidden;
+  width: 100%;
+}
+
+.narkk-build__card-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  will-change: transform;
+}
+
+.narkk-build__card-img--placeholder {
+  background: var(--narkk-beige);
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Label below image ────────────────────────────────────── */
+.narkk-build__card-label {
+  color: #000;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Split text masks ─────────────────────────────────────── */
+.narkk-build .narkk-split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.narkk-build .narkk-split__char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ── Curtain: initial hidden states (tablet + desktop) ────── */
+@media (width >= 768px) {
+  .narkk-build__card-col:nth-child(odd) .narkk-build__card-img-wrap {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .narkk-build__card-col:nth-child(even) .narkk-build__card-img-wrap {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (768px–1024px)
+   ============================================================ */
+
+@media (768px <= width <= 1024px) {
+  .narkk-build__inner {
+    gap: 4.8rem;
+    padding: 60px 24px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (<768px): horizontal free-scroll
+   ============================================================ */
+
+@media (width < 768px) {
+  .narkk-build__inner {
+    gap: 4rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .narkk-build__heading {
+    padding: 0 2rem;
+  }
+
+  .narkk-build__cards {
+    -ms-overflow-style: none;
+    gap: 1.2rem;
+    overflow-x: scroll;
+    padding: 0 2rem 0.4rem;
+    scrollbar-width: none;
+  }
+
+  .narkk-build__cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .narkk-build__card-col {
+    flex: 0 0 75%;
+  }
+}
+
+/* ≤425px: tighter peek ──────────────────────────────────── */
+@media (width <= 425px) {
+  .narkk-build__card-col {
+    flex: 0 0 82%;
+  }
+}

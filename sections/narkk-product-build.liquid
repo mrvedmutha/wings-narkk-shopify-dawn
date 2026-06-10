@@ -1,0 +1,105 @@
+{{ 'narkk-product-build.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-build__inner {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+{%- liquid
+  assign heading    = product.metafields.custom.product_build_heading.value
+  assign items_meta = product.metafields.custom.product_build_items.value
+-%}
+
+<section class="narkk-build" data-narkk-build>
+  <div class="narkk-build__inner">
+
+    {%- if heading != blank -%}
+      <h2
+        class="narkk-build__heading"
+        data-narkk-split
+        data-narkk-split-stagger="0.03"
+        style="visibility: hidden;"
+      >{{ heading }}</h2>
+    {%- endif -%}
+
+    {%- if items_meta != blank -%}
+      <div class="narkk-build__cards">
+        {%- for entry in items_meta -%}
+          <div class="narkk-build__card-col">
+
+            <div class="narkk-build__card-img-wrap">
+              {%- if entry.image.value != blank -%}
+                <img
+                  src="{{ entry.image.value | image_url: width: 900 }}"
+                  srcset="
+                    {{ entry.image.value | image_url: width: 450 }} 450w,
+                    {{ entry.image.value | image_url: width: 900 }} 900w
+                  "
+                  sizes="(max-width: 767px) 75vw, 33vw"
+                  alt="{{ entry.text.value | default: '' | escape }}"
+                  class="narkk-build__card-img"
+                  loading="lazy"
+                  width="450"
+                  height="491"
+                >
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'narkk-build__card-img narkk-build__card-img--placeholder' }}
+              {%- endif -%}
+            </div>
+
+            {%- if entry.text.value != blank -%}
+              <p class="narkk-build__card-label">{{ entry.text.value }}</p>
+            {%- endif -%}
+
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-product-build.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Build Your Wall",
+  "tag": "section",
+  "class": "narkk-build-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Build Your Wall"
+    }
+  ]
+}
+{% endschema %}
