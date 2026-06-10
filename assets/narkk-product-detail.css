@@ -30,9 +30,11 @@
 .narkk-pdp__gallery-sticky {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--header-height, 0));
+  /* stylelint-disable-next-line length-zero-no-unit */
+  height: calc(100vh - var(--header-height, 0px));
   position: sticky;
-  top: var(--header-height, 0);
+  /* stylelint-disable-next-line length-zero-no-unit */
+  top: var(--header-height, 0px);
 }
 
 /* ── Images container ─────────────────────────────────────────── */
@@ -97,11 +99,11 @@
   border: 1.5px solid transparent;
   cursor: pointer;
   flex-shrink: 0;
-  height: 100px;
+  height: 75px;
   overflow: hidden;
   padding: 0;
   transition: border-color 0.2s ease;
-  width: 100px;
+  width: 75px;
 }
 
 .narkk-pdp__thumb:hover {
