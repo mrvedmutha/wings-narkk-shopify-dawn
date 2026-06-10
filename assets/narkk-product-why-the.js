@@ -11,8 +11,6 @@
     var items = [];
     try { items = JSON.parse(section.getAttribute('data-why-items') || '[]'); } catch (e) {}
 
-    // Console log for metaobject structure inspection
-    console.log('[narkk-why-the] parsed items:', items);
     if (!items.length) return;
 
     var thumbs    = Array.from(section.querySelectorAll('[data-why-thumb]'));
@@ -20,7 +18,6 @@
     var headingEl = section.querySelector('[data-why-heading]');
     var copyEl    = section.querySelector('[data-why-copy]');
     var eyebrowEl = section.querySelector('[data-why-eyebrow]');
-    var textWrap  = section.querySelector('[data-why-text-wrap]');
 
     var activeIndex = 0;
     var isAnimating = false;
