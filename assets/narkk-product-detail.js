@@ -77,7 +77,17 @@
     });
     var activeBtn = thumbBtns[index];
     if (activeBtn && thumbsWrap) {
-      activeBtn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      /* Scroll only within the thumbs strip — never propagate to the page.
+         scrollIntoView bubbles up and causes page scroll when sticky hasn't kicked in. */
+      var btnLeft  = activeBtn.offsetLeft;
+      var btnRight = btnLeft + activeBtn.offsetWidth;
+      var stripLeft  = thumbsWrap.scrollLeft;
+      var stripRight = stripLeft + thumbsWrap.clientWidth;
+      if (btnLeft < stripLeft) {
+        thumbsWrap.scrollTo({ left: btnLeft, behavior: 'smooth' });
+      } else if (btnRight > stripRight) {
+        thumbsWrap.scrollTo({ left: btnRight - thumbsWrap.clientWidth, behavior: 'smooth' });
+      }
     }
   }
 
