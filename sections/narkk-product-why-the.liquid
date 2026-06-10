@@ -1,0 +1,137 @@
+{{ 'narkk-product-why-the.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} .narkk-why-the__inner {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{% endstyle %}
+
+{%- liquid
+  assign eyebrow     = product.metafields.custom.product_why_the_text_eyebrow.value
+  assign items_meta  = product.metafields.custom.product_why_the_items.value
+  assign first_entry = items_meta | first
+-%}
+
+{%- capture items_json -%}
+[{%- for entry in items_meta -%}{"heading":{{ entry.heading_one.value | default: '' | json }},"text":{{ entry.text_one.value | default: '' | json }},"image":"{%- if entry.image_one.value != blank -%}{{ entry.image_one.value | image_url: width: 900 }}{%- endif -%}","thumb":"{%- if entry.image_one.value != blank -%}{{ entry.image_one.value | image_url: width: 200 }}{%- endif -%}"}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+{%- endcapture -%}
+
+<section
+  class="narkk-why-the"
+  data-narkk-why-the
+  data-why-items="{{ items_json | strip | escape }}"
+>
+  <div class="narkk-why-the__inner">
+    <div class="narkk-why-the__layout">
+
+      {%- comment -%}── Text column ───────────────────────────────────────{%- endcomment -%}
+      <div class="narkk-why-the__text-col">
+
+        {%- if eyebrow != blank -%}
+          <p class="narkk-why-the__eyebrow" data-why-eyebrow>{{ eyebrow }}</p>
+        {%- endif -%}
+
+        <div class="narkk-why-the__text-wrap" data-why-text-wrap>
+          <p class="narkk-why-the__heading" data-why-heading>
+            {{- first_entry.heading_one.value | default: '' -}}
+          </p>
+          <p class="narkk-why-the__copy" data-why-copy>
+            {{- first_entry.text_one.value | default: '' -}}
+          </p>
+        </div>
+
+      </div>
+
+      {%- comment -%}── Gallery: thumbnails + hero ─────────────────────────{%- endcomment -%}
+      <div class="narkk-why-the__gallery">
+
+        {%- comment -%}── Thumbnail strip ────────────────────────────────{%- endcomment -%}
+        <div class="narkk-why-the__thumb-col" data-why-thumbs>
+          {%- for entry in items_meta -%}
+            <button
+              class="narkk-why-the__thumb{%- if forloop.first %} is-active{%- endif -%}"
+              data-why-thumb="{{ forloop.index0 }}"
+              aria-label="{{ entry.heading_one.value | escape }}"
+              type="button"
+            >
+              {%- if entry.image_one.value != blank -%}
+                <img
+                  src="{{ entry.image_one.value | image_url: width: 200 }}"
+                  alt="{{ entry.heading_one.value | escape }}"
+                  loading="lazy"
+                  width="97"
+                  height="123"
+                >
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag }}
+              {%- endif -%}
+            </button>
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%}── Hero image ─────────────────────────────────────{%- endcomment -%}
+        <div class="narkk-why-the__hero-col" data-why-hero>
+          {%- if first_entry.image_one.value != blank -%}
+            <img
+              src="{{ first_entry.image_one.value | image_url: width: 900 }}"
+              alt="{{ first_entry.heading_one.value | escape }}"
+              class="narkk-why-the__hero-img"
+              data-why-hero-img
+              loading="eager"
+              width="900"
+              height="659"
+            >
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'narkk-why-the__hero-img' }}
+          {%- endif -%}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-product-why-the.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Why The Standard",
+  "tag": "section",
+  "class": "narkk-why-the-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why The Standard"
+    }
+  ]
+}
+{% endschema %}

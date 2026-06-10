@@ -1,0 +1,244 @@
+/* ============================================================
+   NARKK — PRODUCT WHY THE
+   ============================================================ */
+
+.narkk-why-the {
+  background: var(--narkk-beige);
+  overflow: hidden;
+  width: 100%;
+}
+
+.narkk-why-the__inner {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 80px 30px;
+}
+
+/* ── Layout row ───────────────────────────────────────────── */
+.narkk-why-the__layout {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 62px;
+}
+
+/* ── Text column ──────────────────────────────────────────── */
+.narkk-why-the__text-col {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 16px;
+  width: 396px;
+}
+
+.narkk-why-the__eyebrow {
+  color: var(--narkk-primary);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-eyebrow);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-eyebrow);
+  line-height: var(--narkk-lh-eyebrow);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narkk-why-the__text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.narkk-why-the__heading {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-h4);
+  font-weight: 400;
+  letter-spacing: var(--narkk-ls-h4);
+  line-height: var(--narkk-lh-h4);
+  margin: 0;
+  text-transform: uppercase;
+  white-space: pre-wrap;
+}
+
+.narkk-why-the__copy {
+  color: #000;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-2);
+  font-weight: 400;
+  line-height: var(--narkk-lh-body-2);
+  margin: 0;
+}
+
+/* ── Gallery ──────────────────────────────────────────────── */
+.narkk-why-the__gallery {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* ── Thumbnail strip ──────────────────────────────────────── */
+.narkk-why-the__thumb-col {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 8px;
+  width: 97px;
+}
+
+.narkk-why-the__thumb {
+  background: #fffdf9;
+  border: none;
+  cursor: pointer;
+  display: block;
+  height: 123px;
+  overflow: hidden;
+  padding: 0;
+  width: 97px;
+}
+
+.narkk-why-the__thumb img {
+  display: block;
+  height: 100%;
+  mix-blend-mode: darken;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  width: 100%;
+}
+
+.narkk-why-the__thumb:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Hero image ───────────────────────────────────────────── */
+.narkk-why-the__hero-col {
+  aspect-ratio: 795 / 582;
+  background: #fffdf9;
+  flex: 1;
+  isolation: isolate;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.narkk-why-the__hero-img {
+  display: block;
+  height: 100%;
+  inset: 0;
+  mix-blend-mode: darken;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+/* ── Split text masks (word/char reveal) ──────────────────── */
+.narkk-why-the .narkk-split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.narkk-why-the .narkk-split__word,
+.narkk-why-the .narkk-split__char {
+  display: inline-block;
+}
+
+/* ============================================================
+   RESPONSIVE — LARGE TABLET (850px–1200px)
+   ============================================================ */
+
+@media (width <= 1200px) {
+  .narkk-why-the__inner {
+    padding: 64px 24px;
+  }
+
+  .narkk-why-the__layout {
+    gap: 40px;
+  }
+
+  .narkk-why-the__text-col {
+    width: 300px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤849px): hero top, thumbs, text
+   ============================================================ */
+
+@media (width <= 849px) {
+  .narkk-why-the__inner {
+    padding: 48px 20px;
+  }
+
+  .narkk-why-the__layout {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Order: gallery (hero+thumbs) → text-col */
+  .narkk-why-the__gallery {
+    flex-direction: column;
+    gap: 0;
+    order: 1;
+    width: 100%;
+  }
+
+  .narkk-why-the__hero-col {
+    aspect-ratio: 4 / 3;
+    order: 1;
+    width: 100%;
+  }
+
+  .narkk-why-the__thumb-col {
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 12px;
+    order: 2;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .narkk-why-the__thumb-col::-webkit-scrollbar {
+    display: none;
+  }
+
+  .narkk-why-the__thumb {
+    flex-shrink: 0;
+    height: 90px;
+    width: 72px;
+  }
+
+  .narkk-why-the__text-col {
+    margin-top: 28px;
+    order: 2;
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤480px)
+   ============================================================ */
+
+@media (width <= 480px) {
+  .narkk-why-the__inner {
+    padding: 40px 16px;
+  }
+
+  .narkk-why-the__hero-col {
+    aspect-ratio: 1 / 1;
+  }
+
+  .narkk-why-the__thumb {
+    height: 72px;
+    width: 58px;
+  }
+
+  .narkk-why-the__heading {
+    font-size: 2rem;
+    line-height: 2.8rem;
+  }
+}
