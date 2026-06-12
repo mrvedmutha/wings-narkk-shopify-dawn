@@ -60,6 +60,7 @@
           <h2
             class="narkk-ibanner__heading narkk-ibanner__heading--{{ block.settings.size }}"
             data-narkk-ibanner-heading
+            {% if block.settings.font_size and block.settings.font_size > 0 %}style="--ibanner-heading-fs: {{ block.settings.font_size }}px;"{% endif %}
           >{{- block.settings.text | default: 'Heading' -}}</h2>
 
           {%- comment -%}── Side text anchored inside heading wrap ─{%- endcomment -%}
@@ -184,13 +185,19 @@
         {
           "type": "select",
           "id": "size",
-          "label": "Size",
+          "label": "Size preset",
           "options": [
             { "value": "s", "label": "Small — 160px" },
             { "value": "m", "label": "Medium — 200px" },
             { "value": "l", "label": "Large — 250px" }
           ],
           "default": "l"
+        },
+        {
+          "type": "number",
+          "id": "font_size",
+          "label": "Heading font size (desktop, px)",
+          "info": "Overrides the size preset above. Leave blank to use the preset."
         }
       ]
     },

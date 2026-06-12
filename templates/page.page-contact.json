@@ -16,7 +16,7 @@
           "type": "heading",
           "settings": {
             "text": "CONTACT US",
-            "size": "l"
+            "size": "s"
           }
         }
       },
@@ -88,43 +88,11 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
-    },
-    "narkk_homepage_community_cta_jE37dB": {
-      "type": "narkk-homepage-community-cta",
-      "blocks": {
-        "subheading_6E99ha": {
-          "type": "subheading",
-          "settings": {
-            "label": "",
-            "content": "They’re built with intention, shaped by thoughtful decisions, the right materials, and the right people. Every space deserves care, clarity, and purpose from the start. We’re here to guide that process, helping you make choices that feel right today and continue to hold value over time."
-          }
-        },
-        "cta_8VbRep": {
-          "type": "cta",
-          "settings": {
-            "label": "Let's Get Started",
-            "url": "",
-            "style": "outlined"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_6E99ha",
-        "cta_8VbRep"
-      ],
-      "name": "Narkk Community CTA",
-      "settings": {
-        "bg_image": "shopify://shop_images/narkk-pages-contact-cta-img.webp",
-        "image_position": "center center",
-        "heading": "Good spaces don’t happen by chance",
-        "card_width": "700px"
-      }
     }
   },
   "order": [
     "narkk_image_banner_zxNwgH",
     "narkk_pages_contact_form_VFeJbB",
-    "narkk_pages_contact_who_mWTYwb",
-    "narkk_homepage_community_cta_jE37dB"
+    "narkk_pages_contact_who_mWTYwb"
   ]
 }

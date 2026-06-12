@@ -67,9 +67,9 @@
   text-transform: uppercase;
 }
 
-.narkk-ibanner__heading--s { font-size: 16rem; }
-.narkk-ibanner__heading--m { font-size: 20rem; }
-.narkk-ibanner__heading--l { font-size: 25rem; }
+.narkk-ibanner__heading--s { font-size: var(--ibanner-heading-fs, 16rem); }
+.narkk-ibanner__heading--m { font-size: var(--ibanner-heading-fs, 20rem); }
+.narkk-ibanner__heading--l { font-size: var(--ibanner-heading-fs, 25rem); }
 
 /* ── Side text ────────────────────────────────────────────── */
 
@@ -143,7 +143,7 @@
   color: var(--narkk-dark);
 }
 
-/* ── Tablet / Mobile (≤1024px) ────────────────────────────── */
+/* ── Tablet (≤1024px) ─────────────────────────────────────── */
 @media (width <= 1024px) {
   /* Switch from fixed px height to 5:4 aspect ratio */
   .narkk-ibanner {
@@ -155,10 +155,10 @@
     top: 6vw;
   }
 
-  /* clamp() scales smoothly from 1024px down to phone width */
-  .narkk-ibanner__heading--s { font-size: clamp(5rem,  14vw, 16rem); }
-  .narkk-ibanner__heading--m { font-size: clamp(6rem,  18vw, 20rem); }
-  .narkk-ibanner__heading--l { font-size: clamp(7rem,  22vw, 25rem); }
+  /* clamp scales smoothly; max caps at the custom variable or the preset default */
+  .narkk-ibanner__heading--s { font-size: clamp(5rem,  14vw, var(--ibanner-heading-fs, 16rem)); }
+  .narkk-ibanner__heading--m { font-size: clamp(6rem,  18vw, var(--ibanner-heading-fs, 20rem)); }
+  .narkk-ibanner__heading--l { font-size: clamp(7rem,  22vw, var(--ibanner-heading-fs, 25rem)); }
 
   .narkk-ibanner__side {
     font-size: clamp(3rem, 6vw, 6rem);
@@ -175,8 +175,27 @@
   }
 }
 
+/* ── Mobile (≤768px) ──────────────────────────────────────── */
+@media (width <= 768px) {
+  .narkk-ibanner__heading--s { font-size: clamp(4rem,   12vw, 10rem); }
+  .narkk-ibanner__heading--m { font-size: clamp(4.5rem, 14vw, 13rem); }
+  .narkk-ibanner__heading--l { font-size: clamp(5rem,   16vw, 16rem); }
+
+  .narkk-ibanner__side {
+    font-size: clamp(2rem, 4.5vw, 4rem);
+  }
+}
+
 /* ── Small mobile (≤480px) ────────────────────────────────── */
 @media (width <= 480px) {
+  .narkk-ibanner__heading--s { font-size: clamp(2.5rem, 9vw,  5.5rem); }
+  .narkk-ibanner__heading--m { font-size: clamp(3rem,   11vw, 7rem); }
+  .narkk-ibanner__heading--l { font-size: clamp(3.5rem, 13vw, 8rem); }
+
+  .narkk-ibanner__side {
+    font-size: clamp(1.6rem, 3.5vw, 3rem);
+  }
+
   .narkk-ibanner__lower {
     padding-bottom: 6vw;
   }
