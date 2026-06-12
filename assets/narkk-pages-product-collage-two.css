@@ -112,7 +112,7 @@
   font-weight: 300;
   line-height: 1.2;
   margin: 0;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* ── Mobile (≤749px) ──────────────────────────────────────── */

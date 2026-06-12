@@ -246,7 +246,9 @@
       "name": "Narkk Social Collage",
       "settings": {
         "eyebrow": "Find Your Community",
-        "heading": "Where spaces turn into stories",
+        "heading": "Where Spaces Turn Into Stories",
+        "cta_label": "Join Inner Loop",
+        "cta_url": "",
         "body_text": "Our story continues where the trends end. Follow our journey of intentional living, behind-the-scenes craft, and mindful community on:",
         "social_label": "Join our community on"
       }

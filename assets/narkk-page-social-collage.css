@@ -218,7 +218,7 @@
   line-height: 1.083;
   margin: 0 0 2.4rem;
   overflow: hidden;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .narkk-sc__body-text {
@@ -270,6 +270,16 @@
   display: block;
   height: 30px;
   width: 30px;
+}
+
+/* ── CTA ──────────────────────────────────────────────────── */
+.narkk-sc__cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.narkk-sc__cta {
+  min-width: 30.9rem;
 }
 
 /* ── Mobile / tablet (<1025px) ────────────────────────────── */
