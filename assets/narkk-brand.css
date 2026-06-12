@@ -82,6 +82,11 @@
   --narkk-btn-sm-min-width: 21.3rem;
 }
 
+/* ── BASE PAGE BACKGROUND ────────────────────────────────────── */
+body.gradient {
+  background: var(--narkk-beige);
+}
+
 /* ── HEADING GLOBALS ─────────────────────────────────────────── */
 h1,
 h2,

@@ -47,7 +47,7 @@
   letter-spacing: var(--narkk-ls-h1);
   line-height: 1.083;
   margin: 0;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .narkk-collections__body {

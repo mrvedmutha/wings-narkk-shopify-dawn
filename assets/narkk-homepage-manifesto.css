@@ -62,7 +62,7 @@
   line-height: 1.875;
   letter-spacing: 4.48px;
   text-transform: uppercase;
-  color: #be5832;
+  color: var(--narkk-primary);
   margin: 0;
   visibility: hidden;
 }

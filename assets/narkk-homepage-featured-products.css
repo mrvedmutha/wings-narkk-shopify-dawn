@@ -30,7 +30,7 @@
   line-height: var(--narkk-lh-h1);
   margin: 0;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 /* ── Grid ────────────────────────────────────────────────────── */
@@ -159,6 +159,7 @@
 .narkk-pcard__vendor {
   color: var(--narkk-collection-label);
   margin: 0;
+  text-transform: uppercase;
 }
 
 .narkk-pcard__title {
@@ -166,6 +167,7 @@
   display: block;
   margin: 0;
   text-decoration: none;
+  text-transform: capitalize;
 }
 
 

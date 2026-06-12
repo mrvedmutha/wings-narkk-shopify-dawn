@@ -110,7 +110,7 @@
   line-height: 1.125;
   margin: 0;
   max-width: max(52rem, 36.2vw);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* ── Button — inverted for dark bg ───────────────────────── */

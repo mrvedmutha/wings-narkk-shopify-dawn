@@ -53,10 +53,28 @@
     // Card hidden — reveals top-down (top of card appears first)
     if (card) gsap.set(card, { clipPath: 'inset(0% 0% 100% 0%)' });
 
+    // ── Fallback: force all elements visible if animation never plays ──
+    var animPlayed = false;
+    var fallbackDelay = isDesktop ? 4000 : 2800;
+    var fallbackTimer = setTimeout(function () {
+      if (animPlayed) return;
+      if (headingChars.length) gsap.set(headingChars, { yPercent: 0 });
+      textEls.forEach(function (el) { gsap.set(el, { opacity: 1, y: 0 }); });
+      if (subheading) gsap.set(subheading, { opacity: 1, y: 0 });
+      if (subText)    gsap.set(subText,    { opacity: 1, y: 0 });
+      steps.forEach(function (el) { gsap.set(el, { opacity: 1, y: 0 }); });
+      if (ctaBtn)     gsap.set(ctaBtn,     { opacity: 1, y: 0 });
+      if (card)       gsap.set(card,       { clipPath: 'inset(0% 0% 0% 0%)' });
+      if (hLine)      gsap.set(hLine,      { scaleX: 1 });
+      if (vLine)      gsap.set(vLine,      { scaleY: 1 });
+    }, fallbackDelay);
+
     // ── Intersection trigger ─────────────────────────────────
     var io = new IntersectionObserver(function (entries) {
       if (!entries[0].isIntersecting) return;
       io.unobserve(section);
+      animPlayed = true;
+      clearTimeout(fallbackTimer);
 
       var tl = gsap.timeline();
 
@@ -121,7 +139,7 @@
       if (ctaBtn) {
         tl.to(ctaBtn, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, isDesktop ? 2.5 : 1.6);
       }
-    }, { threshold: 0.1 });
+    }, { threshold: 0 });
 
     io.observe(section);
   }
