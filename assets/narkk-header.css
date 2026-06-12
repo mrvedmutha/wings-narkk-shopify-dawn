@@ -105,7 +105,7 @@
 }
 
 .narkk-logo img {
-  height: 2.4rem;
+  height: 3.2rem;
   width: auto;
   display: block;
 }
@@ -442,7 +442,7 @@
   }
 
   .narkk-logo img {
-    height: 2rem;
+    height: 2.8rem;
   }
 
   /* Smaller cart badge on mobile */
@@ -494,7 +494,7 @@
 /* 375px */
 @media screen and (width <= 375px) {
   .narkk-logo img {
-    height: 1.8rem;
+    height: 2.4rem;
   }
 
   .narkk-nav-item--icon {
@@ -505,7 +505,7 @@
 /* 320px */
 @media screen and (width <= 320px) {
   .narkk-logo img {
-    height: 1.6rem;
+    height: 2rem;
   }
 
   .narkk-nav-item--icon {

@@ -412,6 +412,59 @@
         "padding_top": 120,
         "padding_bottom": 80
       }
+    },
+    "narkk_homepage_collections_K7R9jY": {
+      "type": "narkk-homepage-collections",
+      "blocks": {
+        "collection_card_3wpGDG": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-pages-trade-hero.webp",
+            "collection_name": "THULAI",
+            "caption": "Shop pegboard and accessories.",
+            "cta_label": "Shop Thulai",
+            "cta_url": "shopify://pages/plp-demo",
+            "card_bg": "#ffffff",
+            "label_color": "#ffffff"
+          }
+        },
+        "collection_card_azEqUd": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-5.webp",
+            "collection_name": "NARKK PHILOSOPHY",
+            "caption": "Learn about Narkk philosophy.",
+            "cta_label": "Explore More",
+            "cta_url": "shopify://pages/philosophy",
+            "card_bg": "#c56833",
+            "label_color": "#e9e0d4"
+          }
+        },
+        "collection_card_mXQKeJ": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/narkk-blog-post-pc-img-3.webp",
+            "collection_name": "Loop",
+            "caption": "Learn about Loop, our modular system.",
+            "cta_label": "Explore More",
+            "cta_url": "shopify://pages/loop",
+            "card_bg": "#ffffff",
+            "label_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_3wpGDG",
+        "collection_card_azEqUd",
+        "collection_card_mXQKeJ"
+      ],
+      "name": "Narkk Collections",
+      "settings": {
+        "eyebrow": "",
+        "heading": "More To Explore",
+        "body_text": "",
+        "label_font_size": 5.5
+      }
     }
   },
   "order": [
@@ -422,6 +475,7 @@
     "narkk_pages_what_you_get_46WD6A",
     "narkk_pages_trade_perks_Gk4yp7",
     "narkk_homepage_community_cta_fcfK3g",
-    "narkk_pages_trade_faq_K4M9jP"
+    "narkk_pages_trade_faq_K4M9jP",
+    "narkk_homepage_collections_K7R9jY"
   ]
 }
