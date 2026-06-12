@@ -52,6 +52,7 @@
   line-height: var(--narkk-lh-h2);
   margin: 0;
   text-align: center;
+  text-transform: none;
 }
 
 .narkk-founder-letter__heading--upper {

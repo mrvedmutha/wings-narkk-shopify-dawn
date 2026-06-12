@@ -27,6 +27,7 @@
   line-height: clamp(3.2rem, 6.2vw, 6.5rem);
   margin: 0;
   text-align: center;
+  text-transform: none;
 }
 
 .narkk-text-rich__heading--upper {

@@ -95,7 +95,7 @@
   margin: 0;
   max-width: 51.2rem; /* 512px — nearest multiple of 8 */
   position: absolute;
-  text-transform: uppercase;
+  text-transform: none;
   top: 40.63%; /* 325.02 / 800 */
 }
 

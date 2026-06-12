@@ -35,7 +35,7 @@
       "name": "Text Rich",
       "settings": {
         "heading": "What you buy, how you live with it, and what you become of it, it's  all interconnected.",
-        "uppercase": true,
+        "uppercase": false,
         "padding_top": 120,
         "padding_bottom": 120
       }
@@ -46,8 +46,8 @@
       "settings": {
         "image": "shopify://shop_images/narkk-philosophy-founder-letter-img.webp",
         "image_position": "center center",
-        "heading": "A letter from our founder",
-        "uppercase": true,
+        "heading": "A Letter from Our Founder",
+        "uppercase": false,
         "salutation": "Dear customer,",
         "letter_content": "<p>My name is Niranjan. I’m the Creative Principal of narkk, and I want to share something I’ve never said in a brochure or product listing.For four years, I made furniture I wasn’t proud of.</p><p>Not because I didn’t care — but because the market had its own logic. Clients wanted pieces that looked good and lasted just long enough five years, maybe. And I delivered exactly that. Cheaper boards, faster finishes, borrowed designs. The business worked. But every time I walked away, something felt hollow.</p><p>Around the same time, in my own life, things I bought kept failing a phone that slowed after updates, appliances that died just after warranty, earphones that stopped working overnight. I told myself I was unlucky. That I’d picked the wrong products.But standing in my workshop one day, it clicked this wasn’t bad luck. This was the plan.</p><p>Products failing quietly, just past the point of complaint. Replacements framed as upgrades. A system designed to keep us buying.</p>",
         "read_more_label": "read more",
@@ -59,8 +59,6 @@
       "type": "narkk-pages-mission",
       "name": "Narkk Mission Statement",
       "settings": {
-        "bg_image": "shopify://shop_images/nark-page-philosophy-1.webp",
-        "image_position": "center center",
         "eyebrow": "Our Mission",
         "heading": "To design modular, repairable, and beautiful objects that become lifelong companions — and to build a community that chooses quality over convenience, always."
       }
@@ -125,7 +123,7 @@
       "settings": {
         "eyebrow": "The Re-Manifesto",
         "heading": "Every product has a next chapter. We intend to be part of it.",
-        "body": "<p>Most things are made to be replaced. We make things to be kept. <br/>Keeping isn’t just about durability — it’s about what happens years later, as homes and lives change. At narkk, a product’s story doesn’t end at the sale.<br/>We take responsibility for the full arc — through five commitments.</p>"
+        "body": "<p>Most things are made to be replaced. We make things to be kept.<br/>Keeping isn’t just about durability — it’s about what happens years later, as homes and lives change. At narkk, a product’s story doesn’t end at the sale.<br/>We take responsibility for the full arc — through five commitments.</p>"
       }
     },
     "narkk_pages_beliefs_pbTJNd": {
@@ -206,7 +204,7 @@
         "text_XgrxCV": {
           "type": "text",
           "settings": {
-            "content": "This is that place. Built slowly and deliberately. No noise. No numbers game. Just the right people, doing meaningful work together.",
+            "content": "This is that place. Built slowly and deliberately.No noise. No numbers game. Just the right people, doing meaningful work together.",
             "text_style": "body1"
           }
         },

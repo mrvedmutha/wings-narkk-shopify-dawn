@@ -2,9 +2,9 @@
 
 <section class="narkk-mission" data-narkk-mission>
 
-  {%- comment -%}── Background image ──────────────────────────────────────────{%- endcomment -%}
-  <div class="narkk-mission__bg" aria-hidden="true">
-    {%- if section.settings.bg_image != blank -%}
+  {%- comment -%}── Background image (optional — teal bg shows when unset) ────{%- endcomment -%}
+  {%- if section.settings.bg_image != blank -%}
+    <div class="narkk-mission__bg" aria-hidden="true">
       <img
         src="{{ section.settings.bg_image | image_url: width: 2000 }}"
         srcset="
@@ -19,10 +19,8 @@
         height="{{ section.settings.bg_image.height }}"
         style="object-position: {{ section.settings.image_position }};"
       >
-    {%- else -%}
-      {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-mission__bg-placeholder' }}
-    {%- endif -%}
-  </div>
+    </div>
+  {%- endif -%}
 
   <div class="narkk-mission__inner">
 
