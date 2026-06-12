@@ -1,0 +1,309 @@
+/* ============================================================
+   NARKK BLOG GRID — DUAL TAB
+   ============================================================ */
+
+/* ── Section ─────────────────────────────────────────────────── */
+.narkk-dual-grid {
+  background-color: var(--narkk-beige);
+}
+
+.narkk-dual-grid__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 12rem 3rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.narkk-dual-grid__header {
+  user-select: none;
+}
+
+.narkk-dual-grid__heading {
+  color: var(--narkk-dark);
+  font-size: var(--narkk-font-h2);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: var(--narkk-lh-h2);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Switch (interactive word in heading) ────────────────────── */
+.narkk-dual-grid__switch {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding-bottom: 0.8rem; /* bridges hover gap to dropdown — must match dropdown top offset */
+  position: relative;
+}
+
+.narkk-dual-grid__switch-label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.narkk-dual-grid__switch-text {
+  display: inline-block;
+}
+
+/* Underline bar — animated via GSAP scaleX */
+.narkk-dual-grid__switch-line {
+  display: block;
+  height: 2px;
+  background: currentcolor;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* Chevron icon */
+.narkk-dual-grid__switch-chevron {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.2em;
+  transition: transform 0.3s ease;
+  color: currentcolor;
+}
+
+.narkk-dual-grid__switch-chevron svg {
+  display: block;
+  width: 0.55em;
+  height: auto;
+}
+
+.narkk-dual-grid__switch.is-open .narkk-dual-grid__switch-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown ────────────────────────────────────────────────── */
+.narkk-dual-grid__dropdown {
+  background: var(--narkk-beige);
+  border: 1px solid rgb(23 36 47 / 15%);
+  display: none;
+  flex-direction: column;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  min-width: 100%;
+  padding: 0.4rem 0;
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+}
+
+.narkk-dual-grid__dropdown.is-open {
+  display: flex;
+}
+
+.narkk-dual-grid__dropdown-item {
+  color: var(--narkk-dark);
+  cursor: pointer;
+  font-family: Outfit, sans-serif;
+  font-size: 0.45em;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  padding: 1rem 1.6rem;
+  text-transform: uppercase;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.narkk-dual-grid__dropdown-item:hover {
+  background: var(--narkk-dark);
+  color: var(--narkk-beige);
+}
+
+.narkk-dual-grid__dropdown-item.is-active {
+  color: var(--narkk-primary);
+}
+
+.narkk-dual-grid__dropdown-item.is-hidden {
+  display: none;
+}
+
+/* ── Content ─────────────────────────────────────────────────── */
+.narkk-dual-grid__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+/* ── Panel ───────────────────────────────────────────────────── */
+.narkk-dual-grid__panel--hidden {
+  display: none;
+}
+
+/* ── Row 1: Featured arrangement ────────────────────────────── */
+.narkk-dual-grid__row-featured {
+  display: grid;
+  gap: clamp(1.5rem, 5.5vw, 7.5rem);
+}
+
+.narkk-dual-grid__row-featured--right {
+  grid-template-columns: 1fr 1fr 2.47fr;
+}
+
+.narkk-dual-grid__row-featured--left {
+  grid-template-columns: 2.47fr 1fr 1fr;
+}
+
+.narkk-dual-grid__row-featured--right .narkk-dual-grid__card--featured {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* ── Row 2: Equal 4-col grid ─────────────────────────────────── */
+.narkk-dual-grid__row-more {
+  display: grid;
+  gap: clamp(1.5rem, 6.5vw, 9.2rem);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ── Card base ───────────────────────────────────────────────── */
+.narkk-dual-grid__card {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  text-decoration: none;
+}
+
+.narkk-dual-grid__card--no-link {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Card image ──────────────────────────────────────────────── */
+.narkk-dual-grid__card-img-wrap {
+  background-color: var(--narkk-secondary);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.narkk-dual-grid__card:not(.narkk-dual-grid__card--featured) .narkk-dual-grid__card-img-wrap {
+  aspect-ratio: 275 / 356;
+}
+
+.narkk-dual-grid__card--featured .narkk-dual-grid__card-img-wrap {
+  aspect-ratio: 679 / 504;
+}
+
+.narkk-dual-grid__card-img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+}
+
+.narkk-dual-grid__card:not(.narkk-dual-grid__card--no-link):hover .narkk-dual-grid__card-img {
+  transform: scale(1.04);
+}
+
+.narkk-dual-grid__card-placeholder {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Card text ───────────────────────────────────────────────── */
+.narkk-dual-grid__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.narkk-dual-grid__card-eyebrow {
+  color: #7a8f90;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-highlight);
+  font-weight: 400;
+  line-height: var(--narkk-lh-highlight);
+  margin: 0;
+}
+
+.narkk-dual-grid__card-title {
+  color: #000;
+  font-family: Outfit, sans-serif;
+  font-size: var(--narkk-font-body-1);
+  font-weight: 300;
+  line-height: var(--narkk-lh-body-1);
+  margin: 0;
+}
+
+.narkk-dual-grid__card--placeholder .narkk-dual-grid__card-eyebrow,
+.narkk-dual-grid__card--placeholder .narkk-dual-grid__card-title {
+  color: var(--narkk-meta);
+}
+
+/* ── CTA ─────────────────────────────────────────────────────── */
+.narkk-dual-grid__cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.narkk-dual-grid__cta-wrap--hidden {
+  display: none;
+}
+
+.narkk-dual-grid__cta {
+  min-width: 30.9rem;
+}
+
+/* ── Responsive: tablet ──────────────────────────────────────── */
+@media (width >= 750px) and (width <= 1023px) {
+  .narkk-dual-grid__inner {
+    gap: 6rem;
+    padding: 8rem 2.4rem;
+  }
+}
+
+/* ── Responsive: mobile (<750px) ────────────────────────────── */
+@media (width < 750px) {
+  .narkk-dual-grid__inner {
+    gap: 5rem;
+    padding: 6rem 2rem;
+  }
+
+  .narkk-dual-grid__content {
+    gap: 4rem;
+  }
+
+  .narkk-dual-grid__heading {
+    font-size: var(--narkk-font-h3);
+    line-height: var(--narkk-lh-h3);
+  }
+
+  .narkk-dual-grid__row-featured--right,
+  .narkk-dual-grid__row-featured--left {
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .narkk-dual-grid__row-featured--right .narkk-dual-grid__card--featured {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .narkk-dual-grid__card--featured .narkk-dual-grid__card-img-wrap {
+    aspect-ratio: 275 / 356;
+  }
+
+  .narkk-dual-grid__row-more {
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .narkk-dual-grid__cta {
+    min-width: 0;
+    width: 100%;
+  }
+}

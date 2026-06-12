@@ -1,0 +1,555 @@
+{{ 'narkk-blog-grid-dual.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign i_label    = section.settings.intentions_heading | default: 'Intentions'
+  assign n_label    = section.settings.narkk_heading      | default: 'Narkk'
+  assign i_feat_pos = section.settings.featured_position_intentions | default: 'right'
+  assign n_feat_pos = section.settings.featured_position_narkk      | default: 'left'
+
+  assign i_blocks = section.blocks | where: 'type', 'intentions_card'
+  assign n_blocks = section.blocks | where: 'type', 'narkk_card'
+
+  assign i_use_blog = false
+  if section.settings.intentions_blog != blank and section.settings.intentions_blog.articles_count > 0
+    assign i_use_blog = true
+  endif
+  assign n_use_blog = false
+  if section.settings.narkk_blog != blank and section.settings.narkk_blog.articles_count > 0
+    assign n_use_blog = true
+  endif
+-%}
+
+<section
+  class="narkk-dual-grid"
+  data-narkk-dual-grid
+  data-i-label="{{ i_label | escape }}"
+  data-n-label="{{ n_label | escape }}"
+>
+  <div class="narkk-dual-grid__inner">
+
+    {%- comment -%}── HEADER ──────────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-dual-grid__header">
+      <h2 class="narkk-dual-grid__heading">
+        Living with
+        <span class="narkk-dual-grid__switch" data-narkk-switch>
+          <span class="narkk-dual-grid__switch-label" data-narkk-switch-label>
+            <span class="narkk-dual-grid__switch-text" data-narkk-switch-text>{{ i_label }}</span>
+            <span class="narkk-dual-grid__switch-line" aria-hidden="true"></span>
+          </span>
+          <span class="narkk-dual-grid__switch-chevron" aria-hidden="true">
+            <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.53027 0.530273L5.03027 5.03027L0.530273 0.530273" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <ul class="narkk-dual-grid__dropdown" data-narkk-dropdown role="listbox" aria-label="Switch blog category">
+            <li class="narkk-dual-grid__dropdown-item is-active" data-narkk-tab="intentions" role="option" tabindex="0">{{ i_label }}</li>
+            <li class="narkk-dual-grid__dropdown-item" data-narkk-tab="narkk" role="option" tabindex="0">{{ n_label }}</li>
+          </ul>
+        </span>
+      </h2>
+    </div>
+
+    {%- comment -%}── INTENTIONS PANEL ────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-dual-grid__panel" data-narkk-panel="intentions">
+      <div class="narkk-dual-grid__content">
+
+        <div class="narkk-dual-grid__row-featured narkk-dual-grid__row-featured--{{ i_feat_pos }}">
+          {%- if i_use_blog -%}
+            {%- for article in section.settings.intentions_blog.articles limit: 3 -%}
+              {%- assign is_feat = forloop.first -%}
+              <a
+                href="{{ article.url }}"
+                class="narkk-dual-grid__card{% if is_feat %} narkk-dual-grid__card--featured{% endif %}"
+                data-narkk-dual-card
+              >
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if article.image -%}
+                    <img
+                      src="{{ article.image | image_url: width: 1200 }}"
+                      srcset="{{ article.image | image_url: width: 450 }} 450w, {{ article.image | image_url: width: 900 }} 900w, {{ article.image | image_url: width: 1200 }} 1200w"
+                      sizes="(max-width: 749px) 50vw, {% if is_feat %}35vw{% else %}18vw{% endif %}"
+                      alt="{{ article.image.alt | default: article.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- unless article.tags == empty -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ article.tags | first }}</p>
+                  {%- endunless -%}
+                  <p class="narkk-dual-grid__card-title">{{ article.title }}</p>
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in i_blocks limit: 3 -%}
+              {%- assign is_feat = forloop.first -%}
+              <a
+                href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}#{% endif %}"
+                class="narkk-dual-grid__card{% if is_feat %} narkk-dual-grid__card--featured{% endif %}{% if block.settings.url == blank %} narkk-dual-grid__card--no-link{% endif %}"
+                data-narkk-dual-card
+                {{ block.shopify_attributes }}
+              >
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if block.settings.image != blank -%}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 1200 }}"
+                      srcset="{{ block.settings.image | image_url: width: 450 }} 450w, {{ block.settings.image | image_url: width: 900 }} 900w, {{ block.settings.image | image_url: width: 1200 }} 1200w"
+                      sizes="(max-width: 749px) 50vw, {% if is_feat %}35vw{% else %}18vw{% endif %}"
+                      alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- if block.settings.eyebrow != blank -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ block.settings.eyebrow }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.title != blank -%}
+                    <p class="narkk-dual-grid__card-title">{{ block.settings.title }}</p>
+                  {%- endif -%}
+                </div>
+              </a>
+            {%- endfor -%}
+            {%- if i_blocks.size < 3 -%}
+              {%- assign i_fill = 3 | minus: i_blocks.size -%}
+              {%- for f in (1..i_fill) -%}
+                <div class="narkk-dual-grid__card narkk-dual-grid__card--placeholder" data-narkk-dual-card>
+                  <div class="narkk-dual-grid__card-img-wrap">{{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}</div>
+                  <div class="narkk-dual-grid__card-text">
+                    <p class="narkk-dual-grid__card-eyebrow">Article</p>
+                    <p class="narkk-dual-grid__card-title">Article preview coming soon</p>
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+
+        <div class="narkk-dual-grid__row-more">
+          {%- if i_use_blog -%}
+            {%- for article in section.settings.intentions_blog.articles limit: 4 offset: 3 -%}
+              <a href="{{ article.url }}" class="narkk-dual-grid__card" data-narkk-dual-card>
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if article.image -%}
+                    <img
+                      src="{{ article.image | image_url: width: 900 }}"
+                      srcset="{{ article.image | image_url: width: 450 }} 450w, {{ article.image | image_url: width: 900 }} 900w"
+                      sizes="(max-width: 749px) 50vw, 22vw"
+                      alt="{{ article.image.alt | default: article.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- unless article.tags == empty -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ article.tags | first }}</p>
+                  {%- endunless -%}
+                  <p class="narkk-dual-grid__card-title">{{ article.title }}</p>
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in i_blocks limit: 4 offset: 3 -%}
+              <a
+                href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}#{% endif %}"
+                class="narkk-dual-grid__card{% if block.settings.url == blank %} narkk-dual-grid__card--no-link{% endif %}"
+                data-narkk-dual-card
+                {{ block.shopify_attributes }}
+              >
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if block.settings.image != blank -%}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 900 }}"
+                      srcset="{{ block.settings.image | image_url: width: 450 }} 450w, {{ block.settings.image | image_url: width: 900 }} 900w"
+                      sizes="(max-width: 749px) 50vw, 22vw"
+                      alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- if block.settings.eyebrow != blank -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ block.settings.eyebrow }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.title != blank -%}
+                    <p class="narkk-dual-grid__card-title">{{ block.settings.title }}</p>
+                  {%- endif -%}
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+    {%- comment -%}── NARKK PANEL ─────────────────────────────────────────{%- endcomment -%}
+    <div class="narkk-dual-grid__panel narkk-dual-grid__panel--hidden" data-narkk-panel="narkk">
+      <div class="narkk-dual-grid__content">
+
+        <div class="narkk-dual-grid__row-featured narkk-dual-grid__row-featured--{{ n_feat_pos }}">
+          {%- if n_use_blog -%}
+            {%- for article in section.settings.narkk_blog.articles limit: 3 -%}
+              {%- assign is_feat = forloop.first -%}
+              <a
+                href="{{ article.url }}"
+                class="narkk-dual-grid__card{% if is_feat %} narkk-dual-grid__card--featured{% endif %}"
+                data-narkk-dual-card
+              >
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if article.image -%}
+                    <img
+                      src="{{ article.image | image_url: width: 1200 }}"
+                      srcset="{{ article.image | image_url: width: 450 }} 450w, {{ article.image | image_url: width: 900 }} 900w, {{ article.image | image_url: width: 1200 }} 1200w"
+                      sizes="(max-width: 749px) 50vw, {% if is_feat %}35vw{% else %}18vw{% endif %}"
+                      alt="{{ article.image.alt | default: article.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- unless article.tags == empty -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ article.tags | first }}</p>
+                  {%- endunless -%}
+                  <p class="narkk-dual-grid__card-title">{{ article.title }}</p>
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in n_blocks limit: 3 -%}
+              {%- assign is_feat = forloop.first -%}
+              <a
+                href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}#{% endif %}"
+                class="narkk-dual-grid__card{% if is_feat %} narkk-dual-grid__card--featured{% endif %}{% if block.settings.url == blank %} narkk-dual-grid__card--no-link{% endif %}"
+                data-narkk-dual-card
+                {{ block.shopify_attributes }}
+              >
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if block.settings.image != blank -%}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 1200 }}"
+                      srcset="{{ block.settings.image | image_url: width: 450 }} 450w, {{ block.settings.image | image_url: width: 900 }} 900w, {{ block.settings.image | image_url: width: 1200 }} 1200w"
+                      sizes="(max-width: 749px) 50vw, {% if is_feat %}35vw{% else %}18vw{% endif %}"
+                      alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- if block.settings.eyebrow != blank -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ block.settings.eyebrow }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.title != blank -%}
+                    <p class="narkk-dual-grid__card-title">{{ block.settings.title }}</p>
+                  {%- endif -%}
+                </div>
+              </a>
+            {%- endfor -%}
+            {%- if n_blocks.size < 3 -%}
+              {%- assign n_fill = 3 | minus: n_blocks.size -%}
+              {%- for f in (1..n_fill) -%}
+                <div class="narkk-dual-grid__card narkk-dual-grid__card--placeholder" data-narkk-dual-card>
+                  <div class="narkk-dual-grid__card-img-wrap">{{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}</div>
+                  <div class="narkk-dual-grid__card-text">
+                    <p class="narkk-dual-grid__card-eyebrow">Article</p>
+                    <p class="narkk-dual-grid__card-title">Article preview coming soon</p>
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+
+        <div class="narkk-dual-grid__row-more">
+          {%- if n_use_blog -%}
+            {%- for article in section.settings.narkk_blog.articles limit: 4 offset: 3 -%}
+              <a href="{{ article.url }}" class="narkk-dual-grid__card" data-narkk-dual-card>
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if article.image -%}
+                    <img
+                      src="{{ article.image | image_url: width: 900 }}"
+                      srcset="{{ article.image | image_url: width: 450 }} 450w, {{ article.image | image_url: width: 900 }} 900w"
+                      sizes="(max-width: 749px) 50vw, 22vw"
+                      alt="{{ article.image.alt | default: article.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- unless article.tags == empty -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ article.tags | first }}</p>
+                  {%- endunless -%}
+                  <p class="narkk-dual-grid__card-title">{{ article.title }}</p>
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in n_blocks limit: 4 offset: 3 -%}
+              <a
+                href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}#{% endif %}"
+                class="narkk-dual-grid__card{% if block.settings.url == blank %} narkk-dual-grid__card--no-link{% endif %}"
+                data-narkk-dual-card
+                {{ block.shopify_attributes }}
+              >
+                <div class="narkk-dual-grid__card-img-wrap">
+                  {%- if block.settings.image != blank -%}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 900 }}"
+                      srcset="{{ block.settings.image | image_url: width: 450 }} 450w, {{ block.settings.image | image_url: width: 900 }} 900w"
+                      sizes="(max-width: 749px) 50vw, 22vw"
+                      alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                      class="narkk-dual-grid__card-img"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'narkk-dual-grid__card-placeholder' }}
+                  {%- endif -%}
+                </div>
+                <div class="narkk-dual-grid__card-text">
+                  {%- if block.settings.eyebrow != blank -%}
+                    <p class="narkk-dual-grid__card-eyebrow">{{ block.settings.eyebrow }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.title != blank -%}
+                    <p class="narkk-dual-grid__card-title">{{ block.settings.title }}</p>
+                  {%- endif -%}
+                </div>
+              </a>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+    {%- comment -%}── CTA LINKS ───────────────────────────────────────────{%- endcomment -%}
+    {%- if section.settings.intentions_cta_label != blank -%}
+      <div class="narkk-dual-grid__cta-wrap" data-narkk-panel-cta="intentions">
+        <a
+          href="{{ section.settings.intentions_cta_url | default: '#' }}"
+          class="button narkk-btn-outlined narkk-btn--plus narkk-dual-grid__cta"
+        >
+          <span class="narkk-btn__plus">+</span>
+          <span class="narkk-btn__label">{{ section.settings.intentions_cta_label }}</span>
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.narkk_cta_label != blank -%}
+      <div class="narkk-dual-grid__cta-wrap narkk-dual-grid__cta-wrap--hidden" data-narkk-panel-cta="narkk">
+        <a
+          href="{{ section.settings.narkk_cta_url | default: '#' }}"
+          class="button narkk-btn-outlined narkk-btn--plus narkk-dual-grid__cta"
+        >
+          <span class="narkk-btn__plus">+</span>
+          <span class="narkk-btn__label">{{ section.settings.narkk_cta_label }}</span>
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-blog-grid-dual.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Blog Grid — Dual",
+  "tag": "section",
+  "class": "narkk-dual-grid-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intentions tab"
+    },
+    {
+      "type": "text",
+      "id": "intentions_heading",
+      "label": "Tab label",
+      "default": "Intentions"
+    },
+    {
+      "type": "blog",
+      "id": "intentions_blog",
+      "label": "Blog source",
+      "info": "Connect when ready — use blocks below until then"
+    },
+    {
+      "type": "select",
+      "id": "featured_position_intentions",
+      "label": "Featured card position",
+      "options": [
+        { "value": "right", "label": "Right" },
+        { "value": "left",  "label": "Left" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "text",
+      "id": "intentions_cta_label",
+      "label": "CTA label",
+      "default": "See all articles"
+    },
+    {
+      "type": "url",
+      "id": "intentions_cta_url",
+      "label": "CTA link"
+    },
+    {
+      "type": "header",
+      "content": "Narkk tab"
+    },
+    {
+      "type": "text",
+      "id": "narkk_heading",
+      "label": "Tab label",
+      "default": "Narkk"
+    },
+    {
+      "type": "blog",
+      "id": "narkk_blog",
+      "label": "Blog source",
+      "info": "Connect when ready — use blocks below until then"
+    },
+    {
+      "type": "select",
+      "id": "featured_position_narkk",
+      "label": "Featured card position",
+      "options": [
+        { "value": "right", "label": "Right" },
+        { "value": "left",  "label": "Left" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "narkk_cta_label",
+      "label": "CTA label",
+      "default": "See all articles"
+    },
+    {
+      "type": "url",
+      "id": "narkk_cta_url",
+      "label": "CTA link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "intentions_card",
+      "name": "Intentions — Article Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Article"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Article title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "narkk_card",
+      "name": "Narkk — Article Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Article"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Article title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Grid — Dual",
+      "blocks": [
+        { "type": "intentions_card", "settings": { "eyebrow": "Advice", "title": "Move beyond trends. Design a timeless sanctuary." } },
+        { "type": "intentions_card", "settings": { "eyebrow": "Tips",   "title": "The art of intentional living starts here." } },
+        { "type": "intentions_card", "settings": { "eyebrow": "Advice", "title": "Craft spaces that reflect who you truly are." } },
+        { "type": "intentions_card", "settings": { "eyebrow": "Tips",   "title": "Simple changes, lasting impact on your home." } },
+        { "type": "intentions_card", "settings": { "eyebrow": "Advice", "title": "Why quality always outlives the trend cycle." } },
+        { "type": "intentions_card", "settings": { "eyebrow": "Advice", "title": "Building rituals around the objects you love." } },
+        { "type": "intentions_card", "settings": { "eyebrow": "Tips",   "title": "A beginner's guide to curating with purpose." } },
+        { "type": "narkk_card",      "settings": { "eyebrow": "Advice", "title": "Move beyond trends. Design a timeless sanctuary." } },
+        { "type": "narkk_card",      "settings": { "eyebrow": "Tips",   "title": "The art of intentional living starts here." } },
+        { "type": "narkk_card",      "settings": { "eyebrow": "Advice", "title": "Craft spaces that reflect who you truly are." } },
+        { "type": "narkk_card",      "settings": { "eyebrow": "Tips",   "title": "Simple changes, lasting impact on your home." } },
+        { "type": "narkk_card",      "settings": { "eyebrow": "Advice", "title": "Why quality always outlives the trend cycle." } },
+        { "type": "narkk_card",      "settings": { "eyebrow": "Advice", "title": "Building rituals around the objects you love." } },
+        { "type": "narkk_card",      "settings": { "eyebrow": "Tips",   "title": "A beginner's guide to curating with purpose." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
