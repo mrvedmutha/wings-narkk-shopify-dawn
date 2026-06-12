@@ -4,7 +4,7 @@
 
 /* ── Section ──────────────────────────────────────────────── */
 .narkk-mission {
-  background: #9db8ba;
+  background: var(--narkk-primary);
   height: min(55.56vw, 80rem); /* 800/1440; capped at 800px */
   overflow: hidden;
   position: relative;

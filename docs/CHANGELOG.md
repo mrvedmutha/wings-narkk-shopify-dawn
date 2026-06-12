@@ -47,3 +47,5 @@
 | 29 | 2026-06-12 | Homepage | Manifesto — Chair logo | Replaced chair logo with new `narkk-chair-logo-primary-new.svg`; changed logo color from orange (`#BE5832`) to teal (`#9db8ba`) | `sections/narkk-homepage-manifesto.liquid`, `assets/narkk-chair-logo-primary-new.svg` |
 | 30 | 2026-06-12 | All pages | Header — Logo size | Bumped logo height across all breakpoints: desktop `2.4rem` → `3.2rem`, ≤768px `2rem` → `2.8rem`, ≤375px `1.8rem` → `2.4rem`, ≤320px `1.6rem` → `2rem` | `assets/narkk-header.css` |
 | 31 | 2026-06-12 | Trade | More To Explore — Collections | Added "More To Explore" collections section at the bottom of the trade page with 3 cards (Thulai, Philosophy, Loop) | `templates/page.page-trade.json` |
+| 32 | 2026-06-12 | Philosophy | Mission — Background color | Changed background from teal (`#9db8ba`) to primary orange (`var(--narkk-primary)`) | `assets/narkk-pages-mission.css` |
+| 33 | 2026-06-12 | All pages | Footer — Logo position | Removed padding from `.narkk-footer__logo-wrap` so the logo sits flush above the bottom bar | `assets/narkk-footer.css` |

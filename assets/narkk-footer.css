@@ -131,7 +131,7 @@
 .narkk-footer__logo-wrap {
   display: flex;
   justify-content: flex-end;
-  padding: 0 6rem 5.6rem;
+  padding: 0;
 }
 
 .narkk-footer__logo {
