@@ -18,12 +18,14 @@
     savedScrollY = window.scrollY || window.pageYOffset;
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow            = 'hidden';
+    if (window.__narkkLenis) window.__narkkLenis.stop();
   }
 
   function unlockScroll() {
     document.documentElement.style.overflow = '';
     document.body.style.overflow            = '';
     window.scrollTo(0, savedScrollY);
+    if (window.__narkkLenis) window.__narkkLenis.start();
   }
 
   /* ── Wheel containment ──────────────────────────────────────────
