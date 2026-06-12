@@ -28,7 +28,7 @@
   line-height: var(--narkk-lh-h1);
   margin: 0;
   overflow: hidden;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* ── Grid ─────────────────────────────────────────────────── */
@@ -102,7 +102,7 @@
   font-weight: 300;
   line-height: var(--narkk-lh-h3);
   margin: 0;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .narkk-what-you-get__highlight {

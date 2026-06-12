@@ -49,7 +49,7 @@
       "name": "Text Rich",
       "settings": {
         "heading": "We build things that last. So do good designers.",
-        "uppercase": true,
+        "uppercase": false,
         "padding_top": 80,
         "padding_bottom": 80
       }

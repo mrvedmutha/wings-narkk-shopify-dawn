@@ -53,7 +53,7 @@
   font-weight: 300;
   line-height: 1.2;
   margin: 0;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .narkk-re-manifesto__body {
@@ -324,5 +324,79 @@
     justify-content: flex-start;
     gap: 2.4rem;
     width: 100%;
+  }
+}
+
+/* ── Narrow desktop (1025px – 1350px) — scale down ───────── */
+@media (1025px <= width <= 1350px) {
+  .narkk-re-manifesto__left {
+    padding: 6rem 2.4rem 6rem 4vw;
+  }
+
+  .narkk-re-manifesto__intro {
+    gap: 2.4rem;
+  }
+
+  .narkk-re-manifesto__heading {
+    font-size: clamp(2.4rem, 2.2vw, 3.2rem);
+  }
+
+  .narkk-re-manifesto__card {
+    gap: 1.6rem;
+    padding: 6rem clamp(2rem, 2.5vw, 3.6rem);
+  }
+
+  .narkk-re-manifesto__card-image {
+    height: 46rem;
+    width: 30rem;
+  }
+
+  .narkk-re-manifesto__card-content {
+    height: 46rem;
+    width: 28rem;
+  }
+
+  .narkk-re-manifesto__card-heading {
+    font-size: 1.6rem;
+  }
+}
+
+/* ── Small viewport height (≤ 780px) desktop only ────────── */
+@media (height <= 780px) and (width > 1024px) {
+  .narkk-re-manifesto {
+    height: 100dvh;
+  }
+
+  /* Left panel: fill available height, push content to bottom
+     so it clears the sticky header (~9rem) naturally */
+  .narkk-re-manifesto__left {
+    align-self: flex-end;
+    height: auto;
+    padding: 0 3rem 4rem 5vw;
+  }
+
+  .narkk-re-manifesto__intro {
+    gap: 2.4rem;
+  }
+
+  .narkk-re-manifesto__heading {
+    font-size: clamp(2.4rem, 2.2vw, 3rem);
+  }
+
+  /* Cards: fill dvh, bottom-align so content sits above fold */
+  .narkk-re-manifesto__card {
+    align-items: flex-end;
+    height: 100dvh;
+    padding: 0 clamp(2rem, 3vw, 4rem) 4rem;
+  }
+
+  .narkk-re-manifesto__card-image {
+    height: calc(100dvh - 12rem);
+    width: clamp(26rem, 20vw, 36rem);
+  }
+
+  .narkk-re-manifesto__card-content {
+    height: calc(100dvh - 12rem);
+    width: clamp(24rem, 18vw, 34rem);
   }
 }
