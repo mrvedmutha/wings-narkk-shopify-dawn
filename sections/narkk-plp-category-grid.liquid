@@ -24,10 +24,11 @@
 
     {%- comment -%}── PRODUCT GRID ──────────────────────────────────────────{%- endcomment -%}
     {%- if section.blocks.size > 0 -%}
-      <div class="narkk-plp-category-grid__grid">
+      {%- assign per_page = section.settings.per_page -%}
+      <div class="narkk-plp-category-grid__grid" data-grid data-per-page="{{ per_page }}" data-total="{{ section.blocks.size }}">
         {%- for block in section.blocks -%}
-          <article class="narkk-plp-card" {{ block.shopify_attributes }}>
-            <a href="#" class="narkk-plp-card__link">
+          <article class="narkk-plp-card{% if forloop.index0 >= per_page %} narkk-plp-card--hidden{% endif %}" data-card-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            <a href="{%- if block.settings.url != blank -%}{{ block.settings.url }}{%- else -%}#{%- endif -%}" class="narkk-plp-card__link">
 
               {%- comment -%} Image area {%- endcomment -%}
               <div class="narkk-plp-card__image-wrap">
@@ -71,10 +72,26 @@
           </article>
         {%- endfor -%}
       </div>
+
+      {%- if section.blocks.size > per_page -%}
+        {%- assign remaining = section.blocks.size | minus: per_page -%}
+        <div class="narkk-plp-category-grid__load-more" data-load-more-wrap>
+          <button
+            class="button narkk-btn-outlined narkk-btn--plus narkk-plp-category-grid__load-more-btn"
+            data-load-more
+            data-remaining="{{ remaining }}"
+          >
+            <span class="narkk-btn__plus">+</span>
+            <span class="narkk-btn__label" data-load-more-label>Load More ({{ remaining }})</span>
+          </button>
+        </div>
+      {%- endif -%}
     {%- endif -%}
 
   </div>
 </section>
+
+<script src="{{ 'narkk-plp-category-grid.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
@@ -106,6 +123,15 @@
       "id": "description",
       "label": "Description",
       "default": "Choose your base. Build from Solid Birch Plywood"
+    },
+    {
+      "type": "range",
+      "id": "per_page",
+      "label": "Products per page",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "default": 8
     },
     {
       "type": "header",
@@ -141,6 +167,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "Product image"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
         },
         {
           "type": "text",
