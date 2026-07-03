@@ -306,7 +306,7 @@
         "heading_highlight": "That matters more than you think.",
         "heading_after": "",
         "subtext": "When you specify narkk, you're recommending something with a story behind it and a commitment in front of it. Here's what makes it an honest recommendation.",
-        "cta_label": "Join Program",
+        "cta_label": "",
         "cta_url": "",
         "padding_top": 120,
         "padding_bottom": 120
@@ -446,7 +446,7 @@
           "type": "collection_card",
           "settings": {
             "image": "shopify://shop_images/narkk-pages-trade-hero.webp",
-            "collection_name": "THULAI",
+            "collection_name": "TULAI",
             "caption": "Shop pegboard and accessories.",
             "cta_label": "Shop Thulai",
             "cta_url": "shopify://pages/plp-demo",
