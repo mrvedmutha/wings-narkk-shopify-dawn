@@ -14,6 +14,12 @@
     "narkk-footer": {
       "type": "narkk-footer",
       "blocks": {
+        "launching_soon_WD3QaE": {
+          "type": "launching_soon",
+          "settings": {
+            "collection_name": "THOGAI"
+          }
+        },
         "launching_soon_aYxmxH": {
           "type": "launching_soon",
           "settings": {
@@ -60,6 +66,7 @@
         }
       },
       "block_order": [
+        "launching_soon_WD3QaE",
         "launching_soon_aYxmxH",
         "payment_icon_jpQrff",
         "payment_icon_X97MFY",
