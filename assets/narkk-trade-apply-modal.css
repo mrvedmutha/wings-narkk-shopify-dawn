@@ -96,10 +96,12 @@
 
 /* ── Right panel — 635px, scrollable ──────────────────────── */
 .narkk-tam__right {
+  -webkit-overflow-scrolling: touch;
   flex: 0 1 63.5rem;
   max-height: calc(100vh - 6rem);
   min-width: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 7rem 1.5rem 0 0;
 
   /* 1.5rem right padding gives the scrollbar track visual clearance */
@@ -160,12 +162,14 @@
   }
 
   .narkk-tam__panel {
+    -webkit-overflow-scrolling: touch;
     align-items: stretch;
     flex-direction: column;
     gap: 0;
     justify-content: flex-start;
     max-height: 100dvh;
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 0;
   }
 
