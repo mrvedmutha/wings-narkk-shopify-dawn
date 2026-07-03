@@ -17,6 +17,28 @@
   if section.settings.narkk_blog != blank and section.settings.narkk_blog.articles_count > 0
     assign n_use_blog = true
   endif
+
+  comment
+    Featured row shows 3, more row shows 4 more — 7 total visible per tab.
+    Only offer the CTA when there are more than that to see.
+  endcomment
+  assign i_total = i_blocks.size
+  if i_use_blog
+    assign i_total = section.settings.intentions_blog.articles_count
+  endif
+  assign i_show_cta = false
+  if section.settings.intentions_cta_label != blank and i_total > 7
+    assign i_show_cta = true
+  endif
+
+  assign n_total = n_blocks.size
+  if n_use_blog
+    assign n_total = section.settings.narkk_blog.articles_count
+  endif
+  assign n_show_cta = false
+  if section.settings.narkk_cta_label != blank and n_total > 7
+    assign n_show_cta = true
+  endif
 -%}
 
 <section
@@ -359,8 +381,8 @@
       </div>
     </div>
 
-    {%- comment -%}── CTA LINKS ───────────────────────────────────────────{%- endcomment -%}
-    {%- if section.settings.intentions_cta_label != blank -%}
+    {%- comment -%}── CTA LINKS (only when there are more than 7 articles to see) ──{%- endcomment -%}
+    {%- if i_show_cta -%}
       <div class="narkk-dual-grid__cta-wrap" data-narkk-panel-cta="intentions">
         <a
           href="{{ section.settings.intentions_cta_url | default: '#' }}"
@@ -372,7 +394,7 @@
       </div>
     {%- endif -%}
 
-    {%- if section.settings.narkk_cta_label != blank -%}
+    {%- if n_show_cta -%}
       <div class="narkk-dual-grid__cta-wrap narkk-dual-grid__cta-wrap--hidden" data-narkk-panel-cta="narkk">
         <a
           href="{{ section.settings.narkk_cta_url | default: '#' }}"
