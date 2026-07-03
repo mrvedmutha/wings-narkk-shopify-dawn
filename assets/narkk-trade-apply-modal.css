@@ -1,5 +1,5 @@
 /* ============================================================
-   NARKK — TRADE APPLY MODAL (Placeholder)
+   NARKK — TRADE APPLY MODAL
    ============================================================ */
 
 /* ── Overlay ───────────────────────────────────────────────── */
@@ -142,104 +142,14 @@
   margin: 0;
 }
 
-/* ── Form ──────────────────────────────────────────────────── */
-.narkk-tam__form {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.narkk-tam__form-body {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.narkk-tam__fields {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-/* ── Input / Textarea ──────────────────────────────────────── */
-.narkk-tam__input,
-.narkk-tam__textarea {
-  appearance: none;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--narkk-divider);
-  border-radius: 0;
-  box-shadow: none;
-  color: var(--narkk-dark);
-  display: block;
+/* ── Forms app block placeholder (editor-only, no block added yet) ── */
+.narkk-tam__app-placeholder {
+  color: var(--narkk-meta);
   font-family: Outfit, sans-serif;
   font-size: var(--narkk-font-body-1);
   font-weight: 300;
   line-height: var(--narkk-lh-body-1);
-  outline: none;
-  padding: 0.8rem 0;
-  transition: border-color 0.2s ease;
-  width: 100%;
-}
-
-.narkk-tam__input::placeholder,
-.narkk-tam__textarea::placeholder {
-  color: var(--narkk-meta);
-  font-weight: 300;
-  opacity: 1;
-}
-
-/* Remove all focus indicators — no outline, no box-shadow */
-.narkk-tam__input:focus,
-.narkk-tam__input:focus-visible,
-.narkk-tam__textarea:focus,
-.narkk-tam__textarea:focus-visible {
-  border-bottom-color: var(--narkk-dark);
-  box-shadow: none;
-  outline: 0;
-}
-
-.narkk-tam__textarea {
-  min-height: 8rem;
-  resize: none;
-}
-
-/* ── Submit foot — sticky so button stays visible while form scrolls ── */
-
-/*
-  The white background on the foot covers form content scrolling behind it.
-  bottom: 0 keeps it pinned to the bottom of the right panel viewport.
-*/
-.narkk-tam__form-foot {
-  background: var(--narkk-white);
-  bottom: 0;
-  padding-bottom: 3.2rem;
-  padding-top: 2.4rem;
-  position: sticky;
-  z-index: 1;
-}
-
-/* ── Submit button ─────────────────────────────────────────── */
-
-/*
-  Explicit colour override ensures Dawn colour-scheme variables
-  don't bleed through and hide the button against the white panel.
-*/
-.narkk-tam__submit {
-  background: var(--narkk-dark);
-  border-color: var(--narkk-dark);
-  color: var(--narkk-beige);
-  min-width: 27.5rem;
-}
-
-.narkk-tam__submit:hover {
-  background: transparent;
-  color: var(--narkk-dark);
-}
-
-.narkk-tam__submit-plus {
-  font-family: Lato, sans-serif;
-  font-size: 1.6rem;
+  margin: 0;
 }
 
 /* ── Tablet + Mobile (< 1024px): stack vertically, full scroll ── */
@@ -277,10 +187,6 @@
     padding: 0 4rem;
   }
 
-  /* On stacked layout the sticky foot uses the panel's scroll, not the right panel's */
-  .narkk-tam__form-foot {
-    padding-bottom: 5.6rem;
-  }
 }
 
 /* ── Mobile (< 750px) ───────────────────────────────────────── */
@@ -291,22 +197,5 @@
 
   .narkk-tam__right {
     padding: 0 2rem;
-  }
-
-  .narkk-tam__form {
-    gap: 2.4rem;
-  }
-
-  .narkk-tam__form-body {
-    gap: 2.4rem;
-  }
-
-  .narkk-tam__fields {
-    gap: 2.4rem;
-  }
-
-  .narkk-tam__submit {
-    min-width: 0;
-    width: 100%;
   }
 }

@@ -97,7 +97,7 @@
           <button
             type="button"
             class="button narkk-btn-outlined narkk-btn--plus narkk-sc__cta"
-            data-trade-modal-open
+            data-trade-modal-open="{{ section.settings.modal_handle | handleize }}"
           >
             <span class="narkk-btn__plus">+</span>
             <span class="narkk-btn__label">{{ section.settings.cta_label }}</span>
@@ -148,10 +148,6 @@
   <div class="narkk-sc__h-line narkk-sc__h-line--bot" aria-hidden="true">&nbsp;</div>
 
 </section>
-
-{%- if section.settings.cta_label != blank -%}
-  {%- render 'narkk-trade-apply-modal' -%}
-{%- endif -%}
 
 <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>

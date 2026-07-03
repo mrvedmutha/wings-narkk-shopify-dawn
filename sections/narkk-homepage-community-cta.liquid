@@ -114,12 +114,12 @@
       {%- for block in section.blocks -%}
         {%- if block.type == 'cta' -%}
           {%- comment -%}
-            TODO: CTA opens the trade application modal (narkk-trade-apply-modal snippet).
-            Set the block URL in the theme editor to bypass the modal trigger once business logic is live.
+            CTA opens the trade-apply-modal instance whose "Modal handle" setting
+            matches this block's modal_handle. Set the block URL to bypass the modal trigger.
           {%- endcomment -%}
           <div class="narkk-community__cta" {{ block.shopify_attributes }}>
             {%- if block.settings.url == blank -%}
-              <button type="button" class="button narkk-btn-{{ block.settings.style }} narkk-btn--plus" data-trade-modal-open>
+              <button type="button" class="button narkk-btn-{{ block.settings.style }} narkk-btn--plus" data-trade-modal-open="{{ block.settings.modal_handle | handleize }}">
                 <span class="narkk-btn__plus">+</span>
                 <span class="narkk-btn__label">{{ block.settings.label }}</span>
               </button>
@@ -260,6 +260,13 @@
             { "value": "primary",  "label": "Primary (terracotta fill)" }
           ],
           "default": "outlined"
+        },
+        {
+          "type": "text",
+          "id": "modal_handle",
+          "label": "Modal handle",
+          "info": "Must match the \"Modal handle\" setting on the Trade Apply Modal section instance this button should open.",
+          "default": "trade-application"
         }
       ]
     },

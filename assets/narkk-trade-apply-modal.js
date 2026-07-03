@@ -1,12 +1,11 @@
 (function () {
   'use strict';
 
-  var modal   = document.getElementById('narkk-tam');
-  var overlay = document.getElementById('narkk-tam-overlay');
-
-  if (!modal || !overlay) return;
+  var modals = Array.prototype.slice.call(document.querySelectorAll('[data-tam-modal]'));
+  if (!modals.length) return;
 
   var savedScrollY = 0;
+  var activeModal  = null;
 
   /* ── Scroll lock ────────────────────────────────────────────────
      overflow:hidden on BOTH html and body covers every browser's
@@ -30,10 +29,10 @@
 
   /* ── Wheel containment ──────────────────────────────────────────
      Catches macOS momentum events that bypass overflow:hidden and
-     routes them to the modal scroll area instead of the page.
+     routes them to whichever modal is currently open.
   ──────────────────────────────────────────────────────────────── */
 
-  function getScrollEl() {
+  function getScrollEl(modal) {
     var right = modal.querySelector('.narkk-tam__right');
     var panel = modal.querySelector('.narkk-tam__panel');
     if (right && window.getComputedStyle(right).overflowY === 'auto') return right;
@@ -42,56 +41,65 @@
   }
 
   window.addEventListener('wheel', function (e) {
-    if (!modal.classList.contains('is-open')) return;
+    if (!activeModal) return;
     e.preventDefault();
-    var scrollEl = getScrollEl();
+    var scrollEl = getScrollEl(activeModal);
     if (scrollEl) scrollEl.scrollTop += e.deltaY;
   }, { passive: false });
 
   window.addEventListener('touchmove', function (e) {
-    if (!modal.classList.contains('is-open')) return;
-    var scrollEl = getScrollEl();
+    if (!activeModal) return;
+    var scrollEl = getScrollEl(activeModal);
     if (!scrollEl) { e.preventDefault(); return; }
     var inScroll = scrollEl === e.target || scrollEl.contains(e.target);
     if (!inScroll) e.preventDefault();
   }, { passive: false });
 
-  /* ── Open / close ───────────────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && activeModal) closeActiveModal();
+  });
 
-  function openModal() {
-    lockScroll();
-    modal.classList.add('is-open');
-    overlay.classList.add('is-open');
-    modal.removeAttribute('aria-hidden');
-    overlay.removeAttribute('aria-hidden');
-    var firstInput = modal.querySelector('input, textarea, button');
-    if (firstInput) firstInput.focus();
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    overlay.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    overlay.setAttribute('aria-hidden', 'true');
+  function closeActiveModal() {
+    if (!activeModal) return;
+    var handle  = activeModal.dataset.modalHandle;
+    var overlay = document.querySelector('[data-tam-overlay][data-modal-handle="' + handle + '"]');
+    activeModal.classList.remove('is-open');
+    activeModal.setAttribute('aria-hidden', 'true');
+    if (overlay) {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+    activeModal = null;
     unlockScroll();
   }
 
-  /* Triggers — any [data-trade-modal-open] on the page */
-  document.querySelectorAll('[data-trade-modal-open]').forEach(function (trigger) {
-    trigger.addEventListener('click', function (e) {
-      e.preventDefault();
-      openModal();
-    });
-  });
+  /* ── Wire up each modal instance by its handle ─────────────────── */
+  modals.forEach(function (modal) {
+    var handle  = modal.dataset.modalHandle;
+    var overlay = document.querySelector('[data-tam-overlay][data-modal-handle="' + handle + '"]');
+    if (!overlay) return;
 
-  var closeBtn = modal.querySelector('[data-tam-close]');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-  overlay.addEventListener('click', closeModal);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeModal();
+    function openModal() {
+      if (activeModal && activeModal !== modal) closeActiveModal();
+      lockScroll();
+      activeModal = modal;
+      modal.classList.add('is-open');
+      overlay.classList.add('is-open');
+      modal.removeAttribute('aria-hidden');
+      overlay.removeAttribute('aria-hidden');
+      var firstInput = modal.querySelector('input, textarea, button');
+      if (firstInput) firstInput.focus();
     }
+
+    document.querySelectorAll('[data-trade-modal-open="' + handle + '"]').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    var closeBtn = modal.querySelector('[data-tam-close]');
+    if (closeBtn) closeBtn.addEventListener('click', closeActiveModal);
+    overlay.addEventListener('click', closeActiveModal);
   });
 }());

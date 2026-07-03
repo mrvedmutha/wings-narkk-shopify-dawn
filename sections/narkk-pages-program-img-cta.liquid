@@ -44,12 +44,12 @@
 
       {%- if section.settings.button_label != blank -%}
         {%- comment -%}
-          TODO: CTA opens the trade application modal (narkk-trade-apply-modal snippet).
-          Set button_url in the theme editor to bypass the modal trigger once business logic is live.
+          CTA opens the trade-apply-modal instance whose "Modal handle" setting
+          matches modal_handle below. Set button_url to bypass the modal trigger.
         {%- endcomment -%}
         <div data-program-cta>
           {%- if section.settings.button_url == blank -%}
-            <button type="button" class="button narkk-btn-outlined narkk-btn--plus" data-trade-modal-open>
+            <button type="button" class="button narkk-btn-outlined narkk-btn--plus" data-trade-modal-open="{{ section.settings.modal_handle | handleize }}">
               <span class="narkk-btn__plus">+</span>
               <span class="narkk-btn__label">{{ section.settings.button_label }}</span>
             </button>
@@ -71,8 +71,6 @@
 
 <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'narkk-pages-program-img-cta.js' | asset_url }}" defer="defer"></script>
-
-{%- render 'narkk-trade-apply-modal' -%}
 
 {% schema %}
 {
@@ -126,6 +124,13 @@
       "type": "url",
       "id": "button_url",
       "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "modal_handle",
+      "label": "Modal handle",
+      "info": "Must match the \"Modal handle\" setting on the Trade Apply Modal section instance this button should open.",
+      "default": "trade-application"
     },
     {
       "type": "header",

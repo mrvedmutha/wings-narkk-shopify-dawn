@@ -63,6 +63,7 @@
         "body": "<p>If you specify furniture for a living, you know the frustration — beautiful product, gone in four years. Client calls. You explain. The relationship takes the hit, not the brand that made it. narkk exists because we believe furniture should outlast the project. We’d like to work with designers who believe the same thing.</p><p>The narkk Trade Program is for professionals who are specifying with intention — people who want to put something into a client’s home that they won’t have to apologise for later. If that’s you, let’s talk.</p>",
         "button_label": "Join Program",
         "button_url": "",
+        "modal_handle": "trade-application",
         "padding_top": 0,
         "padding_bottom": 80
       }
@@ -370,6 +371,38 @@
         "card_width": "988px"
       }
     },
+    "narkk_trade_apply_modal_VPiqtn": {
+      "type": "narkk-trade-apply-modal",
+      "blocks": {
+        "forms_inline_KJrJbG": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "1057848",
+            "text_color": "#202020",
+            "button_background_color": "#982020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_KJrJbG"
+      ],
+      "name": "Trade Apply Modal",
+      "settings": {
+        "modal_handle": "trade-application",
+        "eyebrow": "Apply for trade program",
+        "heading": "Join the Narkk Trade Program",
+        "description": "We partner with designers who specify with intention. Tell us about your work, and we'll get back to you with the next steps."
+      }
+    },
     "narkk_pages_trade_faq_K4M9jP": {
       "type": "narkk-pages-trade-faq",
       "blocks": {
@@ -501,6 +534,7 @@
     "narkk_pages_what_you_get_46WD6A",
     "narkk_pages_trade_perks_Gk4yp7",
     "narkk_homepage_community_cta_fcfK3g",
+    "narkk_trade_apply_modal_VPiqtn",
     "narkk_pages_trade_faq_K4M9jP",
     "narkk_homepage_collections_K7R9jY"
   ]
