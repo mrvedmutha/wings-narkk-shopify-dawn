@@ -7,52 +7,74 @@
   }
 {% endstyle %}
 
-{%- paginate collection.products by 50 -%}
+{%- comment -%}── Count every category so we can hide empty steps and renumber the rest ──{%- endcomment -%}
+{%- assign bundle_count = 0 -%}
+{%- assign board_count = 0 -%}
+{%- assign acc_count = 0 -%}
+{%- for product in collection.products -%}
+  {%- assign cat = product.metafields.custom.product_filter_category -%}
+  {%- if cat == 'Bundles' -%}
+    {%- assign bundle_count = bundle_count | plus: 1 -%}
+  {%- elsif cat == 'Boards' -%}
+    {%- assign board_count = board_count | plus: 1 -%}
+  {%- elsif cat == 'Accessories' or cat == 'Wall mount kits' -%}
+    {%- assign acc_count = acc_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
 
-  {%- comment -%}── Count bundles first so we know whether to show nav ────────{%- endcomment -%}
-  {%- assign bundle_count = 0 -%}
-  {%- for product in collection.products -%}
-    {%- if product.metafields.custom.product_filter_category == 'Bundles' -%}
-      {%- assign bundle_count = bundle_count | plus: 1 -%}
-    {%- endif -%}
-  {%- endfor -%}
+{%- if bundle_count == 0 and board_count == 0 and acc_count == 0 -%}
 
+  {%- comment -%}── Whole collection is empty ─────────────────────────────{%- endcomment -%}
   <section class="narkk-plp-big-grid" data-narkk-plp-big-grid>
     <div class="narkk-plp-big-grid__inner">
+      <div class="narkk-plp-big-grid__empty-state">
+        <p class="narkk-plp-big-grid__empty-state-text">This collection is empty right now. Check back soon.</p>
+      </div>
+    </div>
+  </section>
 
-      {%- comment -%}── HEADER ────────────────────────────────────────────────{%- endcomment -%}
-      <div class="narkk-plp-big-grid__header">
-        <div class="narkk-plp-big-grid__header-row">
-          <ol class="narkk-plp-big-grid__heading-list" start="{{ section.settings.step_number }}">
-            <li class="narkk-plp-big-grid__heading">{{- section.settings.heading -}}</li>
-          </ol>
+{%- elsif bundle_count > 0 -%}
 
-          {%- if bundle_count > 2 -%}
-            <div class="narkk-plp-big-grid__nav" aria-label="Slider controls">
-              <button
-                class="narkk-plp-big-grid__nav-btn narkk-plp-big-grid__nav-btn--prev"
-                aria-label="Previous setup"
-                disabled
-              >
-                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M6.46973 1.46973L1.96973 5.96973L6.46973 10.4697" stroke="currentColor" stroke-width="1.5"/></svg>
-              </button>
-              <button
-                class="narkk-plp-big-grid__nav-btn narkk-plp-big-grid__nav-btn--next"
-                aria-label="Next setup"
-              >
-                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M0.530273 1.46973L5.03027 5.96973L0.530273 10.4697" stroke="currentColor" stroke-width="1.5"/></svg>
-              </button>
-            </div>
+  {%- comment -%}── Bundles are always the first visible step ─────────────{%- endcomment -%}
+  {%- assign step_number = 1 -%}
+
+  {%- paginate collection.products by 50 -%}
+
+    <section class="narkk-plp-big-grid" data-narkk-plp-big-grid>
+      <div class="narkk-plp-big-grid__inner">
+
+        {%- comment -%}── HEADER ────────────────────────────────────────────{%- endcomment -%}
+        <div class="narkk-plp-big-grid__header">
+          <div class="narkk-plp-big-grid__header-row">
+            <ol class="narkk-plp-big-grid__heading-list" start="{{ step_number }}">
+              <li class="narkk-plp-big-grid__heading">{{- section.settings.heading -}}</li>
+            </ol>
+
+            {%- if bundle_count > 2 -%}
+              <div class="narkk-plp-big-grid__nav" aria-label="Slider controls">
+                <button
+                  class="narkk-plp-big-grid__nav-btn narkk-plp-big-grid__nav-btn--prev"
+                  aria-label="Previous setup"
+                  disabled
+                >
+                  <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M6.46973 1.46973L1.96973 5.96973L6.46973 10.4697" stroke="currentColor" stroke-width="1.5"/></svg>
+                </button>
+                <button
+                  class="narkk-plp-big-grid__nav-btn narkk-plp-big-grid__nav-btn--next"
+                  aria-label="Next setup"
+                >
+                  <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M0.530273 1.46973L5.03027 5.96973L0.530273 10.4697" stroke="currentColor" stroke-width="1.5"/></svg>
+                </button>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.description != blank -%}
+            <p class="narkk-plp-big-grid__desc">{{ section.settings.description }}</p>
           {%- endif -%}
         </div>
 
-        {%- if section.settings.description != blank -%}
-          <p class="narkk-plp-big-grid__desc">{{ section.settings.description }}</p>
-        {%- endif -%}
-      </div>
-
-      {%- comment -%}── SLIDER ────────────────────────────────────────────────{%- endcomment -%}
-      {%- if bundle_count > 0 -%}
+        {%- comment -%}── SLIDER ────────────────────────────────────────────{%- endcomment -%}
         <div class="narkk-plp-big-grid__slider" data-slider data-total="{{ bundle_count }}">
           <div class="narkk-plp-big-grid__track" data-track>
             {%- for product in collection.products -%}
@@ -62,14 +84,15 @@
             {%- endfor -%}
           </div>
         </div>
-      {%- endif -%}
 
-    </div>
-  </section>
+      </div>
+    </section>
 
-{%- endpaginate -%}
+  {%- endpaginate -%}
 
-<script src="{{ 'narkk-plp-big-grid.js' | asset_url }}" defer></script>
+  <script src="{{ 'narkk-plp-big-grid.js' | asset_url }}" defer></script>
+
+{%- endif -%}
 
 {% schema %}
 {
@@ -82,16 +105,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Renders products where custom.product_filter_category = Bundles, in manual collection sort order."
-    },
-    {
-      "type": "range",
-      "id": "step_number",
-      "label": "Step number",
-      "min": 1,
-      "max": 10,
-      "step": 1,
-      "default": 1
+      "content": "Renders products where custom.product_filter_category = Bundles, in manual collection sort order. Hides itself if no bundles are uploaded; the step number is calculated automatically based on which of Bundles/Boards/Accessories have products."
     },
     {
       "type": "text",

@@ -20,11 +20,29 @@
       heading.style.visibility = 'visible';
     }
 
+    /* ── Split description into words (may hold several <p> from rich text) ── */
+    var descriptionWords = [];
+    if (description) {
+      var descParagraphs = description.querySelectorAll('p');
+      if (!descParagraphs.length) descParagraphs = [description];
+      descParagraphs.forEach(function (p) {
+        if (!p.textContent.trim().length) return;
+        descriptionWords = descriptionWords.concat(window.narkkSplit.words(p));
+      });
+      if (descriptionWords.length) gsap.set(descriptionWords, { yPercent: 110 });
+      description.style.visibility = 'visible';
+    }
+
+    /* ── Split tagline into words ──────────────────────────── */
+    var taglineWords = tagline ? window.narkkSplit.words(tagline) : [];
+    if (taglineWords.length) {
+      gsap.set(taglineWords, { yPercent: 110 });
+      tagline.style.visibility = 'visible';
+    }
+
     /* ── Hide remaining elements ───────────────────────────── */
     if (breadcrumb)  gsap.set(breadcrumb,  { opacity: 0, y: 10 });
     if (image)       gsap.set(image,       { opacity: 0 });
-    if (description) gsap.set(description, { opacity: 0, y: 20 });
-    if (tagline)     gsap.set(tagline,     { opacity: 0, y: 20 });
 
     /* ── IO fires immediately for above-fold content ───────── */
     var io = new IntersectionObserver(function (entries) {
@@ -55,18 +73,20 @@
         }, 0.2);
       }
 
-      if (description) {
-        tl.to(description, {
-          opacity: 1, y: 0,
-          duration: 0.65, ease: 'power3.out'
-        }, 0.65);
+      if (descriptionWords.length) {
+        tl.to(descriptionWords, {
+          yPercent: 0,
+          duration: 0.8, ease: 'power4.out',
+          stagger: { each: 0.02, from: 'start' }
+        }, 0.55);
       }
 
-      if (tagline) {
-        tl.to(tagline, {
-          opacity: 1, y: 0,
-          duration: 0.65, ease: 'power3.out'
-        }, 0.8);
+      if (taglineWords.length) {
+        tl.to(taglineWords, {
+          yPercent: 0,
+          duration: 0.8, ease: 'power4.out',
+          stagger: { each: 0.03, from: 'start' }
+        }, 0.85);
       }
     }, { threshold: 0 });
 

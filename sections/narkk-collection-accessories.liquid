@@ -9,67 +9,85 @@
 
 {%- assign per_page = section.settings.per_page -%}
 
-<section class="narkk-plp-category-grid" data-narkk-plp-category-grid>
-  <div class="narkk-plp-category-grid__inner">
+{%- comment -%}── Count every category so we can hide this step if empty and renumber ──{%- endcomment -%}
+{%- assign bundle_count = 0 -%}
+{%- assign board_count = 0 -%}
+{%- assign acc_total = 0 -%}
+{%- for product in collection.products -%}
+  {%- assign cat = product.metafields.custom.product_filter_category -%}
+  {%- if cat == 'Bundles' -%}
+    {%- assign bundle_count = bundle_count | plus: 1 -%}
+  {%- elsif cat == 'Boards' -%}
+    {%- assign board_count = board_count | plus: 1 -%}
+  {%- elsif cat == 'Accessories' or cat == 'Wall mount kits' -%}
+    {%- assign acc_total = acc_total | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
 
-    {%- comment -%}── HEADER ────────────────────────────────────────────────{%- endcomment -%}
-    <div class="narkk-plp-category-grid__header">
-      <ol class="narkk-plp-category-grid__heading-list" start="{{ section.settings.step_number }}">
-        <li class="narkk-plp-category-grid__heading">{{- section.settings.heading -}}</li>
-      </ol>
-      {%- if section.settings.description != blank -%}
-        <p class="narkk-plp-category-grid__desc">{{ section.settings.description }}</p>
-      {%- endif -%}
-    </div>
+{%- if acc_total > 0 -%}
 
-    {%- paginate collection.products by 50 -%}
+  {%- assign step_number = 1 -%}
+  {%- if bundle_count > 0 -%}
+    {%- assign step_number = step_number | plus: 1 -%}
+  {%- endif -%}
+  {%- if board_count > 0 -%}
+    {%- assign step_number = step_number | plus: 1 -%}
+  {%- endif -%}
 
-      {%- comment -%}── Count accessories (first pass) ────────────────────────{%- endcomment -%}
-      {%- assign acc_total = 0 -%}
-      {%- for product in collection.products -%}
-        {%- assign cat = product.metafields.custom.product_filter_category -%}
-        {%- if cat == 'Accessories' or cat == 'Wall mount kits' -%}
-          {%- assign acc_total = acc_total | plus: 1 -%}
+  <section class="narkk-plp-category-grid" data-narkk-plp-category-grid>
+    <div class="narkk-plp-category-grid__inner">
+
+      {%- comment -%}── HEADER ──────────────────────────────────────────────{%- endcomment -%}
+      <div class="narkk-plp-category-grid__header">
+        <ol class="narkk-plp-category-grid__heading-list" start="{{ step_number }}">
+          <li class="narkk-plp-category-grid__heading">{{- section.settings.heading -}}</li>
+        </ol>
+        {%- if section.settings.description != blank -%}
+          <p class="narkk-plp-category-grid__desc">{{ section.settings.description }}</p>
         {%- endif -%}
-      {%- endfor -%}
-
-      {%- comment -%}── ACCESSORIES GRID (second pass) ────────────────────────{%- endcomment -%}
-      <div
-        class="narkk-plp-category-grid__grid"
-        data-grid
-        data-per-page="{{ per_page }}"
-        data-total="{{ acc_total }}"
-      >
-        {%- assign acc_index = 0 -%}
-        {%- for product in collection.products -%}
-          {%- assign cat = product.metafields.custom.product_filter_category -%}
-          {%- if cat == 'Accessories' or cat == 'Wall mount kits' -%}
-            {%- render 'narkk-card-accessory', product: product, index: acc_index, per_page: per_page -%}
-            {%- assign acc_index = acc_index | plus: 1 -%}
-          {%- endif -%}
-        {%- endfor -%}
       </div>
 
-      {%- if acc_total > per_page -%}
-        {%- assign remaining = acc_total | minus: per_page -%}
-        <div class="narkk-plp-category-grid__load-more" data-load-more-wrap>
-          <button
-            class="button narkk-btn-outlined narkk-btn--plus narkk-plp-category-grid__load-more-btn"
-            data-load-more
-            data-remaining="{{ remaining }}"
-          >
-            <span class="narkk-btn__plus">+</span>
-            <span class="narkk-btn__label" data-load-more-label>Load More ({{ remaining }})</span>
-          </button>
+      {%- paginate collection.products by 50 -%}
+
+        {%- comment -%}── ACCESSORIES GRID ──────────────────────────────────{%- endcomment -%}
+        <div
+          class="narkk-plp-category-grid__grid"
+          data-grid
+          data-per-page="{{ per_page }}"
+          data-total="{{ acc_total }}"
+        >
+          {%- assign acc_index = 0 -%}
+          {%- for product in collection.products -%}
+            {%- assign cat = product.metafields.custom.product_filter_category -%}
+            {%- if cat == 'Accessories' or cat == 'Wall mount kits' -%}
+              {%- render 'narkk-card-accessory', product: product, index: acc_index, per_page: per_page -%}
+              {%- assign acc_index = acc_index | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
         </div>
-      {%- endif -%}
 
-    {%- endpaginate -%}
+        {%- if acc_total > per_page -%}
+          {%- assign remaining = acc_total | minus: per_page -%}
+          <div class="narkk-plp-category-grid__load-more" data-load-more-wrap>
+            <button
+              class="button narkk-btn-outlined narkk-btn--plus narkk-plp-category-grid__load-more-btn"
+              data-load-more
+              data-remaining="{{ remaining }}"
+            >
+              <span class="narkk-btn__plus">+</span>
+              <span class="narkk-btn__label" data-load-more-label>Load More ({{ remaining }})</span>
+            </button>
+          </div>
+        {%- endif -%}
 
-  </div>
-</section>
+      {%- endpaginate -%}
 
-<script src="{{ 'narkk-plp-category-grid.js' | asset_url }}" defer></script>
+    </div>
+  </section>
+
+  <script src="{{ 'narkk-plp-category-grid.js' | asset_url }}" defer></script>
+
+{%- endif -%}
 
 {% schema %}
 {
@@ -82,16 +100,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Renders products where custom.product_filter_category = Accessories or Wall mount kits, in manual collection sort order."
-    },
-    {
-      "type": "range",
-      "id": "step_number",
-      "label": "Step number",
-      "min": 1,
-      "max": 10,
-      "step": 1,
-      "default": 3
+      "content": "Renders products where custom.product_filter_category = Accessories or Wall mount kits, in manual collection sort order. Hides itself if none are uploaded; the step number is calculated automatically based on which of Bundles/Boards/Accessories have products."
     },
     {
       "type": "text",

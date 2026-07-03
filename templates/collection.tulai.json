@@ -18,7 +18,6 @@
     "collection-ready-setups": {
       "type": "narkk-collection-ready-setups",
       "settings": {
-        "step_number": 1,
         "heading": "Ready Setups",
         "description": "Curated combinations for every setup",
         "padding_top": 60,
@@ -28,7 +27,6 @@
     "collection-boards": {
       "type": "narkk-collection-boards",
       "settings": {
-        "step_number": 2,
         "heading": "Start with Board",
         "description": "Choose your base. Build from Solid Birch Plywood",
         "padding_top": 60,
@@ -38,7 +36,6 @@
     "collection-accessories": {
       "type": "narkk-collection-accessories",
       "settings": {
-        "step_number": 3,
         "heading": "Add Accessories",
         "description": "Pick what you need to build your setup. Up to 9 accessories with standard board",
         "per_page": 8,

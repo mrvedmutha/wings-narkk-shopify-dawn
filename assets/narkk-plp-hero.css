@@ -107,6 +107,15 @@
   margin: 0;
 }
 
+/* Collection description is rich text and may contain its own <p> tags */
+.narkk-plp-hero__description p {
+  margin: 0 0 1em;
+}
+
+.narkk-plp-hero__description p:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Tablet: stack columns ────────────────────────────────── */
 @media (width <= 1024px) {
   .narkk-plp-hero__content {

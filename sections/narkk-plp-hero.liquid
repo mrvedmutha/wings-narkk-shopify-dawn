@@ -56,13 +56,15 @@
         {%- endif -%}
         {%- if section.settings.description != blank -%}
           <p class="narkk-plp-hero__description"
-             data-narkk-plp-description>
+             data-narkk-plp-description
+             style="visibility:hidden">
             {{ section.settings.description }}
           </p>
         {%- endif -%}
         {%- if section.settings.tagline != blank -%}
           <p class="narkk-plp-hero__tagline"
-             data-narkk-plp-tagline>
+             data-narkk-plp-tagline
+             style="visibility:hidden">
             {{ section.settings.tagline }}
           </p>
         {%- endif -%}

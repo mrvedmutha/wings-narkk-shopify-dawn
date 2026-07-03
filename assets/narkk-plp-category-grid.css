@@ -62,6 +62,7 @@
 .narkk-plp-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .narkk-plp-card__link {
@@ -133,7 +134,10 @@
   font-weight: 400;
   line-height: var(--narkk-lh-product-name);
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .narkk-plp-card__sub-info {
@@ -143,6 +147,9 @@
   font-weight: 400;
   line-height: var(--narkk-lh-body-2);
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .narkk-plp-card__price {

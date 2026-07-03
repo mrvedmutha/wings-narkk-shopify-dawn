@@ -7,32 +7,53 @@
   }
 {% endstyle %}
 
-<section class="narkk-plp-category-grid" data-narkk-plp-category-grid>
-  <div class="narkk-plp-category-grid__inner">
+{%- comment -%}── Count every category so we can hide this step if empty and renumber ──{%- endcomment -%}
+{%- assign bundle_count = 0 -%}
+{%- assign board_count = 0 -%}
+{%- for product in collection.products -%}
+  {%- assign cat = product.metafields.custom.product_filter_category -%}
+  {%- if cat == 'Bundles' -%}
+    {%- assign bundle_count = bundle_count | plus: 1 -%}
+  {%- elsif cat == 'Boards' -%}
+    {%- assign board_count = board_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
 
-    {%- comment -%}── HEADER ────────────────────────────────────────────────{%- endcomment -%}
-    <div class="narkk-plp-category-grid__header">
-      <ol class="narkk-plp-category-grid__heading-list" start="{{ section.settings.step_number }}">
-        <li class="narkk-plp-category-grid__heading">{{- section.settings.heading -}}</li>
-      </ol>
-      {%- if section.settings.description != blank -%}
-        <p class="narkk-plp-category-grid__desc">{{ section.settings.description }}</p>
-      {%- endif -%}
-    </div>
+{%- if board_count > 0 -%}
 
-    {%- comment -%}── BOARDS GRID ───────────────────────────────────────────{%- endcomment -%}
-    {%- paginate collection.products by 50 -%}
-      <div class="narkk-plp-category-grid__grid">
-        {%- for product in collection.products -%}
-          {%- if product.metafields.custom.product_filter_category == 'Boards' -%}
-            {%- render 'narkk-card-board', product: product -%}
-          {%- endif -%}
-        {%- endfor -%}
+  {%- assign step_number = 1 -%}
+  {%- if bundle_count > 0 -%}
+    {%- assign step_number = step_number | plus: 1 -%}
+  {%- endif -%}
+
+  <section class="narkk-plp-category-grid" data-narkk-plp-category-grid>
+    <div class="narkk-plp-category-grid__inner">
+
+      {%- comment -%}── HEADER ──────────────────────────────────────────────{%- endcomment -%}
+      <div class="narkk-plp-category-grid__header">
+        <ol class="narkk-plp-category-grid__heading-list" start="{{ step_number }}">
+          <li class="narkk-plp-category-grid__heading">{{- section.settings.heading -}}</li>
+        </ol>
+        {%- if section.settings.description != blank -%}
+          <p class="narkk-plp-category-grid__desc">{{ section.settings.description }}</p>
+        {%- endif -%}
       </div>
-    {%- endpaginate -%}
 
-  </div>
-</section>
+      {%- comment -%}── BOARDS GRID ─────────────────────────────────────────{%- endcomment -%}
+      {%- paginate collection.products by 50 -%}
+        <div class="narkk-plp-category-grid__grid">
+          {%- for product in collection.products -%}
+            {%- if product.metafields.custom.product_filter_category == 'Boards' -%}
+              {%- render 'narkk-card-board', product: product -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endpaginate -%}
+
+    </div>
+  </section>
+
+{%- endif -%}
 
 {% schema %}
 {
@@ -45,16 +66,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Renders products where custom.product_filter_category = Boards, in manual collection sort order."
-    },
-    {
-      "type": "range",
-      "id": "step_number",
-      "label": "Step number",
-      "min": 1,
-      "max": 10,
-      "step": 1,
-      "default": 2
+      "content": "Renders products where custom.product_filter_category = Boards, in manual collection sort order. Hides itself if no boards are uploaded; the step number is calculated automatically based on which of Bundles/Boards/Accessories have products."
     },
     {
       "type": "text",

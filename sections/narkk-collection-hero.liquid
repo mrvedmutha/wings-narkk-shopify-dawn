@@ -8,6 +8,9 @@
 {% endstyle %}
 
 {%- assign hero_image = collection.metafields.custom.hero_image.value -%}
+{%- if hero_image == blank -%}
+  {%- assign hero_image = collection.image -%}
+{%- endif -%}
 {%- assign hero_tagline = collection.metafields.custom.hero_tagline -%}
 
 <section class="narkk-plp-hero" data-narkk-plp-hero>
@@ -52,12 +55,12 @@
           {{- collection.title -}}
         </h1>
         {%- if collection.description != blank -%}
-          <p class="narkk-plp-hero__description" data-narkk-plp-description>
+          <div class="narkk-plp-hero__description" data-narkk-plp-description style="visibility:hidden">
             {{ collection.description }}
-          </p>
+          </div>
         {%- endif -%}
         {%- if hero_tagline != blank -%}
-          <p class="narkk-plp-hero__tagline" data-narkk-plp-tagline>
+          <p class="narkk-plp-hero__tagline" data-narkk-plp-tagline style="visibility:hidden">
             {{ hero_tagline }}
           </p>
         {%- endif -%}
@@ -83,7 +86,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Pulls from the collection: title, description (native fields) and metafields custom.hero_image + custom.hero_tagline."
+      "content": "Pulls from the collection: title, description (native fields). Image uses metafield custom.hero_image if set, otherwise falls back to the collection's own Image field. Tagline uses metafield custom.hero_tagline."
     },
     {
       "type": "header",
