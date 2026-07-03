@@ -299,13 +299,13 @@
 }
 
 /* ATC button */
-.narkk-pdp__atc {
+.narkk-pdp__atc.button {
   align-items: center;
   display: flex;
   flex: 1 1 auto;
   gap: 10px;
   height: 48px;
-  justify-content: center;
+  justify-content: flex-start;
   letter-spacing: 0;
   min-width: 0;
   text-transform: uppercase;

@@ -1,5 +1,7 @@
 {{ 'narkk-product-detail.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'narkk-button.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
@@ -142,7 +144,7 @@
               {% unless current_variant.available %}disabled{% endunless %}
             >
               {%- if current_variant.available -%}
-                <span class="narkk-pdp__atc-plus" aria-hidden="true">+</span>
+                <span class="narkk-pdp__atc-plus narkk-btn__plus" aria-hidden="true">+</span>
                 <span>ADD TO CART</span>
               {%- else -%}
                 <span>SOLD OUT</span>
