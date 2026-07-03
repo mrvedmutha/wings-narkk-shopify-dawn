@@ -78,10 +78,45 @@
   padding: 1.6rem;
 }
 
+.narkk-what-you-get__text-card-content-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.narkk-what-you-get__text-card-content,
+.narkk-what-you-get__text-card-hover {
+  inset: 0;
+  position: absolute;
+  transition: opacity 0.35s ease;
+}
+
 .narkk-what-you-get__text-card-content {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+/* ── Hover reveal text (swaps in for the heading on hover) ──── */
+.narkk-what-you-get__text-card-hover {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.narkk-what-you-get__text-card--has-hover.is-revealed .narkk-what-you-get__text-card-content {
+  opacity: 0;
+}
+
+.narkk-what-you-get__text-card--has-hover.is-revealed .narkk-what-you-get__text-card-hover {
+  opacity: 1;
+}
+
+.narkk-what-you-get__hover-text {
+  color: var(--narkk-dark);
+  font-family: Outfit, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 2.4rem;
+  margin: 0;
 }
 
 /* ── Eyebrow ──────────────────────────────────────────────── */
@@ -109,15 +144,40 @@
   color: var(--narkk-primary);
 }
 
-/* ── Plus icon ────────────────────────────────────────────── */
+/* ── Plus icon (non-interactive cards) ───────────────────────── */
 .narkk-what-you-get__plus-icon {
   bottom: 1.6rem;
   display: block;
   pointer-events: none;
   position: absolute;
   right: 1.6rem;
+  transition: transform 0.35s ease;
   user-select: none;
   width: 4.7rem;
+}
+
+/* ── Plus button (cards with a hover/tap reveal) ─────────────── */
+.narkk-what-you-get__plus-btn {
+  background: none;
+  border: 0;
+  bottom: 1.6rem;
+  cursor: pointer;
+  display: block;
+  padding: 0;
+  position: absolute;
+  right: 1.6rem;
+  width: 4.7rem;
+}
+
+.narkk-what-you-get__plus-btn .narkk-what-you-get__plus-icon {
+  bottom: auto;
+  position: static;
+  right: auto;
+  width: 100%;
+}
+
+.narkk-what-you-get__text-card--has-hover.is-revealed .narkk-what-you-get__plus-icon {
+  transform: rotate(45deg);
 }
 
 /* ── Tablet (≤1024px) — 4 cols, reduce card heading size ──── */
@@ -135,7 +195,16 @@
     line-height: 2.8rem;
   }
 
+  .narkk-what-you-get__hover-text {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .narkk-what-you-get__plus-icon {
+    width: 3.6rem;
+  }
+
+  .narkk-what-you-get__plus-btn {
     width: 3.6rem;
   }
 }
@@ -167,7 +236,18 @@
     line-height: 1.6rem;
   }
 
+  .narkk-what-you-get__hover-text {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
   .narkk-what-you-get__plus-icon {
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+  }
+
+  .narkk-what-you-get__plus-btn {
     bottom: 1rem;
     right: 1rem;
     width: 3rem;

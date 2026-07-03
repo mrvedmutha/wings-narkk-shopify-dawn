@@ -46,38 +46,69 @@
             </div>
 
           {%- elsif block.type == 'text_card' -%}
-            <div class="narkk-what-you-get__text-card" data-wyg-card {{ block.shopify_attributes }}>
-              <div class="narkk-what-you-get__text-card-content">
-                {%- if block.settings.eyebrow != blank -%}
-                  <p class="narkk-what-you-get__eyebrow">{{ block.settings.eyebrow }}</p>
-                {%- endif -%}
-                {%- assign wyg_before    = block.settings.text_before | strip -%}
-                {%- assign wyg_highlight = block.settings.highlight   | strip -%}
-                {%- assign wyg_after     = block.settings.text_after  | strip -%}
-                {%- if wyg_before != blank and wyg_highlight != blank -%}
-                  {%- assign wyg_before = wyg_before | append: ' ' -%}
-                {%- endif -%}
-                {%- if wyg_after != blank and wyg_highlight != blank -%}
-                  {%- assign wyg_after = ' ' | append: wyg_after -%}
-                {%- endif -%}
-                {%- if wyg_before != blank or wyg_highlight != blank or wyg_after != blank -%}
-                  <p class="narkk-what-you-get__card-heading" data-wyg-card-heading>
-                    {{- wyg_before -}}
-                    {%- if wyg_highlight != blank -%}
-                      <span class="narkk-what-you-get__highlight">{{ wyg_highlight }}</span>
-                    {%- endif -%}
-                    {{- wyg_after -}}
-                  </p>
+            {%- assign wyg_hover_text = block.settings.hover_text | strip -%}
+            <div
+              class="narkk-what-you-get__text-card{% if wyg_hover_text != blank %} narkk-what-you-get__text-card--has-hover{% endif %}"
+              data-wyg-card
+              {{ block.shopify_attributes }}
+            >
+              <div class="narkk-what-you-get__text-card-content-wrap">
+                <div class="narkk-what-you-get__text-card-content">
+                  {%- if block.settings.eyebrow != blank -%}
+                    <p class="narkk-what-you-get__eyebrow">{{ block.settings.eyebrow }}</p>
+                  {%- endif -%}
+                  {%- assign wyg_before    = block.settings.text_before | strip -%}
+                  {%- assign wyg_highlight = block.settings.highlight   | strip -%}
+                  {%- assign wyg_after     = block.settings.text_after  | strip -%}
+                  {%- if wyg_before != blank and wyg_highlight != blank -%}
+                    {%- assign wyg_before = wyg_before | append: ' ' -%}
+                  {%- endif -%}
+                  {%- if wyg_after != blank and wyg_highlight != blank -%}
+                    {%- assign wyg_after = ' ' | append: wyg_after -%}
+                  {%- endif -%}
+                  {%- if wyg_before != blank or wyg_highlight != blank or wyg_after != blank -%}
+                    <p class="narkk-what-you-get__card-heading" data-wyg-card-heading>
+                      {{- wyg_before -}}
+                      {%- if wyg_highlight != blank -%}
+                        <span class="narkk-what-you-get__highlight">{{ wyg_highlight }}</span>
+                      {%- endif -%}
+                      {{- wyg_after -}}
+                    </p>
+                  {%- endif -%}
+                </div>
+                {%- if wyg_hover_text != blank -%}
+                  <div class="narkk-what-you-get__text-card-hover">
+                    <p class="narkk-what-you-get__hover-text">{{ wyg_hover_text }}</p>
+                  </div>
                 {%- endif -%}
               </div>
-              <img
-                src="{{ 'icon-narkk-wyg-plus.svg' | asset_url }}"
-                alt=""
-                aria-hidden="true"
-                class="narkk-what-you-get__plus-icon"
-                width="47"
-                height="49"
-              >
+              {%- if wyg_hover_text != blank -%}
+                <button
+                  type="button"
+                  class="narkk-what-you-get__plus-btn"
+                  aria-expanded="false"
+                  aria-label="Show details"
+                  data-wyg-plus-btn
+                >
+                  <img
+                    src="{{ 'icon-narkk-wyg-plus.svg' | asset_url }}"
+                    alt=""
+                    aria-hidden="true"
+                    class="narkk-what-you-get__plus-icon"
+                    width="47"
+                    height="49"
+                  >
+                </button>
+              {%- else -%}
+                <img
+                  src="{{ 'icon-narkk-wyg-plus.svg' | asset_url }}"
+                  alt=""
+                  aria-hidden="true"
+                  class="narkk-what-you-get__plus-icon"
+                  width="47"
+                  height="49"
+                >
+              {%- endif -%}
             </div>
 
           {%- endif -%}
@@ -162,6 +193,12 @@
           "id": "text_after",
           "label": "Text after highlight",
           "info": "Optional — any text that follows the highlighted word"
+        },
+        {
+          "type": "textarea",
+          "id": "hover_text",
+          "label": "Hover reveal text",
+          "info": "Shown in place of the heading when hovering the card, and the + icon rotates into an ×. Leave blank to disable the hover reveal."
         }
       ]
     },

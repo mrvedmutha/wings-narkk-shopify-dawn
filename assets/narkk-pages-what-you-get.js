@@ -50,13 +50,64 @@
     });
   }
 
+  // ── Plus button reveal — hover on desktop, tap to toggle on touch ──
+  function initPlusReveal(root) {
+    var scope   = root || document;
+    var isFine  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var buttons = Array.prototype.slice.call(scope.querySelectorAll('[data-wyg-plus-btn]'));
+
+    function setRevealed(card, btn, revealed) {
+      card.classList.toggle('is-revealed', revealed);
+      btn.setAttribute('aria-expanded', revealed ? 'true' : 'false');
+    }
+
+    buttons.forEach(function (btn) {
+      var card = btn.closest('[data-wyg-card]');
+      if (!card) return;
+
+      if (isFine) {
+        btn.addEventListener('mouseenter', function () { setRevealed(card, btn, true); });
+        btn.addEventListener('mouseleave', function () { setRevealed(card, btn, false); });
+        btn.addEventListener('focus', function () { setRevealed(card, btn, true); });
+        btn.addEventListener('blur', function () { setRevealed(card, btn, false); });
+      } else {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var willReveal = !card.classList.contains('is-revealed');
+
+          buttons.forEach(function (otherBtn) {
+            if (otherBtn === btn) return;
+            var otherCard = otherBtn.closest('[data-wyg-card]');
+            if (otherCard) setRevealed(otherCard, otherBtn, false);
+          });
+
+          setRevealed(card, btn, willReveal);
+        });
+      }
+    });
+
+    if (!isFine) {
+      document.addEventListener('click', function (e) {
+        buttons.forEach(function (btn) {
+          var card = btn.closest('[data-wyg-card]');
+          if (card && !card.contains(e.target)) setRevealed(card, btn, false);
+        });
+      });
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWhatYouGet);
+    document.addEventListener('DOMContentLoaded', function () { initPlusReveal(); });
   } else {
     initWhatYouGet();
+    initPlusReveal();
   }
 
   document.addEventListener('shopify:section:load', function (e) {
-    if (e.target.querySelector('[data-narkk-what-you-get]')) initWhatYouGet();
+    if (e.target.querySelector('[data-narkk-what-you-get]')) {
+      initWhatYouGet();
+      initPlusReveal(e.target);
+    }
   });
 }());
