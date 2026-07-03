@@ -15,18 +15,29 @@
     else
       assign btn_variant = 'narkk-btn-outlined'
   endcase
-
-  assign btn_url = url | default: '#'
 -%}
 
-<a
-  href="{{ btn_url }}"
-  class="button {{ btn_variant }}{% if show_plus %} narkk-btn--plus{% endif %}{% if full_width %} narkk-btn--full-width{% endif %}"
-  {% if btn_url == '#' %}aria-disabled="true"{% endif %}
->
-  {%- if show_plus -%}
-    <span class="narkk-btn__plus">+</span><span class="narkk-btn__label">{{- label -}}</span>
-  {%- else -%}
-    {{- label -}}
-  {%- endif -%}
-</a>
+{%- if url != blank -%}
+  <a
+    href="{{ url }}"
+    class="button {{ btn_variant }}{% if show_plus %} narkk-btn--plus{% endif %}{% if full_width %} narkk-btn--full-width{% endif %}"
+  >
+    {%- if show_plus -%}
+      <span class="narkk-btn__plus">+</span><span class="narkk-btn__label">{{- label -}}</span>
+    {%- else -%}
+      {{- label -}}
+    {%- endif -%}
+  </a>
+{%- else -%}
+  <span
+    class="button {{ btn_variant }}{% if show_plus %} narkk-btn--plus{% endif %}{% if full_width %} narkk-btn--full-width{% endif %}"
+    aria-disabled="true"
+    tabindex="-1"
+  >
+    {%- if show_plus -%}
+      <span class="narkk-btn__plus">+</span><span class="narkk-btn__label">{{- label -}}</span>
+    {%- else -%}
+      {{- label -}}
+    {%- endif -%}
+  </span>
+{%- endif -%}

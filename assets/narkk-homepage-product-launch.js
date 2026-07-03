@@ -83,10 +83,11 @@
         }, isDesktop ? 1.6 : 0.5);
       }
 
-      // 4. CTA — fade + rise
+      // 4. CTA — fade + rise (stays muted if the button has no link)
       if (ctaBtn) {
+        var ctaTargetOpacity = ctaBtn.getAttribute('aria-disabled') === 'true' ? 0.5 : 1;
         tl.to(ctaBtn, {
-          opacity: 1,
+          opacity: ctaTargetOpacity,
           y: 0,
           duration: 0.6,
           ease: 'power2.out'
