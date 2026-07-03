@@ -44,8 +44,8 @@
 
       {%- if section.settings.button_label != blank -%}
         {%- comment -%}
-          CTA opens the global trade application modal (narkk-trade-apply-modal section,
-          included once in layout/theme.liquid). Set button_url to bypass the modal trigger.
+          TODO: CTA opens the trade application modal (narkk-trade-apply-modal snippet).
+          Set button_url in the theme editor to bypass the modal trigger once business logic is live.
         {%- endcomment -%}
         <div data-program-cta>
           {%- if section.settings.button_url == blank -%}
@@ -71,6 +71,8 @@
 
 <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'narkk-pages-program-img-cta.js' | asset_url }}" defer="defer"></script>
+
+{%- render 'narkk-trade-apply-modal' -%}
 
 {% schema %}
 {

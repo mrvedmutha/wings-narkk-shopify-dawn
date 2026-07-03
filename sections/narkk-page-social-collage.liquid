@@ -149,6 +149,10 @@
 
 </section>
 
+{%- if section.settings.cta_label != blank -%}
+  {%- render 'narkk-trade-apply-modal' -%}
+{%- endif -%}
+
 <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'narkk-text-reveal.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'narkk-page-social-collage.js' | asset_url }}" defer="defer"></script>
