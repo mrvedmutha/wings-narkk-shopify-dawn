@@ -70,40 +70,60 @@
     "narkk_pages_professionals_izYXb4": {
       "type": "narkk-pages-professionals",
       "blocks": {
-        "text_line_TGABwi": {
-          "type": "text_line",
+        "industry_interior_designers": {
+          "type": "industry",
           "settings": {
-            "text_before": "Interior designers,",
-            "highlight": "Architects,",
-            "text_after": ""
+            "label": "Interior Designers",
+            "image": "shopify://shop_images/narkk-pages-professionals.webp"
           }
         },
-        "text_line_dY4dNL": {
-          "type": "text_line",
+        "industry_architects": {
+          "type": "industry",
           "settings": {
-            "text_before": "Home stagers, Hospitality consultants,",
-            "highlight": "",
-            "text_after": ""
+            "label": "Architects",
+            "image": "shopify://shop_images/narkk-pages-professionals-2.webp"
           }
         },
-        "text_line_AUcB47": {
-          "type": "text_line",
+        "industry_home_stagers": {
+          "type": "industry",
           "settings": {
-            "text_before": "Set designers, Design studios",
-            "highlight": "",
-            "text_after": ""
+            "label": "Home Stagers",
+            "image": "shopify://shop_images/narkk-pages-professionals.webp"
+          }
+        },
+        "industry_hospitality_consultants": {
+          "type": "industry",
+          "settings": {
+            "label": "Hospitality Consultants",
+            "image": "shopify://shop_images/narkk-pages-professionals-2.webp"
+          }
+        },
+        "industry_set_designers": {
+          "type": "industry",
+          "settings": {
+            "label": "Set Designers",
+            "image": "shopify://shop_images/narkk-pages-professionals.webp"
+          }
+        },
+        "industry_design_studios": {
+          "type": "industry",
+          "settings": {
+            "label": "Design Studios",
+            "image": "shopify://shop_images/narkk-pages-professionals-2.webp"
           }
         }
       },
       "block_order": [
-        "text_line_TGABwi",
-        "text_line_dY4dNL",
-        "text_line_AUcB47"
+        "industry_interior_designers",
+        "industry_architects",
+        "industry_home_stagers",
+        "industry_hospitality_consultants",
+        "industry_set_designers",
+        "industry_design_studios"
       ],
       "name": "Professionals",
       "settings": {
         "heading": "Who This Is For",
-        "image": "shopify://shop_images/narkk-pages-professionals.webp",
         "padding_top": 120,
         "padding_bottom": 120
       }

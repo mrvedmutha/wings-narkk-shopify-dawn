@@ -53,17 +53,30 @@
   top: 50%;
 }
 
-/* ── Image ────────────────────────────────────────────────── */
+/* ── Image (industry images crossfade-stacked on top of each other) ── */
 .narkk-professionals__image-wrap {
+  aspect-ratio: 275 / 356;
   overflow: hidden;
+  position: relative;
   width: 27.5rem;
 }
 
+.narkk-professionals__image-slide {
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.5s ease;
+}
+
+.narkk-professionals__image-slide.is-active {
+  opacity: 1;
+}
+
+/* Standalone placeholder (no Industry blocks configured at all) */
 .narkk-professionals__image,
 .narkk-professionals__image-placeholder {
-  aspect-ratio: 275 / 356;
   display: block;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   width: 100%;
 }
@@ -74,7 +87,7 @@
   width: 100%;
 }
 
-.narkk-professionals__text p {
+.narkk-professionals__flow {
   color: rgb(249 244 240 / 40%);
   font-family: Outfit, sans-serif;
   font-size: var(--narkk-font-h1);
@@ -85,9 +98,14 @@
   text-transform: uppercase;
 }
 
-.narkk-professionals__text p strong {
+.narkk-professionals__industry {
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.narkk-professionals__industry.is-active {
   color: var(--narkk-beige);
-  font-weight: 300;
 }
 
 /* ── Tablet (≤1024px) ─────────────────────────────────────── */
@@ -96,7 +114,7 @@
     padding-inline: 2.4rem;
   }
 
-  .narkk-professionals__text p {
+  .narkk-professionals__flow {
     font-size: 4.8rem;
     line-height: 5.5rem;
   }
@@ -119,7 +137,7 @@
     width: min(27.5rem, 72vw);
   }
 
-  .narkk-professionals__text p {
+  .narkk-professionals__flow {
     font-size: 3.2rem;
     letter-spacing: -0.02em;
     line-height: 3.8rem;

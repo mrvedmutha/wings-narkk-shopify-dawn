@@ -75,9 +75,57 @@
     io.observe(section);
   }
 
+  // ── Industry hover/tap: highlight the word + swap the image ────────
+  // Hovering (desktop) or tapping (touch) an industry sets it active; it
+  // stays active after the pointer leaves — only picking a different
+  // industry changes the selection. Starts on a random industry.
+  function initIndustryPicker() {
+    var section     = document.querySelector('[data-narkk-professionals]');
+    if (!section) return;
+
+    var industries  = Array.prototype.slice.call(section.querySelectorAll('[data-prof-industry]'));
+    var imageSlides  = Array.prototype.slice.call(section.querySelectorAll('[data-prof-image-slide]'));
+    if (!industries.length) return;
+
+    var isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    function setActive(index) {
+      industries.forEach(function (el) {
+        el.classList.toggle('is-active', Number(el.dataset.industryIndex) === index);
+      });
+      imageSlides.forEach(function (slide) {
+        slide.classList.toggle('is-active', Number(slide.dataset.industryIndex) === index);
+      });
+    }
+
+    setActive(Math.floor(Math.random() * industries.length));
+
+    industries.forEach(function (el) {
+      var index = Number(el.dataset.industryIndex);
+      if (isFine) {
+        el.addEventListener('mouseenter', function () { setActive(index); });
+        el.addEventListener('focus', function () { setActive(index); });
+      } else {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          setActive(index);
+        });
+      }
+
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setActive(index);
+        }
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initProfessionals);
+    document.addEventListener('DOMContentLoaded', initIndustryPicker);
   } else {
     initProfessionals();
+    initIndustryPicker();
   }
 }());

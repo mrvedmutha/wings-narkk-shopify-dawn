@@ -18,25 +18,39 @@
     {%- endif -%}
   </div>
 
+  {%- assign industry_blocks = section.blocks | where: 'type', 'industry' -%}
+
   {%- comment -%}── Image zone: line sits at vertical centre of image ────{%- endcomment -%}
   <div class="narkk-professionals__image-zone">
     <div class="narkk-professionals__line" data-prof-line>&nbsp;</div>
     <div class="narkk-professionals__inner">
       <div class="narkk-professionals__image-wrap" data-prof-image>
-        {%- if section.settings.image != blank -%}
-          <img
-            src="{{ section.settings.image | image_url: width: 600 }}"
-            srcset="
-              {{ section.settings.image | image_url: width: 300 }} 300w,
-              {{ section.settings.image | image_url: width: 600 }} 600w
-            "
-            sizes="(max-width: 768px) 72vw, 275px"
-            alt="{{ section.settings.image.alt | escape }}"
-            class="narkk-professionals__image"
-            loading="lazy"
-            width="{{ section.settings.image.width }}"
-            height="{{ section.settings.image.height }}"
-          >
+        {%- if industry_blocks.size > 0 -%}
+          {%- for block in industry_blocks -%}
+            <div
+              class="narkk-professionals__image-slide{% if forloop.first %} is-active{% endif %}"
+              data-prof-image-slide
+              data-industry-index="{{ forloop.index0 }}"
+            >
+              {%- if block.settings.image != blank -%}
+                <img
+                  src="{{ block.settings.image | image_url: width: 600 }}"
+                  srcset="
+                    {{ block.settings.image | image_url: width: 300 }} 300w,
+                    {{ block.settings.image | image_url: width: 600 }} 600w
+                  "
+                  sizes="(max-width: 768px) 72vw, 275px"
+                  alt="{{ block.settings.image.alt | default: block.settings.label | escape }}"
+                  class="narkk-professionals__image"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              {%- else -%}
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-professionals__image narkk-professionals__image-placeholder' }}
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
         {%- else -%}
           {{ 'lifestyle-2' | placeholder_svg_tag: 'narkk-professionals__image narkk-professionals__image-placeholder' }}
         {%- endif -%}
@@ -44,21 +58,24 @@
     </div>
   </div>
 
-  {%- comment -%}── Text lines (blocks) ──────────────────────────────────{%- endcomment -%}
-  {%- if section.blocks.size > 0 -%}
+  {%- comment -%}── Industries — one flowing, comma-separated line that wraps naturally ──{%- endcomment -%}
+  {%- if industry_blocks.size > 0 -%}
     <div class="narkk-professionals__inner">
       <div class="narkk-professionals__text" data-prof-text>
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'text_line' -%}
-            <p {{ block.shopify_attributes }}>
-              {{- block.settings.text_before -}}
-              {%- if block.settings.highlight != blank -%}
-                <strong>{{ block.settings.highlight }}</strong>
-              {%- endif -%}
-              {{- block.settings.text_after -}}
-            </p>
-          {%- endif -%}
-        {%- endfor -%}
+        <p class="narkk-professionals__flow">
+          {%- for block in industry_blocks -%}
+            {%- if block.settings.label != blank -%}
+              <span
+                class="narkk-professionals__industry{% if forloop.first %} is-active{% endif %}"
+                data-prof-industry
+                data-industry-index="{{ forloop.index0 }}"
+                role="button"
+                tabindex="0"
+                {{ block.shopify_attributes }}
+              >{{- block.settings.label -}}</span>{%- unless forloop.last -%}<span class="narkk-professionals__comma">, </span>{%- endunless -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </p>
       </div>
     </div>
   {%- endif -%}
@@ -86,9 +103,8 @@
       "default": "Who This Is For"
     },
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
+      "type": "paragraph",
+      "content": "Add an Industry block per audience below — they flow as one comma-separated line that wraps naturally. Hovering (or tapping, on touch) an industry highlights it and swaps in its image."
     },
     {
       "type": "header",
@@ -117,26 +133,20 @@
   ],
   "blocks": [
     {
-      "type": "text_line",
-      "name": "Text Line",
+      "type": "industry",
+      "name": "Industry",
       "settings": [
         {
           "type": "text",
-          "id": "text_before",
-          "label": "Text",
-          "info": "Full line text, or text before the highlighted word"
+          "id": "label",
+          "label": "Industry name",
+          "info": "e.g. Interior Designers"
         },
         {
-          "type": "text",
-          "id": "highlight",
-          "label": "Highlighted word / phrase",
-          "info": "Leave blank if no highlight on this line. Appears bright white."
-        },
-        {
-          "type": "text",
-          "id": "text_after",
-          "label": "Text after highlight",
-          "info": "Optional — any text that follows the highlighted word"
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Shown above when this industry is hovered/tapped"
         }
       ]
     }
@@ -145,30 +155,12 @@
     {
       "name": "Professionals",
       "blocks": [
-        {
-          "type": "text_line",
-          "settings": {
-            "text_before": "Interior designers, ",
-            "highlight": "Architects,",
-            "text_after": ""
-          }
-        },
-        {
-          "type": "text_line",
-          "settings": {
-            "text_before": "Home stagers, Hospitality consultants,",
-            "highlight": "",
-            "text_after": ""
-          }
-        },
-        {
-          "type": "text_line",
-          "settings": {
-            "text_before": "Set designers, Design studios",
-            "highlight": "",
-            "text_after": ""
-          }
-        }
+        { "type": "industry", "settings": { "label": "Interior Designers" } },
+        { "type": "industry", "settings": { "label": "Architects" } },
+        { "type": "industry", "settings": { "label": "Home Stagers" } },
+        { "type": "industry", "settings": { "label": "Hospitality Consultants" } },
+        { "type": "industry", "settings": { "label": "Set Designers" } },
+        { "type": "industry", "settings": { "label": "Design Studios" } }
       ]
     }
   ]
