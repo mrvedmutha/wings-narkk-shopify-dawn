@@ -97,9 +97,20 @@
 }
 
 /* ── Hover reveal text (swaps in for the heading on hover) ──── */
+
+/* Scrolls internally instead of overflowing the card when the text is long.
+   `bottom` is set inline by JS to sit just above the plus button — see
+   narkk-pages-what-you-get.js — so it always clears the button regardless
+   of the button's size/position at the current breakpoint. */
 .narkk-what-you-get__text-card-hover {
+  bottom: 6rem;
   opacity: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 0.4rem;
   pointer-events: none;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 
 .narkk-what-you-get__text-card--has-hover.is-revealed .narkk-what-you-get__text-card-content {
@@ -108,6 +119,7 @@
 
 .narkk-what-you-get__text-card--has-hover.is-revealed .narkk-what-you-get__text-card-hover {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .narkk-what-you-get__hover-text {

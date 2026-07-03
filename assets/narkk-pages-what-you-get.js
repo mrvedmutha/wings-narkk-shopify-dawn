@@ -61,6 +61,31 @@
       btn.setAttribute('aria-expanded', revealed ? 'true' : 'false');
     }
 
+    // Keep the scrollable hover panel from running under the plus button —
+    // pins its bottom edge just above the button regardless of breakpoint.
+    function fitHoverPanels() {
+      buttons.forEach(function (btn) {
+        var card  = btn.closest('[data-wyg-card]');
+        var panel = card && card.querySelector('.narkk-what-you-get__text-card-hover');
+        var wrap  = card && card.querySelector('.narkk-what-you-get__text-card-content-wrap');
+        if (!panel || !wrap) return;
+
+        var wrapRect = wrap.getBoundingClientRect();
+        var btnRect  = btn.getBoundingClientRect();
+        var gap      = 8;
+        var bottomPx = Math.max(0, wrapRect.bottom - btnRect.top + gap);
+        panel.style.bottom = bottomPx + 'px';
+      });
+    }
+
+    fitHoverPanels();
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(fitHoverPanels, 150);
+    });
+
     buttons.forEach(function (btn) {
       var card = btn.closest('[data-wyg-card]');
       if (!card) return;

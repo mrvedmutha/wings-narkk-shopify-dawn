@@ -78,7 +78,7 @@
                 </div>
                 {%- if wyg_hover_text != blank -%}
                   <div class="narkk-what-you-get__text-card-hover">
-                    <p class="narkk-what-you-get__hover-text">{{ wyg_hover_text }}</p>
+                    <p class="narkk-what-you-get__hover-text">{{ wyg_hover_text | newline_to_br }}</p>
                   </div>
                 {%- endif -%}
               </div>
