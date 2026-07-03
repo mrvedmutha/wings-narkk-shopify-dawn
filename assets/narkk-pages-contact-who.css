@@ -101,6 +101,15 @@
   width: 1px;
 }
 
+/* ── Bottom divider line — full-bleed, closes off the section ── */
+.narkk-pcw__line--bottom {
+  background: var(--pcw-rule);
+  font-size: 0;
+  height: 1px;
+  line-height: 0;
+  width: 100%;
+}
+
 /* ── Tablet (750px – 1023px) — 3-column grid, no dividers ── */
 @media (750px <= width < 1024px) {
   .narkk-pcw__grid {

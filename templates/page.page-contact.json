@@ -54,7 +54,8 @@
             "heading": "For Customers",
             "body": "Looking to purchase or need help choosing the right piece?",
             "button_label": "Get in touch",
-            "button_url": ""
+            "button_url": "",
+            "modal_handle": "customer-inquiry"
           }
         },
         "card_fPpqbk": {
@@ -64,7 +65,8 @@
             "heading": "For Designers & Professionals",
             "body": "Looking to purchase or need help choosing the right piece?",
             "button_label": "Apply for trade program",
-            "button_url": ""
+            "button_url": "",
+            "modal_handle": "trade-application"
           }
         },
         "card_ehhmiA": {
@@ -74,7 +76,8 @@
             "heading": "For Support & Orders",
             "body": "Questions about your order, delivery, or installation?",
             "button_label": "Contact support",
-            "button_url": ""
+            "button_url": "mailto:info@narkk.com",
+            "modal_handle": ""
           }
         }
       },
@@ -88,11 +91,77 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
+    },
+    "narkk_trade_apply_modal_fb4TmY": {
+      "type": "narkk-trade-apply-modal",
+      "blocks": {
+        "forms_inline_VMFFpi": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "1057848",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_VMFFpi"
+      ],
+      "name": "Trade Apply Modal",
+      "settings": {
+        "modal_handle": "trade-application",
+        "eyebrow": "Apply for trade program",
+        "heading": "Join the Narkk Trade Program",
+        "description": "We partner with designers who specify with intention. Tell us about your work, and we'll get back to you with the next steps."
+      }
+    },
+    "narkk_trade_apply_modal_Q8Lfyp": {
+      "type": "narkk-trade-apply-modal",
+      "blocks": {
+        "forms_inline_mKYP87": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "1057848",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_mKYP87"
+      ],
+      "name": "Trade Apply Modal",
+      "settings": {
+        "modal_handle": "customer-inquiry",
+        "eyebrow": "Customer Services",
+        "heading": "How Can I Assist You?",
+        "description": "We partner with designers who specify with intention. Tell us about your work, and we'll get back to you with the next steps."
+      }
     }
   },
   "order": [
     "narkk_image_banner_zxNwgH",
     "narkk_pages_contact_form_VFeJbB",
-    "narkk_pages_contact_who_mWTYwb"
+    "narkk_pages_contact_who_mWTYwb",
+    "narkk_trade_apply_modal_fb4TmY",
+    "narkk_trade_apply_modal_Q8Lfyp"
   ]
 }

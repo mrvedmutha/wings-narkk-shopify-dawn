@@ -59,6 +59,7 @@
       "type": "narkk-pages-mission",
       "name": "Narkk Mission Statement",
       "settings": {
+        "image_position": "center center",
         "eyebrow": "Our Mission",
         "heading": "To design modular, repairable, and beautiful objects that become lifelong companions — and to build a community that chooses quality over convenience, always."
       }
@@ -219,8 +220,9 @@
           "type": "cta",
           "settings": {
             "label": "Join The Loop",
-            "url": "#",
-            "style": "outlined"
+            "url": "",
+            "style": "outlined",
+            "modal_handle": "trade-application"
           }
         }
       },
@@ -238,6 +240,38 @@
         "heading": "A CALL FOR COLLABORATORS",
         "card_width": "690px"
       }
+    },
+    "narkk_trade_apply_modal_9pgmLn": {
+      "type": "narkk-trade-apply-modal",
+      "blocks": {
+        "forms_inline_wVCBhi": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "1057848",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_wVCBhi"
+      ],
+      "name": "Trade Apply Modal",
+      "settings": {
+        "modal_handle": "trade-application",
+        "eyebrow": "Apply for trade program",
+        "heading": "Join the Narkk Trade Program",
+        "description": "We partner with designers who specify with intention. Tell us about your work, and we'll get back to you with the next steps."
+      }
     }
   },
   "order": [
@@ -247,6 +281,7 @@
     "narkk_pages_mission_VFL6ig",
     "narkk_pages_re_manifesto_mQyRaU",
     "narkk_pages_beliefs_pbTJNd",
-    "narkk_homepage_community_cta_awLGwi"
+    "narkk_homepage_community_cta_awLGwi",
+    "narkk_trade_apply_modal_9pgmLn"
   ]
 }
