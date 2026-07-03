@@ -12,108 +12,76 @@
 
     {%- comment -%}── HEADER ────────────────────────────────────────────────{%- endcomment -%}
     <div class="narkk-plp-big-grid__header">
-      <div class="narkk-plp-big-grid__header-row">
-        <ol class="narkk-plp-big-grid__heading-list" start="{{ section.settings.step_number }}">
-          <li class="narkk-plp-big-grid__heading">
-            {{- section.settings.heading -}}
-          </li>
-        </ol>
-
-        {%- if section.blocks.size > 2 -%}
-          <div class="narkk-plp-big-grid__nav" aria-label="Slider controls">
-            <button
-              class="narkk-plp-big-grid__nav-btn narkk-plp-big-grid__nav-btn--prev"
-              aria-label="Previous setup"
-              disabled
-            >
-              <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M6.46973 1.46973L1.96973 5.96973L6.46973 10.4697" stroke="currentColor" stroke-width="1.5"/></svg>
-            </button>
-            <button
-              class="narkk-plp-big-grid__nav-btn narkk-plp-big-grid__nav-btn--next"
-              aria-label="Next setup"
-            >
-              <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M0.530273 1.46973L5.03027 5.96973L0.530273 10.4697" stroke="currentColor" stroke-width="1.5"/></svg>
-            </button>
-          </div>
-        {%- endif -%}
-      </div>
-
+      <ol class="narkk-plp-big-grid__heading-list" start="{{ section.settings.step_number }}">
+        <li class="narkk-plp-big-grid__heading">
+          {{- section.settings.heading -}}
+        </li>
+      </ol>
       {%- if section.settings.description != blank -%}
         <p class="narkk-plp-big-grid__desc">{{ section.settings.description }}</p>
       {%- endif -%}
     </div>
 
-    {%- comment -%}── BUNDLE SLIDER ─────────────────────────────────────────{%- endcomment -%}
+    {%- comment -%}── BUNDLE GRID ───────────────────────────────────────────{%- endcomment -%}
     {%- if section.blocks.size > 0 -%}
-      <div
-        class="narkk-plp-big-grid__slider"
-        data-slider
-        data-total="{{ section.blocks.size }}"
-      >
-        <div class="narkk-plp-big-grid__track" data-track>
-          {%- for block in section.blocks -%}
-            <article class="narkk-plp-bundle-card" {{ block.shopify_attributes }}>
-              <a
-                href="{%- if block.settings.url != blank -%}{{ block.settings.url }}{%- else -%}#{%- endif -%}"
-                class="narkk-plp-bundle-card__link"
-              >
+      <div class="narkk-plp-big-grid__grid">
+        {%- for block in section.blocks -%}
+          <article class="narkk-plp-bundle-card" {{ block.shopify_attributes }}>
+            <a href="#" class="narkk-plp-bundle-card__link">
 
-                {%- comment -%} Image area {%- endcomment -%}
-                <div class="narkk-plp-bundle-card__image-wrap">
-                  {%- if block.settings.image != blank -%}
-                    <img
-                      src="{{ block.settings.image | image_url: width: 1400 }}"
-                      srcset="
-                        {{ block.settings.image | image_url: width: 700 }} 700w,
-                        {{ block.settings.image | image_url: width: 1000 }} 1000w,
-                        {{ block.settings.image | image_url: width: 1400 }} 1400w
-                      "
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      alt="{{ block.settings.title | escape }}"
-                      loading="lazy"
-                      class="narkk-plp-bundle-card__image"
-                      width="{{ block.settings.image.width }}"
-                      height="{{ block.settings.image.height }}"
-                    >
-                  {%- else -%}
-                    {{ 'lifestyle-1' | placeholder_svg_tag: 'narkk-plp-bundle-card__image narkk-plp-bundle-card__image--placeholder' }}
+              {%- comment -%} Image area {%- endcomment -%}
+              <div class="narkk-plp-bundle-card__image-wrap">
+                {%- if block.settings.image != blank -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 1400 }}"
+                    srcset="
+                      {{ block.settings.image | image_url: width: 700 }} 700w,
+                      {{ block.settings.image | image_url: width: 1000 }} 1000w,
+                      {{ block.settings.image | image_url: width: 1400 }} 1400w
+                    "
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    alt="{{ block.settings.title | escape }}"
+                    loading="lazy"
+                    class="narkk-plp-bundle-card__image"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                {%- else -%}
+                  {{ 'lifestyle-1' | placeholder_svg_tag: 'narkk-plp-bundle-card__image narkk-plp-bundle-card__image--placeholder' }}
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Card info {%- endcomment -%}
+              <div class="narkk-plp-bundle-card__info">
+                <div class="narkk-plp-bundle-card__meta">
+                  <h3 class="narkk-plp-bundle-card__name">{{ block.settings.title }}</h3>
+                  {%- if block.settings.board_type != blank or block.settings.accessories_count != blank -%}
+                    <div class="narkk-plp-bundle-card__sub">
+                      {%- if block.settings.board_type != blank -%}
+                        <span class="narkk-plp-bundle-card__board">{{ block.settings.board_type }}</span>
+                      {%- endif -%}
+                      {%- if block.settings.board_type != blank and block.settings.accessories_count != blank -%}
+                        <span class="narkk-plp-bundle-card__dot" aria-hidden="true"></span>
+                      {%- endif -%}
+                      {%- if block.settings.accessories_count != blank -%}
+                        <span class="narkk-plp-bundle-card__count">{{ block.settings.accessories_count }}</span>
+                      {%- endif -%}
+                    </div>
                   {%- endif -%}
                 </div>
+                {%- if block.settings.price != blank -%}
+                  <p class="narkk-plp-bundle-card__price">{{ block.settings.price }}</p>
+                {%- endif -%}
+              </div>
 
-                {%- comment -%} Card info {%- endcomment -%}
-                <div class="narkk-plp-bundle-card__info">
-                  <div class="narkk-plp-bundle-card__meta">
-                    <h3 class="narkk-plp-bundle-card__name">{{ block.settings.title }}</h3>
-                    {%- if block.settings.board_type != blank or block.settings.accessories_count != blank -%}
-                      <div class="narkk-plp-bundle-card__sub">
-                        {%- if block.settings.board_type != blank -%}
-                          <span class="narkk-plp-bundle-card__board">{{ block.settings.board_type }}</span>
-                        {%- endif -%}
-                        {%- if block.settings.board_type != blank and block.settings.accessories_count != blank -%}
-                          <span class="narkk-plp-bundle-card__dot" aria-hidden="true"></span>
-                        {%- endif -%}
-                        {%- if block.settings.accessories_count != blank -%}
-                          <span class="narkk-plp-bundle-card__count">{{ block.settings.accessories_count }}</span>
-                        {%- endif -%}
-                      </div>
-                    {%- endif -%}
-                  </div>
-                  {%- if block.settings.price != blank -%}
-                    <p class="narkk-plp-bundle-card__price">{{ block.settings.price }}</p>
-                  {%- endif -%}
-                </div>
-
-              </a>
-            </article>
-          {%- endfor -%}
-        </div>
+            </a>
+          </article>
+        {%- endfor -%}
       </div>
     {%- endif -%}
 
   </div>
 </section>
-
-<script src="{{ 'narkk-plp-big-grid.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
@@ -180,11 +148,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "Lifestyle image"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link"
         },
         {
           "type": "text",

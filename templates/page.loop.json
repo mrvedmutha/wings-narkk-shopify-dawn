@@ -193,7 +193,7 @@
         "narkk_heading": "Narkk",
         "narkk_blog": "",
         "featured_position_narkk": "left",
-        "narkk_cta_label": "See all articles",
+        "narkk_cta_label": "see all articles",
         "narkk_cta_url": ""
       }
     },
@@ -247,10 +247,9 @@
       "settings": {
         "eyebrow": "Find Your Community",
         "heading": "Where Spaces Turn Into Stories",
-        "cta_label": "Join Inner Loop",
-        "cta_url": "",
         "body_text": "Our story continues where the trends end. Follow our journey of intentional living, behind-the-scenes craft, and mindful community on:",
-        "social_label": "Join our community on"
+        "social_label": "Join our community on",
+        "cta_label": "Join Inner Loop"
       }
     },
     "narkk_homepage_community_cta_CAmMp8": {

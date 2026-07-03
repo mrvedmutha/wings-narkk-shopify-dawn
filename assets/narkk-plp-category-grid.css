@@ -181,19 +181,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-/* ── Hidden cards (load more) ────────────────────────────── */
-.narkk-plp-card--hidden {
-  display: none;
-}
-
-/* ── Load more button row ────────────────────────────────── */
-.narkk-plp-category-grid__load-more {
-  display: flex;
-  justify-content: center;
-  padding-top: 4rem;
-}
-
-.narkk-plp-category-grid__load-more-btn {
-  min-width: 30.9rem;
-}

@@ -83,7 +83,7 @@
             "collection_name": "THOGAI",
             "caption": "Modular sofa and it's accessories.",
             "cta_label": "Shop Thogai",
-            "cta_url": "shopify://pages/plp-demo",
+            "cta_url": "",
             "card_bg": "#ffffff",
             "label_color": "#ffffff"
           }
@@ -126,15 +126,6 @@
         "label_font_size": 5.5
       }
     },
-    "narkk_homepage_manifesto_9E4hby": {
-      "type": "narkk-homepage-manifesto",
-      "name": "Narkk Manifesto",
-      "settings": {
-        "eyebrow": "The Re-Manifesto",
-        "heading": "Built for Life, Not the Landfill",
-        "body": "<p>We stand as a direct counter-narrative to “fast furniture” and planned obsolescence. We believe that what you buy, how you live with it, and what you become of it are all interconnected. Our ultimate goal is to build a circular economy where no piece of Narkk furniture ever enters a landfill.</p><p>To ensure our products remain lifelong companions, we design, we operate by these 6 core principles</p>"
-      }
-    },
     "narkk_homepage_community_cta_PFem8B": {
       "type": "narkk-homepage-community-cta",
       "blocks": {
@@ -149,7 +140,7 @@
           "type": "cta",
           "settings": {
             "label": "Join The Loop",
-            "url": "#",
+            "url": "shopify://pages/loop",
             "style": "outlined"
           }
         }
@@ -164,6 +155,15 @@
         "image_position": "center center",
         "heading": "Loop Circle",
         "card_width": "635px"
+      }
+    },
+    "narkk_homepage_manifesto_9E4hby": {
+      "type": "narkk-homepage-manifesto",
+      "name": "Narkk Manifesto",
+      "settings": {
+        "eyebrow": "The Re-Manifesto",
+        "heading": "Built for Life, Not the Landfill",
+        "body": "<p>We stand as a direct counter-narrative to “fast furniture” and planned obsolescence. We believe that what you buy, how you live with it, and what you become of it are all interconnected. Our ultimate goal is to build a circular economy where no piece of Narkk furniture ever enters a landfill.</p><p>To ensure our products remain lifelong companions, we design, we operate by these 6 core principles</p>"
       }
     },
     "narkk_homepage_marquee_vid_banner_7PHtz4": {

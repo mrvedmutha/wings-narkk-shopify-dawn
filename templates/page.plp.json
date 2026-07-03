@@ -28,64 +28,6 @@
         "cta_label": "View Product (29)"
       }
     },
-    "plp-ready-setups": {
-      "type": "narkk-plp-big-grid",
-      "blocks": {
-        "bundle-desk": {
-          "type": "bundle_card",
-          "settings": {
-            "image": "shopify://shop_images/tulai-collection-3-1.webp",
-            "title": "The Desk Setup",
-            "board_type": "Standard Board",
-            "accessories_count": "5 Accessories",
-            "price": "Rs. 4,919.00"
-          }
-        },
-        "bundle-declutter": {
-          "type": "bundle_card",
-          "settings": {
-            "image": "shopify://shop_images/tulai-collection-3-2.webp",
-            "title": "The Declutter Wall",
-            "board_type": "Small Board",
-            "accessories_count": "5 Accessories",
-            "price": "Rs. 2,992.00"
-          }
-        },
-        "bundle-morning": {
-          "type": "bundle_card",
-          "settings": {
-            "image": "shopify://shop_images/tulai-collection-3-3.webp",
-            "title": "The Morning Ritual",
-            "board_type": "Large Board",
-            "accessories_count": "7 Accessories",
-            "price": "Rs. 4,919.00"
-          }
-        },
-        "bundle-entryway": {
-          "type": "bundle_card",
-          "settings": {
-            "image": "shopify://shop_images/tulai-collection-3-4.webp",
-            "title": "The Entryway Starter",
-            "board_type": "Tiny Board",
-            "accessories_count": "4 Accessories",
-            "price": "Rs. 4,919.00"
-          }
-        }
-      },
-      "block_order": [
-        "bundle-desk",
-        "bundle-declutter",
-        "bundle-morning",
-        "bundle-entryway"
-      ],
-      "settings": {
-        "step_number": 3,
-        "heading": "Ready Setups",
-        "description": "Curated combinations for every setup",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "plp-boards": {
       "type": "narkk-plp-category-grid",
       "blocks": {
@@ -389,6 +331,64 @@
         "padding_bottom": 100
       }
     },
+    "plp-ready-setups": {
+      "type": "narkk-plp-big-grid",
+      "blocks": {
+        "bundle-desk": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-1.webp",
+            "title": "The Desk Setup",
+            "board_type": "Standard Board",
+            "accessories_count": "5 Accessories",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "bundle-declutter": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-2.webp",
+            "title": "The Declutter Wall",
+            "board_type": "Small Board",
+            "accessories_count": "5 Accessories",
+            "price": "Rs. 2,992.00"
+          }
+        },
+        "bundle-morning": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-3.webp",
+            "title": "The Morning Ritual",
+            "board_type": "Large Board",
+            "accessories_count": "7 Accessories",
+            "price": "Rs. 4,919.00"
+          }
+        },
+        "bundle-entryway": {
+          "type": "bundle_card",
+          "settings": {
+            "image": "shopify://shop_images/tulai-collection-3-4.webp",
+            "title": "The Entryway Starter",
+            "board_type": "Tiny Board",
+            "accessories_count": "4 Accessories",
+            "price": "Rs. 4,919.00"
+          }
+        }
+      },
+      "block_order": [
+        "bundle-desk",
+        "bundle-declutter",
+        "bundle-morning",
+        "bundle-entryway"
+      ],
+      "settings": {
+        "step_number": 3,
+        "heading": "Ready Setups",
+        "description": "Curated combinations for every setup",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "plp-usps": {
       "type": "narkk-usps-strip",
       "blocks": {
@@ -471,9 +471,9 @@
   "order": [
     "plp-hero",
     "plp-filter-bar",
-    "plp-ready-setups",
     "plp-boards",
     "plp-accessories",
+    "plp-ready-setups",
     "plp-usps",
     "narkk_homepage_community_cta_HkXCiE"
   ]
