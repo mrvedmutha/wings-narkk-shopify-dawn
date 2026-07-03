@@ -114,8 +114,8 @@
       {%- for block in section.blocks -%}
         {%- if block.type == 'cta' -%}
           {%- comment -%}
-            TODO: CTA opens the trade application modal (narkk-trade-apply-modal snippet).
-            Set the block URL in the theme editor to bypass the modal trigger once business logic is live.
+            CTA opens the global trade application modal (narkk-trade-apply-modal section,
+            included once in layout/theme.liquid). Set the block URL to bypass the modal trigger.
           {%- endcomment -%}
           <div class="narkk-community__cta" {{ block.shopify_attributes }}>
             {%- if block.settings.url == blank -%}

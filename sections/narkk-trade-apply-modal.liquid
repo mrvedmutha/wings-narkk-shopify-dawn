@@ -1,0 +1,89 @@
+{%- comment -%}
+  Section: narkk-trade-apply-modal
+  Global Trade Program application modal — included once in layout/theme.liquid
+  so every [data-trade-modal-open] trigger anywhere on the site opens this same
+  instance (narkk-pages-program-img-cta, narkk-page-social-collage,
+  narkk-homepage-community-cta).
+
+  The form itself is a Shopify Forms app block: add it via the theme editor
+  (Apps > Forms) inside this section's block area, then enter the Form ID
+  in the block's own settings.
+{%- endcomment -%}
+
+{{ 'narkk-trade-apply-modal.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}── Overlay ───────────────────────────────────────────{%- endcomment -%}
+<div class="narkk-tam__overlay" id="narkk-tam-overlay" aria-hidden="true">&nbsp;</div>
+
+{%- comment -%}── Modal ─────────────────────────────────────────────{%- endcomment -%}
+<div
+  class="narkk-tam"
+  id="narkk-tam"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Apply for Trade Program"
+  aria-hidden="true"
+>
+  <div class="narkk-tam__panel">
+
+    {%- comment -%}── Close button ──────────────────────────────────{%- endcomment -%}
+    <button class="narkk-tam__close" type="button" data-tam-close aria-label="{{ 'accessibility.close' | t }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 4L20 20M20 4L4 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    {%- comment -%}── Left panel — pitch copy (no scroll) ───────────{%- endcomment -%}
+    <div class="narkk-tam__left">
+      <p class="narkk-tam__eyebrow">{{ section.settings.eyebrow }}</p>
+      <div class="narkk-tam__left-text">
+        <p class="narkk-tam__heading">{{ section.settings.heading }}</p>
+        <p class="narkk-tam__desc">{{ section.settings.description }}</p>
+      </div>
+    </div>
+
+    {%- comment -%}── Right panel — scrollable Forms app block ──────{%- endcomment -%}
+    <div class="narkk-tam__right">
+      {%- content_for 'blocks' -%}
+      {%- if section.blocks.size == 0 and request.design_mode -%}
+        <p class="narkk-tam__app-placeholder">
+          Add a block here — Apps &gt; Forms — then paste the Form ID from your Shopify Forms app into the block's settings.
+        </p>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ 'narkk-trade-apply-modal.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Trade Apply Modal",
+  "tag": "section",
+  "class": "narkk-tam-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Apply for trade program"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join the Narkk Trade Program"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We partner with designers who specify with intention. Tell us about your work, and we'll get back to you with the next steps."
+    }
+  ],
+  "blocks": [
+    { "type": "@app" }
+  ]
+}
+{% endschema %}
