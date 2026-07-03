@@ -38,23 +38,16 @@
 
         {%- if section.settings.cta_label != blank -%}
           {%- comment -%}
-            TODO: CTA opens the trade application modal (narkk-trade-apply-modal snippet).
-            Set cta_url in the theme editor to bypass the modal trigger once business logic is live.
+            No cta_url set — narkk-button renders a muted, non-clickable button.
+            Set cta_url in the theme editor to make it a live link.
           {%- endcomment -%}
           <div data-tp-cta>
-            {%- if section.settings.cta_url == blank -%}
-              <button type="button" class="button narkk-btn-outlined-sm narkk-btn--plus" data-trade-modal-open>
-                <span class="narkk-btn__plus">+</span>
-                <span class="narkk-btn__label">{{ section.settings.cta_label }}</span>
-              </button>
-            {%- else -%}
-              {%- render 'narkk-button',
-                style: 'outlined-sm',
-                label: section.settings.cta_label,
-                url: section.settings.cta_url,
-                show_plus: true
-              -%}
-            {%- endif -%}
+            {%- render 'narkk-button',
+              style: 'outlined-sm',
+              label: section.settings.cta_label,
+              url: section.settings.cta_url,
+              show_plus: true
+            -%}
           </div>
         {%- endif -%}
 
