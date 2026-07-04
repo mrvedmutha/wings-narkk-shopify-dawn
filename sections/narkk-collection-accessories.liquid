@@ -10,14 +10,11 @@
 {%- assign per_page = section.settings.per_page -%}
 
 {%- comment -%}── Count every category so we can hide this step if empty and renumber ──{%- endcomment -%}
-{%- assign bundle_count = 0 -%}
 {%- assign board_count = 0 -%}
 {%- assign acc_total = 0 -%}
 {%- for product in collection.products -%}
   {%- assign cat = product.metafields.custom.product_filter_category -%}
-  {%- if cat == 'Bundles' -%}
-    {%- assign bundle_count = bundle_count | plus: 1 -%}
-  {%- elsif cat == 'Boards' -%}
+  {%- if cat == 'Boards' -%}
     {%- assign board_count = board_count | plus: 1 -%}
   {%- elsif cat == 'Accessories' or cat == 'Wall mount kits' -%}
     {%- assign acc_total = acc_total | plus: 1 -%}
@@ -26,10 +23,8 @@
 
 {%- if acc_total > 0 -%}
 
+  {%- comment -%}── Ready Setups is unnumbered; Accessories follows Boards ──{%- endcomment -%}
   {%- assign step_number = 1 -%}
-  {%- if bundle_count > 0 -%}
-    {%- assign step_number = step_number | plus: 1 -%}
-  {%- endif -%}
   {%- if board_count > 0 -%}
     {%- assign step_number = step_number | plus: 1 -%}
   {%- endif -%}
@@ -100,7 +95,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Renders products where custom.product_filter_category = Accessories or Wall mount kits, in manual collection sort order. Hides itself if none are uploaded; the step number is calculated automatically based on which of Bundles/Boards/Accessories have products."
+      "content": "Renders products where custom.product_filter_category = Accessories or Wall mount kits, in manual collection sort order. Hides itself if none are uploaded. Ready Setups is unnumbered; this step is 1 if Boards is empty, or 2 if Boards has products."
     },
     {
       "type": "text",

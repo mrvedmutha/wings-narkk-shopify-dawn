@@ -33,7 +33,7 @@
 
     <div class="narkk-plp-bundle-card__info">
       <div class="narkk-plp-bundle-card__meta">
-        <h3 class="narkk-plp-bundle-card__name">{{ product.title }}</h3>
+        <h3 class="narkk-plp-bundle-card__name">{{ product.title }}<span class="narkk-plp-bundle-card__name-line" aria-hidden="true">&nbsp;</span></h3>
         {%- if board_type != blank or acc_count != blank -%}
           <div class="narkk-plp-bundle-card__sub">
             {%- if board_type != blank -%}

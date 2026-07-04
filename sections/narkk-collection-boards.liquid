@@ -7,24 +7,19 @@
   }
 {% endstyle %}
 
-{%- comment -%}── Count every category so we can hide this step if empty and renumber ──{%- endcomment -%}
-{%- assign bundle_count = 0 -%}
+{%- comment -%}── Count every category so we can hide this step if empty ──{%- endcomment -%}
 {%- assign board_count = 0 -%}
 {%- for product in collection.products -%}
   {%- assign cat = product.metafields.custom.product_filter_category -%}
-  {%- if cat == 'Bundles' -%}
-    {%- assign bundle_count = bundle_count | plus: 1 -%}
-  {%- elsif cat == 'Boards' -%}
+  {%- if cat == 'Boards' -%}
     {%- assign board_count = board_count | plus: 1 -%}
   {%- endif -%}
 {%- endfor -%}
 
 {%- if board_count > 0 -%}
 
+  {%- comment -%}── Ready Setups is unnumbered, so Boards is always step 1 ──{%- endcomment -%}
   {%- assign step_number = 1 -%}
-  {%- if bundle_count > 0 -%}
-    {%- assign step_number = step_number | plus: 1 -%}
-  {%- endif -%}
 
   <section class="narkk-plp-category-grid" data-narkk-plp-category-grid>
     <div class="narkk-plp-category-grid__inner">
@@ -66,7 +61,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Renders products where custom.product_filter_category = Boards, in manual collection sort order. Hides itself if no boards are uploaded; the step number is calculated automatically based on which of Bundles/Boards/Accessories have products."
+      "content": "Renders products where custom.product_filter_category = Boards, in manual collection sort order. Hides itself if no boards are uploaded. Ready Setups is unnumbered, so this is always step 1; the step number shifts automatically if Accessories has products but Boards doesn't."
     },
     {
       "type": "text",

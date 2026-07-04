@@ -86,17 +86,18 @@
 
 .narkk-plp-card__image {
   display: block;
-  height: auto;
-  max-height: 75%;
-  max-width: 82%;
-  object-fit: contain;
-  width: auto;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .narkk-plp-card__image--placeholder {
+  height: auto;
   max-height: 55%;
   max-width: 65%;
+  object-fit: contain;
   opacity: 0.3;
+  width: auto;
 }
 
 /* ── Size badge ──────────────────────────────────────────── */
@@ -128,16 +129,39 @@
 }
 
 .narkk-plp-card__name {
+  align-self: flex-start;
   color: var(--narkk-dark);
+  display: inline-block;
   font-family: Outfit, sans-serif;
   font-size: var(--narkk-font-product-name);
   font-weight: 400;
   line-height: var(--narkk-lh-product-name);
   margin: 0;
+  max-width: 100%;
   overflow: hidden;
+  position: relative;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.narkk-plp-card__name-line {
+  background: currentColor;
+  bottom: 0;
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.25s ease-in;
+}
+
+.narkk-plp-card__link:hover .narkk-plp-card__name-line {
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.35s ease-out;
 }
 
 .narkk-plp-card__sub-info {

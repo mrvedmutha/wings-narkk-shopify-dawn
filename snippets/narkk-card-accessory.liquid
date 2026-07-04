@@ -37,7 +37,7 @@
 
     <div class="narkk-plp-card__info">
       <div class="narkk-plp-card__meta">
-        <h3 class="narkk-plp-card__name">{{ product.title }}</h3>
+        <h3 class="narkk-plp-card__name">{{ product.title }}<span class="narkk-plp-card__name-line" aria-hidden="true">&nbsp;</span></h3>
         {%- if pack_info != blank -%}
           <p class="narkk-plp-card__sub-info">{{ pack_info }}</p>
         {%- endif -%}

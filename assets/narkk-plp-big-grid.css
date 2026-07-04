@@ -181,13 +181,39 @@
 }
 
 .narkk-plp-bundle-card__name {
+  align-self: flex-start;
   color: var(--narkk-dark);
+  display: inline-block;
   font-family: Outfit, sans-serif;
   font-size: var(--narkk-font-product-name);
   font-weight: 400;
   line-height: var(--narkk-lh-product-name);
   margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.narkk-plp-bundle-card__name-line {
+  background: currentColor;
+  bottom: 0;
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.25s ease-in;
+}
+
+.narkk-plp-bundle-card__link:hover .narkk-plp-bundle-card__name-line {
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.35s ease-out;
 }
 
 /* Board type + accessories count row */
