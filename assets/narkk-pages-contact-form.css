@@ -359,3 +359,53 @@
     width: 100%;
   }
 }
+
+/* ── Field error states ──────────────────────────────────── */
+.narkk-pcf__field-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.narkk-pcf__field-wrap--textarea {
+}
+
+.narkk-pcf__field-error {
+  display: block;
+  font-size: 1.2rem;
+  color: #c0392b;
+  margin-top: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.narkk-pcf__field-error:empty {
+  display: none;
+}
+
+.narkk-pcf__input.is-invalid,
+.narkk-pcf__textarea.is-invalid {
+  border-bottom-color: #c0392b;
+}
+
+.narkk-pcf__server-errors {
+  color: #c0392b;
+  font-size: 1.4rem;
+  margin-bottom: 2.4rem;
+}
+
+/* ── Success state ───────────────────────────────────────── */
+.narkk-pcf__success {
+  padding: 4rem 0;
+}
+
+.narkk-pcf__success-heading {
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.narkk-pcf__success-body {
+  font-size: 1.6rem;
+  color: #666;
+}

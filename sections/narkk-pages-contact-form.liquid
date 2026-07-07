@@ -55,94 +55,117 @@
         {%- endif -%}
       </div>
 
-      {%- comment -%}
-        Placeholder form — no submission handler.
-        TODO: Wire up before launch — Shopify Contact Form, Klaviyo, or custom endpoint.
-        Add client-side validation and success/error states.
-      {%- endcomment -%}
-      <form class="narkk-pcf__form" novalidate>
+      {%- form 'contact', class: 'narkk-pcf__form', novalidate: '' -%}
 
-        <div class="narkk-pcf__inputs">
+        {%- if form.posted_successfully? -%}
+          <div class="narkk-pcf__success" data-pcf-success>
+            <p class="narkk-pcf__success-heading">Message sent.</p>
+            <p class="narkk-pcf__success-body">Thank you for reaching out. We'll get back to you within 24–48 hours.</p>
+          </div>
+        {%- else -%}
 
-          <input
-            class="narkk-pcf__input"
-            data-pcf-field
-            type="text"
-            name="contact[full_name]"
-            placeholder="Full Name"
-            autocomplete="name"
-            aria-label="Full Name"
-          >
+          {%- if form.errors -%}
+            <div class="narkk-pcf__server-errors">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
 
-          <input
-            class="narkk-pcf__input"
-            data-pcf-field
-            type="email"
-            name="contact[email]"
-            placeholder="E-mail"
-            autocomplete="email"
-            aria-label="E-mail"
-          >
+          <div class="narkk-pcf__inputs">
 
-          <input
-            class="narkk-pcf__input"
-            data-pcf-field
-            type="tel"
-            name="contact[phone]"
-            placeholder="Phone number"
-            autocomplete="tel"
-            aria-label="Phone number"
-          >
+            <div class="narkk-pcf__field-wrap">
+              <input
+                class="narkk-pcf__input"
+                data-pcf-field
+                type="text"
+                name="contact[name]"
+                placeholder="Full Name"
+                autocomplete="name"
+                aria-label="Full Name"
+                value="{{ form.value['contact[name]'] }}"
+              >
+              <span class="narkk-pcf__field-error" data-pcf-error="contact[name]"></span>
+            </div>
 
-          {%- comment -%}── Custom dropdown ──────────────────────────{%- endcomment -%}
-          <div class="narkk-pcf__select" data-pcf-field data-pcf-select>
-            <button
-              class="narkk-pcf__select-trigger"
-              type="button"
-              aria-haspopup="listbox"
-              aria-expanded="false"
-              data-pcf-select-trigger
-            >
-              <span class="narkk-pcf__select-label" data-pcf-select-label>What are you reaching out?</span>
-              <span class="narkk-pcf__select-chevron" aria-hidden="true">
-                <img
-                  src="{{ 'icon-primary-chevron-down.svg' | asset_url }}"
-                  width="11"
-                  height="7"
-                  alt=""
-                >
-              </span>
-            </button>
-            <ul class="narkk-pcf__select-dropdown" role="listbox" data-pcf-select-dropdown>
-              <li class="narkk-pcf__select-option" role="option" data-value="general-inquiry">General Inquiry</li>
-              <li class="narkk-pcf__select-option" role="option" data-value="trade-program">Trade Program</li>
-              <li class="narkk-pcf__select-option" role="option" data-value="custom-order">Custom Order</li>
-              <li class="narkk-pcf__select-option" role="option" data-value="press-media">Press &amp; Media</li>
-              <li class="narkk-pcf__select-option" role="option" data-value="other">Other</li>
-            </ul>
-            <input type="hidden" name="contact[reason]" data-pcf-select-value>
+            <div class="narkk-pcf__field-wrap">
+              <input
+                class="narkk-pcf__input"
+                data-pcf-field
+                type="email"
+                name="contact[email]"
+                placeholder="E-mail"
+                autocomplete="email"
+                aria-label="E-mail"
+                value="{{ form.value['contact[email]'] }}"
+              >
+              <span class="narkk-pcf__field-error" data-pcf-error="contact[email]"></span>
+            </div>
+
+            <div class="narkk-pcf__field-wrap">
+              <input
+                class="narkk-pcf__input"
+                data-pcf-field
+                type="tel"
+                name="contact[phone]"
+                placeholder="Phone number"
+                autocomplete="tel"
+                aria-label="Phone number"
+                value="{{ form.value['contact[phone]'] }}"
+              >
+            </div>
+
+            {%- comment -%}── Custom dropdown ──────────────────────────{%- endcomment -%}
+            <div class="narkk-pcf__select" data-pcf-field data-pcf-select>
+              <button
+                class="narkk-pcf__select-trigger"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                data-pcf-select-trigger
+              >
+                <span class="narkk-pcf__select-label" data-pcf-select-label>What are you reaching out?</span>
+                <span class="narkk-pcf__select-chevron" aria-hidden="true">
+                  <img
+                    src="{{ 'icon-primary-chevron-down.svg' | asset_url }}"
+                    width="11"
+                    height="7"
+                    alt=""
+                  >
+                </span>
+              </button>
+              <ul class="narkk-pcf__select-dropdown" role="listbox" data-pcf-select-dropdown data-lenis-prevent>
+                <li class="narkk-pcf__select-option" role="option" data-value="general-inquiry">General Inquiry</li>
+                <li class="narkk-pcf__select-option" role="option" data-value="trade-program">Trade Program</li>
+                <li class="narkk-pcf__select-option" role="option" data-value="custom-order">Custom Order</li>
+                <li class="narkk-pcf__select-option" role="option" data-value="press-media">Press &amp; Media</li>
+                <li class="narkk-pcf__select-option" role="option" data-value="other">Other</li>
+              </ul>
+              <input type="hidden" name="contact[reason]" data-pcf-select-value>
+            </div>
+
+            <div class="narkk-pcf__field-wrap">
+              <textarea
+                class="narkk-pcf__textarea"
+                data-pcf-field
+                name="contact[body]"
+                rows="1"
+                placeholder="Message"
+                aria-label="Message"
+              >{{ form.value['contact[body]'] }}</textarea>
+              <span class="narkk-pcf__field-error" data-pcf-error="contact[body]"></span>
+            </div>
+
           </div>
 
-        </div>
+          <div class="narkk-pcf__form-foot">
+            <button type="submit" class="button narkk-btn-filled-dark narkk-btn--plus narkk-pcf__submit">
+              <span class="narkk-btn__plus">+</span>
+              <span class="narkk-btn__label">Submit Form</span>
+            </button>
+          </div>
 
-        {%- comment -%}── Textarea — 80px gap via CSS (.narkk-pcf__field--textarea margin-top) ──{%- endcomment -%}
-        <textarea
-          class="narkk-pcf__textarea"
-          data-pcf-field
-          name="contact[message]"
-          rows="1"
-          placeholder="Message"
-          aria-label="Message"
-        ></textarea>
+        {%- endif -%}
 
-        <div class="narkk-pcf__form-foot">
-          <button type="submit" class="button narkk-btn-filled-dark narkk-btn--plus narkk-pcf__submit">
-            <span class="narkk-btn__plus">+</span>
-            <span class="narkk-btn__label">Submit Form</span>
-          </button>
-        </div>
-
-      </form>
+      {%- endform -%}
 
     </div>
 

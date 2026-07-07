@@ -106,6 +106,9 @@
 
     // ── Custom select ─────────────────────────────────────────
     initSelect(section);
+
+    // ── Form validation & submission ──────────────────────────
+    initFormValidation(section);
   }
 
   function initSelect(section) {
@@ -120,11 +123,15 @@
 
     if (!trigger || !dropdown) return;
 
+    function lenisStop() { if (window.__narkkLenis) window.__narkkLenis.stop(); }
+    function lenisStart() { if (window.__narkkLenis) window.__narkkLenis.start(); }
+
     // Toggle open / close
     trigger.addEventListener('click', function (e) {
       e.stopPropagation();
       var isOpen = selectEl.classList.toggle('is-open');
       trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      isOpen ? lenisStop() : lenisStart();
     });
 
     // Option selection
@@ -141,14 +148,16 @@
 
         selectEl.classList.remove('is-open');
         trigger.setAttribute('aria-expanded', 'false');
+        lenisStart();
       });
     });
 
     // Close on outside click
     document.addEventListener('click', function (e) {
-      if (!selectEl.contains(e.target)) {
+      if (!selectEl.contains(e.target) && selectEl.classList.contains('is-open')) {
         selectEl.classList.remove('is-open');
         trigger.setAttribute('aria-expanded', 'false');
+        lenisStart();
       }
     });
 
@@ -158,6 +167,76 @@
         selectEl.classList.remove('is-open');
         trigger.setAttribute('aria-expanded', 'false');
         trigger.focus();
+        lenisStart();
+      }
+    });
+  }
+
+  function initFormValidation(section) {
+    var form = section.querySelector('.narkk-pcf__form');
+    if (!form) return;
+
+    var rules = [
+      { name: 'contact[name]', message: 'Please enter your full name.' },
+      { name: 'contact[email]',     message: 'Please enter a valid email address.', email: true },
+      { name: 'contact[body]',      message: 'Please enter your message.' }
+    ];
+
+    function getError(name) {
+      return form.querySelector('[data-pcf-error="' + name + '"]');
+    }
+
+    function getField(name) {
+      return form.querySelector('[name="' + name + '"]');
+    }
+
+    function setError(name, message) {
+      var field = getField(name);
+      var error = getError(name);
+      if (field) field.classList.add('is-invalid');
+      if (error) error.textContent = message;
+    }
+
+    function clearError(name) {
+      var field = getField(name);
+      var error = getError(name);
+      if (field) field.classList.remove('is-invalid');
+      if (error) error.textContent = '';
+    }
+
+    function validateEmail(val) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    }
+
+    function validate() {
+      var valid = true;
+      rules.forEach(function (rule) {
+        var field = getField(rule.name);
+        if (!field) return;
+        var val = field.value.trim();
+        if (!val || (rule.email && !validateEmail(val))) {
+          setError(rule.name, rule.message);
+          valid = false;
+        } else {
+          clearError(rule.name);
+        }
+      });
+      return valid;
+    }
+
+    // Clear individual errors on input
+    rules.forEach(function (rule) {
+      var field = getField(rule.name);
+      if (field) {
+        field.addEventListener('input', function () { clearError(rule.name); });
+      }
+    });
+
+    form.addEventListener('submit', function (e) {
+      if (!validate()) {
+        e.preventDefault();
+        var firstInvalid = form.querySelector('.is-invalid');
+        if (firstInvalid) firstInvalid.focus();
       }
     });
   }
