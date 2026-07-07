@@ -49,3 +49,76 @@ class NarkkCategoryGridLoadMore {
 document.querySelectorAll('[data-narkk-plp-category-grid]').forEach((section) => {
   new NarkkCategoryGridLoadMore(section);
 });
+
+// ── ATC button plus hover animation (GSAP) ────────────────
+(function () {
+  function initAtcHover() {
+    if (typeof gsap === 'undefined') return;
+
+    document.querySelectorAll('.narkk-plp-card__atc').forEach(function (btn) {
+      var plus = btn.querySelector('.narkk-btn__plus');
+      if (!plus) return;
+
+      gsap.set(plus, { rotation: 0, scale: 1 });
+
+      btn.addEventListener('mouseenter', function () {
+        gsap.to(plus, { rotation: 45, scale: 1.15, duration: 0.3, ease: 'power2.out', overwrite: true });
+      });
+
+      btn.addEventListener('mouseleave', function () {
+        gsap.to(plus, { rotation: 0, scale: 1, duration: 0.25, ease: 'power2.out', overwrite: true });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAtcHover);
+  } else {
+    initAtcHover();
+  }
+}());
+
+// ── Add To Cart (shared handler — skipped if big-grid JS already set it up) ──
+if (!window.__narkkAtcInit) {
+  window.__narkkAtcInit = true;
+
+  (function () {
+    document.addEventListener('click', async function (e) {
+      const btn = e.target.closest('[data-atc-btn]');
+      if (!btn) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const variantId = parseInt(btn.dataset.variantId, 10);
+      if (!variantId) return;
+
+      const label = btn.querySelector('.narkk-btn__label');
+      const originalLabel = label ? label.textContent : 'Add To Cart';
+
+      btn.disabled = true;
+      if (label) label.textContent = 'Adding…';
+
+      try {
+        const res = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: 1 })
+        });
+
+        if (!res.ok) throw new Error('add failed');
+
+        if (label) label.textContent = 'Added!';
+
+        setTimeout(() => { window.location.reload(); }, 800);
+
+      } catch (_) {
+        if (label) label.textContent = 'Try again';
+        setTimeout(() => {
+          if (label) label.textContent = originalLabel;
+          btn.disabled = false;
+        }, 2000);
+      }
+    });
+  }());
+}

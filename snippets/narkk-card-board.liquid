@@ -1,16 +1,26 @@
 {%- comment -%}
   Renders a Board product card for the collection grid.
   Variables:
-    product {Product} — required
+    product  {Product} — required
+    index    {Number}  — 0-based position within the boards list
+    per_page {Number}  — cards beyond this index start hidden for load-more
 {%- endcomment -%}
 
 {%- assign size_badge = product.metafields.custom.size_badge -%}
 {%- assign dimensions = product.metafields.custom.dimensions -%}
+{%- assign first_variant = product.selected_or_first_available_variant -%}
+{%- assign has_one_variant = false -%}
+{%- if product.variants.size == 1 -%}
+  {%- assign has_one_variant = true -%}
+{%- endif -%}
 
-<article class="narkk-plp-card">
-  <a href="{{ product.url }}" class="narkk-plp-card__link">
+<article
+  class="narkk-plp-card{% if index >= per_page %} narkk-plp-card--hidden{% endif %}"
+  data-card-index="{{ index }}"
+>
 
-    <div class="narkk-plp-card__image-wrap">
+  <div class="narkk-plp-card__image-wrap">
+    <a href="{{ product.url }}" class="narkk-plp-card__image-link" aria-hidden="true" tabindex="-1">
       {%- if product.featured_image != blank -%}
         <img
           src="{{ product.featured_image | image_url: width: 800 }}"
@@ -29,11 +39,38 @@
       {%- else -%}
         {{ 'product-1' | placeholder_svg_tag: 'narkk-plp-card__image narkk-plp-card__image--placeholder' }}
       {%- endif -%}
-      {%- if size_badge != blank -%}
-        <span class="narkk-plp-card__badge">{{ size_badge }}</span>
+    </a>
+
+    {%- if size_badge != blank -%}
+      <span class="narkk-plp-card__badge">{{ size_badge }}</span>
+    {%- endif -%}
+
+    <div class="narkk-plp-card__atc-wrap">
+      {%- if has_one_variant -%}
+        <button
+          type="button"
+          class="button narkk-btn-primary narkk-btn--plus narkk-plp-card__atc"
+          data-atc-btn
+          data-variant-id="{{ first_variant.id }}"
+          aria-label="Add {{ product.title | escape }} to cart"
+        >
+          <span class="narkk-btn__plus">+</span>
+          <span class="narkk-btn__label">Add To Cart</span>
+        </button>
+      {%- else -%}
+        <a
+          href="{{ product.url }}"
+          class="button narkk-btn-primary narkk-btn--plus narkk-plp-card__atc"
+          aria-label="Choose options for {{ product.title | escape }}"
+        >
+          <span class="narkk-btn__plus">+</span>
+          <span class="narkk-btn__label">Choose Options</span>
+        </a>
       {%- endif -%}
     </div>
+  </div>
 
+  <a href="{{ product.url }}" class="narkk-plp-card__link">
     <div class="narkk-plp-card__info">
       <div class="narkk-plp-card__meta">
         <h3 class="narkk-plp-card__name">{{ product.title }}<span class="narkk-plp-card__name-line" aria-hidden="true">&nbsp;</span></h3>
@@ -43,6 +80,6 @@
       </div>
       <p class="narkk-plp-card__price">{{ product.price | money }}</p>
     </div>
-
   </a>
+
 </article>

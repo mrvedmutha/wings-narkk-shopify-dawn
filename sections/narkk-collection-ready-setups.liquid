@@ -42,8 +42,12 @@
 
         {%- comment -%}── HEADER ────────────────────────────────────────────{%- endcomment -%}
         <div class="narkk-plp-big-grid__header">
+          <h2 class="narkk-plp-big-grid__heading">{{- section.settings.heading -}}</h2>
+
           <div class="narkk-plp-big-grid__header-row">
-            <h2 class="narkk-plp-big-grid__heading">{{- section.settings.heading -}}</h2>
+            {%- if section.settings.description != blank -%}
+              <p class="narkk-plp-big-grid__desc">{{ section.settings.description }}</p>
+            {%- endif -%}
 
             {%- if bundle_count > 2 -%}
               <div class="narkk-plp-big-grid__nav" aria-label="Slider controls">
@@ -63,10 +67,6 @@
               </div>
             {%- endif -%}
           </div>
-
-          {%- if section.settings.description != blank -%}
-            <p class="narkk-plp-big-grid__desc">{{ section.settings.description }}</p>
-          {%- endif -%}
         </div>
 
         {%- comment -%}── SLIDER ────────────────────────────────────────────{%- endcomment -%}

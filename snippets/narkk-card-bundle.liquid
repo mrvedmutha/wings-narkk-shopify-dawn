@@ -5,12 +5,17 @@
 {%- endcomment -%}
 
 {%- assign board_type = product.metafields.custom.board_type -%}
-{%- assign acc_count = product.metafields.custom.accessories_count -%}
+{%- assign acc_count  = product.metafields.custom.accessories_count -%}
+{%- assign first_variant = product.selected_or_first_available_variant -%}
+{%- assign has_one_variant = false -%}
+{%- if product.variants.size == 1 -%}
+  {%- assign has_one_variant = true -%}
+{%- endif -%}
 
 <article class="narkk-plp-bundle-card">
-  <a href="{{ product.url }}" class="narkk-plp-bundle-card__link">
 
-    <div class="narkk-plp-bundle-card__image-wrap">
+  <div class="narkk-plp-bundle-card__image-wrap">
+    <a href="{{ product.url }}" class="narkk-plp-bundle-card__image-link" aria-hidden="true" tabindex="-1">
       {%- if product.featured_image != blank -%}
         <img
           src="{{ product.featured_image | image_url: width: 1400 }}"
@@ -29,8 +34,34 @@
       {%- else -%}
         {{ 'lifestyle-1' | placeholder_svg_tag: 'narkk-plp-bundle-card__image narkk-plp-bundle-card__image--placeholder' }}
       {%- endif -%}
-    </div>
+    </a>
 
+    <div class="narkk-plp-bundle-card__atc-wrap">
+      {%- if has_one_variant -%}
+        <button
+          type="button"
+          class="button narkk-btn-primary narkk-btn--plus narkk-plp-bundle-card__atc"
+          data-atc-btn
+          data-variant-id="{{ first_variant.id }}"
+          aria-label="Add {{ product.title | escape }} to cart"
+        >
+          <span class="narkk-btn__plus">+</span>
+          <span class="narkk-btn__label">Add To Cart</span>
+        </button>
+      {%- else -%}
+        <a
+          href="{{ product.url }}"
+          class="button narkk-btn-primary narkk-btn--plus narkk-plp-bundle-card__atc"
+          aria-label="Choose options for {{ product.title | escape }}"
+        >
+          <span class="narkk-btn__plus">+</span>
+          <span class="narkk-btn__label">Choose Options</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <a href="{{ product.url }}" class="narkk-plp-bundle-card__link">
     <div class="narkk-plp-bundle-card__info">
       <div class="narkk-plp-bundle-card__meta">
         <h3 class="narkk-plp-bundle-card__name">{{ product.title }}<span class="narkk-plp-bundle-card__name-line" aria-hidden="true">&nbsp;</span></h3>
@@ -50,6 +81,6 @@
       </div>
       <p class="narkk-plp-bundle-card__price">{{ product.price | money }}</p>
     </div>
-
   </a>
+
 </article>

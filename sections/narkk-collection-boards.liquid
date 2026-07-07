@@ -7,6 +7,8 @@
   }
 {% endstyle %}
 
+{%- assign per_page = section.settings.per_page -%}
+
 {%- comment -%}── Count every category so we can hide this step if empty ──{%- endcomment -%}
 {%- assign board_count = 0 -%}
 {%- for product in collection.products -%}
@@ -36,17 +38,41 @@
 
       {%- comment -%}── BOARDS GRID ─────────────────────────────────────────{%- endcomment -%}
       {%- paginate collection.products by 50 -%}
-        <div class="narkk-plp-category-grid__grid">
+        <div
+          class="narkk-plp-category-grid__grid"
+          data-grid
+          data-per-page="{{ per_page }}"
+          data-total="{{ board_count }}"
+        >
+          {%- assign board_index = 0 -%}
           {%- for product in collection.products -%}
             {%- if product.metafields.custom.product_filter_category == 'Boards' -%}
-              {%- render 'narkk-card-board', product: product -%}
+              {%- render 'narkk-card-board', product: product, index: board_index, per_page: per_page -%}
+              {%- assign board_index = board_index | plus: 1 -%}
             {%- endif -%}
           {%- endfor -%}
         </div>
+
+        {%- if board_count > per_page -%}
+          {%- assign remaining = board_count | minus: per_page -%}
+          <div class="narkk-plp-category-grid__load-more" data-load-more-wrap>
+            <button
+              class="button narkk-btn-outlined narkk-btn--plus narkk-plp-category-grid__load-more-btn"
+              data-load-more
+              data-remaining="{{ remaining }}"
+            >
+              <span class="narkk-btn__plus">+</span>
+              <span class="narkk-btn__label" data-load-more-label>Load More ({{ remaining }})</span>
+            </button>
+          </div>
+        {%- endif -%}
+
       {%- endpaginate -%}
 
     </div>
   </section>
+
+  <script src="{{ 'narkk-plp-category-grid.js' | asset_url }}" defer></script>
 
 {%- endif -%}
 
@@ -74,6 +100,15 @@
       "id": "description",
       "label": "Description",
       "default": "Choose your base. Build from Solid Birch Plywood"
+    },
+    {
+      "type": "range",
+      "id": "per_page",
+      "label": "Products per page",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "default": 12
     },
     {
       "type": "header",
