@@ -249,38 +249,40 @@
         "heading": "Where Spaces Turn Into Stories",
         "body_text": "Our story continues where the trends end. Follow our journey of intentional living, behind-the-scenes craft, and mindful community on:",
         "social_label": "Join our community on",
-        "cta_label": "Join Inner Loop"
+        "cta_label": "Join Inner Loop",
+        "modal_handle": "inner-loop"
       }
     },
-    "narkk_homepage_community_cta_CAmMp8": {
-      "type": "narkk-homepage-community-cta",
+    "narkk_trade_apply_modal_gq7ByH": {
+      "type": "narkk-trade-apply-modal",
       "blocks": {
-        "text_43M3RG": {
-          "type": "text",
+        "forms_inline_APzLUH": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
-            "content": "We are seeking voices that value depth over density. If you are a writer dedicated to mindful consumerism, intentional living, and the circular economy, we invite you to help us articulate the Narkk narrative.",
-            "text_style": "body1"
-          }
-        },
-        "cta_Ux9bwA": {
-          "type": "cta",
-          "settings": {
-            "label": "Write For Us",
-            "url": "",
-            "style": "outlined"
+            "form_id": "1057848",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
           }
         }
       },
       "block_order": [
-        "text_43M3RG",
-        "cta_Ux9bwA"
+        "forms_inline_APzLUH"
       ],
-      "name": "Narkk Community CTA",
+      "name": "Trade Apply Modal",
       "settings": {
-        "bg_image": "shopify://shop_images/narkk-loop-join-bg-img.webp",
-        "image_position": "center center",
-        "heading": "To mindful content writers",
-        "card_width": "735px"
+        "modal_handle": "inner-loop",
+        "eyebrow": "Apply for Inner Loop",
+        "heading": "Join the Narkk Loop",
+        "description": "We partner with designers who specify with intention. Tell us about your work, and we'll get back to you with the next steps."
       }
     }
   },
@@ -289,6 +291,6 @@
     "narkk_blog_grid_dual_TfAKFe",
     "narkk_pages_product_collage_two_JJR3np",
     "narkk_page_social_collage_wnxY8Y",
-    "narkk_homepage_community_cta_CAmMp8"
+    "narkk_trade_apply_modal_gq7ByH"
   ]
 }
